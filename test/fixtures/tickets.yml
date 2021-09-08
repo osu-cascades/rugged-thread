@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repair_description: MyText
+  add_fee: 1.5
+  technician_notes: MyString
+  work_status: MyString
+  technician: one
+  invoice: one
+
+two:
+  repair_description: MyText
+  add_fee: 1.5
+  technician_notes: MyString
+  work_status: MyString
+  technician: two
+  invoice: two

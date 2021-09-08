@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Repairs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Charge</th>
+      <th>Time total</th>
+      <th>Invoice item</th>
+      <th>Repair type</th>
+      <th>Technician</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @repairs.each do |repair| %>
+      <tr>
+        <td><%= repair.charge %></td>
+        <td><%= repair.time_total %></td>
+        <td><%= repair.invoice_item_id %></td>
+        <td><%= repair.repair_type_id %></td>
+        <td><%= repair.technician_id %></td>
+        <td><%= link_to 'Show', repair %></td>
+        <td><%= link_to 'Edit', edit_repair_path(repair) %></td>
+        <td><%= link_to 'Destroy', repair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Repair', new_repair_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: MyString
+  charge: 1.5
+  repair: one
+  complication_type: one
+
+two:
+  time: MyString
+  charge: 1.5
+  repair: two
+  complication_type: two
