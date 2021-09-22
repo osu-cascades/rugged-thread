@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quote_requests
   devise_for :users
   resources :complications
   resources :complication_types
