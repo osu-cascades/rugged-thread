@@ -10,6 +10,7 @@
       <th>Intake date</th>
       <th>Date fulfilled</th>
       <th>Customer</th>
+      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= invoice.intake_date %></td>
         <td><%= invoice.date_fulfilled %></td>
         <td><%= invoice.customer_id %></td>
+        <td><%= invoice.notes %></td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -25,5 +25,10 @@
   <%= @repair.technician_id %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+  <%= @repair.notes %>
+</p>
+
 <%= link_to 'Edit', edit_repair_path(@repair) %> |
 <%= link_to 'Back', repairs_path %>
