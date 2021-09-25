@@ -1,24 +1,44 @@
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rugged Thread Ticketing System
 
-Things you may want to cover:
+***
 
-* Ruby version
+### Setup
 
-* System dependencies
+#### Version Information
 
-* Configuration
+* Ruby version 3.0.2
 
-* Database creation
+* Rails version 6.1.4.1
 
-* Database initialization
+* Postgresql version 13
+
+#### System Dependencies
+
+* Devise - Authentication
+
+* Pundit - Authorization
+
+#### Configuration
+
+* TODO
+
+#### Database (TODO)
+
+* Creation
+
+* Initialization
+
+***
+
+#### TODO
 
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions - forthcoming (heroku)
 
 * ...
