@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_25_185340) do
+ActiveRecord::Schema.define(version: 2021_09_29_183104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_185340) do
     t.bigint "item_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "number"
     t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
     t.index ["item_type_id"], name: "index_invoice_items_on_item_type_id"
   end
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_185340) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
+    t.integer "number"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
   end
 
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_185340) do
     t.string "component"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "number"
   end
 
   create_table "quote_requests", force: :cascade do |t|
@@ -138,6 +141,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_185340) do
     t.string "time_estimate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "number"
   end
 
   create_table "repairs", force: :cascade do |t|
@@ -149,6 +153,8 @@ ActiveRecord::Schema.define(version: 2021_09_25_185340) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
+    t.date "date"
+    t.integer "time"
     t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
     t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
     t.index ["technician_id"], name: "index_repairs_on_technician_id"

@@ -64,6 +64,6 @@ class ItemTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_type_params
-      params.require(:item_type).permit(:name, :component)
+      params.require(:item_type).permit(:name, :component, :number)
     end
 end

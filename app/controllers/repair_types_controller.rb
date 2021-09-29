@@ -64,6 +64,6 @@ class RepairTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def repair_type_params
-      params.require(:repair_type).permit(:name, :time_estimate)
+      params.require(:repair_type).permit(:name, :time_estimate, :number)
     end
 end

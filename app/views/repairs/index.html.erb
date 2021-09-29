@@ -7,6 +7,8 @@
     <tr>
       <th>Charge</th>
       <th>Time total</th>
+      <th>Date</th>
+      <th>Time</th>
       <th>Invoice item</th>
       <th>Repair type</th>
       <th>Technician</th>
@@ -19,7 +21,9 @@
     <% @repairs.each do |repair| %>
       <tr>
         <td><%= repair.charge %></td>
-        <td><%= repair.time_total %></td>
+        <td><%= repair.date %></td>
+        <td><%= repair.charge %></td>
+        <td><%= repair.time %></td>
         <td><%= repair.invoice_item_id %></td>
         <td><%= repair.repair_type_id %></td>
         <td><%= repair.technician_id %></td>
