@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :task_types
   resources :quote_requests
   devise_for :users
   resources :complications
