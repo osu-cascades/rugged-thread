@@ -32,6 +32,9 @@ namespace :db do
       task_time = json[num]['Task Time']
       item_quotes = json[num]['Item Quote']
       item_charges = json[num]['Item Charge']
+      shop_rates = jsson[num]['Shop Rate']
+      solo_techs = json[num]['Solo Tech']
+      first_repair_charge = json[num]['Repair Charge']
       Invoice.create!(
         id: num,
         customer_id: num,
@@ -55,6 +58,8 @@ namespace :db do
         charge: repair_charges.to_i.to_f,
         # time_total: repair_times.to_s,
         time: repair_times.to_s
+        shop_rate: shop_rates.to_i.to_f
+        solo_tech: solo_techs
       )
       RepairType.create!(
         number: repair_type_nums
@@ -67,6 +72,7 @@ namespace :db do
       )
       TaskType.create!(
         name: tasks
+        repair_charge: first_repair_charge
       )
 
     end
