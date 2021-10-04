@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_165132) do
+ActiveRecord::Schema.define(version: 2021_10_04_180729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_09_30_165132) do
     t.integer "number"
     t.float "quote"
     t.float "charge"
+    t.text "notes"
     t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
     t.index ["item_type_id"], name: "index_invoice_items_on_item_type_id"
   end
@@ -112,7 +113,6 @@ ActiveRecord::Schema.define(version: 2021_09_30_165132) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
-    t.string "int"
     t.integer "number"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
   end
@@ -158,6 +158,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_165132) do
     t.text "notes"
     t.date "date"
     t.integer "time"
+    t.float "shop_rate"
+    t.float "quote"
     t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
     t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
     t.index ["technician_id"], name: "index_repairs_on_technician_id"
@@ -176,6 +178,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_165132) do
     t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "repair_charge"
+    t.string "technician"
     t.index ["task_type_id"], name: "index_tasks_on_task_type_id"
     t.index ["technician_id"], name: "index_tasks_on_technician_id"
   end

@@ -17,6 +17,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :quote %>
+    <%= form.text_field :quote %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shop_rate %>
+    <%= form.text_field :shop_rate %>
+  </div>
+
+  <div class="field">
     <%= form.label :time_total %>
     <%= form.text_field :time_total %>
   </div>
@@ -48,7 +58,7 @@
 
   <div class="field">
     <%= form.label :notes %>
-    <%= form.text_field :notes %>
+    <%= form.text_area :notes %>
   </div>
 
   <div class="actions">

@@ -57,8 +57,8 @@ namespace :db do
         date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
         charge: repair_charges.to_i.to_f,
         # time_total: repair_times.to_s,
-        time: repair_times.to_s
-        shop_rate: shop_rates.to_i.to_f
+        time: repair_times.to_s,
+        shop_rate: shop_rates.to_i.to_f,
         solo_tech: solo_techs
       )
       RepairType.create!(
@@ -71,10 +71,9 @@ namespace :db do
         time: task_time.to_i
       )
       TaskType.create!(
-        name: tasks
+        name: tasks,
         repair_charge: first_repair_charge
       )
-
     end
   end
 end
