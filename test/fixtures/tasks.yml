@@ -2,12 +2,16 @@
 
 one:
   time: 1
-  number: 1
+  tech_name: MyString
+  repair_charge: 1.5
+  repair_number: 1
   task_type: one
   technician: one
 
 two:
   time: 1
-  number: 1
+  tech_name: MyString
+  repair_charge: 1.5
+  repair_number: 1
   task_type: two
   technician: two

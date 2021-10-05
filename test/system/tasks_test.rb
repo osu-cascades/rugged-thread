@@ -14,8 +14,10 @@ class TasksTest < ApplicationSystemTestCase
     visit tasks_url
     click_on "New Task"
 
-    fill_in "Number", with: @task.number
+    fill_in "Repair charge", with: @task.repair_charge
+    fill_in "Repair number", with: @task.repair_number
     fill_in "Task type", with: @task.task_type_id
+    fill_in "Tech name", with: @task.tech_name
     fill_in "Technician", with: @task.technician_id
     fill_in "Time", with: @task.time
     click_on "Create Task"
@@ -28,8 +30,10 @@ class TasksTest < ApplicationSystemTestCase
     visit tasks_url
     click_on "Edit", match: :first
 
-    fill_in "Number", with: @task.number
+    fill_in "Repair charge", with: @task.repair_charge
+    fill_in "Repair number", with: @task.repair_number
     fill_in "Task type", with: @task.task_type_id
+    fill_in "Tech name", with: @task.tech_name
     fill_in "Technician", with: @task.technician_id
     fill_in "Time", with: @task.time
     click_on "Update Task"

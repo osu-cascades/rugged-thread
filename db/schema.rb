@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_04_215436) do
+ActiveRecord::Schema.define(version: 2021_10_05_180304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,12 +95,9 @@ ActiveRecord::Schema.define(version: 2021_10_04_215436) do
     t.text "notes"
     t.integer "invoice_number"
     t.bigint "invoice_id"
+    t.string "number"
     t.index ["item_type_id"], name: "index_invoice_items_on_item_type_id"
-  end
-
-  create_table "invoice_items_repairs", id: false, force: :cascade do |t|
-    t.bigint "invoice_item_id", null: false
-    t.bigint "repair_id", null: false
+    t.index ["number"], name: "index_invoice_items_on_number", unique: true
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -160,7 +157,10 @@ ActiveRecord::Schema.define(version: 2021_10_04_215436) do
     t.integer "time"
     t.float "shop_rate"
     t.float "quote"
+    t.integer "number"
+    t.string "item_number"
     t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
+    t.index ["number"], name: "index_repairs_on_number", unique: true
     t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
     t.index ["technician_id"], name: "index_repairs_on_technician_id"
   end
@@ -173,13 +173,13 @@ ActiveRecord::Schema.define(version: 2021_10_04_215436) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer "time"
-    t.integer "number"
+    t.string "tech_name"
+    t.float "repair_charge"
+    t.integer "repair_number"
     t.bigint "task_type_id", null: false
     t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "repair_charge"
-    t.string "technician"
     t.index ["task_type_id"], name: "index_tasks_on_task_type_id"
     t.index ["technician_id"], name: "index_tasks_on_technician_id"
   end
@@ -224,8 +224,10 @@ ActiveRecord::Schema.define(version: 2021_10_04_215436) do
   add_foreign_key "invoice_items", "item_types"
   add_foreign_key "invoices", "customers"
   add_foreign_key "repairs", "invoice_items"
+  add_foreign_key "repairs", "invoice_items", column: "item_number", primary_key: "number"
   add_foreign_key "repairs", "repair_types"
   add_foreign_key "repairs", "technicians"
+  add_foreign_key "tasks", "repairs", column: "repair_number", primary_key: "number"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"
   add_foreign_key "tickets", "invoices"
