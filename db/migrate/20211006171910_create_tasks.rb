@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.integer :time
       t.string :tech_name
       t.float :repair_charge
-      t.integer :repair_number
+      t.string :repair_number
       t.references :task_type, null: false, foreign_key: true
       t.references :technician, null: false, foreign_key: true
 

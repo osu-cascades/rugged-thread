@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_180304) do
+ActiveRecord::Schema.define(version: 2021_10_06_172533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 2021_10_05_180304) do
     t.integer "time"
     t.float "shop_rate"
     t.float "quote"
-    t.integer "number"
     t.string "item_number"
+    t.string "number"
     t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
     t.index ["number"], name: "index_repairs_on_number", unique: true
     t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
@@ -175,7 +175,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_180304) do
     t.integer "time"
     t.string "tech_name"
     t.float "repair_charge"
-    t.integer "repair_number"
+    t.string "repair_number"
     t.bigint "task_type_id", null: false
     t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false

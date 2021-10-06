@@ -4,7 +4,7 @@ one:
   time: 1
   tech_name: MyString
   repair_charge: 1.5
-  repair_number: 1
+  repair_number: MyString
   task_type: one
   technician: one
 
@@ -12,6 +12,6 @@ two:
   time: 1
   tech_name: MyString
   repair_charge: 1.5
-  repair_number: 1
+  repair_number: MyString
   task_type: two
   technician: two

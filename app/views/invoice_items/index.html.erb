@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Invoice number</th>
+      <th>Number</th>
       <th>Quote</th>
       <th>Charge</th>
       <th>Description</th>
@@ -20,6 +21,7 @@
     <% @invoice_items.each do |invoice_item| %>
       <tr>
         <td><%= invoice_item.invoice_number %></td>
+        <td><%= invoice_item.number %></td>
         <td><%= invoice_item.quote %></td>
         <td><%= invoice_item.charge %></td>
         <td><%= invoice_item.description %></td>
