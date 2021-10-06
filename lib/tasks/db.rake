@@ -4,7 +4,7 @@ namespace :db do
   desc "Import production database values"
   task import_prod_vals: :environment do
     json = JSON.parse(File.read('lib/assets/production_values.json'))
-    (0..4238).map do |num|
+    (1..4238).map do |num|
       Customer.create!(
         id: num,
         first_name: "FirstName",
@@ -32,7 +32,7 @@ namespace :db do
       task_time = json[num]['Task Time']
       item_quotes = json[num]['Item Quote']
       item_charges = json[num]['Item Charge']
-      shop_rates = jsson[num]['Shop Rate']
+      shop_rates = json[num]['Shop Rate']
       solo_techs = json[num]['Solo Tech']
       first_repair_charge = json[num]['Repair Charge']
       Invoice.create!(
@@ -42,24 +42,9 @@ namespace :db do
         intake_date: invoice_intakes,
         number: invoice_nums,
       )
-      InvoiceItem.create!(
-        id: num,
-        number: item_nums,
-        quote: item_quotes.to_i.to_f,
-        charge: item_charges.to_i.to_f
-      )
       ItemType.create!(
         id: num,
         number: item_type_num.to_s
-      )
-      Repair.create!(
-        number: repair_nums,
-        date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
-        charge: repair_charges.to_i.to_f,
-        # time_total: repair_times.to_s,
-        time: repair_times.to_s,
-        shop_rate: shop_rates.to_i.to_f,
-        solo_tech: solo_techs
       )
       RepairType.create!(
         number: repair_type_nums
@@ -67,12 +52,28 @@ namespace :db do
       Technician.create!(
         name: tech_names
       )
-      Task.create!(
-        time: task_time.to_i
+      Repair.create!(
+        number: repair_nums,
+        date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
+        charge: repair_charges.to_i.to_f,
+        time_total: repair_times.to_s,
+        time: repair_times.to_s,
+        shop_rate: shop_rates.to_i.to_f,
       )
       TaskType.create!(
         name: tasks,
         repair_charge: first_repair_charge
+      )
+      Task.create!(
+        time: task_time.to_i,
+        tech_name: solo_techs
+      )
+      InvoiceItem.create!(
+        id: num,
+        item_type_id: num,
+        number: item_nums,
+        quote: item_quotes.to_i.to_f,
+        charge: item_charges.to_i.to_f
       )
     end
   end
