@@ -53,6 +53,8 @@ namespace :db do
         name: tech_names
       )
       Repair.create!(
+        repair_type_id: num,
+        technician_id: num,
         number: repair_nums,
         date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
         charge: repair_charges.to_i.to_f,
@@ -62,11 +64,13 @@ namespace :db do
       )
       TaskType.create!(
         name: tasks,
-        repair_charge: first_repair_charge
       )
       Task.create!(
         time: task_time.to_i,
-        tech_name: solo_techs
+        tech_name: solo_techs,
+        repair_charge: first_repair_charge,
+        task_type_id: num,
+        technician_id: num
       )
       InvoiceItem.create!(
         id: num,
