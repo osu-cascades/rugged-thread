@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_222332) do
+ActiveRecord::Schema.define(version: 2021_10_06_223114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,7 +147,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_222332) do
   create_table "repairs", force: :cascade do |t|
     t.float "charge"
     t.string "time_total"
-    t.bigint "invoice_item_id", null: false
     t.bigint "repair_type_id", null: false
     t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -159,7 +158,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_222332) do
     t.float "quote"
     t.string "item_number"
     t.string "number"
-    t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
     t.index ["number"], name: "index_repairs_on_number", unique: true
     t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
     t.index ["technician_id"], name: "index_repairs_on_technician_id"
