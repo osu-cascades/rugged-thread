@@ -53,8 +53,6 @@ namespace :db do
         name: tech_names
       )
       Repair.create!(
-        repair_type_id: num,
-        technician_id: num,
         number: repair_nums,
         date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
         charge: repair_charges.to_i.to_f,
@@ -74,7 +72,6 @@ namespace :db do
       )
       InvoiceItem.create!(
         id: num,
-        item_type_id: num,
         number: item_nums,
         quote: item_quotes.to_i.to_f,
         charge: item_charges.to_i.to_f
