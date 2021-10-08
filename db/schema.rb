@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_223114) do
+ActiveRecord::Schema.define(version: 2021_10_07_232617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,14 +114,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_223114) do
     t.index ["number"], name: "index_invoices_on_number", unique: true
   end
 
-  create_table "item_types", force: :cascade do |t|
-    t.string "name"
-    t.string "component"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "number"
-  end
-
   create_table "quote_requests", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -219,13 +211,11 @@ ActiveRecord::Schema.define(version: 2021_10_06_223114) do
   add_foreign_key "complications", "complication_types"
   add_foreign_key "complications", "repairs"
   add_foreign_key "invoice_items", "invoices", column: "invoice_number", primary_key: "number"
-  add_foreign_key "invoice_items", "item_types"
   add_foreign_key "invoices", "customers"
   add_foreign_key "repairs", "invoice_items", column: "item_number", primary_key: "number"
   add_foreign_key "repairs", "repair_types"
   add_foreign_key "repairs", "technicians"
   add_foreign_key "tasks", "repairs", column: "repair_number", primary_key: "number"
-  add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"
   add_foreign_key "tickets", "invoices"
   add_foreign_key "tickets", "technicians"

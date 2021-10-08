@@ -35,10 +35,5 @@
   <%= @invoice_item.invoice_id %>
 </p>
 
-<p>
-  <strong>Item type:</strong>
-  <%= @invoice_item.item_type_id %>
-</p>
-
 <%= link_to 'Edit', edit_invoice_item_path(@invoice_item) %> |
 <%= link_to 'Back', invoice_items_path %>
