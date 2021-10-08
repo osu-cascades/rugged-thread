@@ -23,7 +23,7 @@ namespace :db do
       item_nums = json[num]['Item No']
       item_type_num = json[num]['Items']
       repair_type_nums = json[num]['Repairs']
-      repair_nums = json[num]['Repair No']
+      # repair_nums = json[num]['Repair No']
       repair_charges = json[num]['Repair Charge__1']
       repair_times = json[num]['Repair Time']
       repair_dates = json[num]['Repair Date']
@@ -35,46 +35,55 @@ namespace :db do
       shop_rates = json[num]['Shop Rate']
       solo_techs = json[num]['Solo Tech']
       first_repair_charge = json[num]['Repair Charge']
-      Invoice.create!(
-        id: num,
-        customer_id: num,
-        invoice_estimate: invoice_ests,
-        intake_date: invoice_intakes,
-        number: invoice_nums,
-      )
-      ItemType.create!(
-        id: num,
-        number: item_type_num.to_s
-      )
       RepairType.create!(
         number: repair_type_nums
       )
+      if !Invoice.exists?(number: invoice_nums)
+        Invoice.create!(
+          id: num,
+          customer_id: num,
+          invoice_estimate: invoice_ests,
+          intake_date: invoice_intakes,
+          number: invoice_nums,
+        )
+      end
+
       Technician.create!(
         name: tech_names
       )
-      Repair.create!(
-        number: repair_nums,
-        date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
-        charge: repair_charges.to_i.to_f,
-        time_total: repair_times.to_s,
-        time: repair_times.to_s,
-        shop_rate: shop_rates.to_i.to_f,
+      
+      if !InvoiceItem.exists?(number: item_type_num)
+      InvoiceItem.create!(
+        id: num,
+        number: item_type_num,
+        invoice_number: invoice_nums,
+        quote: item_quotes.to_i.to_f,
+        charge: item_charges.to_i.to_f
       )
+    end
+
+      if !Repair.exists?(number: repair_type_nums)
+        Repair.create!(
+          number: repair_type_nums.to_s,
+          date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
+          charge: repair_charges.to_i.to_f,
+          time_total: repair_times.to_s,
+          time: repair_times.to_s,
+          shop_rate: shop_rates.to_i.to_f,
+        )
+      end
+
       TaskType.create!(
         name: tasks,
       )
+
       Task.create!(
         time: task_time.to_i,
+        repair_number: repair_type_nums.to_s,
         tech_name: solo_techs,
         repair_charge: first_repair_charge,
         task_type_id: num,
         technician_id: num
-      )
-      InvoiceItem.create!(
-        id: num,
-        number: item_nums,
-        quote: item_quotes.to_i.to_f,
-        charge: item_charges.to_i.to_f
       )
     end
   end
