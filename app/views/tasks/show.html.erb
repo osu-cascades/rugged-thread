@@ -22,13 +22,9 @@
 
 <p>
   <strong>Task type:</strong>
-  <%= @task.task_type_id %>
+  <%= @task.task_type_name %>
 </p>
 
-<p>
-  <strong>Technician:</strong>
-  <%= @task.technician_id %>
-</p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

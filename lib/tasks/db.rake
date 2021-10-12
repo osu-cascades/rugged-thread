@@ -48,9 +48,11 @@ namespace :db do
         )
       end
 
-      Technician.create!(
-        name: tech_names
-      )
+      if !Technician.exists?(name: tech_names)
+        Technician.create!(
+          name: tech_names
+        )
+      end
       
       if !InvoiceItem.exists?(number: item_type_num)
       InvoiceItem.create!(
@@ -65,7 +67,7 @@ namespace :db do
       if !Repair.exists?(number: repair_type_nums)
         Repair.create!(
           number: repair_type_nums.to_s,
-          date: Date.strptime(repair_dates, "%m/%d/%y").strftime('%m/%d/%y'),
+          date: repair_dates,
           charge: repair_charges.to_i.to_f,
           time_total: repair_times.to_s,
           time: repair_times.to_s,
@@ -73,17 +75,19 @@ namespace :db do
         )
       end
 
-      TaskType.create!(
-        name: tasks,
-      )
+      if !TaskType.exists?(name: tasks)
+        TaskType.create!(
+          name: tasks
+        )
+      end
+
 
       Task.create!(
         time: task_time.to_i,
         repair_number: repair_type_nums.to_s,
         tech_name: solo_techs,
         repair_charge: first_repair_charge,
-        task_type_id: num,
-        technician_id: num
+        task_type_name: tasks
       )
     end
   end
