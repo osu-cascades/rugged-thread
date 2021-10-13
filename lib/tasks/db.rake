@@ -35,9 +35,13 @@ namespace :db do
       shop_rates = json[num]['Shop Rate']
       solo_techs = json[num]['Solo Tech']
       first_repair_charge = json[num]['Repair Charge']
-      RepairType.create!(
-        number: repair_type_nums
-      )
+
+      if !RepairType.exists?(number: repair_type_nums)
+        RepairType.create!(
+          number: repair_type_nums
+        )
+      end
+      
       if !Invoice.exists?(number: invoice_nums)
         Invoice.create!(
           id: num,
@@ -55,14 +59,14 @@ namespace :db do
       end
       
       if !InvoiceItem.exists?(number: item_type_num)
-      InvoiceItem.create!(
-        id: num,
-        number: item_type_num,
-        invoice_number: invoice_nums,
-        quote: item_quotes.to_i.to_f,
-        charge: item_charges.to_i.to_f
-      )
-    end
+        InvoiceItem.create!(
+          id: num,
+          number: item_type_num,
+          invoice_number: invoice_nums,
+          quote: item_quotes.to_i.to_f,
+          charge: item_charges.to_i.to_f
+        )
+      end
 
       if !Repair.exists?(number: repair_type_nums)
         Repair.create!(
@@ -87,7 +91,8 @@ namespace :db do
         repair_number: repair_type_nums.to_s,
         tech_name: solo_techs,
         repair_charge: first_repair_charge,
-        task_type_name: tasks
+        task_type_name: tasks,
+        technician_name: tech_names
       )
     end
   end
