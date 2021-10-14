@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_232959) do
+ActiveRecord::Schema.define(version: 2021_10_13_204326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 2021_10_12_232959) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.float "invoice_estimate"
     t.float "invoice_total"
     t.string "intake_date"
     t.string "date_fulfilled"
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_232959) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
     t.integer "number"
+    t.integer "estimate_number"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
     t.index ["number"], name: "index_invoices_on_number", unique: true
   end
@@ -137,6 +137,8 @@ ActiveRecord::Schema.define(version: 2021_10_12_232959) do
   create_table "repairs", force: :cascade do |t|
     t.float "charge"
     t.string "time_total"
+    t.bigint "repair_type_id", null: false
+    t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
@@ -147,6 +149,8 @@ ActiveRecord::Schema.define(version: 2021_10_12_232959) do
     t.string "item_number"
     t.string "number"
     t.index ["number"], name: "index_repairs_on_number", unique: true
+    t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
+    t.index ["technician_id"], name: "index_repairs_on_technician_id"
   end
 
   create_table "task_types", force: :cascade do |t|
@@ -205,6 +209,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_232959) do
   add_foreign_key "invoice_items", "invoices", column: "invoice_number", primary_key: "number"
   add_foreign_key "invoices", "customers"
   add_foreign_key "repairs", "invoice_items", column: "item_number", primary_key: "number"
+  add_foreign_key "repairs", "technicians"
   add_foreign_key "tasks", "repairs", column: "repair_number", primary_key: "number"
   add_foreign_key "tasks", "task_types", column: "task_type_name", primary_key: "name"
   add_foreign_key "tickets", "invoices"
