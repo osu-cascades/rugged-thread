@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Skill level</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @technicians.each do |technician| %>
       <tr>
+        <td><%= technician.id %></td>
         <td><%= technician.name %></td>
         <td><%= technician.skill_level %></td>
         <td><%= link_to 'Show', technician %></td>

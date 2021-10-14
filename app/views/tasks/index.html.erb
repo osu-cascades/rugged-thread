@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Time</th>
       <th>Solo Tech</th>
       <th>Repair charge</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
+        <td><%= task.id %></td>
         <td><%= task.time %></td>
         <td><%= task.tech_name %></td>
         <td><%= task.repair_charge %></td>

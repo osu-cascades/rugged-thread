@@ -9,6 +9,9 @@
       <th>Add fee</th>
       <th>Technician notes</th>
       <th>Work status</th>
+      <th>Material</th>
+      <th>Request date</th>
+      <th>Order type</th>
       <th>Technician</th>
       <th>Invoice</th>
       <th colspan="3"></th>
@@ -22,6 +25,9 @@
         <td><%= ticket.add_fee %></td>
         <td><%= ticket.technician_notes %></td>
         <td><%= ticket.work_status %></td>
+        <td><%= ticket.material %></td>
+        <td><%= ticket.request_date %></td>
+        <td><%= ticket.order_type %></td>
         <td><%= ticket.technician_id %></td>
         <td><%= ticket.invoice_id %></td>
         <td><%= link_to 'Show', ticket %></td>
