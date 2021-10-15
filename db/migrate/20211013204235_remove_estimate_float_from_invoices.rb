@@ -1,5 +1,5 @@
 class RemoveEstimateFloatFromInvoices < ActiveRecord::Migration[6.1]
   def change
-    remove_column :invoices, :invoice_estimate
+    remove_column :invoices, :estimate_number
   end
 end

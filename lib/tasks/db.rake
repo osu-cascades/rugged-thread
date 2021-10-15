@@ -46,7 +46,7 @@ namespace :db do
         Invoice.create!(
           id: num,
           customer_id: num,
-          invoice_estimate: invoice_ests,
+          estimate_number: invoice_ests,
           intake_date: invoice_intakes,
           number: invoice_nums,
         )
@@ -75,6 +75,7 @@ namespace :db do
           charge: repair_charges.to_i.to_f,
           time_total: repair_times.to_s,
           time: repair_times.to_s,
+          technician_name: tech_names,
           shop_rate: shop_rates.to_i.to_f,
         )
       end

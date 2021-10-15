@@ -17,7 +17,7 @@ class InvoicesTest < ApplicationSystemTestCase
     fill_in "Customer", with: @invoice.customer_id
     fill_in "Date fulfilled", with: @invoice.date_fulfilled
     fill_in "Intake date", with: @invoice.intake_date
-    fill_in "Invoice estimate", with: @invoice.invoice_estimate
+    fill_in "Invoice estimate", with: @invoice.estimate_number
     fill_in "Invoice total", with: @invoice.invoice_total
     click_on "Create Invoice"
 
@@ -32,7 +32,7 @@ class InvoicesTest < ApplicationSystemTestCase
     fill_in "Customer", with: @invoice.customer_id
     fill_in "Date fulfilled", with: @invoice.date_fulfilled
     fill_in "Intake date", with: @invoice.intake_date
-    fill_in "Invoice estimate", with: @invoice.invoice_estimate
+    fill_in "Invoice estimate", with: @invoice.estimate_number
     fill_in "Invoice total", with: @invoice.invoice_total
     click_on "Update Invoice"
 
