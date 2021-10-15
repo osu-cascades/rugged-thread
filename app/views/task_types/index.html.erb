@@ -14,8 +14,8 @@
   <tbody>
     <% @task_types.each do |task_type| %>
       <tr>
+        <td><%= task_type.id %></td>
         <td><%= task_type.name %></td>
-        <td><%= link_to 'Show', id %></td>
         <td><%= link_to 'Show', task_type %></td>
         <td><%= link_to 'Edit', edit_task_type_path(task_type) %></td>
         <td><%= link_to 'Destroy', task_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
