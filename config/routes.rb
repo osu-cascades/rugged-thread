@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   resources :invoices
   resources :technicians
   resources :customers
-  get "/pages/:page" => "pages#show"
+  resources :ticket_data_entries
 
+  get "/pages/:page" => "pages#show"
+  get "/ticketdataentry", to: "ticket_data_entries#new"
 
   root "pages#show", page: "home"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

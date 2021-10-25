@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_170116) do
+ActiveRecord::Schema.define(version: 2021_10_25_000332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_170116) do
     t.integer "invoice_number"
     t.bigint "invoice_id"
     t.string "number"
+    t.string "item_type"
     t.index ["number"], name: "index_invoice_items_on_number", unique: true
   end
 
@@ -147,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_170116) do
     t.string "number"
     t.string "technician_name"
     t.string "date"
+    t.text "description"
     t.index ["number"], name: "index_repairs_on_number", unique: true
   end
 
@@ -166,6 +168,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_170116) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "task_type_name"
     t.string "technician_name"
+    t.string "date"
   end
 
   create_table "technicians", force: :cascade do |t|
@@ -181,15 +184,20 @@ ActiveRecord::Schema.define(version: 2021_10_15_170116) do
     t.float "add_fee"
     t.string "technician_notes"
     t.string "work_status"
-    t.bigint "technician_id", null: false
-    t.bigint "invoice_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "material"
     t.string "request_date"
     t.string "order_type"
-    t.index ["invoice_id"], name: "index_tickets_on_invoice_id"
-    t.index ["technician_id"], name: "index_tickets_on_technician_id"
+    t.integer "labor_charge"
+    t.integer "material_charge"
+    t.integer "estimate_number"
+    t.float "discount"
+    t.string "phone_number"
+    t.string "intake_date"
+    t.string "customer_name"
+    t.integer "invoice_number"
+    t.string "technician_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -215,6 +223,6 @@ ActiveRecord::Schema.define(version: 2021_10_15_170116) do
   add_foreign_key "tasks", "repairs", column: "repair_number", primary_key: "number"
   add_foreign_key "tasks", "task_types", column: "task_type_name", primary_key: "name"
   add_foreign_key "tasks", "technicians", column: "technician_name", primary_key: "name"
-  add_foreign_key "tickets", "invoices"
-  add_foreign_key "tickets", "technicians"
+  add_foreign_key "tickets", "invoices", column: "invoice_number", primary_key: "number"
+  add_foreign_key "tickets", "technicians", column: "technician_name", primary_key: "name"
 end

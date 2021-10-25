@@ -1,0 +1,16 @@
+<fieldset>
+
+  <%= form.label :task_type_name %>
+  <%= form.text_field :task_type_name %>
+
+  <%= form.label :technician_name %>
+  <%= form.select :technician_name, options_for_select(@technician_options) %>
+  
+  <%= form.label :time %>
+  <%= form.text_field :time %>
+
+  <%= form.label :date %>
+  <%= form.text_field :date %>  
+
+</fieldset>
+

@@ -3,4 +3,6 @@ class Repair < ApplicationRecord
   belongs_to :technician, foreign_key: 'technician_name', primary_key: 'name', optional: true
 
   has_many :tasks, foreign_key: 'repair_number', primary_key: 'number'
+
+  accepts_nested_attributes_for :tasks
 end

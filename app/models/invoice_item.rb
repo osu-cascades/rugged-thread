@@ -4,4 +4,6 @@ class InvoiceItem < ApplicationRecord
   belongs_to :invoice, optional: true
 
   has_many :repairs, foreign_key: 'item_number', primary_key: 'number'
+
+  accepts_nested_attributes_for :repairs
 end

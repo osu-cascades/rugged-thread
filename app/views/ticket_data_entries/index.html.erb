@@ -1,0 +1,10 @@
+<h1>Ticket Data Entries</h1>
+
+<% @ticket_data_entries.each do |ticket_data_entry| %>
+  <div class="article">
+    <h2><%= link_to ticket_data_entry.name, ticket_data_entry %></h2>
+    <%= pluralize(ticket_data_entry.repairs.size, "Repair") %>
+  </div>
+<% end %>
+
+<p><%= link_to 'New ticket_data_entry', new_ticket_data_entry_path %></p>

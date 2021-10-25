@@ -1,0 +1,87 @@
+<%= form_with(model: ticket_data_entry) do |form| %>
+  <% if @ticket_data_entry.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@ticket_data_entry.errors.count, "error") %> prohibited this ticket_data_entry from being saved:</h2>
+      <ul>
+      <% @ticket_data_entry.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_name %>
+    <%= form.text_field :customer_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_number %>
+    <%= form.select :invoice_number, options_for_select(@invoice_options) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estimate_number %>
+    <%= form.text_field :estimate_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intake_date %>
+    <%= form.text_field :intake_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request_date %>
+    <%= form.text_field :request_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_type %>
+    <%= form.text_field :order_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discount %>
+    <%= form.text_field :discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_number %>
+    <%= form.text_field :item_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_type %>
+    <%= form.text_field :item_type %>
+    </div>
+
+  <div class="field">
+    <%= form.label :labor_charge %>
+    <%= form.text_field :labor_charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material_charge %>
+    <%= form.text_field :material_charge %>
+  </div>
+
+  <div data-controller="fields-for">
+    <%= form.fields_for :repairs do |builder| %>
+      <div data-target="fields-for.fields">
+        <%= render 'repair_fields', form: builder %>
+      </div>
+    <% end %>
+
+    <%# <%= button_tag("Add Repair", {data: { action: "fields-for#add", fields: form.fields_for(:repairs, Repair.new, child_index:"new_field"){|builder| render("repair_fields", form: builder)}}}) %> 
+  </div>
+  <%# <%= link_to_add_fields "Add Repair", form, :repairs %>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
