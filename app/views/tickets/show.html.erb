@@ -37,12 +37,12 @@
 
 <p>
   <strong>Technician:</strong>
-  <%= @ticket.technician_id %>
+  <%= @ticket.technician_name %>
 </p>
 
 <p>
   <strong>Invoice:</strong>
-  <%= @ticket.invoice_id %>
+  <%= @ticket.invoice_number %>
 </p>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |

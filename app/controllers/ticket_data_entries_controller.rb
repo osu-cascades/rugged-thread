@@ -53,6 +53,6 @@ class TicketDataEntriesController < ApplicationController
     end
   
     def ticket_data_entry_params
-      params.permit(:customer_name, :phone_number, :invoice_number, :estimate_number, :intake_date, :request_date, :order_type, :discount, :item_number, :item_type, :labor_charge, :material_charge, repair_attributes: [:repair_description, :repair_quote, :repair_charge, task_attributes: [:task_type, :technician_name, :task_time, :task_date]])
+      params.require(:ticket_data_entry).permit(:customer_name, :phone_number, :invoice_number, :estimate_number, :intake_date, :request_date, :order_type, :discount, :item_number, :item_type, :labor_charge, :material_charge, repair_attributes: [:id, :repair_description, :repair_quote, :repair_charge, :_destroy, task_attributes: [:id, :task_type, :technician_name, :task_time, :task_date, :_destroy]])
     end
   end
