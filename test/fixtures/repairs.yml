@@ -4,12 +4,10 @@ one:
   charge: 1.5
   time_total: MyString
   invoice_item: one
-  repair_type: one
   technician: one
 
 two:
   charge: 1.5
   time_total: MyString
   invoice_item: two
-  repair_type: two
   technician: two

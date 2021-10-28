@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: First Fake Task Type
 
 two:
-  name: MyString
+  name: Second Fake Task Type
