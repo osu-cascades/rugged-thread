@@ -6,6 +6,8 @@ one:
   intake_date: MyString
   date_fulfilled: MyString
   customer: one
+  notes: Fake Notes
+  number: 1
 
 two:
   estimate_number: 1.5
@@ -13,3 +15,5 @@ two:
   intake_date: MyString
   date_fulfilled: MyString
   customer: two
+  notes: Fake Notes
+  number: 2

@@ -1,11 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   description: MyText
   invoice: one
-  item_type: one
+  description: Fake Description
+  quote: 1.0
+  charge: 1.0
+  notes: Fake Notes
+  invoice_number: one
+  invoice_id: TODO
+  number: 'Fake 1'
+  item_type: 'Fake'
 
 two:
   description: MyText
-  invoice: two
-  item_type: two
+  invoice: one
+  description: Fake Description
+  quote: 1.0
+  charge: 1.0
+  notes: Fake Notes
+  invoice_number: one
+  invoice_id: TODO
+  number: 'Fake 2'
+  item_type: 'Fake'
