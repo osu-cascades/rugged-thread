@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :repair_types
   resources :brands
   resources :invoice_items
-  resources :item_types
   resources :tickets
   resources :invoices
   resources :technicians
