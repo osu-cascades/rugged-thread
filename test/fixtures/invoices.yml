@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  estimate_number: 1.5
-  invoice_total: 1.5
+  estimate_number: 111
+  invoice_total: 1
   intake_date: MyString
   date_fulfilled: MyString
   customer: one
@@ -10,8 +10,8 @@ one:
   number: 1
 
 two:
-  estimate_number: 1.5
-  invoice_total: 1.5
+  estimate_number: 112
+  invoice_total: 1
   intake_date: MyString
   date_fulfilled: MyString
   customer: two
