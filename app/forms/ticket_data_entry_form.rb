@@ -1,4 +1,4 @@
-class TicketDataEntry
+class TicketDataEntryForm
     include ActiveModel::Model
     
     attr_accessor :invoice_number, :estimate_number, :intake_date, :request_date, :order_type, :discount 
