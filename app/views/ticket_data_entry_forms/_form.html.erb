@@ -70,6 +70,7 @@
     <%= form.text_field :material_charge %>
   </div>
 
+  <h2>Repairs</h2>
   <div data-controller="fields-for">
     <%= form.fields_for :repairs do |builder| %>
       <div data-target="fields-for.fields">
@@ -81,7 +82,7 @@
   </div>
   <%# <%= link_to_add_fields "Add Repair", form, :repairs %>
   
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions mt-4">
+    <%= form.submit class: 'frm-control btn btn-primary' %>
   </div>
 <% end %>
