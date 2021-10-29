@@ -1,3 +1,4 @@
+<h4>Repair Details</h4>
 <fieldset>
 
   <%= form.label :description %>
@@ -13,10 +14,15 @@
   <%= form.label :_destroy %>
 
   <div class="ms-3">
-    <h2>Tasks</h2>
+    <h4>Tasks</h4>
     <div data-controller="fields-for">
-      <%= form.fields_for :tasks do |builder| %>
-        <div data-target="fields-for.fields">
+      <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
+        <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_0">
+          <%= render 'task_fields', form: builder %>
+        </div>
+      <% end %>
+      <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
+        <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_1">
           <%= render 'task_fields', form: builder %>
         </div>
       <% end %>

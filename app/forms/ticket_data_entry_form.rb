@@ -4,8 +4,6 @@ class TicketDataEntryForm
   attr_accessor :invoice_number, :estimate_number, :intake_date, :request_date, :order_type, :discount
   attr_accessor :item_number, :item_type
 
-  attr_accessor :repair_attributes
-
   attr_accessor :repair_description, :repair_quote, :labor_charge, :material_charge, :repair_charge
   attr_accessor :task_type, :technician_name, :task_time, :task_date
   attr_accessor :customer_name, :phone_number
