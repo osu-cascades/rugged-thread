@@ -4,5 +4,4 @@ class Repair < ApplicationRecord
 
   has_many :tasks, foreign_key: 'repair_number', primary_key: 'number'
 
-  accepts_nested_attributes_for :tasks
 end
