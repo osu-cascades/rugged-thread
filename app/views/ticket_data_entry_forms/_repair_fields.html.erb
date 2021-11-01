@@ -1,8 +1,8 @@
 <h4>Repair Details</h4>
 <fieldset>
 
-  <%= form.label :description %>
-  <%= form.text_field :description %>
+  <%= form.label :notes %>
+  <%= form.text_field :notes %>
 
   <%= form.label :quote %>
   <%= form.text_field :quote %>
@@ -23,6 +23,21 @@
       <% end %>
       <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
         <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_1">
+          <%= render 'task_fields', form: builder %>
+        </div>
+      <% end %>
+      <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
+        <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_2">
+          <%= render 'task_fields', form: builder %>
+        </div>
+      <% end %>
+      <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
+        <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_3">
+          <%= render 'task_fields', form: builder %>
+        </div>
+      <% end %>
+      <%= fields_for 'ticket_data_entry_form[repairs][][tasks][]', Task.new do |builder| %>
+        <div data-target="fields-for.fields" id="repair_<%= form.index %>_task_4">
           <%= render 'task_fields', form: builder %>
         </div>
       <% end %>

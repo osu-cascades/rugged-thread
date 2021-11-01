@@ -56,7 +56,7 @@ class TicketDataEntryFormsController < ApplicationController
         :customer_name, :phone_number, :invoice_number, :estimate_number,
         :intake_date, :request_date, :order_type, :discount, :item_number,
         :item_type, :labor_charge, :material_charge,
-        repairs: [:id, :description, :quote, :charge, :_destroy,
+        repairs: [:id, :notes, :quote, :charge, :_destroy,
           tasks: [:id, :task_type_name, :technician_name, :time, :date, :_destroy]])
     end
 

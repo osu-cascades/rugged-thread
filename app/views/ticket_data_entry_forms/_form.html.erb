@@ -81,6 +81,21 @@
         <%= render 'repair_fields', form: builder %>
       </div>
     <% end %>
+    <%= fields_for 'ticket_data_entry_form[repairs][]', Repair.new, child_index: 2 do |builder| %>
+      <div data-target="fields-for.fields" class="border mb-4" id="repair_2">
+        <%= render 'repair_fields', form: builder %>
+      </div>
+    <% end %>
+    <%= fields_for 'ticket_data_entry_form[repairs][]', Repair.new, child_index: 3 do |builder| %>
+      <div data-target="fields-for.fields" class="border mb-4" id="repair_3">
+        <%= render 'repair_fields', form: builder %>
+      </div>
+    <% end %>
+    <%= fields_for 'ticket_data_entry_form[repairs][]', Repair.new, child_index: 4 do |builder| %>
+      <div data-target="fields-for.fields" class="border mb-4" id="repair_4">
+        <%= render 'repair_fields', form: builder %>
+      </div>
+    <% end %>
     <%# <%= button_tag("Add Repair", {data: { action: "fields-for#add", fields: form.fields_for(:repairs, Repair.new, child_index:"new_field"){|builder| render("repair_fields", form: builder)}}}) %> 
   </div>
   <%# <%= link_to_add_fields "Add Repair", form, :repairs %>
