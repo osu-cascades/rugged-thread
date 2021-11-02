@@ -10,7 +10,7 @@ class TicketDataEntryFormsController < ApplicationController
     def new
       @invoice_options = Invoice.all.map{ |invoice| [ invoice.number ] }
       @technician_options = Technician.all.map{ |technician| [ technician.name ] }
-      @task_type_name_options = Task.all.map{ |task| [ task.task_type_name] }
+      @task_type_name_options = TaskType.all.map{ |task| [ task.name] }
       @item_number_options = InvoiceItem.all.map{ |item| [ item.number] }
       @ticket_data_entry_form = TicketDataEntryForm.new
     end
