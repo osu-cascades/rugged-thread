@@ -5,18 +5,20 @@ namespace :db do
   task import_prod_vals: :environment do
     json = JSON.parse(File.read('lib/assets/production_values.json'))
     (1..4238).map do |num|
-      Customer.create!(
-        id: num,
-        first_name: "FirstName",
-        last_name: "LastName",
-        business_name: "BusinessName",
-        phone_number: "28572415082175",
-        email_address: "Test.mail.com",
-        street_address: "Street Adress",
-        city: "City",
-        state: "State",
-        zip_code: "1232344553"
-      )
+        if !Customer.exists?(id: num)
+          Customer.create!(
+            id: num,
+            first_name: "FirstName",
+            last_name: "LastName",
+            business_name: "BusinessName",
+            phone_number: "28572415082175",
+            email_address: "Test.mail.com",
+            street_address: "Street Adress",
+            city: "City",
+            state: "State",
+            zip_code: "1232344553"
+          )
+        end
       invoice_ests = json[num]['Estimate']
       invoice_intakes = json[num]['In Date']
       invoice_nums = json[num]['Invoice']
@@ -44,7 +46,6 @@ namespace :db do
       
       if !Invoice.exists?(number: invoice_nums)
         Invoice.create!(
-          id: num,
           customer_id: num,
           estimate_number: invoice_ests,
           intake_date: invoice_intakes,

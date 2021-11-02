@@ -10,6 +10,8 @@ class TicketDataEntryFormsController < ApplicationController
     def new
       @invoice_options = Invoice.all.map{ |invoice| [ invoice.number ] }
       @technician_options = Technician.all.map{ |technician| [ technician.name ] }
+      @task_type_name_options = Task.all.map{ |task| [ task.task_type_name] }
+      @item_number_options = InvoiceItem.all.map{ |item| [ item.number] }
       @ticket_data_entry_form = TicketDataEntryForm.new
     end
   
@@ -52,11 +54,10 @@ class TicketDataEntryFormsController < ApplicationController
     end
   
     def ticket_data_entry_form_params
-      params.require(:ticket_data_entry_form).permit(
-        :customer_name, :phone_number, :invoice_number, :estimate_number,
-        :intake_date, :request_date, :order_type, :discount, :item_number,
-        :item_type, :labor_charge, :material_charge,
-        repairs: [:id, :notes, :quote, :charge, :_destroy,
+      params.require(:ticket_data_entry_form).permit(:invoice_number,
+        :intake_date, :request_date, :item_number,
+        :labor_charge,
+        repairs: [:id, :charge, :_destroy,
           tasks: [:id, :task_type_name, :technician_name, :time, :date, :_destroy]])
     end
 

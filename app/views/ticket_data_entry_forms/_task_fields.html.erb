@@ -1,7 +1,7 @@
 <fieldset>
 
   <%= form.label :task_type_name %>
-  <%= form.text_field :task_type_name %>
+  <%= form.select :task_type_name, options_for_select(@task_type_name_options) %>
 
   <%= form.label :technician_name %>
   <%= form.select :technician_name, options_for_select(@technician_options) %>

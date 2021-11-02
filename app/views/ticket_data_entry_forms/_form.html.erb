@@ -10,24 +10,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :customer_name %>
-    <%= form.text_field :customer_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
-  </div>
 
   <div class="field">
     <%= form.label :invoice_number %>
     <%= form.select :invoice_number, options_for_select(@invoice_options) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :estimate_number %>
-    <%= form.text_field :estimate_number %>
   </div>
 
   <div class="field">
@@ -41,34 +27,16 @@
   </div>
 
   <div class="field">
-    <%= form.label :order_type %>
-    <%= form.text_field :order_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :discount %>
-    <%= form.text_field :discount %>
-  </div>
-
-  <div class="field">
     <%= form.label :item_number %>
-    <%= form.text_field :item_number %>
+    <%= form.select :item_number, options_for_select(@item_number_options)%>
   </div>
 
-  <div class="field">
-    <%= form.label :item_type %>
-    <%= form.text_field :item_type %>
-    </div>
 
   <div class="field">
     <%= form.label :labor_charge %>
     <%= form.text_field :labor_charge %>
   </div>
 
-  <div class="field">
-    <%= form.label :material_charge %>
-    <%= form.text_field :material_charge %>
-  </div>
   <h2>Repairs</h2>
   <div data-controller="fields-for">
     <%= fields_for 'ticket_data_entry_form[repairs][]', Repair.new, child_index: 0 do |builder| %>
