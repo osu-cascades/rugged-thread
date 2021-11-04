@@ -13,16 +13,12 @@ class TicketDataEntryForm
       add_errors(ticket.errors) if ticket.invalid?
       ticket.save!
 
-      invoice_item = InvoiceItem.new(invoice_number: invoice_number, number: item_number)
-      add_errors(invoice_item.errors) if invoice_item.invalid?
-      invoice_item.save!
-
       repairs.each do |repair_attributes|
-        repair = Repair.new(charge: charge, number: item_number)
+        repair = Repair.new(charge: repair_attributes[:charge], number: item_number)
         add_errors(repair.errors) if repair.invalid?
         repair.save!
-        repair_attributes.tasks.each do |task_attributes|
-          task = Task.new(task_type_name: task_type, time: time, date: date, technician_name: technician_name)
+        repair_attributes[:tasks].each do |task_attributes|
+          task = Task.new(task_type_name: task_attributes[:task_type_name], time: task_attributes[:time], date: task_attributes[:date], technician_name: task_attributes[:technician_name])
           add_errors(task.errors) if task.invalid?
           task.save!
         end

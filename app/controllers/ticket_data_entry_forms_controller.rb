@@ -54,9 +54,8 @@ class TicketDataEntryFormsController < ApplicationController
     end
   
     def ticket_data_entry_form_params
-      params.require(:ticket_data_entry_form).permit(:invoice_number,
-        :intake_date, :request_date, :item_number,
-        :labor_charge,
+      params.require(:ticket_data_entry_form).permit(
+        :invoice_number, :intake_date, :request_date, :item_number, :labor_charge,
         repairs: [:id, :charge, :_destroy,
           tasks: [:id, :task_type_name, :technician_name, :time, :date, :_destroy]])
     end
