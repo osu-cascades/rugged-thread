@@ -1,6 +1,8 @@
 class TicketDataEntryForm
   include ActiveModel::Model
 
+
+
   attr_accessor :invoice_number, :intake_date, :request_date
   attr_accessor :item_number, :labor_charge
   
@@ -14,7 +16,8 @@ class TicketDataEntryForm
       ticket.save!
 
       repairs.each do |repair_attributes|
-        repair = Repair.new(charge: repair_attributes[:charge], number: item_number)
+
+        repair = Repair.new(charge: repair_attributes[:charge], number: repair_attributes[:item_number])
         add_errors(repair.errors) if repair.invalid?
         repair.save!
         repair_attributes[:tasks].each do |task_attributes|
