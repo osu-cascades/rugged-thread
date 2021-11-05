@@ -11,50 +11,84 @@ class TicketDataEntryFormsTest < ApplicationSystemTestCase
   test 'creating a ticket data entry' do
     sign_in users(:one)
     visit new_ticket_data_entry_form_path
-    fill_in 'Customer name', with: 'Fake Customer'
-    fill_in 'Phone number', with: '123 1234'
     select '1', from: 'Invoice number'
-    fill_in 'Estimate number', with: '1'
     fill_in 'Intake date', with: '10/28/21'
     fill_in 'Request date', with: '10/28/21'
-    fill_in 'Order type', with: 'Fake Order Type'
-    fill_in 'Discount', with: '2'
-    fill_in 'Item number', with: '1'
-    fill_in 'Item type', with: 'Fake Item Type'
+    select invoice_items(:one).number, from: 'Item number'
     fill_in 'Labor charge', with: '3'
-    fill_in 'Material charge', with: '4'
     within '#repair_0' do
-      fill_in 'Description', with: 'Fake Description'
-      fill_in 'Quote', with: '5'
       fill_in 'Charge', with: '6'
       within '#repair_0_task_0' do
-        fill_in 'Task type name', with: 'Fake task type'
+        select task_types(:one).name, from: 'Task type name'
         select technicians(:one).name, from: 'Technician name'
         fill_in 'Time', with: '7'
         fill_in 'Date', with: '10/28/21'
       end
       within '#repair_0_task_1' do
-        fill_in 'Task type name', with: 'Fake task type'
+        select task_types(:one).name, from: 'Task type name'
         select technicians(:one).name, from: 'Technician name'
         fill_in 'Time', with: '7'
         fill_in 'Date', with: '10/28/21'
       end
     end
     within '#repair_1' do
-      fill_in 'Description', with: 'Fake Description'
-      fill_in 'Quote', with: '5'
       fill_in 'Charge', with: '6'
       within '#repair_1_task_0' do
-        fill_in 'Task type name', with: 'Fake task type'
+        select task_types(:one).name, from: 'Task type name'
         select technicians(:one).name, from: 'Technician name'
         fill_in 'Time', with: '7'
         fill_in 'Date', with: '10/28/21'
       end
       within '#repair_1_task_1' do
-        fill_in 'Task type name', with: 'Fake task type'
+        select task_types(:one).name, from: 'Task type name'
         select technicians(:one).name, from: 'Technician name'
         fill_in 'Time', with: '7'
         fill_in 'Date', with: '10/28/21'
+      end
+    end
+    within '#repair_3' do
+      fill_in 'Charge', with: '22'
+      within '#repair_3_task_0' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '37'
+        fill_in 'Date', with: '10/28/24'
+      end
+      within '#repair_3_task_1' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '8'
+        fill_in 'Date', with: '10/28/24'
+      end
+    end
+    within '#repair_4' do
+      fill_in 'Charge', with: '4'
+      within '#repair_4_task_0' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '2'
+        fill_in 'Date', with: '10/28/22'
+      end
+      within '#repair_4_task_1' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '8'
+        fill_in 'Date', with: '10/28/22'
+      end
+    end
+    within '#repair_2' do
+      fill_in 'Charge', with: '4'
+      within '#repair_2_task_0' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '2'
+        fill_in 'Date', with: '10/28/22'
+      end
+      within '#repair_2_task_1' do
+        select task_types(:one).name, from: 'Task type name'
+        select technicians(:one).name, from: 'Technician name'
+        fill_in 'Time', with: '8'
+        fill_in 'Date', with: '10/28/22'
       end
     end
     click_on 'Create Ticket data entry form'
