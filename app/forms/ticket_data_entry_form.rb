@@ -3,7 +3,7 @@ class TicketDataEntryForm
 
 
 
-  attr_accessor :invoice_number, :intake_date, :request_date
+  attr_accessor :invoice_number, :intake_date
   attr_accessor :item_number, :labor_charge
   
   attr_accessor :repairs
@@ -11,7 +11,7 @@ class TicketDataEntryForm
 
   def save
     ActiveRecord::Base.transaction do
-      ticket = Ticket.new(intake_date: intake_date, request_date: request_date, labor_charge: labor_charge)
+      ticket = Ticket.new(intake_date: intake_date, labor_charge: labor_charge)
       add_errors(ticket.errors) if ticket.invalid?
       ticket.save!
 
