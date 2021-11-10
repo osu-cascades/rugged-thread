@@ -13,7 +13,6 @@ class TicketDataEntryFormsTest < ApplicationSystemTestCase
     visit new_ticket_data_entry_form_path
     select '1', from: 'Invoice number'
     fill_in 'Intake date', with: '10/28/21'
-    fill_in 'Request date', with: '10/28/21'
     select invoice_items(:one).number, from: 'Item number'
     fill_in 'Labor charge', with: '3'
     within '#repair_0' do

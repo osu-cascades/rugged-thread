@@ -7,7 +7,6 @@ class TicketDataEntryFormTest < ActiveSupport::TestCase
       invoice_number: invoices(:one).number,
       estimate_number: 1,
       intake_date: '01/01/21',
-      request_date: '01/01/12',
       order_type: 'Fake Order Type',
       discount: 1,
       item_number: '1',
