@@ -10,5 +10,10 @@
   <%= @task_type.name %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @task_type.status %>
+</p>
+
 <%= link_to 'Edit', edit_task_type_path(@task_type) %> |
 <%= link_to 'Back', task_types_path %>
