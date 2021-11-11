@@ -8,6 +8,7 @@
       <th>Id</th>
       <th>Name</th>
       <th>Skill level</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= technician.id %></td>
         <td><%= technician.name %></td>
         <td><%= technician.skill_level %></td>
+        <td><%= technician.status %></td>
         <td><%= link_to 'Show', technician %></td>
         <td><%= link_to 'Edit', edit_technician_path(technician) %></td>
         <td><%= link_to 'Destroy', technician, method: :delete, data: { confirm: 'Are you sure?' } %></td>

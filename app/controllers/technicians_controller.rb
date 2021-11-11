@@ -64,6 +64,6 @@ class TechniciansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def technician_params
-      params.require(:technician).permit(:name, :skill_level)
+      params.require(:technician).permit(:name, :skill_level, :status)
     end
 end

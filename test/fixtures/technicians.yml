@@ -3,7 +3,9 @@
 one:
   name: First Fake Technician
   skill_level: MyString
+  status: True
 
 two:
   name: Second Fake Technician
   skill_level: MyString
+  status: False

@@ -15,5 +15,11 @@
   <%= @technician.skill_level %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @technician.status %>
+</p>
+
+
 <%= link_to 'Edit', edit_technician_path(@technician) %> |
 <%= link_to 'Back', technicians_path %>
