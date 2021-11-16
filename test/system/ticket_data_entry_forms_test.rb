@@ -11,9 +11,9 @@ class TicketDataEntryFormsTest < ApplicationSystemTestCase
   test 'creating a ticket data entry' do
     sign_in users(:one)
     visit new_ticket_data_entry_form_path
-    select '1', from: 'Invoice number'
+    fill_in 'Invoice number', with: '1'
     fill_in 'Intake date', with: '10/28/21'
-    select invoice_items(:one).number, from: 'Item number'
+    fill_in 'Item number', with: '1'
     fill_in 'Labor charge', with: '3'
     within '#repair_0' do
       fill_in 'Charge', with: '6'
