@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :invoice_number %>
-    <%= form.select :invoice_number, options_for_select(@invoice_options) %>
+    <%= form.text_field :invoice_number%>
   </div>
 
   <div class="field">
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :item_number %>
-    <%= form.select :item_number, options_for_select(@item_number_options)%>
+    <%= form.text_field :item_number %>
   </div>
 
 
