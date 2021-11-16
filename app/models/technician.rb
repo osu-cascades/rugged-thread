@@ -5,7 +5,7 @@ class Technician < ApplicationRecord
   has_many :tickets, foreign_key: 'technician_name', primary_key: 'name'
 
   def init
-    self.status = true
+    self.status = true if self.status.nil?
   end
 
 end
