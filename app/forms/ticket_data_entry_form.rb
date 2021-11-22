@@ -17,6 +17,7 @@ class TicketDataEntryForm
 
       repairs.each do |repair_attributes|
 
+        binding.pry
         repair = Repair.new(charge: repair_attributes[:charge], number: repair_attributes[:item_number])
         add_errors(repair.errors) if repair.invalid?
         repair.save!

@@ -13,7 +13,11 @@
       <%= fields_for :tasks do |builder| %>
         <div data-target="fields-for.fields">
           <%= render 'task_fields', form: builder %>
-          <%= button_tag("Add Task", {data: {action: "fields-for#add", fields: form.fields_for(:tasks, Task.new, child_index:"new_field"){|builder| render("task_fields", form: builder)}}}) %>
+          <%= button_tag("Add Task", {data: {
+            action: "fields-for#add",
+            fields: form.fields_for(:tasks, Task.new, child_index:"new_field") {
+              |builder| render("task_fields", form: builder).gsub! '"', "'"
+            }}}) %>
         </div>
       <% end %>
       

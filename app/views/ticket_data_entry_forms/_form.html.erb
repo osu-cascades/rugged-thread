@@ -39,9 +39,7 @@
         <%= render 'repair_fields', form: builder %>
         <%= button_tag("Add Repair", {data: { action: "fields-for#add", fields: form.fields_for(:repairs, Repair.new, child_index:"new_field"){|builder| render("repair_fields", form: builder)}}}) %>
       </div>
-      
     <% end %>
-    
   </div>
   <%# <%= link_to_add_fields "Add Repair", form, :repairs %>
   
