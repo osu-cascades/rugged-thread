@@ -34,10 +34,10 @@
 
   <h2>Repairs</h2>
   <div data-controller="fields-for">
-    <%= fields_for :repairs do |builder| %>
+    <%= fields_for 'ticket_data_entry_form[repairs][]', Repair.new do |builder| %>
       <div data-target="fields-for.fields" class="border mb-4">
-        <%= render 'repair_fields', form: builder %>
-        <%= button_tag("Add Repair", {data: { action: "fields-for#add", fields: form.fields_for(:repairs, Repair.new, child_index:"new_field"){|builder| render("repair_fields", form: builder)}}}) %>
+        <%= render 'repair_fields', form: builder, index: builder.index %>
+        <%= button_tag("Add Repair", {data: { action: "fields-for#add", fields: fields_for('ticket_data_entry_form[repairs][]', Repair.new, child_index:"new_field"){|builder| render("repair_fields", form: builder)}}}) %>
       </div>
     <% end %>
   </div>
