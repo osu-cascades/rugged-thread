@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customer_types
   resources :tasks
   resources :task_types
   resources :quote_requests
