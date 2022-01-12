@@ -64,6 +64,6 @@ class ItemStatusesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_status_params
-      params.fetch(:item_status, {})
+      params.require(:item_status).permit(:name)
     end
 end

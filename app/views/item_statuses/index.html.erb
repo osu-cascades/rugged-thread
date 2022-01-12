@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
   <tbody>
     <% @item_statuses.each do |item_status| %>
       <tr>
+        <td><%= item_status.name %></td>
         <td><%= link_to 'Show', item_status %></td>
         <td><%= link_to 'Edit', edit_item_status_path(item_status) %></td>
         <td><%= link_to 'Destroy', item_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
