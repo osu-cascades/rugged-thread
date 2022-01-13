@@ -100,24 +100,19 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
 
   create_table "invoice_items", force: :cascade do |t|
     t.text "description"
-    t.bigint "invoice_id", null: false
-    t.bigint "item_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "number"
     t.float "quote"
     t.float "charge"
-    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
-    t.index ["item_type_id"], name: "index_invoice_items_on_item_type_id"
-  end
-
-  create_table "invoice_items_repairs", id: false, force: :cascade do |t|
-    t.bigint "invoice_item_id", null: false
-    t.bigint "repair_id", null: false
+    t.text "notes"
+    t.integer "invoice_number"
+    t.bigint "invoice_id"
+    t.string "number"
+    t.string "item_type"
+    t.index ["number"], name: "index_invoice_items_on_number", unique: true
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.float "invoice_estimate"
     t.float "invoice_total"
     t.string "intake_date"
     t.string "date_fulfilled"
@@ -126,7 +121,9 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
     t.integer "number"
+    t.integer "estimate_number"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["number"], name: "index_invoices_on_number", unique: true
   end
 
   create_table "item_statuses", force: :cascade do |t|
@@ -168,34 +165,38 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
   create_table "repairs", force: :cascade do |t|
     t.float "charge"
     t.string "time_total"
-    t.bigint "invoice_item_id", null: false
-    t.bigint "repair_type_id", null: false
-    t.bigint "technician_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "notes"
-    t.date "date"
     t.integer "time"
-    t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
-    t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
-    t.index ["technician_id"], name: "index_repairs_on_technician_id"
+    t.float "shop_rate"
+    t.float "quote"
+    t.string "item_number"
+    t.string "number"
+    t.string "technician_name"
+    t.string "date"
+    t.text "description"
+    t.index ["number"], name: "index_repairs_on_number", unique: true
   end
 
   create_table "task_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status"
+    t.index ["name"], name: "index_task_types_on_name", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|
     t.integer "time"
-    t.integer "number"
-    t.bigint "task_type_id", null: false
-    t.bigint "technician_id", null: false
+    t.string "tech_name"
+    t.float "repair_charge"
+    t.string "repair_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["task_type_id"], name: "index_tasks_on_task_type_id"
-    t.index ["technician_id"], name: "index_tasks_on_technician_id"
+    t.string "task_type_name"
+    t.string "technician_name"
+    t.string "date"
   end
 
   create_table "technicians", force: :cascade do |t|
@@ -203,6 +204,8 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
     t.string "skill_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status"
+    t.index ["name"], name: "index_technicians_on_name", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -210,12 +213,20 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
     t.float "add_fee"
     t.string "technician_notes"
     t.string "work_status"
-    t.bigint "technician_id", null: false
-    t.bigint "invoice_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["invoice_id"], name: "index_tickets_on_invoice_id"
-    t.index ["technician_id"], name: "index_tickets_on_technician_id"
+    t.text "material"
+    t.string "request_date"
+    t.string "order_type"
+    t.integer "labor_charge"
+    t.integer "material_charge"
+    t.integer "estimate_number"
+    t.float "discount"
+    t.string "phone_number"
+    t.string "intake_date"
+    t.string "customer_name"
+    t.integer "invoice_number"
+    t.string "technician_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -234,14 +245,13 @@ ActiveRecord::Schema.define(version: 2022_01_10_194722) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "complications", "complication_types"
   add_foreign_key "complications", "repairs"
-  add_foreign_key "invoice_items", "invoices"
-  add_foreign_key "invoice_items", "item_types"
+  add_foreign_key "invoice_items", "invoices", column: "invoice_number", primary_key: "number"
   add_foreign_key "invoices", "customers"
-  add_foreign_key "repairs", "invoice_items"
-  add_foreign_key "repairs", "repair_types"
-  add_foreign_key "repairs", "technicians"
-  add_foreign_key "tasks", "task_types"
-  add_foreign_key "tasks", "technicians"
-  add_foreign_key "tickets", "invoices"
-  add_foreign_key "tickets", "technicians"
+  add_foreign_key "repairs", "invoice_items", column: "item_number", primary_key: "number"
+  add_foreign_key "repairs", "technicians", column: "technician_name", primary_key: "name"
+  add_foreign_key "tasks", "repairs", column: "repair_number", primary_key: "number"
+  add_foreign_key "tasks", "task_types", column: "task_type_name", primary_key: "name"
+  add_foreign_key "tasks", "technicians", column: "technician_name", primary_key: "name"
+  add_foreign_key "tickets", "invoices", column: "invoice_number", primary_key: "number"
+  add_foreign_key "tickets", "technicians", column: "technician_name", primary_key: "name"
 end
