@@ -18,10 +18,32 @@ class BrandsTest < ApplicationSystemTestCase
     visit brands_url
     click_on "New Brand"
 
-    fill_in "Name", with: @brand.name
+    fill_in "Name", with: "Fake Brand"
     click_on "Create Brand"
 
     assert_text "Brand was successfully created"
+    click_on "Back"
+  end
+
+  test "creating a blank Brand" do
+    visit brands_url
+    click_on "New Brand"
+
+    fill_in "Name", with: ""
+    click_on "Create Brand"
+
+    assert_text "Name can't be blank"
+    click_on "Back"
+  end
+
+  test "creating a duplicate Brand" do
+    visit brands_url
+    click_on "New Brand"
+
+    fill_in "Name", with: "Fake Brand"
+    click_on "Create Brand"
+
+    assert_text "Name has already been taken"
     click_on "Back"
   end
 
