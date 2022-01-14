@@ -64,6 +64,6 @@ class CustomerTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_type_params
-      params.require(:customer).permit(:name)
+      params.require(:customer_type).permit(:name)
     end
 end
