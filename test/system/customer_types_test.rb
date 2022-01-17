@@ -18,7 +18,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
     visit customer_types_url
     click_on "New Customer Type"
 
-    fill_in "Name", with: @customer_type.name
+    fill_in "Name", with: "Fake Customer"
 
     click_on "Create Customer type"
 
@@ -30,7 +30,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
     visit customer_types_url
     click_on "Edit", match: :first
 
-    fill_in "Name", with: customer_types(:two).name
+    fill_in "Name", with: @customer_type.name
 
     click_on "Update Customer type"
 
@@ -43,7 +43,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
     click_on "New Customer Type"
 
     fill_in "Name", with: ""
-    click_on "Create Customer Type"
+    click_on "Create Customer type"
 
     assert_text "Name can't be blank"
     click_on "Back"
@@ -53,8 +53,8 @@ class CustomerTypesTest < ApplicationSystemTestCase
     visit customer_types_url
     click_on "New Customer Type"
 
-    fill_in "Name", with: @customer_type.name
-    click_on "Create Customer Type"
+    fill_in "Name", with: customer_types(:two).name
+    click_on "Create Customer type"
 
     assert_text "Name has already been taken"
     click_on "Back"
