@@ -25,6 +25,17 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
+  test "updating a Brand" do
+    visit brands_url
+    click_on "Edit", match: :first
+
+    fill_in "Name", with: @brand.name
+    click_on "Update Brand"
+
+    assert_text "Brand was successfully updated"
+    click_on "Back"
+  end
+
   test "creating a blank Brand" do
     visit brands_url
     click_on "New Brand"
@@ -40,21 +51,10 @@ class BrandsTest < ApplicationSystemTestCase
     visit brands_url
     click_on "New Brand"
 
-    fill_in "Name", with: "Fake Brand"
+    fill_in "Name", with: brands(:two).name
     click_on "Create Brand"
 
     assert_text "Name has already been taken"
-    click_on "Back"
-  end
-
-  test "updating a Brand" do
-    visit brands_url
-    click_on "Edit", match: :first
-
-    fill_in "Name", with: @brand.name
-    click_on "Update Brand"
-
-    assert_text "Brand was successfully updated"
     click_on "Back"
   end
 
