@@ -1,4 +1,4 @@
-<%= form_with do |form| %>
+<%= form_with scope: 'work_order' do |form| %>
 
   <div class="field">
     <%= form.label :technician, "Intake Tech" %>
@@ -16,8 +16,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :work_status %>
-    <%= form.text_field :work_status %>
+    <%= form.label :shipping %>
+    <%= form.text_field :shipping %>
   </div>
 
   <div class="actions">
