@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :discounts
   resources :fees
   resources :item_statuses
   resources :customer_types
