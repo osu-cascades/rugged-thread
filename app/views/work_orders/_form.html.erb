@@ -1,0 +1,26 @@
+<%= form_with scope: 'work_order' do |form| %>
+
+  <div class="field">
+    <%= form.label :technician, "Intake Tech" %>
+    <%= form.select :technician, ["Craig R.", "Josie K.", "Kimberly K.", "Rob C."] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :in_date %>
+    <%= form.date_field :in_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_order_estimate, "Estimate" %>
+    <%= form.number_field :work_order_estimate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shipping %>
+    <%= form.text_field :shipping %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
