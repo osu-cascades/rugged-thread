@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :discounts
   resources :fees
   resources :item_statuses
   resources :customer_types
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :invoices
   resources :technicians
   resources :customers
+  resources :work_orders, only: [:edit]
   get "/pages/:page" => "pages#show"
 
 
