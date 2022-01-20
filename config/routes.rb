@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   resources :tasks
   resources :task_types
   resources :quote_requests
-  devise_for :users
-  resources :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+  resources :users, only: [:show, :edit, :update]
+  scope 'admin' do
+    resources :users, only: [:index, :new, :create, :destroy]
+  end
   resources :complications
   resources :complication_types
   resources :repairs

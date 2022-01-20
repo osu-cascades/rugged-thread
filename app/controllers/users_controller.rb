@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :restrict_unless_admin, only: [:new, :create, :destroy]
+  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
 
   # GET /users or /users.json
   def index
@@ -62,8 +64,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def prevent_normal_users_from_editing_and_viewing_other_users
+      redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
+    end
+
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :permission, :end_date, :efficiency)
+      params.require(:user).permit(:name, :permission, :end_date, :efficiency, :email, :password)
     end
 end
