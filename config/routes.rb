@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :task_types
   resources :quote_requests
   devise_for :users
+  resources :users
   resources :complications
   resources :complication_types
   resources :repairs
