@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :accounts
+  resources :shop_parameters
   resources :discounts
   resources :fees
   resources :item_statuses
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   resources :task_types
   resources :quote_requests
   devise_for :users
+  resources :users
   resources :complications
   resources :complication_types
   resources :repairs
