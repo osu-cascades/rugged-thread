@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :accounts
+  resources :shop_parameters
   resources :discounts
   resources :fees
   resources :item_statuses
@@ -6,7 +8,11 @@ Rails.application.routes.draw do
   resources :tasks
   resources :task_types
   resources :quote_requests
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+  resources :users, only: [:show, :edit, :update]
+  scope 'admin' do
+    resources :users, only: [:index, :new, :create, :destroy]
+  end
   resources :complications
   resources :complication_types
   resources :repairs

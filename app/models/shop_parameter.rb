@@ -1,0 +1,2 @@
+class ShopParameter < ApplicationRecord
+end
