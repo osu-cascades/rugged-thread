@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <strong>Amount:</strong>
-  <%= @discount.amount %>
+  <strong>Percentage Amount:</strong>
+  <%= @discount.percentage_amount %>
+</p>
+
+<p>
+  <strong>Dollar Amount:</strong>
+  <%= @discount.dollar_amount %>
 </p>
 
 <%= link_to 'Edit', edit_discount_path(@discount) %> |
