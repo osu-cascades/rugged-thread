@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
 
+  def active_for_authentication?
+    super && active?
+  end
+
   def to_s
     name
   end
