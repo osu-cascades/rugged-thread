@@ -32,9 +32,9 @@
       <%= f.label :role, class: 'form-label' %>
       <%= f.select :role, User.roles.keys.map {|k| [k.capitalize, k]}, {}, class: 'form-select' %>
     </div>
-    <div class="mb-3">
-      <%= f.check_box :status, {}, "active", "inactive" %>
-      <%= f.label :status, 'Active', class: 'form-label' %>
+    <div class="form-check mb-3">
+      <%= f.check_box :status, {class: "form-check-input" }, "active", "inactive"%>
+      <%= f.label :status, 'Active', class: 'form-check-label' %>
     </div>
   <% end %>
   <%= f.submit 'Save', class: 'form-control btn btn-success' %>
