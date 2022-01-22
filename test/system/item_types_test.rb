@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class ItemTypesTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @item_type = item_types(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do

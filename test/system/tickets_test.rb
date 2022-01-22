@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class TicketsTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @ticket = tickets(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do

@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class TechniciansTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @technician = technicians(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do

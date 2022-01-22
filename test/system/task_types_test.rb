@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class TaskTypesTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @task_type = task_types(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do

@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class InvoiceItemsTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @invoice_item = invoice_items(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do
