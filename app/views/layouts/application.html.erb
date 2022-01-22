@@ -30,8 +30,34 @@
               <li class="nav-item">
                 <%= link_to 'Work Orders', work_orders_path, class: 'nav-link' %>
               </li>
-              <li class="nav-item">
-                <a href="/pages/lists" class="nav-link">Lists</a>
+              <li class="nav-item dropdown me-5">
+                <a href="#" id="listsDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="listsDropdownMenuLink">
+                  <li class="nav-item">
+                    <%= link_to 'Customer Type List', customer_types_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Brands', brands_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Item Statuses', item_statuses_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Fees', fees_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Discounts', discounts_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Shop Parameters', shop_parameters_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Employees', users_path, class: 'dropdown-item' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Accounts', accounts_path, class: 'dropdown-item' %>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item dropdown">
                 <a href="#" id="userDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= current_user %></a>
