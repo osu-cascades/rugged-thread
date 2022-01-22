@@ -7,7 +7,7 @@ one:
   technician: one
 
 two:
-  time: 1
-  number: 1
+  time: 2
+  number: 2
   task_type: two
   technician: two

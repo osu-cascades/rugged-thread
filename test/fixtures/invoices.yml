@@ -3,13 +3,13 @@
 one:
   invoice_estimate: 1.5
   invoice_total: 1.5
-  intake_date: MyString
-  date_fulfilled: MyString
+  intake_date: FakeInDate
+  date_fulfilled: FakeDate
   customer: one
 
 two:
-  invoice_estimate: 1.5
-  invoice_total: 1.5
-  intake_date: MyString
-  date_fulfilled: MyString
+  invoice_estimate: 2.5
+  invoice_total: 2.5
+  intake_date: FakeInDate2
+  date_fulfilled: FakeDate2
   customer: two
