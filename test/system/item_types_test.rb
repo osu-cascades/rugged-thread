@@ -17,8 +17,6 @@ class ItemTypesTest < ApplicationSystemTestCase
   test "creating a Item type" do
     visit item_types_path
     click_on "New Item Type"
-
-    fill_in "Component", with: @item_type.component
     fill_in "Name", with: @item_type.name
     click_on "Create Item type"
 
@@ -29,8 +27,6 @@ class ItemTypesTest < ApplicationSystemTestCase
   test "updating a Item type" do
     visit item_types_path
     click_on "Edit", match: :first
-
-    fill_in "Component", with: @item_type.component
     fill_in "Name", with: @item_type.name
     click_on "Update Item type"
 

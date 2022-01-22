@@ -64,6 +64,6 @@ class InvoiceItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def invoice_item_params
-      params.require(:invoice_item).permit(:description, :number, :charge, :quote, :invoice_id, :item_type_id)
+      params.require(:invoice_item).permit(:description, :number, :charge, :quote, :invoice_id)
     end
 end

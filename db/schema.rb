@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_203828) do
+ActiveRecord::Schema.define(version: 2022_01_22_205236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,14 +117,12 @@ ActiveRecord::Schema.define(version: 2022_01_22_203828) do
   create_table "invoice_items", force: :cascade do |t|
     t.text "description"
     t.bigint "invoice_id", null: false
-    t.bigint "item_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "number"
     t.float "quote"
     t.float "charge"
     t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
-    t.index ["item_type_id"], name: "index_invoice_items_on_item_type_id"
   end
 
   create_table "invoice_items_repairs", id: false, force: :cascade do |t|
@@ -266,7 +264,6 @@ ActiveRecord::Schema.define(version: 2022_01_22_203828) do
   add_foreign_key "complications", "complication_types"
   add_foreign_key "complications", "repairs"
   add_foreign_key "invoice_items", "invoices"
-  add_foreign_key "invoice_items", "item_types"
   add_foreign_key "invoices", "customers"
   add_foreign_key "repairs", "invoice_items"
   add_foreign_key "repairs", "repair_types"

@@ -20,7 +20,6 @@ class InvoiceItemsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @invoice_item.description
     fill_in "Invoice", with: @invoice_item.invoice_id
-    fill_in "Item type", with: @invoice_item.item_type_id
     click_on "Create Invoice item"
 
     assert_text "Invoice item was successfully created"
@@ -33,7 +32,6 @@ class InvoiceItemsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @invoice_item.description
     fill_in "Invoice", with: @invoice_item.invoice_id
-    fill_in "Item type", with: @invoice_item.item_type_id
     click_on "Update Invoice item"
 
     assert_text "Invoice item was successfully updated"

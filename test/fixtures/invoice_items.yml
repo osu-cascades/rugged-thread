@@ -3,9 +3,7 @@
 one:
   description: FakeDescription
   invoice: one
-  item_type: one
 
 two:
   description: FakeDescription1
   invoice: two
-  item_type: two
