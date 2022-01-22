@@ -18,3 +18,9 @@ body {
   min-height: 75rem;
   padding-top: 4.5rem;
 }
+
+footer {
+  margin-top: 4.5rem;
+  border-top: 1px solid #EEE;
+  padding-top: 1rem;
+}
