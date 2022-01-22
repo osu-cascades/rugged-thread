@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
