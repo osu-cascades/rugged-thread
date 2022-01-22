@@ -8,4 +8,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal name, user.to_s
   end
 
+  test "is invalid without a name" do
+    user = users(:one)
+    assert user.valid?
+    user.name = nil
+    refute user.valid?
+    user.name = ''
+    refute user.valid?
+  end
+
 end
