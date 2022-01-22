@@ -6,12 +6,12 @@ class QuoteRequestsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit quote_requests_url
+    visit quote_requests_path
     assert_selector "h1", text: "Quote Requests"
   end
 
   test "creating a Quote request" do
-    visit quote_requests_url
+    visit quote_requests_path
     click_on "New Quote Request"
 
     fill_in "Brand", with: @quote_request.brand
@@ -30,7 +30,7 @@ class QuoteRequestsTest < ApplicationSystemTestCase
   end
 
   test "updating a Quote request" do
-    visit quote_requests_url
+    visit quote_requests_path
     click_on "Edit", match: :first
 
     fill_in "Brand", with: @quote_request.brand
@@ -49,10 +49,8 @@ class QuoteRequestsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Quote request" do
-    visit quote_requests_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit quote_requests_path
+    click_on "Destroy", match: :first
 
     assert_text "Quote request was successfully destroyed"
   end

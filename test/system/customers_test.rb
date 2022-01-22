@@ -6,12 +6,12 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit customers_url
+    visit customers_path
     assert_selector "h1", text: "Customers"
   end
 
   test "creating a Customer" do
-    visit customers_url
+    visit customers_path
     click_on "New Customer"
 
     fill_in "Business name", with: @customer.business_name
@@ -30,7 +30,7 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "updating a Customer" do
-    visit customers_url
+    visit customers_path
     click_on "Edit", match: :first
 
     fill_in "Business name", with: @customer.business_name
@@ -49,10 +49,8 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "destroying a Customer" do
-    visit customers_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit customers_path
+    click_on "Destroy", match: :first
 
     assert_text "Customer was successfully destroyed"
   end

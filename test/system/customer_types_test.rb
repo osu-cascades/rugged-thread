@@ -10,12 +10,12 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit customer_types_url
+    visit customer_types_path
     assert_selector "h1", text: "Customer Types"
   end
 
   test "creating a Customer type" do
-    visit customer_types_url
+    visit customer_types_path
     click_on "New Customer Type"
 
     fill_in "Name", with: "Fake Customer"
@@ -27,7 +27,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "updating a Customer type" do
-    visit customer_types_url
+    visit customer_types_path
     click_on "Edit", match: :first
 
     fill_in "Name", with: @customer_type.name
@@ -39,7 +39,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "creating a blank Customer Type" do
-    visit customer_types_url
+    visit customer_types_path
     click_on "New Customer Type"
 
     fill_in "Name", with: ""
@@ -50,7 +50,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "creating a duplicate Customer Type" do
-    visit customer_types_url
+    visit customer_types_path
     click_on "New Customer Type"
 
     fill_in "Name", with: customer_types(:two).name
@@ -61,10 +61,8 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "destroying a Customer type" do
-    visit customer_types_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit customer_types_path
+    click_on "Destroy", match: :first
 
     assert_text "Customer type was successfully destroyed"
   end

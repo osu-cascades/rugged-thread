@@ -10,12 +10,12 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit fees_url
+    visit fees_path
     assert_selector "h1", text: "Fees"
   end
 
   test "creating a Fee" do
-    visit fees_url
+    visit fees_path
     click_on "New Fee"
 
     fill_in "Description", with: "Fake Item Description"
@@ -28,7 +28,7 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "updating a Fee" do
-    visit fees_url
+    visit fees_path
     click_on "Edit", match: :first
 
     fill_in "Description", with: @fee.description
@@ -41,7 +41,7 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "creating a blank Fee description" do
-    visit fees_url
+    visit fees_path
     click_on "New Fee"
 
     fill_in "Description", with: ""
@@ -54,7 +54,7 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "creating a duplicate Fee description" do
-    visit fees_url
+    visit fees_path
     click_on "New Fee"
 
     fill_in "Description", with: @fee.description
@@ -67,7 +67,7 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "creating a non-integer Fee price" do
-    visit fees_url
+    visit fees_path
     click_on "New Fee"
 
     fill_in "Description", with: @fee.description
@@ -80,10 +80,8 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "destroying a Fee" do
-    visit fees_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit fees_path
+    click_on "Destroy", match: :first
 
     assert_text "Fee was successfully destroyed"
   end

@@ -6,12 +6,12 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit discounts_url
+    visit discounts_path
     assert_selector "h1", text: "Discounts"
   end
 
   test "creating a Discount" do
-    visit discounts_url
+    visit discounts_path
     click_on "New Discount"
 
     fill_in "Amount", with: @discount.amount
@@ -23,7 +23,7 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "updating a Discount" do
-    visit discounts_url
+    visit discounts_path
     click_on "Edit", match: :first
 
     fill_in "Amount", with: @discount.amount
@@ -35,10 +35,8 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Discount" do
-    visit discounts_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit discounts_path
+    click_on "Destroy", match: :first
 
     assert_text "Discount was successfully destroyed"
   end

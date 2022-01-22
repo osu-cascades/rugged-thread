@@ -6,12 +6,12 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit tickets_url
+    visit tickets_path
     assert_selector "h1", text: "Tickets"
   end
 
   test "creating a Ticket" do
-    visit tickets_url
+    visit tickets_path
     click_on "New Ticket"
 
     fill_in "Add fee", with: @ticket.add_fee
@@ -27,7 +27,7 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "updating a Ticket" do
-    visit tickets_url
+    visit tickets_path
     click_on "Edit", match: :first
 
     fill_in "Add fee", with: @ticket.add_fee
@@ -43,10 +43,8 @@ class TicketsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Ticket" do
-    visit tickets_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit tickets_path
+    click_on "Destroy", match: :first
 
     assert_text "Ticket was successfully destroyed"
   end

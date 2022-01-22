@@ -6,12 +6,12 @@ class ShopParametersTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit shop_parameters_url
+    visit shop_parameters_path
     assert_selector "h1", text: "Shop Parameters"
   end
 
   test "creating a Shop parameter" do
-    visit shop_parameters_url
+    visit shop_parameters_path
     click_on "New Shop Parameter"
 
     fill_in "Amount", with: @shop_parameter.amount
@@ -23,7 +23,7 @@ class ShopParametersTest < ApplicationSystemTestCase
   end
 
   test "updating a Shop parameter" do
-    visit shop_parameters_url
+    visit shop_parameters_path
     click_on "Edit", match: :first
 
     fill_in "Amount", with: @shop_parameter.amount
@@ -35,10 +35,8 @@ class ShopParametersTest < ApplicationSystemTestCase
   end
 
   test "destroying a Shop parameter" do
-    visit shop_parameters_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit shop_parameters_path
+    click_on "Destroy", match: :first
 
     assert_text "Shop parameter was successfully destroyed"
   end

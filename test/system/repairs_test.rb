@@ -6,12 +6,12 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit repairs_url
+    visit repairs_path
     assert_selector "h1", text: "Repairs"
   end
 
   test "creating a Repair" do
-    visit repairs_url
+    visit repairs_path
     click_on "New Repair"
 
     fill_in "Charge", with: @repair.charge
@@ -26,7 +26,7 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "updating a Repair" do
-    visit repairs_url
+    visit repairs_path
     click_on "Edit", match: :first
 
     fill_in "Charge", with: @repair.charge
@@ -41,10 +41,8 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Repair" do
-    visit repairs_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit repairs_path
+    click_on "Destroy", match: :first
 
     assert_text "Repair was successfully destroyed"
   end

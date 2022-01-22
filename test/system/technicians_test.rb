@@ -6,12 +6,12 @@ class TechniciansTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit technicians_url
+    visit technicians_path
     assert_selector "h1", text: "Technicians"
   end
 
   test "creating a Technician" do
-    visit technicians_url
+    visit technicians_path
     click_on "New Technician"
 
     fill_in "Name", with: @technician.name
@@ -23,7 +23,7 @@ class TechniciansTest < ApplicationSystemTestCase
   end
 
   test "updating a Technician" do
-    visit technicians_url
+    visit technicians_path
     click_on "Edit", match: :first
 
     fill_in "Name", with: @technician.name
@@ -35,10 +35,8 @@ class TechniciansTest < ApplicationSystemTestCase
   end
 
   test "destroying a Technician" do
-    visit technicians_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit technicians_path
+    click_on "Destroy", match: :first
 
     assert_text "Technician was successfully destroyed"
   end

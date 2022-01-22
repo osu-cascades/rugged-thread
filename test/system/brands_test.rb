@@ -10,12 +10,12 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit brands_url
+    visit brands_path
     assert_selector "h1", text: "Brands"
   end
 
   test "creating a Brand" do
-    visit brands_url
+    visit brands_path
     click_on "New Brand"
 
     fill_in "Name", with: "Fake Brand"
@@ -26,7 +26,7 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "updating a Brand" do
-    visit brands_url
+    visit brands_path
     click_on "Edit", match: :first
 
     fill_in "Name", with: @brand.name
@@ -37,7 +37,7 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "creating a blank Brand" do
-    visit brands_url
+    visit brands_path
     click_on "New Brand"
 
     fill_in "Name", with: ""
@@ -48,7 +48,7 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "creating a duplicate Brand" do
-    visit brands_url
+    visit brands_path
     click_on "New Brand"
 
     fill_in "Name", with: brands(:two).name
@@ -59,11 +59,8 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Brand" do
-    visit brands_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
+    visit brands_path
+    click_on "Destroy", match: :first
     assert_text "Brand was successfully destroyed"
   end
 end

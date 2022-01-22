@@ -6,12 +6,12 @@ class InvoiceItemsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit invoice_items_url
+    visit invoice_items_path
     assert_selector "h1", text: "Invoice Items"
   end
 
   test "creating a Invoice item" do
-    visit invoice_items_url
+    visit invoice_items_path
     click_on "New Invoice Item"
 
     fill_in "Description", with: @invoice_item.description
@@ -24,7 +24,7 @@ class InvoiceItemsTest < ApplicationSystemTestCase
   end
 
   test "updating a Invoice item" do
-    visit invoice_items_url
+    visit invoice_items_path
     click_on "Edit", match: :first
 
     fill_in "Description", with: @invoice_item.description
@@ -37,10 +37,8 @@ class InvoiceItemsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Invoice item" do
-    visit invoice_items_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit invoice_items_path
+    click_on "Destroy", match: :first
 
     assert_text "Invoice item was successfully destroyed"
   end

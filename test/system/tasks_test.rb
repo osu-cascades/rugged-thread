@@ -6,12 +6,12 @@ class TasksTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit tasks_url
+    visit tasks_path
     assert_selector "h1", text: "Tasks"
   end
 
   test "creating a Task" do
-    visit tasks_url
+    visit tasks_path
     click_on "New Task"
 
     fill_in "Number", with: @task.number
@@ -25,7 +25,7 @@ class TasksTest < ApplicationSystemTestCase
   end
 
   test "updating a Task" do
-    visit tasks_url
+    visit tasks_path
     click_on "Edit", match: :first
 
     fill_in "Number", with: @task.number
@@ -39,10 +39,8 @@ class TasksTest < ApplicationSystemTestCase
   end
 
   test "destroying a Task" do
-    visit tasks_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit tasks_path
+    click_on "Destroy", match: :first
 
     assert_text "Task was successfully destroyed"
   end

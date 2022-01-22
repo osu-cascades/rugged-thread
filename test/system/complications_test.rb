@@ -6,12 +6,12 @@ class ComplicationsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit complications_url
+    visit complications_path
     assert_selector "h1", text: "Complications"
   end
 
   test "creating a Complication" do
-    visit complications_url
+    visit complications_path
     click_on "New Complication"
 
     fill_in "Charge", with: @complication.charge
@@ -25,7 +25,7 @@ class ComplicationsTest < ApplicationSystemTestCase
   end
 
   test "updating a Complication" do
-    visit complications_url
+    visit complications_path
     click_on "Edit", match: :first
 
     fill_in "Charge", with: @complication.charge
@@ -39,11 +39,8 @@ class ComplicationsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Complication" do
-    visit complications_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
+    visit complications_path
+    click_on "Destroy", match: :first
     assert_text "Complication was successfully destroyed"
   end
 end

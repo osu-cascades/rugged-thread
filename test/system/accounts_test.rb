@@ -6,12 +6,12 @@ class AccountsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit accounts_url
+    visit accounts_path
     assert_selector "h1", text: "Accounts"
   end
 
   test "creating a Account" do
-    visit accounts_url
+    visit accounts_path
     click_on "New Account"
 
     fill_in "Cost share", with: @account.cost_share
@@ -24,7 +24,7 @@ class AccountsTest < ApplicationSystemTestCase
   end
 
   test "updating a Account" do
-    visit accounts_url
+    visit accounts_path
     click_on "Edit", match: :first
 
     fill_in "Cost share", with: @account.cost_share
@@ -37,11 +37,8 @@ class AccountsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Account" do
-    visit accounts_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
+    visit accounts_path
+    click_on "Destroy", match: :first
     assert_text "Account was successfully destroyed"
   end
 end
