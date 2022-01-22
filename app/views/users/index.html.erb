@@ -40,10 +40,10 @@
           <%= 'status' %>
         </td>
         <td>
-          <%= 'sign in last' %>
+          <%= user.last_sign_in_at&.localtime&.to_s(:short) %>
         </td>
-        <td>TODO</td>
-        <td>TODO</td>
+        <td><%= user.end_date %></td>
+        <td><%= user.efficiency %></td>
         <td>
           <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-light btn-sm mr-4' %>
           <% unless current_user == user %>

@@ -18,21 +18,21 @@
   <dt class="col-sm-3">Status</dt>
   <dd class="col-sm-9">An #{@user.status} user with the #{@user.role} role.</dd>
   <dt class="col-sm-3">Activity</dt>
-  <dd class="col-sm-9">Signed in #{@user.sign_in_count} times since #{@user.created_at.localtime.to_s(:short)}.</dd>
-  <%# if @user.current_sign_in_at %>
+  <dd class="col-sm-9">Signed in <%= @user.sign_in_count %> times since <%= @user.created_at.localtime.to_s(:short) %>.</dd>
+  <% if @user.current_sign_in_at %>
     <dt class="col-sm-3">Last Sign In</dt>
-    <dd class="col-sm-9">#{@user.current_sign_in_at.localtime.to_s(:short)} from #{@user.current_sign_in_ip}.</dd>
-  <%# end %>
+    <dd class="col-sm-9"><%= @user.current_sign_in_at.localtime.to_s(:short) %> from <%= @user.current_sign_in_ip %>.</dd>
+  <% end %>
   <dt class="col-sm-3">Role</dt>
   <dd class="col-sm-9">
     TODO
   </dd>
   <dt class="col-sm-3">End Date</dt>
   <dd class="col-sm-9">
-    TODO
+    <%= @user.end_date %>
   </dd>
   <dt class="col-sm-3">Efficiency</dt>
   <dd class="col-sm-9">
-    TODO
+    <%= @user.efficiency %>
   </dd>
 </dl>
