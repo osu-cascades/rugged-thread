@@ -1,9 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
-  amount: 1
-
+  description: FakeDiscount1
+  percentage_amount: 1
+  dollar_amount: 1
 two:
-  description: MyText
-  amount: 1
+  description: FakeDiscount2
+  percentage_amount: 2
+  dollar_amount: 2
