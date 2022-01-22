@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :restrict_unless_admin, only: [:new, :create, :destroy]
   before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
+  before_action :ignore_password_and_password_confirmation, only: :update
+
 
   # GET /users or /users.json
   def index
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_user
       @user = User.find(params[:id])
     end
@@ -68,8 +70,16 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :permission, :end_date, :efficiency, :email, :password, :password_confirmation)
     end
+
+    # https://github.com/plataformatec/devise/wiki/how-to:-manage-users-through-a-crud-interface
+    def ignore_password_and_password_confirmation
+      if params[:user][:password].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      end
+    end
+
 end
