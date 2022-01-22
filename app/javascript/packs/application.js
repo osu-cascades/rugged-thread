@@ -11,3 +11,7 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// Note: We are including bootstrap javascript via an explicit script tag in the
+// main layout. This is to minimize the use of webpack-related js stuff, which
+// is the direction of Rails.
