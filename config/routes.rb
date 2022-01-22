@@ -1,33 +1,37 @@
 Rails.application.routes.draw do
-  resources :accounts
-  resources :shop_parameters
-  resources :discounts
-  resources :fees
-  resources :item_statuses
-  resources :customer_types
-  resources :tasks
-  resources :task_types
-  resources :quote_requests
+
+  root 'pages#show', page: 'home'
+  get '/pages/:page' => 'pages#show'
+
+  # Users
+  # Using Devise RegistrationsController for public user creation/registration.
   devise_for :users, controllers: { registrations: 'registrations' }
+  # Using UsersController and /users/* paths for profile viewing and editing.
   resources :users, only: [:show, :edit, :update]
+  # Namespacing to the '/admin/users' path, to avoid conflicting with Devise.
   scope 'admin' do
     resources :users, only: [:index, :new, :create, :destroy]
   end
-  resources :complications
-  resources :complication_types
-  resources :repairs
-  resources :repair_types
+
+  resources :accounts
   resources :brands
-  resources :invoice_items
-  resources :item_types
-  resources :tickets
-  resources :invoices
-  resources :technicians
+  resources :complication_types
+  resources :complications
+  resources :customer_types
   resources :customers
-  resources :work_orders, only: [:edit]
-  get "/pages/:page" => "pages#show"
-
-
-  root "pages#show", page: "home"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :discounts
+  resources :fees
+  resources :invoice_items
+  resources :invoices
+  resources :item_statuses
+  resources :item_types
+  resources :quote_requests
+  resources :repair_types
+  resources :repairs
+  resources :shop_parameters
+  resources :task_types
+  resources :tasks
+  resources :technicians
+  resources :tickets
+  resources :work_orders
 end
