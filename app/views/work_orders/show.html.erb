@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>In date:</strong>
+  <%= @work_order.in_date %>
+</p>
+
+<p>
+  <strong>Estimate:</strong>
+  <%= @work_order.estimate %>
+</p>
+
+<p>
+  <strong>Shipping:</strong>
+  <%= @work_order.shipping %>
+</p>
+
+<%= link_to 'Edit', edit_work_order_path(@work_order) %> |
+<%= link_to 'Back', work_orders_path %>
