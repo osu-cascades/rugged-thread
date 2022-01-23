@@ -38,10 +38,10 @@ class InvoiceItemsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Invoice item" do
-    visit invoice_items_path
-    click_on "Destroy", match: :first
+  # test "destroying a Invoice item" do
+  #   visit invoice_items_path
+  #   click_on "Destroy", match: :first
 
-    assert_text "Invoice item was successfully destroyed"
-  end
+  #   assert_text "Invoice item was successfully destroyed"
+  # end
 end

@@ -44,10 +44,10 @@ class RepairsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Repair" do
-    visit repairs_path
-    click_on "Destroy", match: :first
+  # test "destroying a Repair" do
+  #   visit repairs_path
+  #   click_on "Destroy", match: :first
 
-    assert_text "Repair was successfully destroyed"
-  end
+  #   assert_text "Repair was successfully destroyed"
+  # end
 end

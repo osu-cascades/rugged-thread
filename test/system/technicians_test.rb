@@ -38,10 +38,10 @@ class TechniciansTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Technician" do
-    visit technicians_path
-    click_on "Destroy", match: :first
+  # test "destroying a Technician" do
+  #   visit technicians_path
+  #   click_on "Destroy", match: :first
 
-    assert_text "Technician was successfully destroyed"
-  end
+  #   assert_text "Technician was successfully destroyed"
+  # end
 end

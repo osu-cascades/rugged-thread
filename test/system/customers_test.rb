@@ -52,10 +52,10 @@ class CustomersTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Customer" do
-    visit customers_path
-    click_on "Destroy", match: :first
+  # test "destroying a Customer" do
+  #   visit customers_path
+  #   click_on "Destroy", match: :first
 
-    assert_text "Customer was successfully destroyed"
-  end
+  #   assert_text "Customer was successfully destroyed"
+  # end
 end
