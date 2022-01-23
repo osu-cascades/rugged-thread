@@ -6,7 +6,7 @@ class ComplicationTypesTest < ApplicationSystemTestCase
 
   setup do
     @complication_type = complication_types(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

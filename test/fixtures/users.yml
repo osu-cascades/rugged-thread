@@ -1,8 +1,3 @@
-one:
-  name: Fake User
-  email: fake01@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-
 staff:
   name: Fake Staff
   email: staff@example.com

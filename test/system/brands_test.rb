@@ -6,7 +6,7 @@ class BrandsTest < ApplicationSystemTestCase
 
   setup do
     @brand = brands(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

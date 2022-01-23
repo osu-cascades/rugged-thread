@@ -38,7 +38,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "has a required name" do
-    user = users(:one)
+    user = users(:staff)
     assert user.valid?
     user.name = nil
     refute user.valid?

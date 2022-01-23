@@ -6,7 +6,7 @@ class QuoteRequestsTest < ApplicationSystemTestCase
 
   setup do
     @quote_request = quote_requests(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

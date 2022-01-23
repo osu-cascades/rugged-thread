@@ -6,7 +6,7 @@ class RepairsTest < ApplicationSystemTestCase
 
   setup do
     @repair = repairs(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

@@ -6,7 +6,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
 
   setup do
     @customer_type = customer_types(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

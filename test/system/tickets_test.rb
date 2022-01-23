@@ -6,7 +6,7 @@ class TicketsTest < ApplicationSystemTestCase
   
   setup do
     @ticket = tickets(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

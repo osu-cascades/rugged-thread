@@ -6,7 +6,7 @@ class TaskTypesTest < ApplicationSystemTestCase
 
   setup do
     @task_type = task_types(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

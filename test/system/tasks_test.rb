@@ -6,7 +6,7 @@ class TasksTest < ApplicationSystemTestCase
 
   setup do
     @task = tasks(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

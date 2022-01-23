@@ -6,7 +6,7 @@ class InvoiceItemsTest < ApplicationSystemTestCase
 
   setup do
     @invoice_item = invoice_items(:one)
-    sign_in users(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do
