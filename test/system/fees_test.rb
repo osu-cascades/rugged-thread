@@ -66,19 +66,6 @@ class FeesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "creating a non-integer Fee price" do
-    visit fees_path
-    click_on "New Fee"
-
-    fill_in "Description", with: @fee.description
-    fill_in "Price", with: "abcdefg"
-
-    click_on "Create Fee"
-
-    assert_text "Price is not a number"
-    click_on "Back"
-  end
-
   test "destroying a Fee" do
     visit fees_path
     click_on "Destroy", match: :first
