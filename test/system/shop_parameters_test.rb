@@ -19,7 +19,7 @@ class ShopParametersTest < ApplicationSystemTestCase
     click_on "New Shop Parameter"
 
     fill_in "Amount", with: @shop_parameter.amount
-    fill_in "Name", with: @shop_parameter.name
+    fill_in "Name", with: "Fake Shop Param"
     click_on "Create Shop parameter"
 
     assert_text "Shop parameter was successfully created"
@@ -35,6 +35,32 @@ class ShopParametersTest < ApplicationSystemTestCase
     click_on "Update Shop parameter"
 
     assert_text "Shop parameter was successfully updated"
+    click_on "Back"
+  end
+
+  test "creating a blank Shop parameter name" do
+    visit shop_parameters_path
+    click_on "New Shop Parameter"
+
+    fill_in "Name", with: ""
+    fill_in "Amount", with: @shop_parameter.amount
+
+    click_on "Create Shop parameter"
+
+    assert_text "Name can't be blank"
+    click_on "Back"
+  end
+
+  test "creating a duplicate Shop parameter name" do
+    visit shop_parameters_path
+    click_on "New Shop Parameter"
+
+    fill_in "Name", with: @shop_parameter.name
+    fill_in "Amount", with: @shop_parameter.amount
+
+    click_on "Create Shop parameter"
+
+    assert_text "Name has already been taken"
     click_on "Back"
   end
 
