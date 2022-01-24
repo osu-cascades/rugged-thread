@@ -68,63 +68,6 @@ class DiscountsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-
-  test "creating a non-integer Percentage Amount price" do
-    visit discounts_path
-    click_on "New Discount"
-
-    fill_in "Description", with: "Fake Description for Percentage non-integer test"
-    fill_in "Percentage amount", with: "Fake Percentage"
-    fill_in "Dollar amount", with: @discount.dollar_amount
-
-    click_on "Create Discount"
-
-    assert_text "Percentage amount is not a number"
-    click_on "Back"
-  end
-
-  test "creating a non-integer Dollar Amount price" do
-    visit discounts_path
-    click_on "New Discount"
-
-    fill_in "Description", with: "Fake Description for  Dollar non-integer test"
-    fill_in "Percentage amount", with: @discount.percentage_amount
-    fill_in "Dollar amount", with: "Fake Dollar"
-
-    click_on "Create Discount"
-
-    assert_text "Dollar amount is not a number"
-    click_on "Back"
-  end
-
-  test "creating a float Percentage Amount price" do
-    visit discounts_path
-    click_on "New Discount"
-
-    fill_in "Description", with: "Fake Description for Percentage float test"
-    fill_in "Percentage amount", with: 20.5
-    fill_in "Dollar amount", with: @discount.dollar_amount
-
-    click_on "Create Discount"
-
-    assert_text "Percentage amount must be an integer"
-    click_on "Back"
-  end
-
-  test "creating a float Dollar Amount price" do
-    visit discounts_path
-    click_on "New Discount"
-
-    fill_in "Description", with: "Fake Description for  Dollar float test"
-    fill_in "Percentage amount", with: @discount.percentage_amount
-    fill_in "Dollar amount", with: 19.8
-
-    click_on "Create Discount"
-
-    assert_text "Dollar amount must be an integer"
-    click_on "Back"
-  end
-
   test "destroying a Discount" do
     visit discounts_path
     click_on "Destroy", match: :first

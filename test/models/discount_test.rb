@@ -13,33 +13,6 @@ class DiscountTest < ActiveSupport::TestCase
     refute discount.valid?
   end
 
-  test 'Discount without a Percentage non-integer value is invalid' do
-    discount = discounts(:one)
-    assert discount.valid?
-    discount.percentage_amount = "FakeDiscountPercentage"
-    refute discount.valid?
-  end
-
-  test 'Discount without a Dollar non-integer value is invalid' do
-    discount = discounts(:one)
-    assert discount.valid?
-    discount.dollar_amount = "FakeDiscountDollar"
-    refute discount.valid?
-  end
-
-  test 'Discount without a Percentage float value is invalid' do
-    discount = discounts(:one)
-    assert discount.valid?
-    discount.percentage_amount = 1.5
-    refute discount.valid?
-  end
-
-  test 'Discount without a Dollar float value is invalid' do
-    discount = discounts(:one)
-    assert discount.valid?
-    discount.dollar_amount = 1.5
-    refute discount.valid?
-  end
 
   test 'Discount with a non-unique description is invalid' do
     existing_discount_description = discounts(:one).description
