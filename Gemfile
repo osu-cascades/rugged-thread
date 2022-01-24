@@ -5,6 +5,7 @@ ruby '3.0.2'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'airbrake'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
