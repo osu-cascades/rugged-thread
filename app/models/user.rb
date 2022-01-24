@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
 
+  has_many :work_orders
+
   def active_for_authentication?
     super && active?
   end

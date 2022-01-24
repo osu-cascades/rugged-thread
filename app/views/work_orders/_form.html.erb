@@ -12,6 +12,18 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :customer %>
+    <%= form.select :customer_id, Customer.all.map{ |u| [ u.first_name, u.id ] } %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.select :user_id, User.all.map{ |u| [ u.name, u.id ] } %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :in_date %>
     <%= form.date_select :in_date %>
   </div>

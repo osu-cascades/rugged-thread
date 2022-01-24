@@ -1,20 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Work Orders</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Work Order', new_work_order_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 
-<h1>Work Orders</h1>
-
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>In date</th>
-      <th>Estimate</th>
-      <th>Shipping</th>
-      <th colspan="3"></th>
+      <th scope="col">Customer</th>
+      <th scope="col">Employee</th>
+      <th scope="col">In date</th>
+      <th scope="col">Estimate</th>
+      <th scope="col">Shipping</th>
     </tr>
   </thead>
 
   <tbody>
     <% @work_orders.each do |work_order| %>
       <tr>
+        <td><%= Customer.name %></td>
+        <td><%= User.name %></td>
         <td><%= work_order.in_date %></td>
         <td><%= work_order.estimate %></td>
         <td><%= work_order.shipping %></td>
@@ -27,5 +35,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Work Order', new_work_order_path %>
