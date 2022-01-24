@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class ShopParametersTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @shop_parameter = shop_parameters(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do
