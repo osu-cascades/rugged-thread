@@ -1,8 +1,12 @@
 require "application_system_test_case"
 
 class AccountsTest < ApplicationSystemTestCase
+
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @account = accounts(:one)
+    sign_in users(:staff)
   end
 
   test "visiting the index" do

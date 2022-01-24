@@ -71,7 +71,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :permission, :end_date, :efficiency, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+        :role, :status, :end_date, :efficiency)
     end
 
     # https://github.com/plataformatec/devise/wiki/how-to:-manage-users-through-a-crud-interface

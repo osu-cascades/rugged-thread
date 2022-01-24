@@ -2,7 +2,6 @@
   <% if customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
       <ul>
         <% customer.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,52 +10,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: 'form-label' %>
+    <%= form.text_field :first_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="mb-3">
+    <%= form.label :last_name, class: 'form-label' %>
+    <%= form.text_field :last_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :business_name %>
-    <%= form.text_field :business_name %>
+  <div class="mb-3">
+    <%= form.label :business_name, class: 'form-label' %>
+    <%= form.text_field :business_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+  <div class="mb-3">
+    <%= form.label :phone_number, class: 'form-label' %>
+    <%= form.text_field :phone_number, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :email_address %>
-    <%= form.text_field :email_address %>
+  <div class="mb-3">
+    <%= form.label :email_address, class: 'form-label' %>
+    <%= form.text_field :email_address, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address %>
+  <div class="mb-3">
+    <%= form.label :street_address, class: 'form-label' %>
+    <%= form.text_field :street_address, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="mb-3">
+    <%= form.label :city, class: 'form-label' %>
+    <%= form.text_field :city, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+  <div class="mb-3">
+    <%= form.label :state, class: 'form-label' %>
+    <%= form.text_field :state, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :zip_code %>
-    <%= form.text_field :zip_code %>
+  <div class="mb-3">
+    <%= form.label :zip_code, class: 'form-label' %>
+    <%= form.text_field :zip_code, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'form-control btn btn-success' %>
   </div>
 <% end %>
