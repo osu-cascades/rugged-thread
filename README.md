@@ -18,7 +18,20 @@
 
 ### Configuration
 
-* TODO
+We store API credentials in the nominal Rails credentials files, one for each
+environment:
+
+* config/credentials/development.yml.enc
+* config/credentials/production.yml.enc
+
+You must have a _config/credentials/development.key_ file containing the appropriate
+key. Consult the project documentation or development team members for this key.
+View and edit the credentials with
+`rails credentials:edit --environment development`.
+
+To view and modify the production credentials, you must have a
+_config/credentials/production.key_ file containing the appropriate key. Consult
+the project documentation or development team members for this key.
 
 ### Database (TODO)
 
