@@ -1,13 +1,8 @@
+# Rugged Thread Ticketing System
 
-# README
+## Setup
 
-## Rugged Thread Ticketing System
-
-***
-
-### Setup
-
-#### Version Information
+### Version Information
 
 * Ruby version 3.0.2
 
@@ -15,30 +10,36 @@
 
 * Postgresql version 13
 
-#### System Dependencies
+### System Dependencies
 
 * Devise - Authentication
 
 * Pundit - Authorization
 
-#### Configuration
+### Configuration
 
 * TODO
 
-#### Database (TODO)
+### Database (TODO)
 
 * Creation
 
 * Initialization
 
-***
+## Test Suite
 
-#### TODO
+We use minitest, and you can run the test suite with `rails test` and
+`rails test:system`. At the time of this writing (see `git blame README`), the
+application doesn't use any client-side JavaScript, so the system tests use the
+`:rack_test` driver to speed up the system tests.
+See _test/application_system_test_case.rb_.
 
-* How to run the test suite
+### TODO
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions - forthcoming (heroku)
 
 * ...
+
+&copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly and Yong Bakos. All rights reserved.
