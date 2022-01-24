@@ -5,7 +5,7 @@ class WorkOrdersTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @work_order = work_orders(:one)
+    @work_order = work_orders(:shipping)
     sign_in users(:staff)
   end
 
@@ -17,7 +17,7 @@ class WorkOrdersTest < ApplicationSystemTestCase
   test "creating a Work order" do
     visit work_orders_path
     click_on "New Work Order"
-
+    select customers(:one).full_name, from: :work_order_customer_id
     fill_in "Estimate", with: @work_order.estimate
     check "Shipping" if @work_order.shipping
     click_on "Create Work order"

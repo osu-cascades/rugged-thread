@@ -1,11 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+shipping:
+  in_date: 2022-01-23
+  estimate: 
+  shipping: true
+  customer: one
 
-one:
+not_shipping:
   in_date: 2022-01-23
   estimate: 
   shipping: false
-
-two:
-  in_date: 2022-01-23
-  estimate: 
-  shipping: false
+  customer: one

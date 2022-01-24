@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: FakeFistName
+  first_name: FakeFirstName
   last_name: FakeLastName
   business_name: FakeBusiness
   phone_number: FakePhoneNumber
@@ -12,7 +12,7 @@ one:
   zip_code: FakeZip
 
 two:
-  first_name: FakeFistName1
+  first_name: FakeFirstName1
   last_name: FakeLastName1
   business_name: FakeBusiness1
   phone_number: FakePhoneNumber1

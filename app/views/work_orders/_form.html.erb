@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: "Select a Customer"} %>
+  </div>
+
+  <div class="field">
     <%= form.label :in_date %>
     <%= form.date_select :in_date %>
   </div>
