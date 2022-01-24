@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
+<div class="row mb-5">
+  <div class="col">
+    <h1><%= @customer.first_name %> <%= @customer.last_name %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, customers_path, class: 'btn btn-outline-primary me-4' %>
+    <%= link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-outline-primary float-right' %>
+  </div>
+</div>
 
 <p>
   <strong>Business name:</strong>
@@ -22,7 +20,7 @@
 
 <p>
   <strong>Email address:</strong>
-  <%= @customer.email_address %>
+  <%= mail_to @customer.email_address %>
 </p>
 
 <p>
@@ -44,6 +42,3 @@
   <strong>Zip code:</strong>
   <%= @customer.zip_code %>
 </p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
