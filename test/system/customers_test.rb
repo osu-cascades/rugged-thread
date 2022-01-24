@@ -27,7 +27,7 @@ class CustomersTest < ApplicationSystemTestCase
     fill_in "State", with: @customer.state
     fill_in "Street address", with: @customer.street_address
     fill_in "Zip code", with: @customer.zip_code
-    click_on "Create Customer"
+    click_on "Save"
 
     assert_text "Customer was successfully created"
     click_on "Back"
@@ -46,7 +46,7 @@ class CustomersTest < ApplicationSystemTestCase
     fill_in "State", with: @customer.state
     fill_in "Street address", with: @customer.street_address
     fill_in "Zip code", with: @customer.zip_code
-    click_on "Update Customer"
+    click_on "Save"
 
     assert_text "Customer was successfully updated"
     click_on "Back"
