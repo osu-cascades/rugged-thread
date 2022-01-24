@@ -10,8 +10,6 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Customer</th>
-      <th scope="col">Employee</th>
       <th scope="col">In date</th>
       <th scope="col">Estimate</th>
       <th scope="col">Shipping</th>
@@ -21,8 +19,6 @@
   <tbody>
     <% @work_orders.each do |work_order| %>
       <tr>
-        <td><%= Customer.name %></td>
-        <td><%= User.name %></td>
         <td><%= work_order.in_date %></td>
         <td><%= work_order.estimate %></td>
         <td><%= work_order.shipping %></td>
