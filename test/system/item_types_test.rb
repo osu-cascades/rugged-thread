@@ -17,7 +17,7 @@ class ItemTypesTest < ApplicationSystemTestCase
   test "creating a Item type" do
     visit item_types_path
     click_on "New Item Type"
-    fill_in "Name", with: @item_type.name
+    fill_in "Name", with: "Fake Item Type"
     click_on "Create Item type"
 
     assert_text "Item type was successfully created"
@@ -31,6 +31,30 @@ class ItemTypesTest < ApplicationSystemTestCase
     click_on "Update Item type"
 
     assert_text "Item type was successfully updated"
+    click_on "Back"
+  end
+
+  test "creating a blank Item type name" do
+    visit item_types_path
+    click_on "New Item Type"
+
+    fill_in "Name", with: ""
+
+    click_on "Create Item type"
+
+    assert_text "Name can't be blank"
+    click_on "Back"
+  end
+
+  test "creating a duplicate Item type name" do
+    visit item_types_path
+    click_on "New Item Type"
+
+    fill_in "Name", with: @item_type.name
+
+    click_on "Create Item type"
+
+    assert_text "Name has already been taken"
     click_on "Back"
   end
 
