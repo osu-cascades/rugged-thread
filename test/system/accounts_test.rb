@@ -19,7 +19,7 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "New Account"
 
     fill_in "Cost share", with: @account.cost_share
-    fill_in "Name", with: @account.name
+    fill_in "Name", with: "Fake Account name"
     fill_in "Turn around", with: @account.turn_around
     click_on "Create Account"
 
@@ -37,6 +37,34 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "Update Account"
 
     assert_text "Account was successfully updated"
+    click_on "Back"
+  end
+
+  test "creating a blank Account description" do
+    visit accounts_path
+    click_on "New Account"
+
+    fill_in "Name", with: ""
+    fill_in "Cost share", with: @account.cost_share
+    fill_in "Turn around", with: @account.turn_around
+
+    click_on "Create Account"
+
+    assert_text "Name can't be blank"
+    click_on "Back"
+  end
+
+  test "creating a duplicate Account description" do
+    visit accounts_path
+    click_on "New Account"
+
+    fill_in "Name", with: @account.name
+    fill_in "Cost share", with: @account.cost_share
+    fill_in "Turn around", with: @account.turn_around
+
+    click_on "Create Account"
+
+    assert_text "Name has already been taken"
     click_on "Back"
   end
 
