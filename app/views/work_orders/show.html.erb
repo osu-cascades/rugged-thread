@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Customer:</strong>
+  <%= @work_order.customer.full_name %>
+</p>
+
+<p>
   <strong>In date:</strong>
   <%= @work_order.in_date %>
 </p>
