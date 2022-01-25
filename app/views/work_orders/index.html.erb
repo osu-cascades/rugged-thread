@@ -15,9 +15,9 @@
       <th scope="col">In date</th>
       <th scope="col">Estimate</th>
       <th scope="col">Shipping</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @work_orders.each do |work_order| %>
       <tr>
@@ -26,12 +26,12 @@
         <td><%= work_order.in_date %></td>
         <td><%= work_order.estimate %></td>
         <td><%= work_order.shipping %></td>
-        <td><%= link_to 'Show', work_order %></td>
-        <td><%= link_to 'Edit', edit_work_order_path(work_order), class: 'btn btn-light btn-sm mr-4' %></td>
-        <td><%= link_to 'Destroy', work_order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %></td>
+        <td>
+          <%= link_to 'View', work_order, class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to 'Edit', edit_work_order_path(work_order), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to 'Destroy', work_order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>

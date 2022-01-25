@@ -1,8 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Work Order <%= @work_order.id %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back'.html_safe, :back, class: 'btn btn-outline-primary' %>
+    <%= link_to 'Edit', edit_work_order_path(@work_order), class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 
 <p>
   <strong>Customer:</strong>
-  <%= @work_order.customer.full_name %>
+  <%= link_to @work_order.customer.full_name, @work_order.customer %>
 </p>
 
 <p>
@@ -20,5 +28,31 @@
   <%= @work_order.shipping %>
 </p>
 
-<%= link_to 'Edit', edit_work_order_path(@work_order) %> |
-<%= link_to 'Back', work_orders_path %>
+<h2 class="mt-5">Items</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Foo</th>
+      <th scope="col">Bar</th>
+      <th scope="col">Baz</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% [1, 2, 3].each do |placeholder| %>
+      <tr>
+        <th scope="row"><%= placeholder %></th>
+        <td>foo</td>
+        <td>bar</td>
+        <td>baz</td>
+        <td>
+          <%= link_to 'Edit', '#', class: 'btn btn-light btn-sm mr-4' %>
+            <%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>[item form here]</p>
