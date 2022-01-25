@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :repair_types
   resources :repairs
   resources :shop_parameters
+  resources :standard_repairs
   resources :task_types
   resources :tasks
   resources :technicians
