@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @standard_repair.name %>
+</p>
+
+<p>
+  <strong>Sub repair:</strong>
+  <%= @standard_repair.sub_repair %>
+</p>
+
+<p>
+  <strong>Method:</strong>
+  <%= @standard_repair.method %>
+</p>
+
+<p>
+  <strong>Complications:</strong>
+  <%= @standard_repair.complications %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @standard_repair.description %>
+</p>
+
+<p>
+  <strong>Charge:</strong>
+  <%= @standard_repair.charge %>
+</p>
+
+<p>
+  <strong>Fee type:</strong>
+  <%= @standard_repair.fee_type %>
+</p>
+
+<%= link_to 'Edit', edit_standard_repair_path(@standard_repair) %> |
+<%= link_to 'Back', standard_repairs_path %>

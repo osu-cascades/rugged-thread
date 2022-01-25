@@ -1,0 +1,52 @@
+<%= form_with(model: standard_repair) do |form| %>
+  <% if standard_repair.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(standard_repair.errors.count, "error") %> prohibited this standard_repair from being saved:</h2>
+
+      <ul>
+        <% standard_repair.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sub_repair %>
+    <%= form.text_field :sub_repair %>
+  </div>
+
+  <div class="field">
+    <%= form.label :method %>
+    <%= form.text_field :method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :complications %>
+    <%= form.text_area :complications %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :charge %>
+    <%= form.number_field :charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fee_type %>
+    <%= form.text_field :fee_type %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
