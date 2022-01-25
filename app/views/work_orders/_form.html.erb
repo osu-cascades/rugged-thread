@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: "Select a Customer"} %>
+  <div class="mb-3">
+    <%= form.label :customer_id, class: 'form-label' %>
+    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: "Select a Customer"}, class: 'form-select' %>
   </div>
 
-  <div class="field">
-    <%= form.label :in_date %>
-    <%= form.date_select :in_date %>
+  <div class="mb-3">
+    <%= form.label :in_date, class: 'form-label' %>
+    <%= form.date_field :in_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :estimate %>
-    <%= form.text_field :estimate %>
+  <div class="mb-3">
+    <%= form.label :estimate, class: 'form-label' %>
+    <%= form.text_field :estimate, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :shipping %>
-    <%= form.check_box :shipping %>
+  <div class="form-check mb-3">
+    <%= form.check_box :shipping, class: 'form-check-input' %>
+    <%= form.label :shipping, class: 'form-check-label' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Work Order', class: 'form-control btn btn-success' %>
   </div>
 <% end %>
