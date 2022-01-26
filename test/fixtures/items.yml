@@ -6,7 +6,7 @@ one:
   estimate: 50
   labor_estimate: 100
   notes: Item is in bad shape.
-  brand: one
+  brand: Patagonia
   work_order: shipping
   item_type: one
 
@@ -16,6 +16,6 @@ two:
   estimate: 100
   labor_estimate: 50
   notes: Item requires special care.
-  brand: two
+  brand: North Face
   work_order: shipping
   item_type: two

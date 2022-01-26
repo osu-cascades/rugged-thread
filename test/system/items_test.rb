@@ -18,13 +18,13 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_path
     click_on "New Item"
 
-    fill_in "Brand", with: @item.brand_id
+    select items(:one).brand, from: :item_brand_id
     fill_in "Due date", with: @item.due_date
     fill_in "Estimate", with: @item.estimate
     fill_in "Item type", with: @item.item_type_id
     fill_in "Labor estimate", with: @item.labor_estimate
     fill_in "Notes", with: @item.notes
-    fill_in "Status", with: @item.status
+    select items(:one).status
     fill_in "Work order", with: @item.work_order_id
     click_on "Create Item"
 
@@ -36,13 +36,13 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_path
     click_on "Edit", match: :first
 
-    fill_in "Brand", with: @item.brand_id
+    select items(:one).brand, from: :item_brand_id
     fill_in "Due date", with: @item.due_date
     fill_in "Estimate", with: @item.estimate
     fill_in "Item type", with: @item.item_type_id
     fill_in "Labor estimate", with: @item.labor_estimate
     fill_in "Notes", with: @item.notes
-    fill_in "Status", with: @item.status
+    select items(:one).status
     fill_in "Work order", with: @item.work_order_id
     click_on "Update Item"
 
@@ -52,10 +52,7 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "destroying a Item" do
     visit items_path
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
+    click_on "Destroy", match: :first
     assert_text "Item was successfully destroyed"
   end
 end
