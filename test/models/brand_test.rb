@@ -6,6 +6,11 @@ class BrandTest < ActiveSupport::TestCase
     assert_respond_to(Brand.new, :items)
   end
 
+  test 'cannot be deleted if it has associated items' do
+    brand = brands(:one)
+    assert_not_empty brand.items
+  end
+
   test 'Brand has a name' do
     assert_respond_to(Brand.new, :name)
   end
