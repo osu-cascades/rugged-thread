@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_26_023351) do
+ActiveRecord::Schema.define(version: 2022_01_26_181928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,7 +166,9 @@ ActiveRecord::Schema.define(version: 2022_01_26_023351) do
     t.bigint "item_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "item_status_id", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
     t.index ["work_order_id"], name: "index_items_on_work_order_id"
   end
@@ -304,6 +306,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_023351) do
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "customers"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "item_statuses"
   add_foreign_key "items", "item_types"
   add_foreign_key "items", "work_orders"
   add_foreign_key "repairs", "invoice_items"

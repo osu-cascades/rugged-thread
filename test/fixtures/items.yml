@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  status: PROD
   due_date: 2022-01-25
   estimate: 50
   labor_estimate: 100
   notes: Item is in bad shape.
-  brand: Patagonia
+  brand: one
   work_order: shipping
   item_type: one
+  item_status_id: 1
 
 two:
-  status: HANDLING
   due_date: 2022-01-25
   estimate: 100
   labor_estimate: 50
   notes: Item requires special care.
-  brand: North Face
+  brand: two
   work_order: shipping
   item_type: two
+  item_status_id: 2

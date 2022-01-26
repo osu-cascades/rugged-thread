@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :status %>
-    <%= form.select :status, ["PROD", "ON HOLD", "PRICED"], {include_blank: "Select Status"} %>
-  </div>
-
-  <div class="mb-3">
     <%= form.label :due_date %>
     <%= form.date_select :due_date %>
   </div>
@@ -34,6 +29,11 @@
   <div class="mb-3">
     <%= form.label :notes %>
     <%= form.text_field :notes %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :item_status_id %>
+    <%= form.select :item_status_id, ItemStatus.all.map{ |item_status| [item_status.name, item_status.id] }, {include_blank: "Select an Item Status"}, class: 'form-select' %>
   </div>
 
   <div class="mb-3">

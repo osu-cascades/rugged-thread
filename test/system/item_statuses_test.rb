@@ -60,10 +60,9 @@ class ItemStatusesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Item status" do
-    visit item_statuses_path
-    click_on "Destroy", match: :first
-
-    assert_text "Item status was successfully destroyed"
-  end
+  # test "destroying a Item status" do
+  #   visit item_statuses_path
+  #   click_on "Destroy", match: :first
+  #   assert_text "Item status was successfully destroyed"
+  # end
 end
