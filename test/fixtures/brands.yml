@@ -3,3 +3,6 @@ one:
 
 two:
   name: FakeBrand2
+
+itemless:
+  name: Fake Itemless Brand

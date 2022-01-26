@@ -9,6 +9,8 @@ class BrandTest < ActiveSupport::TestCase
   test 'cannot be deleted if it has associated items' do
     brand = brands(:one)
     assert_not_empty brand.items
+    brand.destroy
+    refute brand.destroyed?
   end
 
   test 'Brand has a name' do

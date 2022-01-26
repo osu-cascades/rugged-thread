@@ -1,5 +1,5 @@
 class Brand < ApplicationRecord
-  has_many :items
+  has_many :items, dependent: :restrict_with_error
 
   validates :name, presence: true
   validates :name, uniqueness: true

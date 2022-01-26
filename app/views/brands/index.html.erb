@@ -12,7 +12,7 @@
 
   <tbody>
     <% @brands.each do |brand| %>
-      <tr>
+      <tr id="<%= dom_id(brand) %>">
         <td><%= brand.name %></td>
         <td><%= link_to 'Show', brand %></td>
         <td><%= link_to 'Edit', edit_brand_path(brand) %></td>

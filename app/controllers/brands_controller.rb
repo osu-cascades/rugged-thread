@@ -49,10 +49,14 @@ class BrandsController < ApplicationController
 
   # DELETE /brands/1 or /brands/1.json
   def destroy
-    @brand.destroy
     respond_to do |format|
-      format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
-      format.json { head :no_content }
+      if @brand.destroy
+        format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to brands_url, alert: 'Cannot delete this brand.' }
+        format.json { render json: @brand.errors, status: :unprocessable_entity }
+      end
     end
   end
 
