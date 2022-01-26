@@ -7,7 +7,7 @@ one:
   labor_estimate: 100
   notes: Item is in bad shape.
   brand: one
-  work_order: one
+  work_order: shipping
   item_type: one
 
 two:
@@ -17,5 +17,5 @@ two:
   labor_estimate: 50
   notes: Item requires special care.
   brand: two
-  work_order: two
+  work_order: shipping
   item_type: two
