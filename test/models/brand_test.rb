@@ -1,10 +1,14 @@
 require "test_helper"
 
 class BrandTest < ActiveSupport::TestCase
+
+  test 'has many items' do
+    assert_respond_to(Brand.new, :items)
+  end
+
   test 'Brand has a name' do
     assert_respond_to(Brand.new, :name)
   end
-
 
   test 'Brand without a name is invalid' do
     brand = brands(:one)
