@@ -1,10 +1,14 @@
 require "test_helper"
 
 class ItemTypeTest < ActiveSupport::TestCase
+
+  test 'has many items' do
+    assert_respond_to(ItemType.new, :items)
+  end
+
   test 'Item Type has a name' do
     assert_respond_to(ItemType.new, :name)
   end
-
 
   test 'Item Type without a name is invalid' do
     item_type = item_types(:one)
