@@ -1,0 +1,57 @@
+<%= form_with(model: item) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :status %>
+    <%= form.select :status, ["PROD", "ON HOLD", "PRICED"], {include_blank: "Select Status"} %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :due_date %>
+    <%= form.date_select :due_date %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :estimate %>
+    <%= form.number_field :estimate %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :labor_estimate %>
+    <%= form.number_field :labor_estimate %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :brand_id %>
+    <%= form.select :brand_id, Brand.all.map{ |brand| [brand.name, brand.id] }, {include_blank: "Select a Brand"}, class: 'form-select' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :work_order_id %>
+    <%= form.select :work_order_id, WorkOrder.all.map{ |work_order| [work_order.id] }, {include_blank: "Select a Work Order"}, class: 'form-select' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :item_type_id %>
+    <%= form.select :item_type_id, ItemType.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: "Select an Item Type"}, class: 'form-select' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

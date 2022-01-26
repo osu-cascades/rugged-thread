@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_204318) do
+ActiveRecord::Schema.define(version: 2022_01_26_023351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,22 @@ ActiveRecord::Schema.define(version: 2022_01_25_204318) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "status"
+    t.date "due_date"
+    t.integer "estimate"
+    t.integer "labor_estimate"
+    t.string "notes"
+    t.bigint "brand_id", null: false
+    t.bigint "work_order_id", null: false
+    t.bigint "item_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["item_type_id"], name: "index_items_on_item_type_id"
+    t.index ["work_order_id"], name: "index_items_on_work_order_id"
+  end
+
   create_table "quote_requests", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -287,6 +303,9 @@ ActiveRecord::Schema.define(version: 2022_01_25_204318) do
   add_foreign_key "complications", "repairs"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "customers"
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "item_types"
+  add_foreign_key "items", "work_orders"
   add_foreign_key "repairs", "invoice_items"
   add_foreign_key "repairs", "repair_types"
   add_foreign_key "repairs", "technicians"

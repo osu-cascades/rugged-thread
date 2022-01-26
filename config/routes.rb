@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :items
   root 'pages#show', page: 'home'
   get '/pages/:page' => 'pages#show'
 
