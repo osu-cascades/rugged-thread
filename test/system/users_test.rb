@@ -58,6 +58,16 @@ class UsersTest < ApplicationSystemTestCase
     assert_text 'User was successfully created'
   end
 
+  test "admin can edit other users" do
+    new_name = 'CHANGED Fake User'
+    sign_in(users(:admin))
+    visit edit_user_path(users(:staff))
+    assert_selector 'h1', text: "Editing #{users(:staff)}"
+    fill_in 'Name', with: new_name
+    click_on 'Save'
+    assert_text 'User was successfully updated'
+    assert_text new_name
+  end
 
   # Staff
 
@@ -90,6 +100,23 @@ class UsersTest < ApplicationSystemTestCase
     sign_in(users(:staff))
     visit new_user_path
     assert_text 'not authorized'
+  end
+
+  test "staff cannot edit another user" do
+    sign_in(users(:staff))
+    visit edit_user_path(users(:admin))
+    assert_text 'not authorized'
+  end
+
+  test "staff can edit themselves" do
+    new_name = 'CHANGED Fake User'
+    sign_in(users(:staff))
+    visit edit_user_path(users(:staff))
+    assert_text "Editing #{users(:staff)}"
+    fill_in 'Name', with: new_name
+    click_on 'Save'
+    assert_text 'User was successfully updated'
+    assert_text new_name
   end
 
 end

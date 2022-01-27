@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[ destroy ]
   before_action :restrict_unless_admin, only: [:destroy]
-  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update]
   before_action :ignore_password_and_password_confirmation, only: :update
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -19,8 +18,8 @@ class UsersController < ApplicationController
     @user = authorize User.new
   end
 
-  # GET /users/1/edit
   def edit
+    @user = authorize User.find(params[:id])
   end
 
   def create
@@ -37,8 +36,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
+    @user = authorize User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: "User was successfully updated." }
@@ -63,10 +62,6 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def prevent_normal_users_from_editing_and_viewing_other_users
-      redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
     end
 
     def user_params
