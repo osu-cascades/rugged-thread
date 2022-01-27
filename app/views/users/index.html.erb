@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover" id="users_table">
   <thead>
     <tr>
       <th scope="col">id</th>
@@ -46,9 +46,7 @@
         <td><%= user.efficiency %></td>
         <td>
           <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-light btn-sm mr-4' %>
-          <% unless current_user == user %>
-            <%= link_to 'Delete', "/admin/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
-          <% end %>
+          <%= link_to_if(policy(user).destroy?, 'Delete', "/admin/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm') {} %>
         </td>
       </tr>
     <% end %>

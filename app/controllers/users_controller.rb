@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :restrict_unless_admin, only: [:new, :create, :destroy]
   before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
   before_action :ignore_password_and_password_confirmation, only: :update
 
-
-  # GET /users or /users.json
   def index
-    @users = User.all
+    @users = authorize User.all
   end
 
   # GET /users/1 or /users/1.json
