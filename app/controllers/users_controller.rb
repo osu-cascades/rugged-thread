@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: %i[ edit update destroy ]
-  before_action :restrict_unless_admin, only: [:new, :create, :destroy]
+  before_action :restrict_unless_admin, only: [:destroy]
   before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update]
   before_action :ignore_password_and_password_confirmation, only: :update
 
@@ -15,18 +15,16 @@ class UsersController < ApplicationController
     @user = authorize User.find(params[:id])
   end
 
-  # GET /users/new
   def new
-    @user = User.new
+    @user = authorize User.new
   end
 
   # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = authorize User.new(user_params)
 
     respond_to do |format|
       if @user.save

@@ -45,6 +45,20 @@ class UsersTest < ApplicationSystemTestCase
     assert_link 'Edit Profile'
   end
 
+  test "admin can create a new user" do
+    sign_in(users(:admin))
+    visit new_user_path
+    assert_selector 'h1', text: 'New Employee'
+    fill_in 'Name', with: 'New Fake User'
+    fill_in 'Email', with: 'newfake@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    select 'Admin', from: 'Role'
+    click_on 'Save'
+    assert_text 'User was successfully created'
+  end
+
+
   # Staff
 
   test "staff cannot view user list" do
@@ -63,6 +77,19 @@ class UsersTest < ApplicationSystemTestCase
     sign_in(users(:staff))
     visit user_path(users(:staff))
     assert_text 'Employee Information'
+  end
+
+  test 'staff do not see role and status options' do
+    sign_in(users(:staff))
+    visit user_path(users(:staff))
+    refute_text 'Role and Status'
+    refute_select 'Role'
+  end
+
+  test "staff cannot see new user form" do
+    sign_in(users(:staff))
+    visit new_user_path
+    assert_text 'not authorized'
   end
 
 end

@@ -8,8 +8,16 @@ class UserPolicy < ApplicationPolicy
     user.admin? || user == record
   end
 
+  def new?
+    user.admin?
+  end
+
   def edit?
     user.admin? || user == record
+  end
+
+  def create?
+    user.admin?
   end
 
   def destroy?
