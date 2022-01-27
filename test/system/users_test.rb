@@ -42,7 +42,7 @@ class UsersTest < ApplicationSystemTestCase
   test "admin can view another user" do
     sign_in(users(:admin))
     visit user_path(users(:staff))
-    assert_link 'Edit Profile'
+    assert_selector 'h1', text: 'Employee Information'
   end
 
   test "admin can create a new user" do
@@ -72,8 +72,55 @@ class UsersTest < ApplicationSystemTestCase
   test "admin can delete other users" do
     sign_in(users(:admin))
     visit users_path
-    click_on 'Delete', match: :first
+    within "##{dom_id(users(:staff))}" do
+      click_on 'Delete'
+    end
     assert_text 'User was successfully destroyed'
+    refute_text users(:staff).name
+  end
+
+  # Supervisors
+
+  test "supervisor views list" do
+    sign_in(users(:supervisor))
+    visit users_path
+    assert_selector 'h1', text: 'Employees'
+  end
+
+  test "supervisor does not see edit buttons for anyone but themselves" do
+    sign_in(users(:supervisor))
+    visit users_path
+    within '#users_table tbody' do
+      all('tr').each do |row|
+        if row[:id] == dom_id(users(:supervisor))
+          within(row) { assert_link 'Edit' }
+        else
+          within(row) { refute_link 'Edit' }
+        end
+      end
+    end
+  end
+
+  test "supervisor does not see delete buttons" do
+    sign_in(users(:supervisor))
+    visit users_path
+    within '#users_table tbody' do
+      all('tr').each do |row|
+        within(row) { refute_link 'Delete' }
+      end
+    end
+  end
+
+  test "supervisor can view another user" do
+    sign_in(users(:supervisor))
+    visit user_path(users(:staff))
+    assert_selector 'h1', text: 'Employee Information'
+  end
+
+  test "supervisor does not see edit link when viewing other users" do
+    sign_in(users(:supervisor))
+    visit user_path(users(:staff))
+    refute_link 'Edit Profile'
   end
 
   # Staff

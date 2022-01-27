@@ -1,11 +1,11 @@
 class UserPolicy < ApplicationPolicy
 
   def index?
-    user.admin?
+    user.admin? || user.supervisor?
   end
 
   def show?
-    user.admin? || user == record
+    user.admin? || user.supervisor? || user == record
   end
 
   def new?
