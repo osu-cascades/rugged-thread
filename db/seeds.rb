@@ -11,13 +11,15 @@ customer = Customer.create!(  first_name: 'Example', last_name: 'Customer',
  email_address: 'exampleCustomer@email.com', street_address: '123 Sesame Street', city: 'Bend', 
  state: 'OR', zip_code: '97704')
 
-WorkOrder.create!(in_date: Date.today, estimate: 100, shipping: true, customer: customer)
+work_order = WorkOrder.create!(in_date: Date.today, estimate: 100, shipping: true, customer: customer)
 
-Brand.create!(name: 'Example Brand One')
+brand = Brand.create!(name: 'Example Brand One')
 Brand.create!(name: 'Example Brand Two')
 
-ItemStatus.create!(name: 'Example Status One')
+item_status = ItemStatus.create!(name: 'Example Status One')
 ItemStatus.create!(name: 'Example Status Two')
 
-ItemType.create(name: 'Example Item Type One')
+item_type = ItemType.create(name: 'Example Item Type One')
 ItemType.create(name: 'Example Item Type Two')
+
+Item.create!(due_date: Date.today, estimate: 100, labor_estimate: 50, notes: 'This is the place for notes.', brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
