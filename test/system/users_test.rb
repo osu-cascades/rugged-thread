@@ -69,6 +69,13 @@ class UsersTest < ApplicationSystemTestCase
     assert_text new_name
   end
 
+  test "admin can delete other users" do
+    sign_in(users(:admin))
+    visit users_path
+    click_on 'Delete', match: :first
+    assert_text 'User was successfully destroyed'
+  end
+
   # Staff
 
   test "staff cannot view user list" do

@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: %i[ destroy ]
-  before_action :restrict_unless_admin, only: [:destroy]
   before_action :ignore_password_and_password_confirmation, only: :update
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -49,8 +47,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
   def destroy
+    @user = authorize User.find(params[:id])
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
@@ -59,10 +57,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def set_user
-      @user = User.find(params[:id])
-    end
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation,
