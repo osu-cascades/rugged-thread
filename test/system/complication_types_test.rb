@@ -36,9 +36,10 @@ class ComplicationTypesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  # test "destroying a Complication type" do
-  #   visit complication_types_path
-  #   click_on "Destroy", match: :first
-  #   assert_text "Complication type was successfully destroyed"
-  # end
+  test "destroying a Complication type" do
+    skip
+    visit complication_types_path
+    click_on "Destroy", match: :first
+    assert_text "Complication type was successfully destroyed"
+  end
 end

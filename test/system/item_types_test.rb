@@ -58,9 +58,10 @@ class ItemTypesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  # test "destroying a Item type" do
-  #   visit item_types_path
-  #   click_on "Destroy", match: :first
-  #   assert_text "Item type was successfully destroyed"
-  # end
+  test "destroying a Item type" do
+    skip
+    visit item_types_path
+    click_on "Destroy", match: :first
+    assert_text "Item type was successfully destroyed"
+  end
 end

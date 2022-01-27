@@ -38,10 +38,11 @@ class RepairTypesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  # test "destroying a Repair type" do
-  #   visit repair_types_path
-  #   click_on "Destroy", match: :first
+  test "destroying a Repair type" do
+    skip
+    visit repair_types_path
+    click_on "Destroy", match: :first
 
-  #   assert_text "Repair type was successfully destroyed"
-  # end
+    assert_text "Repair type was successfully destroyed"
+  end
 end

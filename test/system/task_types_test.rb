@@ -36,10 +36,11 @@ class TaskTypesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  # test "destroying a Task type" do
-  #   visit task_types_path
-  #   click_on "Destroy", match: :first
+  test "destroying a Task type" do
+    skip
+    visit task_types_path
+    click_on "Destroy", match: :first
 
-  #   assert_text "Task type was successfully destroyed"
-  # end
+    assert_text "Task type was successfully destroyed"
+  end
 end

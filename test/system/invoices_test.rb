@@ -44,10 +44,11 @@ class InvoicesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  # test "destroying a Invoice" do
-  #   visit invoices_path
-  #   click_on "Destroy", match: :first
+  test "destroying a Invoice" do
+    skip
+    visit invoices_path
+    click_on "Destroy", match: :first
 
-  #   assert_text "Invoice was successfully destroyed"
-  # end
+    assert_text "Invoice was successfully destroyed"
+  end
 end
