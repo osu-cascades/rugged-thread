@@ -39,4 +39,30 @@ class UsersTest < ApplicationSystemTestCase
     end
   end
 
+  test "admin can view another user" do
+    sign_in(users(:admin))
+    visit user_path(users(:staff))
+    assert_link 'Edit Profile'
+  end
+
+  # Staff
+
+  test "staff cannot view user list" do
+    sign_in(users(:staff))
+    visit users_path
+    assert_text 'not authorized'
+  end
+
+  test "staff cannot view another user" do
+    sign_in(users(:staff))
+    visit user_path(users(:admin))
+    assert_text 'not authorized'
+  end
+
+  test "staff can view themselves" do
+    sign_in(users(:staff))
+    visit user_path(users(:staff))
+    assert_text 'Employee Information'
+  end
+
 end

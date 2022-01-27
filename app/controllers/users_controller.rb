@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ edit update destroy ]
   before_action :restrict_unless_admin, only: [:new, :create, :destroy]
-  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
+  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update]
   before_action :ignore_password_and_password_confirmation, only: :update
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
     @users = authorize User.all
   end
 
-  # GET /users/1 or /users/1.json
   def show
+    @user = authorize User.find(params[:id])
   end
 
   # GET /users/new
@@ -80,6 +82,11 @@ class UsersController < ApplicationController
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
       end
+    end
+
+    def user_not_authorized
+      flash[:alert] = 'You are not authorized to perform this action.'
+      redirect_to(request.referrer || root_url)
     end
 
 end

@@ -4,10 +4,7 @@
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, users_path, class: 'btn btn-outline-primary me-4' %>
-
-    <% if editable_by_user?(@user, current_user) %>
-      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-primary float-right' %>
-    <% end %>
+    <%= link_to_if(policy(@user).edit?,  'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-primary float-right') {} %>
   </div>
 </div>
 
