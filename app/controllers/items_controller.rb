@@ -1,13 +1,14 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[ edit update destroy ]
 
   # GET /items or /items.json
   def index
     @items = Item.all
   end
 
-  # GET /items/1 or /items/1.json
   def show
+    @work_order = WorkOrder.find(params[:work_order_id])
+    @item = @work_order.items.find(params[:id])
   end
 
   # GET /items/new

@@ -56,8 +56,9 @@
         <td><%= item.brand.name %></td>
         <td><%= item.item_type.name %></td>
         <td>
+          <%= link_to 'View', work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm mr-4' %>
           <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-light btn-sm mr-4' %>
-            <%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+          <%= link_to 'Delete', work_order_item_path(@work_order, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
         </td>
       </tr>
     <% end %>
