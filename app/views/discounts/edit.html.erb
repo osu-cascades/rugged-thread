@@ -1,6 +1,12 @@
-<h1>Editing Discount</h1>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Editing <%= @discount.description_was %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 
-<%= render 'form', discount: @discount %>
-
-<%= link_to 'Show', @discount %> |
-<%= link_to 'Back', discounts_path %>
+<div class="form-container">
+  <%= render 'form', discount: @discount %>
+</div>

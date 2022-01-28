@@ -21,10 +21,9 @@ class DiscountsTest < ApplicationSystemTestCase
     fill_in "Description", with: "Fake Item Description"
     fill_in "Percentage amount", with: @discount.percentage_amount
     fill_in "Dollar amount", with: @discount.dollar_amount
-    click_on "Create Discount"
+    click_on "Save"
 
     assert_text "Discount was successfully created"
-    click_on "Back"
   end
 
   test "updating a Discount" do
@@ -34,10 +33,9 @@ class DiscountsTest < ApplicationSystemTestCase
     fill_in "Description", with: @discount.description
     fill_in "Percentage amount", with: @discount.percentage_amount
     fill_in "Dollar amount", with: @discount.dollar_amount
-    click_on "Update Discount"
+    click_on "Save"
 
     assert_text "Discount was successfully updated"
-    click_on "Back"
   end
 
   test "creating a blank Discount description" do
@@ -48,10 +46,9 @@ class DiscountsTest < ApplicationSystemTestCase
     fill_in "Percentage amount", with: @discount.percentage_amount
     fill_in "Dollar amount", with: @discount.dollar_amount
 
-    click_on "Create Discount"
+    click_on "Save"
 
     assert_text "Description can't be blank"
-    click_on "Back"
   end
 
   test "creating a duplicate Discount description" do
@@ -62,15 +59,14 @@ class DiscountsTest < ApplicationSystemTestCase
     fill_in "Percentage amount", with: @discount.percentage_amount
     fill_in "Dollar amount", with: @discount.dollar_amount
 
-    click_on "Create Discount"
+    click_on "Save"
 
     assert_text "Description has already been taken"
-    click_on "Back"
   end
 
   test "destroying a Discount" do
     visit discounts_path
-    click_on "Destroy", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Discount was successfully destroyed"
   end

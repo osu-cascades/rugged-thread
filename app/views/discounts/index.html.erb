@@ -1,31 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Discounts</h1>
-
-<table>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Discounts</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Discount', new_discount_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+<table class="table table-hover" id="discounts_table">
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Percentage Amount</th>
-      <th>Dollar Amount</th>
-      <th colspan="3"></th>
+      <th scope="col">Description</th>
+      <th scope="col">Percentage Amount</th>
+      <th scope="col">Dollar Amount</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @discounts.each do |discount| %>
-      <tr>
-        <td><%= discount.description %></td>
-        <td><%= discount.percentage_amount %></td>
-        <td><%= discount.dollar_amount %></td>
-        <td><%= link_to 'Show', discount %></td>
-        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
-        <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="<%= dom_class(discount) %>" id="<%= dom_id(discount) %>">
+        <td>
+          <%= link_to "#{discount.description}", discount %>
+        </td>
+        <td>
+          <%= discount.description %>
+        </td>
+        <td>
+          <%= discount.dollar_amount %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_discount_path(discount), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to'Delete', discount, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Discount', new_discount_path %>
