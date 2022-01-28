@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :technicians
   resources :tickets
-  resources :work_orders
+  resources :work_orders do
+    resources :items
+  end
 end

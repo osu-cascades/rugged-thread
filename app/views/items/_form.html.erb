@@ -1,4 +1,4 @@
-<%= form_with(model: item) do |form| %>
+<%= form_with(model: [work_order, item]) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -39,11 +39,6 @@
   <div class="mb-3">
     <%= form.label :brand_id %>
     <%= form.select :brand_id, Brand.all.map{ |brand| [brand.name, brand.id] }, {include_blank: "Select a Brand"}, class: 'form-select' %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :work_order_id %>
-    <%= form.select :work_order_id, WorkOrder.all.map{ |work_order| [work_order.id] }, {include_blank: "Select a Work Order"}, class: 'form-select' %>
   </div>
 
   <div class="mb-3">

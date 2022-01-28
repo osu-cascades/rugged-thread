@@ -21,11 +21,12 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
+    @work_order = WorkOrder.find(params[:work_order_id])
+    @item = @work_order.items.build(item_params)
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
+        format.html { redirect_to @work_order, notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +65,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:status, :due_date, :estimate, :labor_estimate, :notes, :brand_id, :work_order_id, :item_type_id, :item_status_id)
+      params.require(:item).permit(:due_date, :estimate, :labor_estimate, :notes, :brand_id, :work_order_id, :item_type_id, :item_status_id)
     end
 end

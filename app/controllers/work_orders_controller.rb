@@ -8,6 +8,8 @@ class WorkOrdersController < ApplicationController
 
   # GET /work_orders/1 or /work_orders/1.json
   def show
+    @item = Item.new
+    @items = @work_order.items
   end
 
   # GET /work_orders/new
