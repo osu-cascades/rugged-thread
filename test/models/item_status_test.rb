@@ -1,10 +1,21 @@
 require "test_helper"
 
 class ItemStatusTest < ActiveSupport::TestCase
+
+  test 'has many items' do
+    assert_respond_to(ItemStatus.new, :has_many)
+  end
+
+  test 'cannot be deleted if it has associated items' do
+    item_status = item_statuses(:one)
+    assert_not_empty item_status.items
+    item_status.destroy
+    refute item_status.destroyed?
+  end
+
   test 'Item Status has a name' do
     assert_respond_to(ItemStatus.new, :name)
   end
-
 
   test 'Item Status without a name is invalid' do
     item_status = item_statuses(:one)
