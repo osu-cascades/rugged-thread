@@ -1,6 +1,12 @@
-<h1>Editing Brand</h1>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Editing <%= @brand.name_was %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 
-<%= render 'form', brand: @brand %>
-
-<%= link_to 'Show', @brand %> |
-<%= link_to 'Back', brands_path %>
+<div class="form-container">
+  <%= render 'form', brand: @brand %>
+</div>

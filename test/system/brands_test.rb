@@ -19,10 +19,10 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "New Brand"
 
     fill_in "Name", with: "Fake Brand"
-    click_on "Create Brand"
+    click_on "Save"
 
     assert_text "Brand was successfully created"
-    click_on "Back"
+    click_on "Back to List"
   end
 
   test "updating a Brand" do
@@ -30,10 +30,10 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @brand.name
-    click_on "Update Brand"
+    click_on "Save"
 
     assert_text "Brand was successfully updated"
-    click_on "Back"
+    click_on "Back to List"
   end
 
   test "creating a blank Brand" do
@@ -41,10 +41,10 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "New Brand"
 
     fill_in "Name", with: ""
-    click_on "Create Brand"
+    click_on "Save"
 
     assert_text "Name can't be blank"
-    click_on "Back"
+    click_on "Cancel"
   end
 
   test "creating a duplicate Brand" do
@@ -52,17 +52,17 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "New Brand"
 
     fill_in "Name", with: brands(:two).name
-    click_on "Create Brand"
+    click_on "Save"
 
     assert_text "Name has already been taken"
-    click_on "Back"
+    click_on "Cancel"
   end
 
   test "destroying a Brand that has no items" do
     visit brands_path
     dom_id = "#brand_#{brands(:itemless).id}"
     within dom_id do
-      click_on "Destroy"
+      click_on "Delete"
     end
     assert_text "Brand was successfully destroyed"
   end
@@ -71,7 +71,7 @@ class BrandsTest < ApplicationSystemTestCase
     visit brands_path
     dom_id = "#brand_#{brands(:one).id}"
     within dom_id do
-      click_on "Destroy"
+      click_on "Delete"
     end
     assert_text "Cannot delete this brand"
   end

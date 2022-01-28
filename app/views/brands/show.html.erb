@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Brand Information</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, brands_path, class: 'btn btn-outline-primary me-4' %>
+    <%= link_to 'Edit  Brand', edit_brand_path(@brand), class: 'btn btn-outline-primary float-right'%>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @brand.name %>
-</p>
-
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">
+    <%= @brand.name %>
+  </dd>
+</dl>
