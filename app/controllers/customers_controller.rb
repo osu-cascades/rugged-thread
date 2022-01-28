@@ -1,13 +1,14 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[ show edit update destroy ]
+  before_action :set_customer, only: %i[ edit update destroy ]
 
   # GET /customers or /customers.json
   def index
     @customers = Customer.all
   end
 
-  # GET /customers/1 or /customers/1.json
   def show
+    @customer = Customer.find(params[:id])
+    @work_orders = @customer.work_orders
   end
 
   # GET /customers/new
