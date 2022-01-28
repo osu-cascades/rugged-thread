@@ -1,13 +1,14 @@
 class ItemStatusesController < ApplicationController
-  before_action :set_item_status, only: %i[ show edit update destroy ]
+  before_action :set_item_status, only: %i[ edit update destroy ]
 
   # GET /item_statuses or /item_statuses.json
   def index
     @item_statuses = ItemStatus.all
   end
 
-  # GET /item_statuses/1 or /item_statuses/1.json
   def show
+    @item_status = ItemStatus.find(params[:id])
+    @items = @item_status.items
   end
 
   # GET /item_statuses/new
