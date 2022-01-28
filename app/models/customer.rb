@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+
   has_many :work_orders, dependent: :restrict_with_error
 
   def full_name

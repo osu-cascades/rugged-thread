@@ -31,4 +31,11 @@ class ItemStatusTest < ActiveSupport::TestCase
     item_status.name = existing_item_status_name
     refute item_status.valid?
   end
+
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    item_status = ItemStatus.new(name: name)
+    assert_equal name, item_status.to_s
+  end
+
 end

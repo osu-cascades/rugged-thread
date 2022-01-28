@@ -1,6 +1,7 @@
 require "test_helper"
 
 class ShopParameterTest < ActiveSupport::TestCase
+
   test 'Shop Parameter has a name' do
     assert_respond_to(ShopParameter.new, :name)
   end
@@ -19,4 +20,13 @@ class ShopParameterTest < ActiveSupport::TestCase
     shop_parameter.name = existing_shop_parameter_name
     refute shop_parameter.valid?
   end
+
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    amount = 1
+    expected = "#{name} $#{amount}"
+    shop_parameter = ShopParameter.new(name: name, amount: amount)
+    assert_equal expected, shop_parameter.to_s
+  end
+
 end

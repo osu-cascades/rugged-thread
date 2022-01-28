@@ -17,4 +17,10 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.destroyed?
   end
 
+  test '#to_s string representation' do
+    work_order = work_orders(:shipping)
+    expected = "Work Order #{work_order.id}"
+    assert_equal expected, work_order.to_s
+  end
+
 end

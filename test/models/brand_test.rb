@@ -31,4 +31,12 @@ class BrandTest < ActiveSupport::TestCase
     brand.name = existing_brand_name
     refute brand.valid?
   end
+
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    brand = Brand.new(name: name)
+    assert_equal name, brand.to_s
+  end
+
+
 end

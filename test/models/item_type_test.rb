@@ -31,4 +31,11 @@ class ItemTypeTest < ActiveSupport::TestCase
     item_type.name = existing_item_type_name
     refute item_type.valid?
   end
+
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    item_type = ItemType.new(name: name)
+    assert_equal name, item_type.to_s
+  end
+
 end
