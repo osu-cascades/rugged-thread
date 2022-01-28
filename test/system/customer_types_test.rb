@@ -20,10 +20,9 @@ class CustomerTypesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: "Fake Customer"
 
-    click_on "Create Customer type"
+    click_on "Save"
 
     assert_text "Customer type was successfully created"
-    click_on "Back"
   end
 
   test "updating a Customer type" do
@@ -32,10 +31,9 @@ class CustomerTypesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @customer_type.name
 
-    click_on "Update Customer type"
+    click_on "Save"
 
     assert_text "Customer type was successfully updated"
-    click_on "Back"
   end
 
   test "creating a blank Customer Type" do
@@ -43,10 +41,9 @@ class CustomerTypesTest < ApplicationSystemTestCase
     click_on "New Customer Type"
 
     fill_in "Name", with: ""
-    click_on "Create Customer type"
+    click_on "Save"
 
     assert_text "Name can't be blank"
-    click_on "Back"
   end
 
   test "creating a duplicate Customer Type" do
@@ -54,15 +51,14 @@ class CustomerTypesTest < ApplicationSystemTestCase
     click_on "New Customer Type"
 
     fill_in "Name", with: customer_types(:two).name
-    click_on "Create Customer type"
+    click_on "Save"
 
     assert_text "Name has already been taken"
-    click_on "Back"
   end
 
   test "destroying a Customer type" do
     visit customer_types_path
-    click_on "Destroy", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Customer type was successfully destroyed"
   end
