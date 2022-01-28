@@ -22,7 +22,6 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Brand was successfully created"
-    click_on "Back to List"
   end
 
   test "updating a Brand" do
@@ -33,7 +32,6 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Brand was successfully updated"
-    click_on "Back to List"
   end
 
   test "creating a blank Brand" do
@@ -44,7 +42,6 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Name can't be blank"
-    click_on "Cancel"
   end
 
   test "creating a duplicate Brand" do
@@ -55,7 +52,6 @@ class BrandsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Name has already been taken"
-    click_on "Cancel"
   end
 
   test "destroying a Brand that has no items" do

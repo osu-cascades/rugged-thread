@@ -24,7 +24,6 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Account was successfully created"
-    click_on "Back to List"
   end
 
   test "updating a Account" do
@@ -37,7 +36,6 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Account was successfully updated"
-    click_on "Back to List"
   end
 
   test "creating a blank Account description" do
@@ -51,7 +49,6 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Name can't be blank"
-    click_on "Cancel"
   end
 
   test "creating a duplicate Account description" do
@@ -65,7 +62,6 @@ class AccountsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Name has already been taken"
-    click_on "Cancel"
   end
 
   test "destroying a Account" do
