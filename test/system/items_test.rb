@@ -14,22 +14,17 @@ class ItemsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Items"
   end
 
-  test "creating a Item" do
-    skip
-    visit items_path
-    click_on "New Item"
-
-    fill_in "Estimate", with: @item.estimate
-    fill_in "Labor estimate", with: @item.labor_estimate
-    fill_in "Notes", with: @item.notes
+  test "Adding an item to a work order" do
+    visit work_order_path(work_orders(:shipping))
+    fill_in 'Due date', with: Date.current.to_s
+    fill_in "Estimate", with: 100
+    fill_in "Labor estimate", with: 200
+    fill_in "Notes", with: 'FAKE'
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
-    select work_orders(:shipping).id, from: :item_work_order_id
     select item_types(:one).name, from: :item_item_type_id
     click_on "Create Item"
-
     assert_text "Item was successfully created"
-    click_on "Back"
   end
 
   test "updating a Item" do
@@ -55,4 +50,5 @@ class ItemsTest < ApplicationSystemTestCase
     click_on "Destroy", match: :first
     assert_text "Item was successfully destroyed"
   end
+
 end
