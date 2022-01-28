@@ -48,13 +48,13 @@
     <% @items.each do |item| %>
       <tr>
         <th scope="row"><%= item.id %></th>
-        <td><%= item.item_status.name %></td>
+        <td><%= link_to item.item_status, item.item_status %></td>
         <td><%= item.due_date %></td>
         <td><%= item.estimate %></td>
         <td><%= item.labor_estimate %></td>
         <td><%= item.notes %></td>
-        <td><%= item.brand.name %></td>
-        <td><%= item.item_type.name %></td>
+        <td><%= link_to item.brand, item.brand %></td>
+        <td><%= link_to item.item_type, item.item_type %></td>
         <td>
           <%= link_to 'View', work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm mr-4' %>
           <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-light btn-sm mr-4' %>
