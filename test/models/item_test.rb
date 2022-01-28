@@ -14,4 +14,8 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :item_type)
   end
 
+  test "belongs to an item status" do
+    assert_respond_to(Item.new, :item_status)
+  end
+
 end

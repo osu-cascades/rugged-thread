@@ -3,7 +3,7 @@ require "test_helper"
 class ItemStatusTest < ActiveSupport::TestCase
 
   test 'has many items' do
-    assert_respond_to(ItemStatus.new, :has_many)
+    assert_respond_to(ItemStatus.new, :items)
   end
 
   test 'cannot be deleted if it has associated items' do
