@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control'%>
   </div>
 
-  <div class="field">
-    <%= form.label :turn_around %>
-    <%= form.number_field :turn_around %>
+  <div class="mb-3">
+    <%= form.label :turn_around, class: "form-label" %>
+    <%= form.number_field :turn_around, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= form.label :cost_share %>
-    <%= form.number_field :cost_share %>
+  <div class="mb-3">
+    <%= form.label :cost_share, class: 'form-label'%>
+    <%= form.number_field :cost_share, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'form-control btn btn-success' %>
   </div>
 <% end %>

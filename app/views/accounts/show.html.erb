@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Account Information</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, accounts_path, class: 'btn btn-outline-primary me-4' %>
+    <%= link_to 'Edit  Account', edit_account_path(@account), class: 'btn btn-outline-primary float-right'%>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @account.name %>
-</p>
-
-<p>
-  <strong>Turn Around:</strong>
-  <%= @account.turn_around %>
-</p>
-
-<p>
-  <strong>Cost Share:</strong>
-  <%= @account.cost_share %>
-</p>
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">
+    <%= @account.name %>
+  </dd>
+  <dt class="col-sm-3">Turn Around</dt>
+  <dd class="col-sm-9">
+    <%= @account.turn_around %>
+  </dd>
+  <dt class="col-sm-3">Cost Share</dt>
+  <dd class="col-sm-9">
+    <%= @account.cost_share %>
+  </dd>
+</dl>
