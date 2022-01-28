@@ -7,3 +7,40 @@
 
 <%= link_to 'Edit', edit_item_type_path(@item_type) %> |
 <%= link_to 'Back', item_types_path %>
+
+<h2 class="mt-5">Items</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Work Order</th>
+      <th scope="col">Item Status</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Estimate</th>
+      <th scope="col">Labor Estimate</th>
+      <th scope="col">Notes</th>
+      <th scope="col">Item Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.id %></th>
+        <td><%= link_to item.item_status, item.item_status %></td>
+        <td><%= link_to item.work_order, item.work_order %></td>
+        <td><%= item.due_date %></td>
+        <td><%= item.estimate %></td>
+        <td><%= item.labor_estimate %></td>
+        <td><%= item.notes %></td>
+        <td><%= link_to item.item_type, item.item_type %></td>
+        <td>
+          <%= link_to 'View', work_order_item_path(item.work_order, item), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to 'Edit', edit_work_order_item_path(item.work_order, item), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to 'Delete', work_order_item_path(item.work_order, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

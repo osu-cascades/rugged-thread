@@ -1,13 +1,14 @@
 class ItemTypesController < ApplicationController
-  before_action :set_item_type, only: %i[ show edit update destroy ]
+  before_action :set_item_type, only: %i[ edit update destroy ]
 
   # GET /item_types or /item_types.json
   def index
     @item_types = ItemType.all
   end
 
-  # GET /item_types/1 or /item_types/1.json
   def show
+    @item_type = ItemType.find(params[:id])
+    @items = @item_type.items
   end
 
   # GET /item_types/new
