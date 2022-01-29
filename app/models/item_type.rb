@@ -4,6 +4,8 @@ class ItemType < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  default_scope { order('name ASC') }
+
   def to_s
     name
   end

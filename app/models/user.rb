@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, allow_blank: false
 
+  default_scope { order('name ASC') }
+
   def active_for_authentication?
     super && active?
   end
