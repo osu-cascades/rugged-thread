@@ -11,7 +11,7 @@ customer = Customer.create!(  first_name: 'Example', last_name: 'Customer',
  email_address: 'exampleCustomer@email.com', street_address: '123 Sesame Street', city: 'Bend', 
  state: 'OR', zip_code: '97704')
 
-work_order = WorkOrder.create!(in_date: Date.today, estimate: 100, shipping: true, customer: customer)
+work_order = WorkOrder.create!(in_date: Date.today, shipping: true, customer: customer)
 
 brand = Brand.create!(name: 'Example Brand One')
 Brand.create!(name: 'Example Brand Two')
