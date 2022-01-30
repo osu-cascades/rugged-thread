@@ -34,4 +34,8 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test '#estimate' do
+    skip
+  end
+
 end

@@ -11,4 +11,8 @@ class WorkOrder < ApplicationRecord
     "Work Order #{id}"
   end
 
+  def estimate
+    'TODO' # Stub. See https://github.com/osu-cascades/rugged-thread/issues/71
+  end
+
 end

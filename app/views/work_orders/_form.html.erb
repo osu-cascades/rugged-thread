@@ -13,7 +13,7 @@
 
   <div class="mb-3">
     <%= form.label :customer_id, class: 'form-label' %>
-    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: "Select a Customer"}, class: 'form-select' %>
+    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: ''}, class: 'form-select' %>
   </div>
 
   <div class="mb-3">
@@ -21,12 +21,7 @@
     <%= form.date_field :in_date, class: 'form-control' %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :estimate, class: 'form-label' %>
-    <%= form.text_field :estimate, class: 'form-control' %>
-  </div>
-
-  <div class="form-check mb-3">
+  <div class="form-check mb-3 mt-4">
     <%= form.check_box :shipping, class: 'form-check-input' %>
     <%= form.label :shipping, class: 'form-check-label' %>
   </div>
