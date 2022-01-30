@@ -8,6 +8,7 @@ one:
   city: Fakeville
   state: OR
   zip_code: 12345
+  customer_type: one
 
 two:
   first_name: Second Fake
@@ -19,6 +20,7 @@ two:
   city: Fakeville
   state: OR
   zip_code: 12345
+  customer_type: one
 
 without_work_order:
   first_name: Third Fake
@@ -30,3 +32,4 @@ without_work_order:
   city: Fakeville
   state: OR
   zip_code: 12345
+  customer_type: one

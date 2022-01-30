@@ -6,6 +6,11 @@ User.create!(name: 'Developer Deactivated', email: 'deactivated@example.com',
  password: 'password', password_confirmation: 'password', role: 'admin',
  status: 'inactive')
  
+CustomerType.create!(name: 'B2B Local')
+CustomerType.create!(name: 'B2B National')
+CustomerType.create!(name: 'B2C Local')
+CustomerType.create!(name: 'B2C Ship')
+
 customer = Customer.create!(  first_name: 'Example', last_name: 'Customer',
  business_name: 'Example Business', phone_number: '541-555-5555',
  email_address: 'exampleCustomer@email.com', street_address: '123 Sesame Street', city: 'Bend', 

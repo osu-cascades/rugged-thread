@@ -12,6 +12,10 @@
   <strong>Customer:</strong>
   <%= link_to @work_order.customer.full_name, @work_order.customer %>
 </p>
+<p>
+  <strong>Customer Type:</strong>
+  <%= link_to @work_order.customer.customer_type, @work_order.customer.customer_type %>
+</p>
 
 <p>
   <strong>In date:</strong>

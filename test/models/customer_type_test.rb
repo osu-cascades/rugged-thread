@@ -2,18 +2,29 @@ require "test_helper"
 
 class CustomerTypeTest < ActiveSupport::TestCase
 
-  test 'Customer Type has a name' do
+  test 'attributes' do
     assert_respond_to(CustomerType.new, :name)
   end
 
-  test 'Customer Type without a name is invalid' do
+  test 'associations' do
+    assert_respond_to(CustomerType.new, :customers)
+  end
+
+  test 'cannot be deleted if it has associated customers' do
+    customer_type = customers.first.customer_type
+    assert_not_empty customer_type.customers
+    customer_type.destroy
+    refute customer_type.destroyed?
+  end
+
+  test 'must have a name' do
     customer_type = customer_types(:one)
     assert customer_type.valid?
     customer_type.name = nil
     refute customer_type.valid?
   end
 
-  test 'Customer Type with a non-unique name is invalid' do
+  test 'name must be unique' do
     existing_customer_type_name = customer_types(:one).name
     customer_type = customer_types(:two)
     assert customer_type.valid?

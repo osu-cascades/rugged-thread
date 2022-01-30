@@ -11,6 +11,11 @@
   <% end %>
 
   <div class="mb-3">
+    <%= form.label :customer_type_id, class: 'form-label' %>
+    <%= form.collection_select :customer_type_id, customer_types, :id, :name, {include_blank: ''}, {class: 'form-select'} %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :first_name, class: 'form-label' %>
     <%= form.text_field :first_name, class: 'form-control' %>
   </div>

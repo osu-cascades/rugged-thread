@@ -15,14 +15,15 @@ class CustomersTest < ApplicationSystemTestCase
 
   test "creating a Customer" do
     visit new_customer_path
-    fill_in "Business name", with: 'Fake Business'
-    fill_in "City", with: 'Fake City'
-    fill_in "Email address", with: 'fake@fake.com'
+    select customer_types(:one).name, from: 'Customer type'
     fill_in "First name", with: 'Fake'
     fill_in "Last name", with: 'Customer'
+    fill_in "Business name", with: 'Fake Business'
+    fill_in "Email address", with: 'fake@fake.com'
     fill_in "Phone number", with: '5555555555'
-    fill_in "State", with: 'OR'
     fill_in "Street address", with: '123 Fake St.'
+    fill_in "City", with: 'Fake City'
+    fill_in "State", with: 'OR'
     fill_in "Zip code", with: '12345'
     click_on "Save"
     assert_text "Customer was successfully created"
@@ -36,16 +37,14 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "destroying a customer that has no work orders" do
-    visit customers_path
-    dom_id = "#customer_#{customers(:without_work_order).id}"
-    within(dom_id) { click_on "Delete" }
+    visit customer_path(customers(:without_work_order))
+    click_on 'Delete'
     assert_text "Customer was successfully destroyed"
   end
 
   test "failing to destroy a customer that has work orders" do
-    visit customers_path
-    dom_id = "#customer_#{customers(:one).id}"
-    within(dom_id) { click_on "Delete" }
+    visit customer_path(work_orders.first.customer)
+    click_on 'Delete'
     assert_text "Cannot delete this customer"
   end
 

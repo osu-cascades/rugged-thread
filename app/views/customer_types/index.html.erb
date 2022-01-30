@@ -11,18 +11,17 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th>Number of Customers</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @customer_types.each do |customer_type| %>
       <tr class="<%= dom_class(customer_type) %>" id="<%= dom_id(customer_type) %>">
+        <td><%= customer_type %></td>
+        <td><%= customer_type.customers.count %></td>
         <td>
-          <%= link_to "#{customer_type.name}", customer_type %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_customer_type_path(customer_type), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', customer_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+          <%= link_to 'Details', customer_type_path(customer_type), class: 'btn btn-light btn-sm mr-4' %>
         </td>
       </tr>
     <% end %>

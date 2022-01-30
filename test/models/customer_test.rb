@@ -2,7 +2,20 @@ require "test_helper"
 
 class CustomerTest < ActiveSupport::TestCase
 
-  test "has many work orders" do
+  test 'attributes' do
+    assert_respond_to(Customer.new, :first_name)
+    assert_respond_to(Customer.new, :last_name)
+    assert_respond_to(Customer.new, :business_name)
+    assert_respond_to(Customer.new, :phone_number)
+    assert_respond_to(Customer.new, :email_address)
+    assert_respond_to(Customer.new, :street_address)
+    assert_respond_to(Customer.new, :city)
+    assert_respond_to(Customer.new, :state)
+    assert_respond_to(Customer.new, :zip_code)
+  end
+
+  test 'assocations' do
+    assert_respond_to(Customer.new, :customer_type)
     assert_respond_to(Customer.new, :work_orders)
   end
 

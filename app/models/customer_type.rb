@@ -1,5 +1,7 @@
 class CustomerType < ApplicationRecord
 
+  has_many :customers, dependent: :restrict_with_error
+
   validates :name, presence: true
   validates :name, uniqueness: true
 

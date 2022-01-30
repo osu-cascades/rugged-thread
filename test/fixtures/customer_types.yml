@@ -3,3 +3,6 @@ one:
 
 two:
   name: Fake Customer Type 2
+
+customerless:
+  name: Fake Customerless Customer Type

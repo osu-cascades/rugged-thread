@@ -41,9 +41,16 @@ class CustomerTypesTest < ApplicationSystemTestCase
     assert_text "Name has already been taken"
   end
 
-  test "destroying a Customer type" do
-    visit customer_types_path
-    click_on "Delete", match: :first
+  test "destroying a customer type that has no customers" do
+    visit customer_type_path(customer_types(:customerless))
+    click_on 'Delete'
     assert_text "Customer type was successfully destroyed"
   end
+
+  test "failing to destroy a customer type that has customers" do
+    visit customer_type_path(customers.first.customer_type)
+    click_on 'Delete'
+    assert_text "Cannot delete this customer type"
+  end
+
 end

@@ -1,13 +1,14 @@
 class CustomerTypesController < ApplicationController
-  before_action :set_customer_type, only: %i[ show edit update destroy ]
 
-  # GET /customer_types or /customer_types.json
+  before_action :set_customer_type, only: %i[ edit update destroy ]
+
   def index
     @customer_types = CustomerType.all
   end
 
-  # GET /customer_types/1 or /customer_types/1.json
   def show
+    @customer_type = CustomerType.find(params[:id])
+    @customers = @customer_type.customers
   end
 
   # GET /customer_types/new
@@ -47,23 +48,26 @@ class CustomerTypesController < ApplicationController
     end
   end
 
-  # DELETE /customer_types/1 or /customer_types/1.json
   def destroy
-    @customer_type.destroy
     respond_to do |format|
-      format.html { redirect_to customer_types_url, notice: "Customer type was successfully destroyed." }
-      format.json { head :no_content }
+      if @customer_type.destroy
+        format.html { redirect_to customer_types_url, notice: "Customer type was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to brands_url, alert: 'Cannot delete this customer type.' }
+        format.json { render json: @brand.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_customer_type
       @customer_type = CustomerType.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def customer_type_params
       params.require(:customer_type).permit(:name)
     end
+
 end
