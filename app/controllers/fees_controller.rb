@@ -62,8 +62,8 @@ class FeesController < ApplicationController
       @fee = Fee.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def fee_params
-      params.require(:fee).permit(:description, :price)
+      params.require(:fee).permit(:name, :price)
     end
+
 end

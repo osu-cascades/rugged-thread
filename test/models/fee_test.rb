@@ -1,23 +1,46 @@
 require "test_helper"
 
 class FeeTest < ActiveSupport::TestCase
-  test 'Fee has a description' do
-    assert_respond_to(Fee.new, :description)
+
+  test 'attributes' do
+    assert_respond_to(Fee.new, :name)
+    assert_respond_to(Fee.new, :price)
   end
 
-
-  test 'Fee without a description is invalid' do
+  test 'must have a name' do
     fee = fees(:one)
     assert fee.valid?
-    fee.description = nil
+    fee.name = nil
     refute fee.valid?
   end
 
-  test 'Fee with a non-unique description is invalid' do
-    existing_fee_description = fees(:one).description
+  test 'name must be unique' do
+    existing_fee_name = fees(:one).name
     fee = fees(:two)
     assert fee.valid?
-    fee.description = existing_fee_description
+    fee.name = existing_fee_name
     refute fee.valid?
   end
+
+  test 'must have a numeric price' do
+    fee = fees(:one)
+    assert fee.valid?
+    fee.price = 'FAKE'
+    refute fee.valid?
+  end
+
+  test 'price cannot be negative or zero' do
+    fee = fees(:one)
+    assert fee.valid?
+    fee.price = -1
+    refute fee.valid?
+    fee.price = 0
+    refute fee.valid?
+  end
+
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    assert_equal(name, Fee.new(name: name).to_s)
+  end
+
 end

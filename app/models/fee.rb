@@ -1,12 +1,12 @@
 class Fee < ApplicationRecord
 
-  validates :description, presence: true, uniqueness: true
-  validates :price , numericality: { only_integer: true }, allow_nil: true
+  validates :name, presence: true, uniqueness: true
+  validates :price , numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 
-  default_scope { order('description ASC') }
+  default_scope { order('name ASC') }
 
   def to_s
-    "#{description} $#{price}"
+    "#{name}"
   end
 
 end

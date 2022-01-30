@@ -1,7 +1,7 @@
 one:
-  description: Fake Fee 1
+  name: Fake Fee 1
   price: 1
 
 two:
-  description: Fake Fee 2
+  name: Fake Fee 2
   price: 2
