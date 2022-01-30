@@ -1,17 +1,14 @@
 shipping:
   in_date: 2022-01-23
-  estimate: 1
   shipping: true
   customer: one
 
 not_shipping:
   in_date: 2022-01-23
-  estimate: 2
   shipping: false
   customer: one
 
 itemless:
   in_date: 2022-01-23
-  estimate: 3
   shipping: false
   customer: one
