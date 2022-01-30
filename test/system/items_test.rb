@@ -5,7 +5,6 @@ class ItemsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @item = items(:one)
     sign_in users(:staff)
   end
 
@@ -17,8 +16,8 @@ class ItemsTest < ApplicationSystemTestCase
   test "Adding an item to a work order" do
     visit work_order_path(work_orders(:shipping))
     fill_in 'Due date', with: Date.current.to_s
-    fill_in "Estimate", with: 100
-    fill_in "Labor estimate", with: 200
+    fill_in "Estimate", with: 1
+    fill_in "Labor estimate", with: 2
     fill_in "Notes", with: 'FAKE'
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
@@ -29,23 +28,14 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "updating a Item" do
     skip
-    visit items_path
-    click_on "Edit", match: :first
-
-    fill_in "Estimate", with: @item.estimate
-    fill_in "Labor estimate", with: @item.labor_estimate
-    fill_in "Notes", with: @item.notes
-    select item_statuses(:one).name, from: :item_item_status_id
-    select brands(:one).name, from: :item_brand_id
-    select work_orders(:shipping).id, from: :item_work_order_id
-    select item_types(:one).name, from: :item_item_type_id
+    visit edit_item_path(items(:one))
+    fill_in "Notes", with: 'Fake Updated Note'
     click_on "Update Item"
-
     assert_text "Item was successfully updated"
-    click_on "Back"
   end
 
-  test "destroying a Item" do
+  test "destroying an Item" do
+    skip
     visit items_path
     click_on "Destroy", match: :first
     assert_text "Item was successfully destroyed"

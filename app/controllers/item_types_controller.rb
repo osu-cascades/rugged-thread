@@ -48,12 +48,15 @@ class ItemTypesController < ApplicationController
     end
   end
 
-  # DELETE /item_types/1 or /item_types/1.json
   def destroy
-    @item_type.destroy
     respond_to do |format|
-      format.html { redirect_to item_types_url, notice: "Item type was successfully destroyed." }
-      format.json { head :no_content }
+      if @item_type.destroy
+        format.html { redirect_to item_types_url, notice: "Item type was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_types_url, alert: 'Cannot delete this item type.' }
+        format.json { render json: @item_type.errors, status: :unprocessable_entity }
+      end
     end
   end
 

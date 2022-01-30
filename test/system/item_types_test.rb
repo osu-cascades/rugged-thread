@@ -5,7 +5,6 @@ class ItemTypesTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @item_type = item_types(:one)
     sign_in users(:staff)
   end
 
@@ -15,53 +14,45 @@ class ItemTypesTest < ApplicationSystemTestCase
   end
 
   test "creating a Item type" do
-    visit item_types_path
-    click_on "New Item Type"
+    visit new_item_type_path
     fill_in "Name", with: "Fake Item Type"
     click_on "Create Item type"
-
     assert_text "Item type was successfully created"
-    click_on "Back"
   end
 
   test "updating a Item type" do
-    visit item_types_path
-    click_on "Edit", match: :first
-    fill_in "Name", with: @item_type.name
+    visit edit_item_type_path(item_types(:one))
+    fill_in "Name", with: "Updated Fake Item Type"
     click_on "Update Item type"
-
     assert_text "Item type was successfully updated"
-    click_on "Back"
   end
 
-  test "creating a blank Item type name" do
-    visit item_types_path
-    click_on "New Item Type"
-
+  test "creating an item type with a blank name fails" do
+    visit new_item_type_path
     fill_in "Name", with: ""
-
     click_on "Create Item type"
-
     assert_text "Name can't be blank"
-    click_on "Back"
   end
 
-  test "creating a duplicate Item type name" do
-    visit item_types_path
-    click_on "New Item Type"
-
-    fill_in "Name", with: @item_type.name
-
+  test "creating an item type with a duplicate name fails" do
+    visit new_item_type_path
+    fill_in "Name", with: item_types(:one).name
     click_on "Create Item type"
-
     assert_text "Name has already been taken"
-    click_on "Back"
   end
 
-  test "destroying a Item type" do
-    skip
+  test "destroying a item type that has no items" do
     visit item_types_path
-    click_on "Destroy", match: :first
+    dom_id = "#item_type_#{item_types(:itemless).id}"
+    within(dom_id) { click_on "Delete" }
     assert_text "Item type was successfully destroyed"
   end
+
+  test "failing to destroy a item type that has items" do
+    visit item_types_path
+    dom_id = "#item_type_#{item_types(:one).id}"
+    within(dom_id) { click_on "Delete" }
+    assert_text "Cannot delete this item type"
+  end
+
 end

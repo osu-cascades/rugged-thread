@@ -1,21 +1,19 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   due_date: 2022-01-25
-  estimate: 50
-  labor_estimate: 100
-  notes: Item is in bad shape.
-  brand: one
+  estimate: 1
+  labor_estimate: 1
+  notes: First fake item
   work_order: shipping
+  brand: one
   item_type: one
   item_status: one
 
 two:
   due_date: 2022-01-25
-  estimate: 100
-  labor_estimate: 50
-  notes: Item requires special care.
-  brand: two
+  estimate: 2
+  labor_estimate: 2
+  notes: Second fake item
   work_order: shipping
+  brand: two
   item_type: two
   item_status: two

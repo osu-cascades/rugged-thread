@@ -20,7 +20,7 @@
   </thead>
   <tbody>
     <% @work_orders.each do |work_order| %>
-      <tr>
+      <tr class="<%= dom_class(work_order) %>" id="<%= dom_id(work_order) %>">
         <th scope="row"><%= work_order.id %></th>
         <td><%= work_order.customer.full_name %></td>
         <td><%= work_order.in_date %></td>
@@ -29,7 +29,7 @@
         <td>
           <%= link_to 'View', work_order, class: 'btn btn-light btn-sm mr-4' %>
           <%= link_to 'Edit', edit_work_order_path(work_order), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to 'Destroy', work_order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+          <%= link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
         </td>
       </tr>
     <% end %>

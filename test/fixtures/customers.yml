@@ -1,23 +1,32 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  first_name: FakeFirstName
-  last_name: FakeLastName
-  business_name: FakeBusiness
-  phone_number: FakePhoneNumber
-  email_address: FakeEmail
-  street_address: FakeStreet
-  city: FakeCity
-  state: FakeState
-  zip_code: FakeZip
+  first_name: First Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  email_address: fake01@example.com
+  street_address: 123 Fake Street
+  city: Fakeville
+  state: OR
+  zip_code: 12345
 
 two:
-  first_name: FakeFirstName1
-  last_name: FakeLastName1
-  business_name: FakeBusiness1
-  phone_number: FakePhoneNumber1
-  email_address: FakeEmail1
-  street_address: FakeStreet1
-  city: FakeCity1
-  state: FakeState1
-  zip_code: FakeZip1
+  first_name: Second Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  email_address: fake02@example.com
+  street_address: 567 Fake Street
+  city: Fakeville
+  state: OR
+  zip_code: 12345
+
+without_work_order:
+  first_name: Third Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  email_address: fake03@example.com
+  street_address: 890 Fake Street
+  city: Fakeville
+  state: OR
+  zip_code: 12345

@@ -5,7 +5,6 @@ class CustomersTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
   
   setup do
-    @customer = customers(:one)
     sign_in users(:staff)
   end
 
@@ -15,48 +14,39 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "creating a Customer" do
-    visit customers_path
-    click_on "New Customer"
-
-    fill_in "Business name", with: @customer.business_name
-    fill_in "City", with: @customer.city
-    fill_in "Email address", with: @customer.email_address
-    fill_in "First name", with: @customer.first_name
-    fill_in "Last name", with: @customer.last_name
-    fill_in "Phone number", with: @customer.phone_number
-    fill_in "State", with: @customer.state
-    fill_in "Street address", with: @customer.street_address
-    fill_in "Zip code", with: @customer.zip_code
+    visit new_customer_path
+    fill_in "Business name", with: 'Fake Business'
+    fill_in "City", with: 'Fake City'
+    fill_in "Email address", with: 'fake@fake.com'
+    fill_in "First name", with: 'Fake'
+    fill_in "Last name", with: 'Customer'
+    fill_in "Phone number", with: '5555555555'
+    fill_in "State", with: 'OR'
+    fill_in "Street address", with: '123 Fake St.'
+    fill_in "Zip code", with: '12345'
     click_on "Save"
-
     assert_text "Customer was successfully created"
-    click_on "Back"
   end
 
   test "updating a Customer" do
-    visit customers_path
-    click_on "Edit", match: :first
-
-    fill_in "Business name", with: @customer.business_name
-    fill_in "City", with: @customer.city
-    fill_in "Email address", with: @customer.email_address
-    fill_in "First name", with: @customer.first_name
-    fill_in "Last name", with: @customer.last_name
-    fill_in "Phone number", with: @customer.phone_number
-    fill_in "State", with: @customer.state
-    fill_in "Street address", with: @customer.street_address
-    fill_in "Zip code", with: @customer.zip_code
+    visit edit_customer_path(customers(:one))
+    fill_in "Last name", with: 'Updated Fake Last Name'
     click_on "Save"
-
     assert_text "Customer was successfully updated"
-    click_on "Back"
   end
 
-  test "destroying a Customer" do
-    skip
+  test "destroying a customer that has no work orders" do
     visit customers_path
-    click_on "Destroy", match: :first
-
+    dom_id = "#customer_#{customers(:without_work_order).id}"
+    within(dom_id) { click_on "Delete" }
     assert_text "Customer was successfully destroyed"
   end
+
+  test "failing to destroy a customer that has work orders" do
+    visit customers_path
+    dom_id = "#customer_#{customers(:one).id}"
+    within(dom_id) { click_on "Delete" }
+    assert_text "Cannot delete this customer"
+  end
+
 end

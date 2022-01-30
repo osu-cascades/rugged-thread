@@ -5,42 +5,43 @@ class WorkOrdersTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @work_order = work_orders(:shipping)
     sign_in users(:staff)
   end
 
-  test "visiting the index" do
+  test "viewing a list of work orders" do
     visit work_orders_path
     assert_selector "h1", text: "Work Orders"
   end
 
-  test "creating a Work order" do
-    visit work_orders_path
-    click_on "New Work Order"
+  test "creating a work order" do
+    visit new_work_order_path
     select customers(:one).full_name, from: :work_order_customer_id
-    fill_in "Estimate", with: @work_order.estimate
-    check "Shipping" if @work_order.shipping
+    fill_in "In date", with: "1/1/2022"
+    fill_in "Estimate", with: 1
+    check "Shipping"
     click_on "Create Work order"
-
     assert_text "Work order was successfully created"
-    click_on "Back"
   end
 
   test "updating a Work order" do
-    visit work_orders_path
-    click_on "Edit", match: :first
-
-    fill_in "Estimate", with: @work_order.estimate
-    check "Shipping" if @work_order.shipping
+    visit edit_work_order_path(work_orders(:shipping))
+    fill_in "Estimate", with: 1000
     click_on "Update Work order"
-
     assert_text "Work order was successfully updated"
-    click_on "Back"
   end
 
-  test "destroying a Work order" do
+  test "destroying a work order that has no items" do
     visit work_orders_path
-    click_on "Destroy", match: :first
+    dom_id = "#work_order_#{work_orders(:itemless).id}"
+    within(dom_id) { click_on "Delete" }
     assert_text "Work order was successfully destroyed"
   end
+
+  test "failing to destroy a work order that has items" do
+    visit work_orders_path
+    dom_id = "#work_order_#{work_orders(:shipping).id}"
+    within(dom_id) { click_on "Delete" }
+    assert_text "Cannot delete this work order"
+  end
+
 end

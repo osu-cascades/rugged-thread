@@ -48,12 +48,15 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1 or /customers/1.json
   def destroy
-    @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
-      format.json { head :no_content }
+      if @customer.destroy
+        format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to customers_url, alert: 'Cannot delete this customer.' }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
     end
   end
 

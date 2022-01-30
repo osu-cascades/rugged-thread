@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  description: FakeDescription1
-  price: 25
+  description: Fake Fee 1
+  price: 1
 
 two:
-  description: FakeDescription2
-  price: 
+  description: Fake Fee 2
+  price: 2

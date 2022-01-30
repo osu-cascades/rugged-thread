@@ -50,10 +50,14 @@ class ItemStatusesController < ApplicationController
 
   # DELETE /item_statuses/1 or /item_statuses/1.json
   def destroy
-    @item_status.destroy
     respond_to do |format|
-      format.html { redirect_to item_statuses_url, notice: "Item status was successfully destroyed." }
-      format.json { head :no_content }
+      if @item_status.destroy
+        format.html { redirect_to item_statuses_url, notice: "Item status was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_statuses_url, alert: 'Cannot delete this item status.' }
+        format.json { render json: @item_status.errors, status: :unprocessable_entity }
+      end
     end
   end
 

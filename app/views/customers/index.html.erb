@@ -26,7 +26,7 @@
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
+      <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
         <td><%= link_to customer.first_name, customer %></td>
         <td><%= link_to customer.last_name, customer %></td>

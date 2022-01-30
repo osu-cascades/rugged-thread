@@ -5,7 +5,6 @@ class BrandsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @brand = brands(:one)
     sign_in users(:staff)
   end
 
@@ -15,9 +14,7 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "creating a Brand" do
-    visit brands_path
-    click_on "New Brand"
-
+    visit new_brand_path
     fill_in "Name", with: "Fake Brand"
     click_on "Save"
 
@@ -25,50 +22,39 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "updating a Brand" do
-    visit brands_path
-    click_on "Edit", match: :first
+    visit edit_brand_path(brands(:one))
 
-    fill_in "Name", with: @brand.name
+    fill_in "Name", with: 'Updated Fake Brand'
     click_on "Save"
 
     assert_text "Brand was successfully updated"
   end
 
   test "creating a blank Brand" do
-    visit brands_path
-    click_on "New Brand"
-
+    visit new_brand_path
     fill_in "Name", with: ""
     click_on "Save"
-
     assert_text "Name can't be blank"
   end
 
   test "creating a duplicate Brand" do
-    visit brands_path
-    click_on "New Brand"
-
-    fill_in "Name", with: brands(:two).name
+    visit new_brand_path
+    fill_in "Name", with: brands(:one).name
     click_on "Save"
-
     assert_text "Name has already been taken"
   end
 
   test "destroying a Brand that has no items" do
     visit brands_path
     dom_id = "#brand_#{brands(:itemless).id}"
-    within dom_id do
-      click_on "Delete"
-    end
+    within(dom_id) { click_on "Delete" }
     assert_text "Brand was successfully destroyed"
   end
 
   test "failing to destroy a Brand that has items" do
     visit brands_path
     dom_id = "#brand_#{brands(:one).id}"
-    within dom_id do
-      click_on "Delete"
-    end
+    within(dom_id) { click_on "Delete" }
     assert_text "Cannot delete this brand"
   end
 

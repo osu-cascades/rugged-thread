@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: FakeShopParameter
+  name: Fake Shop Parameter 1
   amount: 1
 
 two:
-  name: FakeShopParameter2
+  name: Fake Shop Parameter 2
   amount: 2

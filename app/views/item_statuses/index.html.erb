@@ -12,11 +12,11 @@
 
   <tbody>
     <% @item_statuses.each do |item_status| %>
-      <tr>
+      <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
         <td><%= item_status.name %></td>
         <td><%= link_to 'Show', item_status %></td>
         <td><%= link_to 'Edit', edit_item_status_path(item_status) %></td>
-        <td><%= link_to 'Destroy', item_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', item_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

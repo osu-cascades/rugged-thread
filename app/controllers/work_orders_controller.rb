@@ -49,12 +49,16 @@ class WorkOrdersController < ApplicationController
     end
   end
 
-  # DELETE /work_orders/1 or /work_orders/1.json
   def destroy
-    @work_order.destroy
+
     respond_to do |format|
-      format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
-      format.json { head :no_content }
+      if @work_order.destroy
+        format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to work_orders_url, alert: 'Cannot delete this work order.' }
+        format.json { render json: @work_order.errors, status: :unprocessable_entity }
+      end
     end
   end
 
