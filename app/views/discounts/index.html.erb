@@ -9,7 +9,7 @@
 <table class="table table-hover" id="discounts_table">
   <thead>
     <tr>
-      <th scope="col">Description</th>
+      <th scope="col">Name</th>
       <th scope="col">Percentage Amount</th>
       <th scope="col">Dollar Amount</th>
       <th></th>
@@ -19,7 +19,7 @@
     <% @discounts.each do |discount| %>
       <tr class="<%= dom_class(discount) %>" id="<%= dom_id(discount) %>">
         <td>
-          <%= link_to "#{discount.description}", discount %>
+          <%= link_to discount, discount %>
         </td>
         <td>
           <%= discount.percentage_amount %>

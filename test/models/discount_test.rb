@@ -2,33 +2,30 @@ require "test_helper"
 
 class DiscountTest < ActiveSupport::TestCase
 
-  test 'Discount has a description' do
-    assert_respond_to(Discount.new, :description)
+  test 'attributes' do
+    assert_respond_to(Discount.new, :name)
+    assert_respond_to(Discount.new, :percentage_amount)
+    assert_respond_to(Discount.new, :dollar_amount)
   end
 
-  test 'Discount without a description is invalid' do
+  test 'must have a name' do
     discount = discounts(:one)
     assert discount.valid?
-    discount.description = nil
+    discount.name = nil
     refute discount.valid?
   end
 
-  test 'Discount with a non-unique description is invalid' do
-    existing_discount_description = discounts(:one).description
+  test 'name must be unique' do
+    existing_discount_name = discounts(:one).name
     discount = discounts(:two)
     assert discount.valid?
-    discount.description = existing_discount_description
+    discount.name = existing_discount_name
     refute discount.valid?
   end
 
-  test '#to_s string representation is description and amounts' do
-    description = 'FAKE'
-    dollar_amount = 1
-    percentage_amount = 2
-    expected = "#{description} $#{dollar_amount} / #{percentage_amount}%"
-    discount = Discount.new(description: description, dollar_amount: dollar_amount,
-     percentage_amount: percentage_amount)
-    assert_equal expected, discount.to_s
+  test '#to_s string representation is name' do
+    name = 'FAKE'
+    assert_equal(name, Discount.new(name: name).to_s)
   end
 
 end

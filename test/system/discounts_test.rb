@@ -8,46 +8,46 @@ class DiscountsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index" do
+  test "viewing a list of discounts" do
     visit discounts_path
     assert_selector "h1", text: "Discounts"
   end
 
-  test "creating a Discount" do
+  test "creating a new discount" do
     visit new_discount_path
-    fill_in "Description", with: "Fake Item Description"
+    fill_in "Name", with: "Fake Item Name"
     fill_in "Percentage amount", with: 1
     fill_in "Dollar amount", with: 2
     click_on "Save"
     assert_text "Discount was successfully created"
   end
 
-  test "updating a Discount" do
+  test "updating a discount" do
     visit edit_discount_path(discounts(:one))
-    fill_in "Description", with: 'Updated Fake Description'
+    fill_in "Name", with: 'Updated Fake Name'
     click_on "Save"
     assert_text "Discount was successfully updated"
   end
 
-  test "creating a blank Discount description" do
+  test "creating a discount without a name fails" do
     visit new_discount_path
-    fill_in "Description", with: ""
+    fill_in "Name", with: ""
     fill_in "Percentage amount", with: 1
     fill_in "Dollar amount", with: 2
     click_on "Save"
-    assert_text "Description can't be blank"
+    assert_text "Name can't be blank"
   end
 
-  test "creating a duplicate Discount description" do
+  test "creating a duplicate discount fails" do
     visit new_discount_path
-    fill_in "Description", with: discounts(:one).description
+    fill_in "Name", with: discounts(:one).name
     fill_in "Percentage amount", with: 1
     fill_in "Dollar amount", with: 2
     click_on "Save"
-    assert_text "Description has already been taken"
+    assert_text "Name has already been taken"
   end
 
-  test "destroying a Discount" do
+  test "destroying a discount" do
     visit discounts_path
     click_on "Delete", match: :first
     assert_text "Discount was successfully destroyed"
