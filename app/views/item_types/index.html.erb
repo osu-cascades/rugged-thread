@@ -6,7 +6,7 @@
     <%= link_to 'Add New Item Type', new_item_type_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>
-<table class="table table-hover" id="item_typees_table">
+<table class="table table-hover" id="item_types_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @item_typees.each do |item_type| %>
+    <% @item_types.each do |item_type| %>
       <tr class="<%= dom_class(item_type) %>" id="<%= dom_id(item_type) %>">
         <td>
           <%= link_to item_type, item_type %>
