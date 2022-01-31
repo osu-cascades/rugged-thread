@@ -1,20 +1,20 @@
 User.create!(name: 'Developer Admin', email: 'admin@example.com',
- password: 'password', password_confirmation: 'password', role: 'admin')
+  password: 'password', password_confirmation: 'password', role: 'admin')
 User.create!(name: 'Developer Staff', email: 'staff@example.com',
- password: 'password', password_confirmation: 'password', role: 'staff')
+  password: 'password', password_confirmation: 'password', role: 'staff')
 User.create!(name: 'Developer Deactivated', email: 'deactivated@example.com',
- password: 'password', password_confirmation: 'password', role: 'admin',
- status: 'inactive')
+  password: 'password', password_confirmation: 'password', role: 'admin',
+  status: 'inactive')
  
 CustomerType.create!(name: 'B2B Local')
 CustomerType.create!(name: 'B2B National')
-CustomerType.create!(name: 'B2C Local')
+b2c_local_customer_type = CustomerType.create!(name: 'B2C Local')
 CustomerType.create!(name: 'B2C Ship')
 
 customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
- business_name: 'Example Business', phone_number: '541-555-5555',
- email_address: 'exampleCustomer@email.com', street_address: '123 Sesame Street', city: 'Bend', 
- state: 'OR', zip_code: '97704', customer_type_id:1)
+  business_name: 'Example Business', email_address: 'exampleCustomer@email.com',
+  phone_number: '541-555-5555', street_address: '123 Sesame Street', city: 'Bend',
+  state: 'OR', zip_code: '97704', customer_type: b2c_local_customer_type)
 
 work_order = WorkOrder.create!(in_date: Date.today, shipping: true, customer: customer)
 
