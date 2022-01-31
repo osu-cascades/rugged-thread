@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Item Types</h1>
-
-<table>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Item Types</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Item Type', new_item_type_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+<table class="table table-hover" id="item_typees_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th scope="col">Name</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @item_types.each do |item_type| %>
+    <% @item_typees.each do |item_type| %>
       <tr class="<%= dom_class(item_type) %>" id="<%= dom_id(item_type) %>">
-        <td><%= item_type.name %></td>
-        <td><%= link_to 'Show', item_type %></td>
-        <td><%= link_to 'Edit', edit_item_type_path(item_type) %></td>
-        <td><%= link_to 'Delete', item_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to item_type, item_type %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_item_type_path(item_type), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to'Delete', item_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item Type', new_item_type_path %>
