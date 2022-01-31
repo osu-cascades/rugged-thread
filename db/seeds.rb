@@ -11,10 +11,10 @@ CustomerType.create!(name: 'B2B National')
 CustomerType.create!(name: 'B2C Local')
 CustomerType.create!(name: 'B2C Ship')
 
-customer = Customer.create!(  first_name: 'Example', last_name: 'Customer',
+customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
  business_name: 'Example Business', phone_number: '541-555-5555',
  email_address: 'exampleCustomer@email.com', street_address: '123 Sesame Street', city: 'Bend', 
- state: 'OR', zip_code: '97704')
+ state: 'OR', zip_code: '97704', customer_type_id:1)
 
 work_order = WorkOrder.create!(in_date: Date.today, shipping: true, customer: customer)
 
