@@ -1,30 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Fees</h1>
-
-<table>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Fees</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Fee', new_fee_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+<table class="table table-hover" id="fees_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th colspan="3"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @fees.each do |fee| %>
-      <tr>
-        <td><%= fee %></td>
-        <td><%= fee.price %></td>
-        <td><%= link_to 'Show', fee %></td>
-        <td><%= link_to 'Edit', edit_fee_path(fee) %></td>
-        <td><%= link_to 'Destroy', fee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="<%= dom_class(fee) %>" id="<%= dom_id(fee) %>">
+        <td>
+          <%= link_to fee, fee %>
+        </td>
+        <td>
+          <%= fee.price %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_fee_path(fee), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to'Delete', fee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Fee', new_fee_path %>
-<%= link_to 'Back',  "/pages/lists"%>

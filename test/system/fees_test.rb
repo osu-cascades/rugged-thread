@@ -17,14 +17,14 @@ class FeesTest < ApplicationSystemTestCase
     visit new_fee_path
     fill_in "Name", with: "Fake Item Name"
     fill_in "Price", with: 1
-    click_on "Create Fee"
+    click_on "Save"
     assert_text "Fee was successfully created"
   end
 
   test "updating a fee" do
     visit edit_fee_path(fees(:one))
     fill_in "Name", with: 'Updated Fake Name'
-    click_on "Update Fee"
+    click_on "Save"
     assert_text "Fee was successfully updated"
   end
 
@@ -32,7 +32,7 @@ class FeesTest < ApplicationSystemTestCase
     visit new_fee_path
     fill_in "Name", with: ""
     fill_in "Price", with: 1
-    click_on "Create Fee"
+    click_on "Save"
     assert_text "Name can't be blank"
   end
 
@@ -40,13 +40,13 @@ class FeesTest < ApplicationSystemTestCase
     visit new_fee_path
     fill_in "Name", with: fees(:one).name
     fill_in "Price", with: 1
-    click_on "Create Fee"
+    click_on "Save"
     assert_text "Name has already been taken"
   end
 
   test "destroying a Fee" do
     visit fees_path
-    click_on "Destroy", match: :first
+    click_on "Delete", match: :first
     assert_text "Fee was successfully destroyed"
   end
 end
