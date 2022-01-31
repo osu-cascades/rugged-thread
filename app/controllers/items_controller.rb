@@ -1,19 +1,19 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ edit update destroy ]
-
+  before_action :get_work_order
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @items = @work_order.items
   end
 
   def show
-    @work_order = WorkOrder.find(params[:work_order_id])
     @item = @work_order.items.find(params[:id])
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+    @item = @work_order.items.build
   end
 
   # GET /items/1/edit
@@ -22,7 +22,6 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @work_order = WorkOrder.find(params[:work_order_id])
     @item = @work_order.items.build(item_params)
 
     respond_to do |format|
@@ -40,7 +39,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
+        format.html { redirect_to @work_order, notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,15 +52,21 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
+      format.html { redirect_to work_order_path(@work_order), notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
+    def get_work_order
+      @work_order = WorkOrder.find(params[:work_order_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @work_order = WorkOrder.find(params[:work_order_id])
+      @item = @work_order.items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
