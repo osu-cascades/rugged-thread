@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Shop Paremeter Information</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, shop_parameters_path, class: 'btn btn-outline-primary me-4' %>
+    <%= link_to 'Edit  Account', edit_shop_parameter_path(@shop_parameter), class: 'btn btn-outline-primary float-right'%>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop_parameter.name %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @shop_parameter.amount %>
-</p>
-
-<%= link_to 'Edit', edit_shop_parameter_path(@shop_parameter) %> |
-<%= link_to 'Back', shop_parameters_path %>
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">
+    <%= @shop_parameter.name %>
+  </dd>
+  <dt class="col-sm-3">Amount</dt>
+  <dd class="col-sm-9">
+    <%= @shop_parameter.amount %>
+  </dd>
+</dl>

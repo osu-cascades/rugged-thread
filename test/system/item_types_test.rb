@@ -16,28 +16,28 @@ class ItemTypesTest < ApplicationSystemTestCase
   test "creating a Item type" do
     visit new_item_type_path
     fill_in "Name", with: "Fake Item Type"
-    click_on "Create Item type"
+    click_on "Save"
     assert_text "Item type was successfully created"
   end
 
   test "updating a Item type" do
     visit edit_item_type_path(item_types(:one))
     fill_in "Name", with: "Updated Fake Item Type"
-    click_on "Update Item type"
+    click_on "Save"
     assert_text "Item type was successfully updated"
   end
 
   test "creating an item type with a blank name fails" do
     visit new_item_type_path
     fill_in "Name", with: ""
-    click_on "Create Item type"
+    click_on "Save"
     assert_text "Name can't be blank"
   end
 
   test "creating an item type with a duplicate name fails" do
     visit new_item_type_path
     fill_in "Name", with: item_types(:one).name
-    click_on "Create Item type"
+    click_on "Save"
     assert_text "Name has already been taken"
   end
 
