@@ -17,14 +17,14 @@ class ShopParametersTest < ApplicationSystemTestCase
     visit new_shop_parameter_path
     fill_in "Amount", with: 1
     fill_in "Name", with: "Fake Shop Parameter"
-    click_on "Create Shop parameter"
+    click_on "Save"
     assert_text "Shop parameter was successfully created"
   end
 
   test "updating a shop parameter" do
     visit edit_shop_parameter_path(shop_parameters(:one))
     fill_in "Name", with: 'Updated shop parameter'
-    click_on "Update Shop parameter"
+    click_on "Save"
     assert_text "Shop parameter was successfully updated"
   end
 
@@ -32,7 +32,7 @@ class ShopParametersTest < ApplicationSystemTestCase
     visit new_shop_parameter_path
     fill_in "Name", with: ""
     fill_in "Amount", with: 1
-    click_on "Create Shop parameter"
+    click_on "Save"
     assert_text "Name can't be blank"
   end
 
@@ -40,14 +40,13 @@ class ShopParametersTest < ApplicationSystemTestCase
     visit new_shop_parameter_path
     fill_in "Name", with: shop_parameters(:one).name
     fill_in "Amount", with: 1
-    click_on "Create Shop parameter"
+    click_on "Save"
     assert_text "Name has already been taken"
-    click_on "Back"
   end
 
   test "destroying a shop parameter" do
     visit shop_parameters_path
-    click_on "Destroy", match: :first
+    click_on "Delete", match: :first
     assert_text "Shop parameter was successfully destroyed"
   end
 end
