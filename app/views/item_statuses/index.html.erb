@@ -1,28 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Item Statuses</h1>
-
-<table>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Item Statuses</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Discount', new_item_status_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+<table class="table table-hover" id="item_statuses_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th scope="col">Name</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @item_statuses.each do |item_status| %>
       <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
-        <td><%= item_status.name %></td>
-        <td><%= link_to 'Show', item_status %></td>
-        <td><%= link_to 'Edit', edit_item_status_path(item_status) %></td>
-        <td><%= link_to 'Delete', item_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to item_status, item_status %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_item_status_path(item_status), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to'Delete', item_status, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item Status', new_item_status_path %>
-<%= link_to 'Back',  "/pages/lists"%>

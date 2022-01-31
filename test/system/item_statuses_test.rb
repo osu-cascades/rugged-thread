@@ -16,28 +16,28 @@ class ItemStatusesTest < ApplicationSystemTestCase
   test "creating an item status" do
     visit new_item_status_path
     fill_in "Name", with: "Fake New Item Status"
-    click_on "Create Item status"
+    click_on "Save"
     assert_text "Item status was successfully created"
   end
 
   test "updating an item status" do
     visit edit_item_status_path(item_statuses(:one))
     fill_in "Name", with: 'Updated Fake Name'
-    click_on "Update Item status"
+    click_on "Save"
     assert_text "Item status was successfully updated"
   end
 
   test "creating an item status without a name fails" do
     visit new_item_status_path
     fill_in "Name", with: ""
-    click_on "Create Item status"
+    click_on "Save"
     assert_text "Name can't be blank"
   end
 
   test "creating a duplicate item status fails" do
     visit new_item_status_path
     fill_in "Name", with: item_statuses(:one).name
-    click_on "Create Item status"
+    click_on "Save"
     assert_text "Name has already been taken"
   end
 

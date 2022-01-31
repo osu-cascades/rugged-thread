@@ -1,6 +1,12 @@
-<h1>Editing Item Status</h1>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Editing <%= @item_status.name_was %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 
-<%= render 'form', item_status: @item_status %>
-
-<%= link_to 'Show', @item_status %> |
-<%= link_to 'Back', item_statuses_path %>
+<div class="form-container">
+  <%= render 'form', item_status: @item_status %>
+</div>
