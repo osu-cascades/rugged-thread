@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :items
   root 'pages#show', page: 'home'
   get '/pages/:page' => 'pages#show'
 
@@ -19,13 +18,16 @@ Rails.application.routes.draw do
   resources :complication_types
   resources :complications
   resources :customer_types
-  resources :customers
+  resources :customers do
+    resources :work_orders, only: :new
+  end
   resources :discounts
   resources :fees
   resources :invoice_items
   resources :invoices
   resources :item_statuses
   resources :item_types
+  resources :items
   resources :quote_requests
   resources :repair_types
   resources :repairs

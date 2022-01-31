@@ -12,9 +12,8 @@ class WorkOrdersController < ApplicationController
     @items = @work_order.items
   end
 
-  # GET /work_orders/new
   def new
-    @work_order = WorkOrder.new
+    @work_order = WorkOrder.new(customer_id: params[:customer_id])
   end
 
   # GET /work_orders/1/edit
