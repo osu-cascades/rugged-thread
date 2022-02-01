@@ -25,7 +25,8 @@ CustomerType.create!(name: 'B2C Ship')
 customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
   business_name: 'Example Business', email_address: 'customer@example.com',
   phone_number: '541-555-5555', alternative_phone_number: '541-555-5556',
-  street_address: '123 Sesame Street', city: 'Bend', state: 'OR', zip_code: '97704',
+  shipping_street_address: '123 Sesame Street',
+  shipping_city: 'Bend', shipping_state: 'OR', shipping_zip_code: '97704',
   billing_street_address: '123 Sesame Street',
   billing_city: 'Bend', billing_state: 'OR', billing_zip_code: '97704',
   customer_type: b2c_local_customer_type)
