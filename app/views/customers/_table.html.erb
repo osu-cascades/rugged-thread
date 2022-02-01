@@ -7,7 +7,7 @@
       <th scope="col">Business name</th>
       <th scope="col">Email address</th>
       <th scope="col">Phone number</th>
-      <th scope="col">Address</th>
+      <th scope="col">Shipping Address</th>
       <th scope="col">Type</th>
       <th></th>
     </tr>
@@ -22,8 +22,8 @@
         <td><%= mail_to customer.email_address %></td>
         <td><%= link_to customer.phone_number, "tel:#{customer.phone_number}" %></td>
         <td>
-          <%= customer.street_address %><br>
-          <%= customer.city %>, <%= customer.state %> <%= customer.zip_code %>
+          <%= customer.shipping_street_address %><br>
+          <%= customer.shipping_city %>, <%= customer.shipping_state %> <%= customer.shipping_zip_code %>
         </td>
         <td><%= link_to_unless(controller.controller_name == 'customer_types', customer.customer_type, customer.customer_type) %></td>
         <td>

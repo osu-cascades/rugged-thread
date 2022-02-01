@@ -5,10 +5,10 @@ one:
   phone_number: "555-555-5555"
   alternative_phone_number: "555-555-5556"
   email_address: fake01@example.com
-  street_address: 123 Fake Street
-  city: Fakeville
-  state: OR
-  zip_code: 12345
+  shipping_street_address: 123 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
   billing_street_address: 123 Fake Street
   billing_city: Fakeville
   billing_state: OR
@@ -22,10 +22,10 @@ two:
   phone_number: "555-555-5555"
   alternative_phone_number: "555-555-5556"
   email_address: fake02@example.com
-  street_address: 567 Fake Street
-  city: Fakeville
-  state: OR
-  zip_code: 12345
+  shipping_street_address: 567 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
   billing_street_address: 123 Fake Street
   billing_city: Fakeville
   billing_state: OR
@@ -39,10 +39,10 @@ without_work_order:
   phone_number: "555-555-5555"
   alternative_phone_number: "555-555-5556"
   email_address: fake03@example.com
-  street_address: 890 Fake Street
-  city: Fakeville
-  state: OR
-  zip_code: 12345
+  shipping_street_address: 890 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
   billing_street_address: 123 Fake Street
   billing_city: Fakeville
   billing_state: OR

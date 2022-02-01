@@ -34,30 +34,16 @@
   <%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %>
 </p>
 
+<h3>Shipping Address</h3>
 <p>
-  <strong>Street address:</strong>
-  <%= @customer.street_address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @customer.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @customer.state %>
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @customer.zip_code %>
+  <%= @customer.shipping_street_address %><br>
+  <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
 </p>
 
 <h3>Billing Address</h3>
 <p>
-  <%= @customer.street_address %><br>
-  <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip_code %>
+  <%= @customer.billing_street_address %><br>
+  <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
 </p>
 
 <div class="row mt-5">
