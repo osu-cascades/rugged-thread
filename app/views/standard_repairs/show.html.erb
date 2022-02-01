@@ -1,39 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Standard Repair Information</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, standard_repairs_path, class: 'btn btn-outline-primary me-4' %>
+    <%= link_to 'Edit  Account', edit_standard_repair_path(@standard_repair), class: 'btn btn-outline-primary float-right'%>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @standard_repair.name %>
-</p>
-
-<p>
-  <strong>Sub repair:</strong>
-  <%= @standard_repair.sub_repair %>
-</p>
-
-<p>
-  <strong>Method:</strong>
-  <%= @standard_repair.method %>
-</p>
-
-<p>
-  <strong>Complications:</strong>
-  <%= @standard_repair.complications %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @standard_repair.description %>
-</p>
-
-<p>
-  <strong>Charge:</strong>
-  <%= @standard_repair.charge %>
-</p>
-
-<p>
-  <strong>Fee type:</strong>
-  <%= @standard_repair.fee_type %>
-</p>
-
-<%= link_to 'Edit', edit_standard_repair_path(@standard_repair) %> |
-<%= link_to 'Back', standard_repairs_path %>
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.name %>
+  </dd>
+  <dt class="col-sm-3">Sub repair</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.sub_repair %>
+  </dd>
+  <dt class="col-sm-3">Method</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.method %>
+  </dd>
+  <dt class="col-sm-3">Complications</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.complications %>
+  </dd>
+  <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.description %>
+  </dd>
+  <dt class="col-sm-3">Charge</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.charge %>
+  </dd>
+  <dt class="col-sm-3">Fee type</dt>
+  <dd class="col-sm-9">
+    <%= @standard_repair.fee_type %>
+  </dd>
+</dl>
