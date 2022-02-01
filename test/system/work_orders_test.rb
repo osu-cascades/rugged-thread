@@ -29,16 +29,14 @@ class WorkOrdersTest < ApplicationSystemTestCase
   end
 
   test "destroying a work order that has no items" do
-    visit work_orders_path
-    dom_id = "#work_order_#{work_orders(:itemless).id}"
-    within(dom_id) { click_on "Delete" }
+    visit work_order_path(work_orders(:itemless))
+    click_on 'Delete'
     assert_text "Work order was successfully destroyed"
   end
 
   test "failing to destroy a work order that has items" do
-    visit work_orders_path
-    dom_id = "#work_order_#{work_orders(:shipping).id}"
-    within(dom_id) { click_on "Delete" }
+    visit work_order_path(work_orders(:shipping))
+    click_on 'Delete'
     assert_text "Cannot delete this work order"
   end
 

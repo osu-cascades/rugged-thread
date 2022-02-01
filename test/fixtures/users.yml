@@ -39,3 +39,10 @@ vague:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   # Unspecified role
   # Unspecified status
+
+workorderless:
+  name: Work Order-less User
+  email: workorderless@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'staff'
+  status: 'active'

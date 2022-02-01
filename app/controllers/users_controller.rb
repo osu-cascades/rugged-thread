@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = authorize User.find(params[:id])
+    @created_work_orders = @user.created_work_orders
   end
 
   def new
@@ -49,10 +50,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user = authorize User.find(params[:id])
-    @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+      if @user.destroy
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to users_url, alert: 'Cannot delete this user.' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 

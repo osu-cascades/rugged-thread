@@ -7,7 +7,8 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert_respond_to(WorkOrder.new, :shipping)
   end
 
-  test 'relationships' do
+  test 'associations' do
+    assert_respond_to(WorkOrder.new, :creator)
     assert_respond_to(WorkOrder.new, :customer)
     assert_respond_to(WorkOrder.new, :items)
   end

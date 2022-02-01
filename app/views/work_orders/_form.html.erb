@@ -12,9 +12,22 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :customer_id, class: 'form-label' %>
-    <%= form.select :customer_id, Customer.all.map{ |customer| [customer.full_name, customer.id] }, {include_blank: ''}, class: 'form-select' %>
+    <%= form.label :creator_id, class: 'form-label' %>
+    <%= form.collection_select :creator_id, creators, :id, :name, {selected: work_order.creator_id || current_user.id}, {class: 'form-select'} %>
   </div>
+
+  <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
+  <% if form.object.errors.include?(:customer) %>
+    <div class='field_with_errors'>
+  <% end %>
+    <div class="mb-3">
+      <%= form.label :customer_id, class: 'form-label' %>
+      <%= form.collection_select :customer_id, customers, :id, :full_name, {include_blank: ''}, class: 'form-select' %>
+    </div>
+  <% if form.object.errors.include?(:customer) %>
+    </div>
+  <% end %>
+  <!-- /hack -->
 
   <div class="mb-3">
     <%= form.label :in_date, class: 'form-label' %>

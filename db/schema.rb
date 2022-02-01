@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_062012) do
+ActiveRecord::Schema.define(version: 2022_02_01_064050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -301,6 +301,8 @@ ActiveRecord::Schema.define(version: 2022_02_01_062012) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "customer_id", null: false
+    t.bigint "creator_id", null: false
+    t.index ["creator_id"], name: "index_work_orders_on_creator_id"
     t.index ["customer_id"], name: "index_work_orders_on_customer_id"
   end
 
@@ -323,4 +325,5 @@ ActiveRecord::Schema.define(version: 2022_02_01_062012) do
   add_foreign_key "tickets", "invoices"
   add_foreign_key "tickets", "technicians"
   add_foreign_key "work_orders", "customers"
+  add_foreign_key "work_orders", "users", column: "creator_id"
 end

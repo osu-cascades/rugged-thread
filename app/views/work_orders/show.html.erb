@@ -1,10 +1,11 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Work Order <%= @work_order.id %></h1>
+    <h1><%= @work_order %></h1>
   </div>
   <div class="col text-end">
-    <%= link_to '&laquo Back'.html_safe, :back, class: 'btn btn-outline-primary' %>
-    <%= link_to 'Edit', edit_work_order_path(@work_order), class: 'btn btn-outline-primary' %>
+    <%= link_to '&laquo Back'.html_safe, :back, class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_work_order_path(@work_order), class: 'btn btn-outline-primary me-2' %>
+    <%= link_to 'Delete', @work_order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
   </div>
 </div>
 
@@ -30,6 +31,11 @@
 <p>
   <strong>Shipping:</strong>
   <%= @work_order.shipping %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= link_to @work_order.creator, @work_order.creator %>
 </p>
 
 <h2 class="mt-5">Items</h2>
@@ -60,9 +66,7 @@
         <td><%= link_to item.brand, item.brand %></td>
         <td><%= link_to item.item_type, item.item_type %></td>
         <td>
-          <%= link_to 'View', work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to 'Edit', edit_work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to 'Delete', [@work_order, item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+          <%= link_to 'Details', work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm mr-4' %>
         </td>
       </tr>
     <% end %>

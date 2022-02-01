@@ -35,3 +35,7 @@
     <%= @user.efficiency %>
   </dd>
 </dl>
+
+<h2 class="mt-5">Created Work Orders</h2>
+
+<%= render 'work_orders/table', work_orders: @created_work_orders %>

@@ -55,30 +55,5 @@
   </div>
 </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Customer</th>
-      <th scope="col">In date</th>
-      <th scope="col">Estimate</th>
-      <th scope="col">Shipping</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @work_orders.each do |work_order| %>
-      <tr>
-        <th scope="row"><%= work_order.id %></th>
-        <td><%= link_to work_order.customer, work_order.customer %></td>
-        <td><%= work_order.in_date %></td>
-        <td><%= work_order.estimate %></td>
-        <td><%= work_order.shipping %></td>
-        <td>
-          <%= link_to 'Details', work_order, class: 'btn btn-light btn-sm mr-4' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'work_orders/table', work_orders: @work_orders %>
 

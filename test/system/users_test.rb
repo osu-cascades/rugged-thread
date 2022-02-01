@@ -72,12 +72,22 @@ class UsersTest < ApplicationSystemTestCase
   test "admin can delete other users" do
     sign_in(users(:admin))
     visit users_path
-    within "##{dom_id(users(:staff))}" do
+    within "##{dom_id(users(:workorderless))}" do
       click_on 'Delete'
     end
     assert_text 'User was successfully destroyed'
-    refute_text users(:staff).name
+    refute_text users(:workorderless).name
   end
+
+  test "admin can not delete a user that has associated work orders" do
+    sign_in(users(:admin))
+    visit users_path
+    within "##{dom_id(work_orders.first.creator)}" do
+      click_on 'Delete'
+    end
+    assert_text 'Cannot delete this user'
+  end
+
 
   # Supervisors
 

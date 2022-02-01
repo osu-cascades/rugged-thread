@@ -8,6 +8,10 @@ class UserTest < ActiveSupport::TestCase
       role: 'staff', status: 'active')
   end
 
+  test 'associations' do
+    assert_respond_to(User.new, :created_work_orders)
+  end
+
   test "has a default role of staff" do
     new_user = User.new
     assert_equal new_user.role, 'staff'
@@ -50,6 +54,12 @@ class UserTest < ActiveSupport::TestCase
     name = 'FAKE'
     user = User.new(name: name)
     assert_equal name, user.to_s
+  end
+
+  test "cannot be deleted if it has associated work orders" do
+    user = work_orders.first.creator
+    user.destroy
+    refute user.destroyed?
   end
 
 end

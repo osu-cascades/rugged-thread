@@ -16,8 +16,8 @@
     <% customers.each do |customer| %>
       <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
-        <td><%= customer.first_name %>
-        <td><%= customer.last_name %></td>
+        <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>
+        <td><%= link_to_unless(controller.controller_name == 'customers', customer.last_name, customer) %>
         <td><%= customer.business_name %></td>
         <td><%= mail_to customer.email_address %></td>
         <td><%= link_to customer.phone_number, "tel:#{customer.phone_number}" %></td>
