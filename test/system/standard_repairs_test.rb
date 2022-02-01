@@ -25,10 +25,9 @@ class StandardRepairsTest < ApplicationSystemTestCase
     fill_in "Method", with: @standard_repair.method
     fill_in "Name", with: @standard_repair.name
     fill_in "Sub repair", with: @standard_repair.sub_repair
-    click_on "Create Standard repair"
+    click_on "Save"
 
     assert_text "Standard repair was successfully created"
-    click_on "Back"
   end
 
   test "updating a Standard repair" do
@@ -42,15 +41,14 @@ class StandardRepairsTest < ApplicationSystemTestCase
     fill_in "Method", with: @standard_repair.method
     fill_in "Name", with: @standard_repair.name
     fill_in "Sub repair", with: @standard_repair.sub_repair
-    click_on "Update Standard repair"
+    click_on "Save"
 
     assert_text "Standard repair was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Standard repair" do
     visit standard_repairs_path
-    click_on "Destroy", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Standard repair was successfully destroyed"
   end

@@ -1,39 +1,53 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Standard Repairs</h1>
-
-<table>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Standard Repairs</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Standard Repair', new_standard_repair_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+<table class="table table-hover" id="standard_repairs_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Sub repair</th>
-      <th>Method</th>
-      <th>Complications</th>
-      <th>Description</th>
-      <th>Charge</th>
-      <th>Fee type</th>
-      <th colspan="3"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Sub repair</th>
+      <th scope="col">Method</th>
+      <th scope="col">Complications</th>
+      <th scope="col">Description</th>
+      <th scope="col">Charge</th>
+      <th scope="col">Fee type</th>
+      <th scope="col"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @standard_repairs.each do |standard_repair| %>
-      <tr>
-        <td><%= standard_repair.name %></td>
-        <td><%= standard_repair.sub_repair %></td>
-        <td><%= standard_repair.method %></td>
-        <td><%= standard_repair.complications %></td>
-        <td><%= standard_repair.description %></td>
-        <td><%= standard_repair.charge %></td>
-        <td><%= standard_repair.fee_type %></td>
-        <td><%= link_to 'Show', standard_repair %></td>
-        <td><%= link_to 'Edit', edit_standard_repair_path(standard_repair) %></td>
-        <td><%= link_to 'Destroy', standard_repair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
+        <td>
+          <%= link_to standard_repair, standard_repair %>
+        </td>
+        <td>
+          <%= standard_repair.sub_repair %>
+        </td>
+        <td>
+          <%= standard_repair.method %>
+        </td>
+        <td>
+          <%= standard_repair.complications %>
+        </td>
+        <td>
+          <%= standard_repair.description %>
+        </td>
+        <td>
+          <%= standard_repair.charge %>
+        </td>
+        <td>
+          <%= standard_repair.fee_type %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_standard_repair_path(standard_repair), class: 'btn btn-light btn-sm mr-4' %>
+          <%= link_to'Delete', standard_repair, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Standard Repair', new_standard_repair_path %>
