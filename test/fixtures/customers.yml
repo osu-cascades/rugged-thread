@@ -3,6 +3,7 @@ one:
   last_name: Customer
   business_name: Fake Business
   phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
   email_address: fake01@example.com
   street_address: 123 Fake Street
   city: Fakeville
@@ -15,6 +16,7 @@ two:
   last_name: Customer
   business_name: Fake Business
   phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
   email_address: fake02@example.com
   street_address: 567 Fake Street
   city: Fakeville
@@ -27,6 +29,7 @@ without_work_order:
   last_name: Customer
   business_name: Fake Business
   phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
   email_address: fake03@example.com
   street_address: 890 Fake Street
   city: Fakeville

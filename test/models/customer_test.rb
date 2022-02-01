@@ -7,6 +7,7 @@ class CustomerTest < ActiveSupport::TestCase
     assert_respond_to(Customer.new, :last_name)
     assert_respond_to(Customer.new, :business_name)
     assert_respond_to(Customer.new, :phone_number)
+    assert_respond_to(Customer.new, :alternative_phone_number)
     assert_respond_to(Customer.new, :email_address)
     assert_respond_to(Customer.new, :street_address)
     assert_respond_to(Customer.new, :city)

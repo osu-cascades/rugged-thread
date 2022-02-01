@@ -21,6 +21,7 @@ class CustomersTest < ApplicationSystemTestCase
     fill_in "Business name", with: 'Fake Business'
     fill_in "Email address", with: 'fake@fake.com'
     fill_in "Phone number", with: '5555555555'
+    fill_in "Alternative phone number", with: '5555555556'
     fill_in "Street address", with: '123 Fake St.'
     fill_in "City", with: 'Fake City'
     fill_in "State", with: 'OR'

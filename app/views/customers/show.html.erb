@@ -29,6 +29,10 @@
   <%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %>
 </p>
 
+<p>
+  <strong>Alternative phone number:</strong>
+  <%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %>
+</p>
 
 <p>
   <strong>Street address:</strong>
