@@ -26,6 +26,10 @@ class CustomersTest < ApplicationSystemTestCase
     fill_in "City", with: 'Fake City'
     fill_in "State", with: 'OR'
     fill_in "Zip code", with: '12345'
+    fill_in "Billing street address", with: '123 Fake St.'
+    fill_in "Billing city", with: 'Fake City'
+    fill_in "Billing state", with: 'OR'
+    fill_in "Billing zip code", with: '12345'
     click_on "Save"
     assert_text "Customer was successfully created"
   end

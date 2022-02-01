@@ -65,6 +65,26 @@
     <%= form.text_field :zip_code, class: 'form-control' %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :billing_street_address, class: 'form-label' %>
+    <%= form.text_field :billing_street_address, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :billing_city, class: 'form-label' %>
+    <%= form.text_field :billing_city, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :billing_state, class: 'form-label' %>
+    <%= form.text_field :billing_state, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :billing_zip_code, class: 'form-label' %>
+    <%= form.text_field :billing_zip_code, class: 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Save', class: 'form-control btn btn-success' %>
   </div>

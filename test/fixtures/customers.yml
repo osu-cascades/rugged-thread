@@ -9,6 +9,10 @@ one:
   city: Fakeville
   state: OR
   zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
   customer_type: one
 
 two:
@@ -22,6 +26,10 @@ two:
   city: Fakeville
   state: OR
   zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
   customer_type: one
 
 without_work_order:
@@ -35,4 +43,8 @@ without_work_order:
   city: Fakeville
   state: OR
   zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
   customer_type: one
