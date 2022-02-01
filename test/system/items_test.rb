@@ -9,8 +9,8 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit items_path
-    assert_selector "h1", text: "Items"
+    visit work_order_path(work_orders(:shipping))
+    assert_selector "h1", text: "Work Order "
   end
 
   test "Adding an item to a work order" do
