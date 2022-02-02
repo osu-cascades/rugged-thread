@@ -6,6 +6,7 @@
     <%= link_to 'Add New Discount', new_discount_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>
+
 <table class="table table-hover" id="discounts_table">
   <thead>
     <tr>
@@ -19,7 +20,7 @@
     <% @discounts.each do |discount| %>
       <tr class="<%= dom_class(discount) %>" id="<%= dom_id(discount) %>">
         <td>
-          <%= link_to discount, discount %>
+          <%= discount %>
         </td>
         <td>
           <%= discount.percentage_amount %>
@@ -27,9 +28,8 @@
         <td>
           <%= discount.dollar_amount %>
         </td>
-        <td>
-          <%= link_to 'Edit', edit_discount_path(discount), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', discount, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td class="text-end">
+          <%= link_to 'Details', discount, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

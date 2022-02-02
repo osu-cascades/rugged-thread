@@ -22,14 +22,14 @@ class CustomersTest < ApplicationSystemTestCase
     fill_in "Email address", with: 'fake@fake.com'
     fill_in "Phone number", with: '5555555555'
     fill_in "Alternative phone number", with: '5555555556'
-    fill_in "Shipping street address", with: '123 Fake St.'
-    fill_in "Shipping city", with: 'Fake City'
-    fill_in "Shipping state", with: 'OR'
-    fill_in "Shipping zip code", with: '12345'
-    fill_in "Billing street address", with: '123 Fake St.'
-    fill_in "Billing city", with: 'Fake City'
-    fill_in "Billing state", with: 'OR'
-    fill_in "Billing zip code", with: '12345'
+    fill_in "customer_shipping_street_address", with: '123 Fake St.'
+    fill_in "customer_shipping_city", with: 'Fake City'
+    fill_in "customer_shipping_state", with: 'OR'
+    fill_in "customer_shipping_zip_code", with: '12345'
+    fill_in "customer_billing_street_address", with: '123 Fake St.'
+    fill_in "customer_billing_city", with: 'Fake City'
+    fill_in "customer_billing_state", with: 'OR'
+    fill_in "customer_billing_zip_code", with: '12345'
     click_on "Save"
     assert_text "Customer was successfully created"
   end

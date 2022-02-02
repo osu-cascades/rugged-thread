@@ -18,11 +18,10 @@
     <% @brands.each do |brand| %>
       <tr class="<%= dom_class(brand) %>" id="<%= dom_id(brand) %>">
         <td>
-          <%= link_to "#{brand.name}", brand %>
+          <%= brand %>
         </td>
-        <td>
-          <%= link_to 'Edit', edit_brand_path(brand), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', brand, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td class="text-end">
+          <%= link_to 'Details', brand, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

@@ -13,32 +13,6 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Employees'
   end
 
-  test "admin sees edit buttons for everyone" do
-    sign_in(users(:admin))
-    visit users_path
-    within '#users_table tbody' do
-      all('tr').each do |row|
-        within row do
-          assert_link 'Edit'
-        end
-      end
-    end
-  end
-
-  test "admin sees delete buttons for everyone but themselves" do
-    sign_in(users(:admin))
-    visit users_path
-    within '#users_table tbody' do
-      all('tr').each do |row|
-        if row[:id] == dom_id(users(:admin))
-          within(row) { refute_link 'Delete' }
-        else
-          within(row) { assert_link 'Delete' }
-        end
-      end
-    end
-  end
-
   test "admin can view another user" do
     sign_in(users(:admin))
     visit user_path(users(:staff))
@@ -58,6 +32,12 @@ class UsersTest < ApplicationSystemTestCase
     assert_text 'User was successfully created'
   end
 
+  test "admin sees edit buttons for other users" do
+    sign_in(users(:admin))
+    visit user_path(users(:staff))
+    assert_link 'Edit'
+  end
+
   test "admin can edit other users" do
     new_name = 'CHANGED Fake User'
     sign_in(users(:admin))
@@ -69,25 +49,26 @@ class UsersTest < ApplicationSystemTestCase
     assert_text new_name
   end
 
+  test "admin does not see delete button for themselves" do
+    sign_in(users(:admin))
+    visit user_path(users(:admin))
+    refute_link 'Delete'
+  end
+
   test "admin can delete other users" do
     sign_in(users(:admin))
-    visit users_path
-    within "##{dom_id(users(:workorderless))}" do
-      click_on 'Delete'
-    end
+    visit user_path(users(:workorderless))
+    click_on 'Delete'
     assert_text 'User was successfully destroyed'
     refute_text users(:workorderless).name
   end
 
   test "admin can not delete a user that has associated work orders" do
     sign_in(users(:admin))
-    visit users_path
-    within "##{dom_id(work_orders.first.creator)}" do
-      click_on 'Delete'
-    end
+    visit user_path(work_orders.first.creator)
+    click_on 'Delete'
     assert_text 'Cannot delete this user'
   end
-
 
   # Supervisors
 
@@ -95,30 +76,6 @@ class UsersTest < ApplicationSystemTestCase
     sign_in(users(:supervisor))
     visit users_path
     assert_selector 'h1', text: 'Employees'
-  end
-
-  test "supervisor does not see edit buttons for anyone but themselves" do
-    sign_in(users(:supervisor))
-    visit users_path
-    within '#users_table tbody' do
-      all('tr').each do |row|
-        if row[:id] == dom_id(users(:supervisor))
-          within(row) { assert_link 'Edit' }
-        else
-          within(row) { refute_link 'Edit' }
-        end
-      end
-    end
-  end
-
-  test "supervisor does not see delete buttons" do
-    sign_in(users(:supervisor))
-    visit users_path
-    within '#users_table tbody' do
-      all('tr').each do |row|
-        within(row) { refute_link 'Delete' }
-      end
-    end
   end
 
   test "supervisor can view another user" do
@@ -131,6 +88,12 @@ class UsersTest < ApplicationSystemTestCase
     sign_in(users(:supervisor))
     visit user_path(users(:staff))
     refute_link 'Edit Profile'
+  end
+
+  test "supervisor does not see delete buttons" do
+    sign_in(users(:supervisor))
+    visit user_path(users(:staff))
+    refute_link 'Delete'
   end
 
   # Staff

@@ -50,8 +50,8 @@ class AccountsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Account" do
-    visit accounts_path
-    click_on "Delete", match: :first
+    visit account_path(accounts(:one))
+    click_on 'Delete'
     assert_text "Account was successfully destroyed"
   end
 end

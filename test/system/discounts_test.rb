@@ -48,8 +48,8 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "destroying a discount" do
-    visit discounts_path
-    click_on "Delete", match: :first
+    visit discount_path(discounts(:one))
+    click_on 'Delete'
     assert_text "Discount was successfully destroyed"
   end
 end

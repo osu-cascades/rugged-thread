@@ -45,8 +45,8 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "destroying a Fee" do
-    visit fees_path
-    click_on "Delete", match: :first
+    visit fee_path(fees(:one))
+    click_on 'Delete'
     assert_text "Fee was successfully destroyed"
   end
 end

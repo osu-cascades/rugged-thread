@@ -42,16 +42,14 @@ class ItemStatusesTest < ApplicationSystemTestCase
   end
 
   test "destroying an item status that has no items" do
-    visit item_statuses_path
-    dom_id = "#item_status_#{item_statuses(:itemless).id}"
-    within(dom_id) { click_on "Delete" }
+    visit item_status_path(item_statuses(:itemless))
+    click_on 'Delete'
     assert_text "Item status was successfully destroyed"
   end
 
   test "failing to destroy an item status that has items" do
-    visit item_statuses_path
-    dom_id = "#item_status_#{item_statuses(:one).id}"
-    within(dom_id) { click_on "Delete" }
+    visit item_status_path(item_statuses(:one))
+    click_on 'Delete'
     assert_text "Cannot delete this item status"
   end
 

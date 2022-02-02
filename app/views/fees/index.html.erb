@@ -6,6 +6,7 @@
     <%= link_to 'Add New Fee', new_fee_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>
+
 <table class="table table-hover" id="fees_table">
   <thead>
     <tr>
@@ -18,14 +19,13 @@
     <% @fees.each do |fee| %>
       <tr class="<%= dom_class(fee) %>" id="<%= dom_id(fee) %>">
         <td>
-          <%= link_to fee, fee %>
+          <%= fee %>
         </td>
         <td>
           <%= fee.price %>
         </td>
-        <td>
-          <%= link_to 'Edit', edit_fee_path(fee), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', fee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td class="text-end">
+          <%= link_to 'Details', fee, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

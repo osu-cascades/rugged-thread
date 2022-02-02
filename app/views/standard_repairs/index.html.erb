@@ -6,6 +6,7 @@
     <%= link_to 'Add New Standard Repair', new_standard_repair_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>
+
 <table class="table table-hover" id="standard_repairs_table">
   <thead>
     <tr>
@@ -23,7 +24,7 @@
     <% @standard_repairs.each do |standard_repair| %>
       <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
         <td>
-          <%= link_to standard_repair, standard_repair %>
+          <%= standard_repair %>
         </td>
         <td>
           <%= standard_repair.sub_repair %>
@@ -43,9 +44,8 @@
         <td>
           <%= standard_repair.fee_type %>
         </td>
-        <td>
-          <%= link_to 'Edit', edit_standard_repair_path(standard_repair), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', standard_repair, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td class="text-end">
+          <%= link_to 'Details', standard_repair, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

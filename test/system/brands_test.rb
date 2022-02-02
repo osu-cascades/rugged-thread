@@ -45,16 +45,14 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Brand that has no items" do
-    visit brands_path
-    dom_id = "#brand_#{brands(:itemless).id}"
-    within(dom_id) { click_on "Delete" }
+    visit brand_path(brands(:itemless))
+    click_on 'Delete'
     assert_text "Brand was successfully destroyed"
   end
 
   test "failing to destroy a Brand that has items" do
-    visit brands_path
-    dom_id = "#brand_#{brands(:one).id}"
-    within(dom_id) { click_on "Delete" }
+    visit brand_path(brands(:one))
+    click_on 'Delete'
     assert_text "Cannot delete this brand"
   end
 

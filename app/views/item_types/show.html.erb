@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1><%= @item_type %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, item_types_path, class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_item_type_path(@item_type), class: 'btn btn-outline-primary me-2' %>
+    <%= link_to 'Delete', @item_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item_type.name %>
-</p>
-
-<%= link_to 'Edit', edit_item_type_path(@item_type) %> |
-<%= link_to 'Back', item_types_path %>
-
-<h2 class="mt-5">Items</h2>
+<h2 class="mt-5"><%= pluralize(@items.count, 'Item') %></h2>
 
 <table class="table table-hover">
   <thead>
@@ -36,11 +37,9 @@
         <td><%= item.labor_estimate %></td>
         <td><%= item.notes %></td>
         <td><%= link_to item.brand, item.brand %></td>
-        <td><%= link_to item.item_type, item.item_type %></td>
-        <td>
-          <%= link_to 'View', work_order_item_path(item.work_order, item), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to 'Edit', edit_work_order_item_path(item), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to 'Delete', work_order_item_path(item.work_order, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td><%= item.item_type %></td>
+        <td class="text-end">
+          <%= link_to 'Details', item, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

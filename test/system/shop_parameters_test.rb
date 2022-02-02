@@ -45,8 +45,8 @@ class ShopParametersTest < ApplicationSystemTestCase
   end
 
   test "destroying a shop parameter" do
-    visit shop_parameters_path
-    click_on "Delete", match: :first
+    visit shop_parameter_path(shop_parameters(:one))
+    click_on 'Delete'
     assert_text "Shop parameter was successfully destroyed"
   end
 end

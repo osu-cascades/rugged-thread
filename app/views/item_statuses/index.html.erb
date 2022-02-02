@@ -6,6 +6,7 @@
     <%= link_to 'Add New Item Status', new_item_status_path, class: 'btn btn-outline-primary' %>
   </div>
 </div>
+
 <table class="table table-hover" id="item_statuses_table">
   <thead>
     <tr>
@@ -17,11 +18,10 @@
     <% @item_statuses.each do |item_status| %>
       <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
         <td>
-          <%= link_to item_status, item_status %>
+          <%= item_status %>
         </td>
-        <td>
-          <%= link_to 'Edit', edit_item_status_path(item_status), class: 'btn btn-light btn-sm mr-4' %>
-          <%= link_to'Delete', item_status, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm' %>
+        <td class="text-end">
+          <%= link_to 'Details', item_status, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

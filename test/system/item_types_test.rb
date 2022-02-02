@@ -42,16 +42,14 @@ class ItemTypesTest < ApplicationSystemTestCase
   end
 
   test "destroying a item type that has no items" do
-    visit item_types_path
-    dom_id = "#item_type_#{item_types(:itemless).id}"
-    within(dom_id) { click_on "Delete" }
+    visit item_type_path(item_types(:itemless))
+    click_on 'Delete'
     assert_text "Item type was successfully destroyed"
   end
 
   test "failing to destroy a item type that has items" do
-    visit item_types_path
-    dom_id = "#item_type_#{item_types(:one).id}"
-    within(dom_id) { click_on "Delete" }
+    visit item_type_path(item_types(:one))
+    click_on 'Delete'
     assert_text "Cannot delete this item type"
   end
 

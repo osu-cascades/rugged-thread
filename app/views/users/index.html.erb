@@ -28,7 +28,7 @@
           <%= user.id %>
         </th>
         <td>
-          <%= link_to user, user %>
+          <%= user %>
         </td>
         <td>
           <%= user.email %>
@@ -44,9 +44,8 @@
         </td>
         <td><%= user.end_date %></td>
         <td><%= user.efficiency %></td>
-        <td>
-          <%= link_to_if(policy(user).edit?, 'Edit', edit_user_path(user), class: 'btn btn-light btn-sm mr-4') {} %>
-          <%= link_to_if(policy(user).destroy?, 'Delete', "/admin/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn text-danger btn-sm') {} %>
+        <td class="text-end">
+          <%= link_to 'Details', user, class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

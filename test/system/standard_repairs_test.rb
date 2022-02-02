@@ -31,9 +31,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
   end
 
   test "updating a Standard repair" do
-    visit standard_repairs_path
-    click_on "Edit", match: :first
-
+    visit edit_standard_repair_path(@standard_repair)
     fill_in "Charge", with: @standard_repair.charge
     fill_in "Complications", with: @standard_repair.complications
     fill_in "Description", with: @standard_repair.description
@@ -47,9 +45,8 @@ class StandardRepairsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Standard repair" do
-    visit standard_repairs_path
-    click_on "Delete", match: :first
-
+    visit standard_repair_path(standard_repairs(:one))
+    click_on 'Delete'
     assert_text "Standard repair was successfully destroyed"
   end
 end
