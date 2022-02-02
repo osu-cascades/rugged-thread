@@ -44,3 +44,30 @@
   <strong>Item type:</strong>
   <%= @item.item_type %>
 </p>
+
+<h2 class="mt-5">Repairs</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @repairs.each do |repair| %>
+      <tr>
+        <th scope="row"><%= repair.id %></th>
+        <td class="text-end">
+          <%= link_to 'Details', item_repair_path(@item, repair), class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="mt-5">Add Item</h2>
+
+<div class="form-container-wide">
+  <%= render 'repairs/form', repair: @repair, item: @item %>
+</div>

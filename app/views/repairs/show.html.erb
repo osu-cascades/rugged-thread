@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Standard repair:</strong>
+  <%= @repair.standard_repair_id %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @repair.item_id %>
+</p>
+
+<%= link_to 'Edit', edit_repair_path(@repair) %> |
+<%= link_to 'Back', repairs_path %>

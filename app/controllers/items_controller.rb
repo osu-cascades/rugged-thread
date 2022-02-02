@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @repair = Repair.new
+    @repairs = @item.repairs
   end
 
   def new
