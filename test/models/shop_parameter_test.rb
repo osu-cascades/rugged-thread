@@ -23,10 +23,7 @@ class ShopParameterTest < ActiveSupport::TestCase
 
   test '#to_s string representation is name' do
     name = 'FAKE'
-    amount = 1
-    expected = "#{name} $#{amount}"
-    shop_parameter = ShopParameter.new(name: name, amount: amount)
-    assert_equal expected, shop_parameter.to_s
+    assert_equal name, ShopParameter.new(name: name).to_s
   end
 
 end

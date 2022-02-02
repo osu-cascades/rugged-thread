@@ -6,7 +6,7 @@ class ShopParameter < ApplicationRecord
   default_scope { order('name ASC') }
 
   def to_s
-    "#{name} $#{amount}"
+    name
   end
 
 end
