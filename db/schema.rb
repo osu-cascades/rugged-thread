@@ -68,17 +68,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_180139) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "complications", force: :cascade do |t|
-    t.string "time"
-    t.float "charge"
-    t.bigint "repair_id", null: false
-    t.bigint "complication_type_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["complication_type_id"], name: "index_complications_on_complication_type_id"
-    t.index ["repair_id"], name: "index_complications_on_repair_id"
-  end
-
   create_table "customer_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -193,30 +182,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_180139) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "repair_types", force: :cascade do |t|
-    t.string "name"
-    t.string "time_estimate"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "number"
-  end
-
-  create_table "repairs", force: :cascade do |t|
-    t.float "charge"
-    t.string "time_total"
-    t.bigint "invoice_item_id", null: false
-    t.bigint "repair_type_id", null: false
-    t.bigint "technician_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "notes"
-    t.date "date"
-    t.integer "time"
-    t.index ["invoice_item_id"], name: "index_repairs_on_invoice_item_id"
-    t.index ["repair_type_id"], name: "index_repairs_on_repair_type_id"
-    t.index ["technician_id"], name: "index_repairs_on_technician_id"
-  end
-
   create_table "shop_parameters", force: :cascade do |t|
     t.string "name"
     t.integer "amount"
@@ -305,8 +270,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_180139) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "complications", "complication_types"
-  add_foreign_key "complications", "repairs"
   add_foreign_key "customers", "customer_types"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "customers"
@@ -314,9 +277,6 @@ ActiveRecord::Schema.define(version: 2022_02_02_180139) do
   add_foreign_key "items", "item_statuses"
   add_foreign_key "items", "item_types"
   add_foreign_key "items", "work_orders"
-  add_foreign_key "repairs", "invoice_items"
-  add_foreign_key "repairs", "repair_types"
-  add_foreign_key "repairs", "technicians"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"
   add_foreign_key "tickets", "invoices"
