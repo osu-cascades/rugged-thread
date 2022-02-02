@@ -1,6 +1,12 @@
 <div class="row mb-5">
   <div class="col">
-    <h1><%= @customer.first_name %> <%= @customer.last_name %></h1>
+    <h1>
+      <%= @customer.first_name %> <%= @customer.last_name %>
+      <span class="fs-6 badge bg-light fw-normal">
+        <%= link_to @customer.customer_type, @customer.customer_type, class: 'text-decoration-none' %>
+      </span>
+    </h1>
+    <h3><%= @customer.business_name %></h3>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, customers_path, class: 'btn btn-outline-primary me-5' %>
@@ -9,42 +15,33 @@
   </div>
 </div>
 
-<p>
-  <strong>Type:</strong>
-  <%= link_to @customer.customer_type, @customer.customer_type %>
-</p>
+<div class="row">
+  <div class="col">
+    <dl class="row">
+      <dt class="col-sm-4 fw-normal">Email:</dt>
+      <dd class="col-sm-8"><%= mail_to @customer.email_address %></dd>
+      <dt class="col-sm-4 fw-normal">Phone:</dt>
+      <dd class="col-sm-8"><%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %></dd>
+      <dt class="col-sm-4 fw-normal">Alt. phone:</dt>
+      <dd class="col-sm-8"><%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %></dd>
+    </dl>
+  </div>
+  <div class="col">
+    <h3>Shipping Address</h3>
+    <p>
+      <%= @customer.shipping_street_address %><br>
+      <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
+    </p>
+  </div>
+  <div class="col">
+    <h3>Billing Address</h3>
+    <p>
+      <%= @customer.billing_street_address %><br>
+      <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Business name:</strong>
-  <%= @customer.business_name %>
-</p>
-
-<p>
-  <strong>Email address:</strong>
-  <%= mail_to @customer.email_address %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %>
-</p>
-
-<p>
-  <strong>Alternative phone number:</strong>
-  <%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %>
-</p>
-
-<h3>Shipping Address</h3>
-<p>
-  <%= @customer.shipping_street_address %><br>
-  <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
-</p>
-
-<h3>Billing Address</h3>
-<p>
-  <%= @customer.billing_street_address %><br>
-  <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
-</p>
 
 <div class="row mt-5">
   <div class="col">
