@@ -19,12 +19,9 @@ class StandardRepairsTest < ApplicationSystemTestCase
     click_on "New Standard Repair"
 
     fill_in "Charge", with: @standard_repair.charge
-    fill_in "Complications", with: @standard_repair.complications
     fill_in "Description", with: @standard_repair.description
-    fill_in "Fee type", with: @standard_repair.fee_type
     fill_in "Method", with: @standard_repair.method
     fill_in "Name", with: @standard_repair.name
-    fill_in "Sub repair", with: @standard_repair.sub_repair
     click_on "Save"
 
     assert_text "Standard repair was successfully created"
@@ -33,12 +30,9 @@ class StandardRepairsTest < ApplicationSystemTestCase
   test "updating a Standard repair" do
     visit edit_standard_repair_path(@standard_repair)
     fill_in "Charge", with: @standard_repair.charge
-    fill_in "Complications", with: @standard_repair.complications
     fill_in "Description", with: @standard_repair.description
-    fill_in "Fee type", with: @standard_repair.fee_type
     fill_in "Method", with: @standard_repair.method
     fill_in "Name", with: @standard_repair.name
-    fill_in "Sub repair", with: @standard_repair.sub_repair
     click_on "Save"
 
     assert_text "Standard repair was successfully updated"

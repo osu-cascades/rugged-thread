@@ -11,12 +11,9 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Sub repair</th>
       <th scope="col">Method</th>
-      <th scope="col">Complications</th>
       <th scope="col">Description</th>
       <th scope="col">Charge</th>
-      <th scope="col">Fee type</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -27,22 +24,13 @@
           <%= standard_repair %>
         </td>
         <td>
-          <%= standard_repair.sub_repair %>
-        </td>
-        <td>
           <%= standard_repair.method %>
-        </td>
-        <td>
-          <%= standard_repair.complications %>
         </td>
         <td>
           <%= standard_repair.description %>
         </td>
         <td>
           <%= standard_repair.charge %>
-        </td>
-        <td>
-          <%= standard_repair.fee_type %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_repair, class: 'btn btn-light btn-sm' %>

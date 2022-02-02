@@ -2,18 +2,12 @@
 
 one:
   name: MyString
-  sub_repair: MyString
   method: MyString
-  complications: MyText
   description: MyText
   charge: 1
-  fee_type: MyString
 
 two:
   name: MyString
-  sub_repair: MyString
   method: MyString
-  complications: MyText
   description: MyText
   charge: 1
-  fee_type: MyString
