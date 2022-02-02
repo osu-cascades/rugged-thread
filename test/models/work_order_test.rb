@@ -35,6 +35,20 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test 'is invalid without a creator' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.creator = nil
+    refute work_order.valid?
+  end
+
+  test 'is invalid without a customer' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.customer = nil
+    refute work_order.valid?
+  end
+
   test '#estimate' do
     skip
   end

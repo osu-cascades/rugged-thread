@@ -13,6 +13,17 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Work Orders"
   end
 
+  test "new work order default creator is current_user" do
+    sign_in(users(:staff))
+    visit new_work_order_path
+    creator_id = find("#work_order_creator_id").value
+    assert(page.has_select?('Creator', selected: users(:staff).name))
+    sign_in(users(:admin))
+    visit new_work_order_path
+    creator_id = find("#work_order_creator_id").value
+    assert(page.has_select?('Creator', selected: users(:admin).name))
+  end
+
   test "creating a work order" do
     visit new_work_order_path
     select customers(:one).full_name, from: :work_order_customer_id

@@ -13,7 +13,7 @@
 
   <div class="mb-3">
     <%= form.label :creator_id, class: 'form-label' %>
-    <%= form.collection_select :creator_id, creators, :id, :name, {selected: work_order.creator_id || current_user.id}, {class: 'form-select'} %>
+    <%= form.collection_select :creator_id, creators, :id, :name, {}, {class: 'form-select'} %>
   </div>
 
   <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->

@@ -11,7 +11,8 @@ class WorkOrdersController < ApplicationController
   end
 
   def new
-    @work_order = WorkOrder.new(customer_id: params[:customer_id])
+    @work_order = current_user.created_work_orders.build(
+      customer_id: params[:customer_id])
     @creators = User.all
     @customers = Customer.all
   end
