@@ -17,28 +17,26 @@
 
 <div class="row">
   <div class="col">
-    <dl class="row">
-      <dt class="col-sm-4 fw-normal">Email:</dt>
-      <dd class="col-sm-8"><%= mail_to @customer.email_address %></dd>
-      <dt class="col-sm-4 fw-normal">Phone:</dt>
-      <dd class="col-sm-8"><%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %></dd>
-      <dt class="col-sm-4 fw-normal">Alt. phone:</dt>
-      <dd class="col-sm-8"><%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %></dd>
-    </dl>
+    <h3>Email &amp; Phone</h3>
+    <address>
+      <%= mail_to @customer.email_address %><br>
+      <%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %><br>
+      <%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %>
+    </address>
   </div>
   <div class="col">
     <h3>Shipping Address</h3>
-    <p>
+    <address>
       <%= @customer.shipping_street_address %><br>
       <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
-    </p>
+    </address>
   </div>
   <div class="col">
     <h3>Billing Address</h3>
-    <p>
+    <address>
       <%= @customer.billing_street_address %><br>
       <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
-    </p>
+    </address>
   </div>
 </div>
 
