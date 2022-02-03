@@ -20,7 +20,7 @@
 
 <p>
   <strong>In date:</strong>
-  <%= @work_order.in_date %>
+  <%= @work_order.in_date.to_s(:long) %>
 </p>
 
 <p>
@@ -55,7 +55,7 @@
       <tr>
         <th scope="row"><%= item.id %></th>
         <td><%= link_to item.item_status, item.item_status %></td>
-        <td><%= item.due_date %></td>
+        <td><%= item.due_date.to_s(:long) %></td>
         <td><%= item.estimate %></td>
         <td><%= item.labor_estimate %></td>
         <td><%= item.notes %></td>
