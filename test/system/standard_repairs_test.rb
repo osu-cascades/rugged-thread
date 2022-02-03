@@ -39,7 +39,6 @@ class StandardRepairsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Standard repair with no repairs" do
-    skip
     visit standard_repair_path(standard_repairs(:repairless))
     click_on 'Delete'
     assert_text "Standard repair was successfully destroyed"
