@@ -6,7 +6,7 @@
       <th scope="col">Customer type</th>
       <th scope="col">In date</th>
       <th scope="col">Estimate</th>
-      <th scope="col">Shipping</th>
+      <th scope="col">Ship?</th>
       <th scope="col">Created by</th>
       <th></th>
     </tr>
@@ -19,7 +19,7 @@
         <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type %></td>
         <td><%= work_order.in_date %></td>
         <td><%= work_order.estimate %></td>
-        <td><%= work_order.shipping %></td>
+        <td><%= work_order.shipping ? '📦' : '' %></td>
         <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator) %></td>
         <td class="text-end">
           <%= link_to 'Details', work_order, class: 'btn btn-light btn-sm' %>
