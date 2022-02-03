@@ -51,6 +51,8 @@
   <thead>
     <tr>
       <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">charge</th>
       <th></th>
     </tr>
   </thead>
@@ -58,6 +60,8 @@
     <% @repairs.each do |repair| %>
       <tr>
         <th scope="row"><%= repair.id %></th>
+        <th scope="row"><%= repair.standard_repair.name %></th>
+        <th scope="row"><%= repair.standard_repair.charge %></th>
         <td class="text-end">
           <%= link_to 'Details', item_repair_path(@item, repair), class: 'btn btn-light btn-sm' %>
         </td>
@@ -66,7 +70,7 @@
   </tbody>
 </table>
 
-<h2 class="mt-5">Add Item</h2>
+<h2 class="mt-5">Add Repair</h2>
 
 <div class="form-container-wide">
   <%= render 'repairs/form', repair: @repair, item: @item %>
