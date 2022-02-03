@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  method: MyString
+repairless:
+  name: FakeRepairOne
+  method: FakeRepairMethodOne
   description: MyText
   charge: 1
 
-two:
-  name: MyString
-  method: MyString
+standard:
+  name: FakeRepairTwo
+  method: FakeRepairMethodTwo
   description: MyText
-  charge: 1
+  charge: 2

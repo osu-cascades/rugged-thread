@@ -5,7 +5,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @standard_repair = standard_repairs(:one)
+    @standard_repair = standard_repairs(:standard)
     sign_in users(:staff)
   end
 
@@ -38,9 +38,18 @@ class StandardRepairsTest < ApplicationSystemTestCase
     assert_text "Standard repair was successfully updated"
   end
 
-  test "destroying a Standard repair" do
-    visit standard_repair_path(standard_repairs(:one))
+  test "destroying a Standard repair with no repairs" do
+    skip
+    visit standard_repair_path(standard_repairs(:repairless))
     click_on 'Delete'
     assert_text "Standard repair was successfully destroyed"
   end
+
+  test "failing to destroy a standard repair that has repairs" do
+    skip
+    visit standard_repair_path(standard_repairs(:standard))
+    click_on 'Delete'
+    assert_text "Cannot delete this standard repair"
+  end
+
 end
