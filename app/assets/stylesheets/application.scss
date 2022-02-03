@@ -5,6 +5,17 @@ body {
   padding-top: 4.5rem;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+ text-decoration: underline;
+}
+a.btn:hover, nav a:hover {
+  text-decoration: none;
+}
+
 footer {
   margin-top: 4.5rem;
   border-top: 1px solid #EEE;
