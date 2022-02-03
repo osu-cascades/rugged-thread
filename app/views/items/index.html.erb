@@ -27,7 +27,7 @@
       <tr>
         <th scope="row"><%= item.id %></th>
         <td><%= item.item_status %></td>
-        <td><%= item.due_date %></td>
+        <td><%= item.due_date.to_s(:long) %></td>
         <td><%= item.estimate %></td>
         <td><%= item.labor_estimate %></td>
         <td><%= item.notes %></td>
