@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>Repair <%= @repair.id %></h1>
+    <h2>From <%= link_to @repair.item, @repair.item %></h2>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to Item'.html_safe, item_path(@repair.item), class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_item_repair_path(@repair), class: 'btn btn-outline-primary me-2' %>
+    <%= link_to 'Delete', @repair, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+  </div>
+</div>
 
 <p>
   <strong>Standard repair:</strong>
@@ -9,6 +19,3 @@
   <strong>Item:</strong>
   <%= @repair.item_id %>
 </p>
-
-<%= link_to 'Edit', edit_repair_path(@repair) %> |
-<%= link_to 'Back', repairs_path %>
