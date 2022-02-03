@@ -1,7 +1,7 @@
 <div class="row mb-5">
   <div class="col">
     <h1><%= @work_order %></h1>
-    created by <%= link_to @work_order.creator, @work_order.creator %>
+    Created by <%= link_to @work_order.creator, @work_order.creator %> on <%= @work_order.created_at.to_s(:full) %>.
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, work_orders_path, class: 'btn btn-outline-primary me-5' %>
@@ -10,29 +10,34 @@
   </div>
 </div>
 
-<h2>
-  <%= @work_order.customer.first_name %> <%= @work_order.customer.last_name %>
-  <span class="fs-6 badge bg-light fw-normal">
-    <%= link_to @work_order.customer.customer_type, @work_order.customer.customer_type, class: 'text-decoration-none' %>
-  </span>
-</h2>
-<h3><%= @work_order.customer.business_name %></h3>
+<div class="row">
+  <div class="col">
+    <h2 class="fw-normal">
+      <%= link_to @work_order.customer %>
+      <span class="fs-6 badge bg-light fw-normal">
+        <%= link_to @work_order.customer.customer_type, @work_order.customer.customer_type, class: 'text-decoration-none' %>
+      </span>
+    </h2>
+    <h3 class="fw-normal"><%= @work_order.customer.business_name %></h3>
+    <h3 class="fw-normal fs-6"><%= link_to @work_order.customer.phone_number, "tel:#{@work_order.customer.phone_number}" %></h4>
+  </div>
+  <div class="col">
+    <p>
+      <strong>In date:</strong>
+      <%= @work_order.in_date.to_s(:long) %>
+    </p>
 
-<p>
-  <strong>In date:</strong>
-  <%= @work_order.in_date.to_s(:long) %>
-</p>
+    <p>
+      <strong>Estimate:</strong>
+      <%= @work_order.estimate %>
+    </p>
 
-<p>
-  <strong>Estimate:</strong>
-  <%= @work_order.estimate %>
-</p>
-
-<p>
-  <strong>Ship?</strong>
-  <%= @work_order.shipping ? '📦' : 'no' %>
-</p>
-
+    <p>
+      <strong>Ship?</strong>
+      <%= @work_order.shipping ? '📦' : 'no' %>
+    </p>
+  </div>
+</div>
 
 <h2 class="mt-5">Items</h2>
 
