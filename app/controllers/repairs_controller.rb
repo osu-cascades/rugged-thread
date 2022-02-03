@@ -9,7 +9,7 @@ class RepairsController < ApplicationController
   end
 
   def new
-    @item = WorkOrder.find(params[:item_id])
+    @item = Item.find(params[:item_id])
     @repair = @item.repairs.build
   end
 
@@ -18,7 +18,7 @@ class RepairsController < ApplicationController
   end
 
   def create
-    @item = WorkOrder.find(params[:item_id])
+    @item = Item.find(params[:item_id])
     @repair = @item.repairs.build(repair_params)
 
     respond_to do |format|
@@ -57,7 +57,7 @@ class RepairsController < ApplicationController
   private
 
     def repair_params
-      params.require(:repair).permit(item_id, standard_repair_id)
+      params.require(:repair).permit(:item_id, :standard_repair_id)
     end
 
 end

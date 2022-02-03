@@ -1,4 +1,4 @@
-<%= form_with(model: repair) do |form| %>
+<%= form_with(model: [@item, repair]) do |form| %>
   <% if repair.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(repair.errors.count, "error") %> prohibited this repair from being saved:</h2>
