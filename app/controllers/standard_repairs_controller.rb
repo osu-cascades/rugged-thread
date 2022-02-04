@@ -47,12 +47,15 @@ class StandardRepairsController < ApplicationController
     end
   end
 
-  # DELETE /standard_repairs/1 or /standard_repairs/1.json
   def destroy
-    @standard_repair.destroy
     respond_to do |format|
-      format.html { redirect_to standard_repairs_url, notice: "Standard repair was successfully destroyed." }
-      format.json { head :no_content }
+      if @standard_repair.destroy
+        format.html { redirect_to standard_repairs_url, notice: "Standard repair was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @standard_repair, alert: 'Cannot delete this standard repair.' }
+        format.json { render json: @standard_repair.errors, status: :unprocessable_entity }
+      end
     end
   end
 
