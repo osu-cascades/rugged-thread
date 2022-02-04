@@ -10,40 +10,35 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit item_repairs_path(repairs(:one))
+    visit item_path(repairs(:one))
     assert_selector "h1", text: "Item "
   end
 
   test "creating a Repair" do
-    visit item_repairs_path
+    visit item_path(repairs(:one))
     click_on "Create Repair"
 
-    fill_in "Standard repair", with: @repair.standard_repair_id
-    fill_in "Item", with: @repair.item_id
+    select standard_repairs(:standard).name, from: :repair_standard_repair_id
     click_on "Create Repair"
 
     assert_text "Repair was successfully created"
-    click_on "Back"
   end
 
   test "updating a Repair" do
-    visit item_repairs_path(repairs(:one))
+    visit item_path(repairs(:one))
     click_on "Details", match: :first
     click_on "Edit", match: :first
 
-    fill_in "Standard repair", with: @repair.standard_repair_id
-    fill_in "Item", with: @repair.item_id
+    select standard_repairs(:standard).name, from: :repair_standard_repair_id
     click_on "Update Repair"
 
     assert_text "Repair was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Repair" do
-    visit item_repairs_path(repairs(:one))
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+    visit item_path(repairs(:one))
+    click_on "Details", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Repair was successfully destroyed"
   end
