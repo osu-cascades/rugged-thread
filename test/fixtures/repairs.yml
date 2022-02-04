@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  standard_repair: one
+  standard_repair: standard
   item: one
 
 two:
-  standard_repair: two
+  standard_repair: repairless
   item: two
