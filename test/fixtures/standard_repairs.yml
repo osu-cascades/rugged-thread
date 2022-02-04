@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  name: Fake Standard Repair 1
+  method: Fake Method 1
+  description: Fake description 1
+  charge: 2
 
 repairless:
-  name: FakeRepairOne
-  method: FakeRepairMethodOne
-  description: MyText
+  name: Fake Standard Repair 2
+  method: Fake Method 2
+  description: Fake descriptions 2
   charge: 1
-
-standard:
-  name: FakeRepairTwo
-  method: FakeRepairMethodTwo
-  description: MyText
-  charge: 2
