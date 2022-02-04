@@ -1,7 +1,10 @@
 <div class="row mb-5">
   <div class="col">
     <h1>Repair <%= @repair.id %></h1>
-    <h2>From <%= link_to @repair.item, @repair.item %></h2>
+    <h2>
+      For <%= link_to "Item #{@repair.item.id}", @repair.item %> on
+      <%= link_to @repair.item.work_order, @repair.item.work_order %>
+    </h2>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to Item'.html_safe, item_path(@repair.item), class: 'btn btn-outline-primary me-5' %>
