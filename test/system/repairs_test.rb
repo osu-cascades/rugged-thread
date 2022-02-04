@@ -6,40 +6,39 @@ class RepairsTest < ApplicationSystemTestCase
 
   setup do
     sign_in users(:staff)
-    @repair = repairs(:one)
   end
 
-  test "visiting the index" do
-    visit item_path(repairs(:one))
-    assert_selector "h1", text: "Item "
+  test "viewing a list of repairs for an item" do
+    item = items(:one)
+    visit item_path(item)
+    assert_text item.repairs.first.standard_repair.name
   end
 
-  test "creating a Repair" do
-    visit item_path(repairs(:one))
-    click_on "Create Repair"
+  test "viewing a repair shows the standard repair name, item brand name and item type name" do
+    visit repair_path(repairs(:one))
+    assert_text repairs(:one).standard_repair.name
+    assert_text repairs(:one).item.brand.name
+    assert_text repairs(:one).item.item_type.name
+  end
 
-    select standard_repairs(:standard).name, from: :repair_standard_repair_id
+  test "creating a repair" do
+    visit item_path(items(:one))
+    select standard_repairs(:one).name, from: :repair_standard_repair_id
     click_on "Create Repair"
-
     assert_text "Repair was successfully created"
   end
 
   test "updating a Repair" do
-    visit item_path(repairs(:one))
-    click_on "Details", match: :first
-    click_on "Edit", match: :first
-
-    select standard_repairs(:standard).name, from: :repair_standard_repair_id
+    visit edit_repair_path(repairs(:one))
+    select standard_repairs(:repairless).name, from: :repair_standard_repair_id
     click_on "Update Repair"
-
     assert_text "Repair was successfully updated"
   end
 
   test "destroying a Repair" do
-    visit item_path(repairs(:one))
-    click_on "Details", match: :first
-    click_on "Delete", match: :first
-
+    visit repair_path(repairs(:one))
+    click_on "Delete"
     assert_text "Repair was successfully destroyed"
   end
+
 end
