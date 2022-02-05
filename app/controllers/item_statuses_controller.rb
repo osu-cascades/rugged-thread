@@ -48,6 +48,15 @@ class ItemStatusesController < ApplicationController
     end
   end
 
+  def set_default
+    @item_status = ItemStatus.find(params[:id])
+    @item_status.make_default!
+    respond_to do |format|
+      format.html { redirect_to item_statuses_url, notice: "#{@item_status} is now the default." }
+      format.json { render :show, status: :ok, location: @item_status }
+    end
+  end
+
   # DELETE /item_statuses/1 or /item_statuses/1.json
   def destroy
     respond_to do |format|

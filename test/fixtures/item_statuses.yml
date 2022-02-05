@@ -1,8 +1,15 @@
 one:
   name: Fake Item Status 1
+  default: false
 
 two:
   name: Fake Item Status 2
+  default: false
 
 itemless:
   name: Fake Itemless Item Status
+  default: false
+
+default:
+  name: Fake Default Item Status
+  default: true

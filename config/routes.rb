@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   resources :fees
   resources :invoice_items
   resources :invoices
-  resources :item_statuses
+  resources :item_statuses do
+    patch 'set_default', on: :member
+  end
   resources :item_types
   resources :items do
     resources :repairs

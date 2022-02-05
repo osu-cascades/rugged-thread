@@ -26,6 +26,12 @@ class ItemsTest < ApplicationSystemTestCase
     assert_text "Item was successfully created"
   end
 
+  test "new item's item status is the default one" do
+    default_item_status = item_statuses(:default)
+    visit work_order_path(work_orders(:shipping))
+    assert(page.has_select?('Item status', selected: default_item_status.name))
+  end
+
   test "updating a Item" do
     skip
     visit edit_item_path(items(:one))

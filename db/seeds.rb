@@ -47,7 +47,7 @@ Fee.create!(name: 'Special Order', price: 10)
 ItemStatus.create!(name: 'INVOICED')
 ItemStatus.create!(name: 'ON HOLD')
 ItemStatus.create!(name: 'PRICED')
-item_status = ItemStatus.create!(name: 'PROD')
+item_status = ItemStatus.create!(name: 'PROD', default: true)
 
 item_type = ItemType.create!(name: "Bag")
 ItemType.create!(name: "Biking")

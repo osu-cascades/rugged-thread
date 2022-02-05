@@ -11,6 +11,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Default?</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +20,16 @@
       <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
         <td>
           <%= item_status %>
+        </td>
+        <td>
+          <% if item_status.default? %>
+            ✅
+          <% else %>
+            <%= form_with url: set_default_item_status_url(item_status), method: :patch do |form| %>
+              <%= form.submit 'make default', class: 'btn btn-sm btn-outline-secondary' do %>
+              <% end %>
+            <% end %>
+          <% end %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', item_status, class: 'btn btn-light btn-sm' %>
