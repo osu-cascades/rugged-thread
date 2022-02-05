@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  devise :database_authenticatable, :registerable, :trackable,
+  devise :database_authenticatable, :trackable,
          :recoverable, :rememberable, :validatable
 
   has_many :created_work_orders, class_name: 'WorkOrder', foreign_key: :creator_id,
