@@ -1,0 +1,50 @@
+one:
+  first_name: First Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
+  email_address: fake01@example.com
+  shipping_street_address: 123 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
+  customer_type: one
+
+two:
+  first_name: Second Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
+  email_address: fake02@example.com
+  shipping_street_address: 567 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
+  customer_type: one
+
+without_work_order:
+  first_name: Third Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
+  email_address: fake03@example.com
+  shipping_street_address: 890 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
+  customer_type: one

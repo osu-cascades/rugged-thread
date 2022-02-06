@@ -1,0 +1,48 @@
+staff:
+  name: Fake Staff
+  email: staff@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'staff'
+  status: 'active'
+
+foh:
+  name: Fake FOH
+  email: foh@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'FOH'
+  status: 'active'
+
+supervisor:
+  name: Fake Supervisor
+  email: supervisor@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'supervisor'
+  status: 'active'
+
+admin:
+  name: Fake Admin
+  email: admin@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'admin'
+  status: 'active'
+
+deactivated:
+  name: Fake Deactivated
+  email: deactivated@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'admin'
+  status: 'inactive'
+
+vague:
+  name: Unknown User
+  email: unknown@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  # Unspecified role
+  # Unspecified status
+
+workorderless:
+  name: Work Order-less User
+  email: workorderless@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'staff'
+  status: 'active'

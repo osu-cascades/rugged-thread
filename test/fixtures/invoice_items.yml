@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: FakeDescription
+  invoice: one
+
+two:
+  description: FakeDescription1
+  invoice: two
