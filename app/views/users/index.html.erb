@@ -40,7 +40,7 @@
           <%= user.status %>
         </td>
         <td>
-          <%= user.last_sign_in_at&.localtime&.to_s(:short) %>
+          <%= user.last_sign_in_at&.localtime&.to_formatted_s(:short) %>
         </td>
         <td><%= user.end_date %></td>
         <td><%= user.efficiency %></td>

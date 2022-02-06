@@ -1,7 +1,7 @@
 <div class="row mb-5">
   <div class="col">
     <h1><%= @work_order %></h1>
-    Created by <%= link_to @work_order.creator, @work_order.creator %> on <%= @work_order.created_at.to_s(:full) %>.
+    Created by <%= link_to @work_order.creator, @work_order.creator %> on <%= @work_order.created_at.to_formatted_s(:full) %>.
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, work_orders_path, class: 'btn btn-outline-primary me-5' %>
@@ -24,7 +24,7 @@
   <div class="col">
     <p>
       <strong>In date:</strong>
-      <%= @work_order.in_date.to_s(:long) %>
+      <%= @work_order.in_date.to_formatted_s(:long) %>
     </p>
 
     <p>
@@ -60,7 +60,7 @@
       <tr>
         <th scope="row"><%= item.id %></th>
         <td><%= link_to item.item_status, item.item_status %></td>
-        <td><%= item.due_date.to_s(:long) %></td>
+        <td><%= item.due_date.to_formatted_s(:long) %></td>
         <td><%= item.estimate %></td>
         <td><%= item.labor_estimate %></td>
         <td><%= item.notes %></td>
