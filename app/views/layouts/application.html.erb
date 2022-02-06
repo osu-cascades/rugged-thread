@@ -1,101 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rugged Thread</title>
+    <title>RuggedThreadUpgrade</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!-- Explicitly import bootstrap rather than rely on webpack. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
-  <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Rugged Thread</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a class="nav-link" href="/">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Customers', customers_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Work Orders', work_orders_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item dropdown me-5">
-                <a href="#" id="listsDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="listsDropdownMenuLink">
-                  <li class="nav-item">
-                    <%= link_to 'Accounts', accounts_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Brands', brands_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Customer Types', customer_types_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Discounts', discounts_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Employees', users_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Fees', fees_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Item Statuses', item_statuses_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Item Types', item_types_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Shop Parameters', shop_parameters_path, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Standard Repairs', standard_repairs_path, class: 'dropdown-item' %>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" id="userDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= current_user %></a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userDropdownMenuLink">
-                  <li class="nav-item">
-                    <%= link_to 'Profile', current_user, class: 'dropdown-item' %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <main class="container" role="main">
-      <%= render 'layouts/flashes' %>
-      <%= yield %>
-    </div>
-
-    <footer>
-      <div class="container text-muted">
-        <p>&copy; <%= Time.current.year %> Rugged Thread. All rights reserved.</p>
-      </div>
-    </footer> 
-
+  <body>
+    <%= yield %>
   </body>
 </html>

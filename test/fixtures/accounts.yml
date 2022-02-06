@@ -1,9 +1,0 @@
-one:
-  name: Fake Account 1
-  turn_around: 1
-  cost_share: 1
-
-two:
-  name: Fake Account 2
-  turn_around: 2
-  cost_share: 2

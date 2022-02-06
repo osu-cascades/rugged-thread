@@ -1,8 +1,0 @@
-one:
-  name: Fake Discount 1
-  percentage_amount: 1
-  dollar_amount: 1
-two:
-  name: Fake Discount 2
-  percentage_amount: 2
-  dollar_amount: 2

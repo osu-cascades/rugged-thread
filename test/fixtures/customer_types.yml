@@ -1,8 +1,0 @@
-one:
-  name: Fake Customer Type 1
-
-two:
-  name: Fake Customer Type 2
-
-customerless:
-  name: Fake Customerless Customer Type
