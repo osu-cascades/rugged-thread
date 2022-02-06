@@ -1,0 +1,11 @@
+<div class="container-auth text-center">
+  <h1 class="h3 font-weight-normal">Forgot your password?</h1>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-auth' }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label visually-hidden' %>
+      <%= f.email_field :email, autofocus: true, required: true, autocomplete: 'email', placeholder: 'Email address', class: 'form-control' %>
+    </div>
+    <%= f.submit 'Send me reset password instructions', class: 'btn btn-lg btn-primary btn-block mt-4' %>
+  <% end %>
+</div>

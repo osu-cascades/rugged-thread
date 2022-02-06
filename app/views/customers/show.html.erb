@@ -1,0 +1,54 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>
+      <%= @customer.first_name %> <%= @customer.last_name %>
+      <span class="fs-6 badge bg-light fw-normal">
+        <%= link_to @customer.customer_type, @customer.customer_type, class: 'text-decoration-none' %>
+      </span>
+    </h1>
+    <h3><%= @customer.business_name %></h3>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to List'.html_safe, customers_path, class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-outline-primary me-2' %>
+    <%= link_to 'Delete', @customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h3>Email &amp; Phone</h3>
+    <address>
+      <%= mail_to @customer.email_address %><br>
+      <%= link_to @customer.phone_number, "tel:#{@customer.phone_number}" %><br>
+      <%= link_to @customer.alternative_phone_number, "tel:#{@customer.alternative_phone_number}" %>
+    </address>
+  </div>
+  <div class="col">
+    <h3>Shipping Address</h3>
+    <address>
+      <%= @customer.shipping_street_address %><br>
+      <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
+    </address>
+  </div>
+  <div class="col">
+    <h3>Billing Address</h3>
+    <address>
+      <%= @customer.billing_street_address %><br>
+      <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
+    </address>
+  </div>
+</div>
+
+
+<div class="row mt-5">
+  <div class="col">
+    <h2>Work Orders</h2>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'New Work Order', new_customer_work_order_path(@customer), class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<%= render 'work_orders/table', work_orders: @work_orders %>
+

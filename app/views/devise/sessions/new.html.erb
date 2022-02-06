@@ -1,0 +1,19 @@
+<div class="container-auth text-center">
+  <h1 class="h3 font-weight-normal">Please sign in</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-auth form-signin'}) do |f| %>
+    <%= f.label :email, class: 'visually-hidden' %>
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: 'email', placeholder: 'Email address', class: 'form-control' %>
+    <%= f.label :password, class: 'visually-hidden' %>
+    <%= f.password_field :password, required: true, autocomplete: 'current-password', placeholder: 'Password', class: 'form-control' %>
+    <% if devise_mapping.rememberable? %>
+      <div class="mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    <%= f.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
+  <div class="mt-2">
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+  </div>
+</div>

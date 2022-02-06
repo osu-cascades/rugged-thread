@@ -1,0 +1,35 @@
+<table class="table table-hover" id="customers_table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Business name</th>
+      <th scope="col">Email address</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Shipping Address</th>
+      <th scope="col">Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
+        <th scope="row"><%= customer.id %></th>
+        <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>
+        <td><%= link_to_unless(controller.controller_name == 'customers', customer.last_name, customer) %>
+        <td><%= customer.business_name %></td>
+        <td><%= mail_to customer.email_address %></td>
+        <td><%= link_to customer.phone_number, "tel:#{customer.phone_number}" %></td>
+        <td>
+          <%= customer.shipping_street_address %><br>
+          <%= customer.shipping_city %>, <%= customer.shipping_state %> <%= customer.shipping_zip_code %>
+        </td>
+        <td><%= link_to_unless(controller.controller_name == 'customer_types', customer.customer_type, customer.customer_type) %></td>
+        <td class="text-end">
+          <%= link_to 'Details', customer, class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

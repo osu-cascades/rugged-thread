@@ -1,0 +1,12 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>New Shop Parameter</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<div class="form-container">
+  <%= render 'form', shop_parameter: @shop_parameter %>
+</div>

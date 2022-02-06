@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Quote Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+      <th>Item type</th>
+      <th>Brand</th>
+      <th>Will mail item</th>
+      <th>Promo code</th>
+      <th>Description</th>
+      <th>Images</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quote_requests.each do |quote_request| %>
+      <tr>
+        <td><%= quote_request.first_name %></td>
+        <td><%= quote_request.last_name %></td>
+        <td><%= quote_request.email %></td>
+        <td><%= quote_request.phone_number %></td>
+        <td><%= quote_request.item_type %></td>
+        <td><%= quote_request.brand %></td>
+        <td><%= quote_request.will_mail_item %></td>
+        <td><%= quote_request.promo_code %></td>
+        <td><%= quote_request.description %></td>
+        <td><%= quote_request.images %></td>
+        <td><%= link_to 'Show', quote_request %></td>
+        <td><%= link_to 'Edit', edit_quote_request_path(quote_request) %></td>
+        <td><%= link_to 'Destroy', quote_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quote Request', new_quote_request_path %>

@@ -1,0 +1,33 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Shop Parameters</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Shop Parameter', new_shop_parameter_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<table class="table table-hover" id="shop_parameters_table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shop_parameters.each do |shop_parameter| %>
+      <tr class="<%= dom_class(shop_parameter) %>" id="<%= dom_id(shop_parameter) %>">
+        <td>
+          <%= shop_parameter %>
+        </td>
+        <td>
+          <%= shop_parameter.amount %>
+        </td>
+        <td class="text-end">
+          <%= link_to 'Details', shop_parameter, class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

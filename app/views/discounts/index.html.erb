@@ -1,0 +1,37 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Discounts</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Discount', new_discount_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<table class="table table-hover" id="discounts_table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Percentage Amount</th>
+      <th scope="col">Dollar Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @discounts.each do |discount| %>
+      <tr class="<%= dom_class(discount) %>" id="<%= dom_id(discount) %>">
+        <td>
+          <%= discount %>
+        </td>
+        <td>
+          <%= discount.percentage_amount %>
+        </td>
+        <td>
+          <%= discount.dollar_amount %>
+        </td>
+        <td class="text-end">
+          <%= link_to 'Details', discount, class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
