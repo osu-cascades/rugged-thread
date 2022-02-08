@@ -1,7 +1,9 @@
 one:
   standard_repair: one
   item: one
+  notes: 'Fake Notes'
 
 two:
   standard_repair: one
   item: one
+  notes: "Fake notes 2"

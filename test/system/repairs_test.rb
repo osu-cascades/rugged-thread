@@ -14,9 +14,10 @@ class RepairsTest < ApplicationSystemTestCase
     assert_text item.repairs.first.standard_repair.name
   end
 
-  test "viewing a repair shows the standard repair name, item brand name and item type name" do
+  test "viewing a repair shows the standard repair name, notes, item brand name and item type name" do
     visit repair_path(repairs(:one))
     assert_text repairs(:one).standard_repair.name
+    assert_text repairs(:one).notes
     assert_text repairs(:one).item.brand.name
     assert_text repairs(:one).item.item_type.name
   end
@@ -24,6 +25,7 @@ class RepairsTest < ApplicationSystemTestCase
   test "creating a repair" do
     visit item_path(items(:one))
     select standard_repairs(:one).name, from: :repair_standard_repair_id
+    fill_in "Notes", with: repairs(:one).notes
     click_on "Create Repair"
     assert_text "Repair was successfully created"
   end
@@ -31,6 +33,7 @@ class RepairsTest < ApplicationSystemTestCase
   test "updating a Repair" do
     visit edit_repair_path(repairs(:one))
     select standard_repairs(:repairless).name, from: :repair_standard_repair_id
+    fill_in "Notes", with: repairs(:one).notes
     click_on "Update Repair"
     assert_text "Repair was successfully updated"
   end
