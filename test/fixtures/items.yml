@@ -1,7 +1,5 @@
 one:
   due_date: 2022-01-25
-  estimate: 1
-  labor_estimate: 1
   notes: First fake item
   work_order: shipping
   brand: one
@@ -10,8 +8,6 @@ one:
 
 two:
   due_date: 2022-01-25
-  estimate: 2
-  labor_estimate: 2
   notes: Second fake item
   work_order: shipping
   brand: two

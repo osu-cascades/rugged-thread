@@ -8,6 +8,14 @@ class Item < ApplicationRecord
 
   after_initialize :set_default_status
 
+  def estimate
+    'TODO'
+  end
+
+  def labor_estimate
+    'TODO'
+  end
+
   private
 
   def set_default_status

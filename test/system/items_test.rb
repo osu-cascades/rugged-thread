@@ -16,8 +16,6 @@ class ItemsTest < ApplicationSystemTestCase
   test "Adding an item to a work order" do
     visit work_order_path(work_orders(:shipping))
     fill_in 'Due date', with: Date.current.to_s
-    fill_in "Estimate", with: 1
-    fill_in "Labor estimate", with: 2
     fill_in "Notes", with: 'FAKE'
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
