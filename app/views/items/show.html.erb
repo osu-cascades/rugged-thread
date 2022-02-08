@@ -10,40 +10,92 @@
   </div>
 </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @item.item_status %>
-</p>
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>Status:</strong>
+      <%= @item.item_status %>
+    </p>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @item.due_date.to_s(:long) %>
-</p>
+    <p>
+      <strong>Due date:</strong>
+      <%= @item.due_date.to_s(:long) %>
+    </p>
 
-<p>
-  <strong>Estimate:</strong>
-  <%= number_to_currency(@item.estimate) %>
-</p>
+    <p>
+      <strong>Estimate:</strong>
+      <%= number_to_currency(@item.estimate) %>
+    </p>
 
-<p>
-  <strong>Labor estimate:</strong>
-  <%= number_to_currency(@item.labor_estimate) %>
-</p>
+    <p>
+      <strong>Labor estimate:</strong>
+      <%= number_to_currency(@item.labor_estimate) %>
+    </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @item.notes %>
-</p>
+    <p>
+      <strong>Notes:</strong>
+      <%= @item.notes %>
+    </p>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @item.brand %>
-</p>
+    <p>
+      <strong>Brand:</strong>
+      <%= @item.brand %>
+    </p>
 
-<p>
-  <strong>Item type:</strong>
-  <%= @item.item_type %>
-</p>
+    <p>
+      <strong>Item type:</strong>
+      <%= @item.item_type %>
+    </p>
+  </div>
+
+  <div class="col">
+    <p>
+      <strong>Item <%= @item.id %> of <%= @item.work_order.items.length %></strong>
+      <%= %>
+    </p>
+
+    <p>
+      <strong>Intake:</strong>
+      <%= @item.work_order.creator %>
+    </p>
+
+    <p>
+      <strong>Customer:</strong>
+      <%= @item.work_order.customer %>
+    </p>
+
+    <p>
+      <strong>In Date:</strong>
+      <%= @item.work_order.in_date %>
+    </p>
+
+    <p>
+      <strong>Phone Number:</strong>
+      <%= @item.work_order.customer.phone_number %>
+    </p>
+
+    <p>
+      <strong>Customer Type:</strong>
+      <%= @item.work_order.customer.customer_type %>
+    </p>
+
+    <p>
+      <strong>Level:</strong>
+      <%= %>
+    </p>
+  </div>
+  <div class="col">
+    <p>
+      <strong>Fees:</strong>
+      <%= %>
+    </p>
+
+    <p>
+      <strong>Discounts:</strong>
+      <%= %>
+    </p>
+  </div>
+</div>
 
 <h2 class="mt-5">Repairs</h2>
 
