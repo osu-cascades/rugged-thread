@@ -9,11 +9,15 @@ class Item < ApplicationRecord
   after_initialize :set_default_status
 
   def estimate
-    'TODO'
+    labor_estimate + parts_special_orders_discounts
+  end
+
+  def parts_special_orders_discounts
+    0
   end
 
   def labor_estimate
-    'TODO'
+    repairs.reduce(0) { |sum, r| sum + r.price }
   end
 
   private

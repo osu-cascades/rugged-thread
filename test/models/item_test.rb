@@ -22,4 +22,24 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal(ItemStatus.default, item.item_status)
   end
 
+  test "#estimate is labor_estimate plus parts, special order, minus discounts" do
+    item = items(:repairless)
+    assert_equal(0, item.estimate)
+    item.repairs << Repair.new(price: 3)
+    assert_equal(3, item.estimate)
+  end
+
+  test "#labor_estimate is the sum of all repair prices" do
+    item = items(:repairless)
+    assert_equal(0, item.labor_estimate)
+    item.repairs << Repair.new(price: 3)
+    assert_equal(3, item.labor_estimate)
+    item.repairs << Repair.new(price: 7)
+    assert_equal(10, item.labor_estimate)
+  end
+
+  test "#parts_special_orders_discounts returns 0 for now" do
+    skip
+  end
+
 end

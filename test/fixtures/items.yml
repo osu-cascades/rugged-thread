@@ -6,9 +6,9 @@ one:
   item_type: one
   item_status: one
 
-two:
+repairless:
   due_date: 2022-01-25
-  notes: Second fake item
+  notes: Repairless fake item
   work_order: shipping
   brand: two
   item_type: two
