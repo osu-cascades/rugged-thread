@@ -1,7 +1,11 @@
 one:
   standard_repair: one
   item: one
+  notes: 'Fake Notes'
+  price: 10
 
 two:
   standard_repair: one
   item: one
+  notes: 'Fake notes 2'
+  price: 15

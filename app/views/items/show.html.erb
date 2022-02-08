@@ -52,6 +52,7 @@
     <tr>
       <th scope="col">id</th>
       <th scope="col">Name</th>
+      <th scope="col">Notes</th>
       <th scope="col">Method</th>
       <th scope="col">Description</th>
       <th scope="col">Charge</th>
@@ -63,6 +64,7 @@
       <tr>
         <th scope="row"><%= repair.id %></th>
         <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
+        <td><%= repair.notes %></td>
         <td><%= repair.standard_repair.method %></td>
         <td><%= repair.standard_repair.description %></td>
         <td><%= repair.standard_repair.charge %></td>

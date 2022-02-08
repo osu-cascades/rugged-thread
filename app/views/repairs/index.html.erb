@@ -7,6 +7,8 @@
     <tr>
       <th>Standard repair</th>
       <th>Item</th>
+      <th>Notes</th>
+      <th>Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= repair.standard_repair_id %></td>
         <td><%= repair.item_id %></td>
+        <td><%= repair.notes %></td>
+        <td><%= repair.price %></td>
         <td><%= link_to 'Show', repair %></td>
         <td><%= link_to 'Edit', edit_repair_path(repair) %></td>
         <td><%= link_to 'Destroy', repair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
