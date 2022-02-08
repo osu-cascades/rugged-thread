@@ -13,6 +13,12 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Work Orders"
   end
 
+  test "viewing a work order's total estimate" do
+    visit work_order_path(work_orders(:shipping))
+    assert_text("$#{work_orders(:shipping).estimate}")
+  end
+
+
   test "new work order default creator is current_user" do
     sign_in(users(:staff))
     visit new_work_order_path

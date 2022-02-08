@@ -18,7 +18,7 @@
         <td><%= link_to_unless(controller.controller_name == 'customers', work_order.customer, work_order.customer) %></td>
         <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
-        <td><%= work_order.estimate %></td>
+        <td><%= number_to_currency(work_order.estimate) %></td>
         <td><%= work_order.shipping ? '📦' : '' %></td>
         <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator) %></td>
         <td class="text-end">

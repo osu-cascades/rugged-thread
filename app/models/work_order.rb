@@ -13,7 +13,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def estimate
-    'TODO' # Stub. See https://github.com/osu-cascades/rugged-thread/issues/71
+    items.reduce(0) { |sum, i| sum + i.estimate }
   end
 
 end

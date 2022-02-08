@@ -28,8 +28,8 @@
         <th scope="row"><%= item.id %></th>
         <td><%= item.item_status %></td>
         <td><%= item.due_date.to_formatted_s(:long) %></td>
-        <td><%= item.estimate %></td>
-        <td><%= item.labor_estimate %></td>
+        <td><%= number_to_currency(item.estimate) %></td>
+        <td><%= number_to_currency(item.labor_estimate) %></td>
         <td><%= item.notes %></td>
         <td><%= item.brand_id %></td>
         <td><%= item.work_order_id %></td>

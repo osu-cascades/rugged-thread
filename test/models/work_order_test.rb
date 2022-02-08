@@ -49,8 +49,15 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
-  test '#estimate' do
-    skip
+  test '#estimate is the sum of all item estimates' do
+    work_order = work_orders(:itemless)
+    assert_equal(0, work_order.estimate)
+    item = Item.new
+    def item.estimate
+      99
+    end
+    work_order.items << item
+    assert_equal(99, work_order.estimate)
   end
 
 end

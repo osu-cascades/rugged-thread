@@ -22,12 +22,12 @@
 
 <p>
   <strong>Estimate:</strong>
-  <%= @item.estimate %>
+  <%= number_to_currency(@item.estimate) %>
 </p>
 
 <p>
   <strong>Labor estimate:</strong>
-  <%= @item.labor_estimate %>
+  <%= number_to_currency(@item.labor_estimate) %>
 </p>
 
 <p>
