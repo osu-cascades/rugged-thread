@@ -33,8 +33,8 @@
         <td><%= link_to item.work_order, item.work_order %></td>
         <td><%= link_to item.item_status, item.item_status %></td>
         <td><%= item.due_date.to_s(:long) %></td>
-        <td><%= item.estimate %></td>
-        <td><%= item.labor_estimate %></td>
+        <td><%= number_to_currency(item.estimate) %></td>
+        <td><%= number_to_currency(item.labor_estimate) %></td>
         <td><%= item.notes %></td>
         <td><%= link_to item.brand, item.brand %></td>
         <td><%= item.item_type %></td>

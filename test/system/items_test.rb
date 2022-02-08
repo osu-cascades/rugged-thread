@@ -3,6 +3,7 @@ require "application_system_test_case"
 class ItemsTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+  include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -11,6 +12,11 @@ class ItemsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit work_order_path(work_orders(:shipping))
     assert_selector "h1", text: "Work Order "
+  end
+
+  test "viewing an item's total estimate" do
+    visit item_path(items(:one))
+    assert_text("$#{items(:one).estimate}")
   end
 
   test "Adding an item to a work order" do
