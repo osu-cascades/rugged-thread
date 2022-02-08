@@ -12,4 +12,9 @@ class RepairTest < ActiveSupport::TestCase
     assert_respond_to(Repair.new, :standard_repair)
   end
 
+  test "has a price that is the default repair price" do
+    repair = Repair.new
+    assert_equal(repair.price, 0)
+  end
+
 end
