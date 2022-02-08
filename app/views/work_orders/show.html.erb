@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-  <div class="col">
+  <div class="col-6">
     <h2 class="fw-normal">
       <%= link_to @work_order.customer %>
       <span class="fs-6 badge bg-light fw-normal">
@@ -21,21 +21,19 @@
     <h3 class="fw-normal"><%= @work_order.customer.business_name %></h3>
     <h3 class="fw-normal fs-6"><%= link_to @work_order.customer.phone_number, "tel:#{@work_order.customer.phone_number}" %></h4>
   </div>
-  <div class="col">
+  <div class="col-3">
     <p>
-      <strong>In date:</strong>
+      <strong>Date in:</strong>
       <%= @work_order.in_date.to_s(:long) %>
     </p>
-
-    <p>
-      <strong>Estimate:</strong>
-      <%= @work_order.estimate %>
-    </p>
-
     <p>
       <strong>Ship?</strong>
       <%= @work_order.shipping ? '📦' : 'no' %>
     </p>
+  </div>
+  <div class="col-3">
+    <p class="mb-0">Total estimate:</p>
+    <h3 class="fs-1 fw-bolder"><%= number_to_currency(@work_order.estimate) %></h3>
   </div>
 </div>
 
