@@ -18,6 +18,7 @@ class RepairsTest < ApplicationSystemTestCase
     visit repair_path(repairs(:one))
     assert_text repairs(:one).standard_repair.name
     assert_text repairs(:one).notes
+    assert_text repairs(:one).price
     assert_text repairs(:one).item.brand.name
     assert_text repairs(:one).item.item_type.name
   end
@@ -26,6 +27,7 @@ class RepairsTest < ApplicationSystemTestCase
     visit item_path(items(:one))
     select standard_repairs(:one).name, from: :repair_standard_repair_id
     fill_in "Notes", with: repairs(:one).notes
+    fill_in "Price", with: repairs(:one).price
     click_on "Create Repair"
     assert_text "Repair was successfully created"
   end
@@ -34,6 +36,7 @@ class RepairsTest < ApplicationSystemTestCase
     visit edit_repair_path(repairs(:one))
     select standard_repairs(:repairless).name, from: :repair_standard_repair_id
     fill_in "Notes", with: repairs(:one).notes
+    fill_in "Price", with: repairs(:one).price
     click_on "Update Repair"
     assert_text "Repair was successfully updated"
   end
