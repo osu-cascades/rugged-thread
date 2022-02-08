@@ -107,7 +107,7 @@
       <th scope="col">Notes</th>
       <th scope="col">Method</th>
       <th scope="col">Description</th>
-      <th scope="col">Charge</th>
+      <th scope="col">Price</th>
       <th></th>
     </tr>
   </thead>
@@ -119,7 +119,7 @@
         <td><%= repair.notes %></td>
         <td><%= repair.standard_repair.method %></td>
         <td><%= repair.standard_repair.description %></td>
-        <td><%= repair.standard_repair.charge %></td>
+        <td><%= repair.price %></td>
         <td class="text-end">
           <%= link_to 'Details', item_repair_path(@item, repair), class: 'btn btn-light btn-sm' %>
         </td>
