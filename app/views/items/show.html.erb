@@ -14,7 +14,7 @@
   <div class="col">
     <p>
       <strong>Status:</strong>
-      <%= @item.item_status %>
+      <%= link_to @item.item_status, @item.item_status %>
     </p>
 
     <p>
@@ -39,12 +39,12 @@
 
     <p>
       <strong>Brand:</strong>
-      <%= @item.brand %>
+      <%= link_to @item.brand, @item.brand %>
     </p>
 
     <p>
       <strong>Item type:</strong>
-      <%= @item.item_type %>
+      <%= link_to @item.item_type, @item.item_type %>
     </p>
   </div>
 
@@ -56,27 +56,27 @@
 
     <p>
       <strong>Intake:</strong>
-      <%= @item.work_order.creator %>
+      <%= link_to @item.work_order.creator, @item.work_order.creator %>
     </p>
 
     <p>
       <strong>Customer:</strong>
-      <%= @item.work_order.customer %>
+      <%= link_to @item.work_order.customer, @item.work_order.customer %>
     </p>
 
     <p>
       <strong>In Date:</strong>
-      <%= @item.work_order.in_date %>
+      <%= @item.work_order.in_date.to_formatted_s(:long) %>
     </p>
 
     <p>
       <strong>Phone Number:</strong>
-      <%= @item.work_order.customer.phone_number %>
+      <%= link_to @item.work_order.customer.phone_number, "tel:#{@item.work_order.customer.phone_number}" %>
     </p>
 
     <p>
       <strong>Customer Type:</strong>
-      <%= @item.work_order.customer.customer_type %>
+      <%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>
     </p>
 
     <p>
@@ -107,7 +107,7 @@
       <th scope="col">Notes</th>
       <th scope="col">Method</th>
       <th scope="col">Description</th>
-      <th scope="col">Price</th>
+      <th scope="col" class="text-end">Price</th>
       <th></th>
     </tr>
   </thead>
@@ -119,7 +119,7 @@
         <td><%= repair.notes %></td>
         <td><%= repair.standard_repair.method %></td>
         <td><%= repair.standard_repair.description %></td>
-        <td><%= repair.price %></td>
+        <td class="text-end"><%= number_to_currency(repair.price) %></td>
         <td class="text-end">
           <%= link_to 'Details', item_repair_path(@item, repair), class: 'btn btn-light btn-sm' %>
         </td>
