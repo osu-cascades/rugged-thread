@@ -1,0 +1,8 @@
+@media print {
+  form, header, footer, nav.navbar , div.text-end {
+    display: none;
+  }
+  .exclude-from-print h2 {
+    visibility: hidden;
+  }
+}
