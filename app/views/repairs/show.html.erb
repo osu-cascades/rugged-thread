@@ -20,7 +20,7 @@
 
 <p>
   <strong>Item:</strong>
-  <%= @repair.item.brand %> <%= @repair.item.item_type %>
+  <%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %>
 </p>
 
 <p>
@@ -30,5 +30,5 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @repair.price %>
+  <%= number_to_currency(@repair.price) %>
 </p>
