@@ -72,7 +72,7 @@
                     <%= link_to 'Profile', current_user, class: 'dropdown-item' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                   </li>
                 </ul>
               </li>

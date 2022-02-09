@@ -5,7 +5,9 @@
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, users_path, class: 'btn btn-outline-primary me-5' %>
     <%= link_to_if(policy(@user).edit?, 'Edit', edit_user_path(@user), class: 'btn btn-outline-primary me-2') {} %>
-    <%= link_to_if(policy(@user).destroy?, 'Delete', "/admin/users/#{@user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger') {} %>
+    <% if policy(@user).destroy? %>
+      <%= button_to 'Delete', "/admin/users/#{@user.id}", method: :delete, class: 'btn btn-outline-danger' %>
+    <% end %>
   </div>
 </div>
 
