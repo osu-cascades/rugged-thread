@@ -1,7 +1,12 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Item <%= @item.id %></h1>
-    <h2>From <%= link_to @item.work_order, @item.work_order %></h2>
+    <h1>
+      Item <%= @item.id %> of <%= @item.work_order.items.length %>
+      <span class="fs-6 badge bg-light fw-normal align-top">
+        <%= link_to @item.item_status, @item.item_status, class: 'text-decoration-none' %>
+      </span>
+    </h1>
+    From <%= link_to @item.work_order, @item.work_order %> by       <%= link_to @item.work_order.creator, @item.work_order.creator %>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to Work Order'.html_safe, @item.work_order, class: 'btn btn-outline-primary me-5' %>
@@ -10,90 +15,61 @@
   </div>
 </div>
 
+<h2 class="display-1">
+  <%= link_to @item.item_type, @item.item_type %>
+  <span class="fs-6 badge bg-light fw-normal align-top">
+    <%= link_to @item.brand, @item.brand %>
+  </span>
+</h2>
+<p>
+  <strong>Notes:</strong>
+  <%= @item.notes %>
+</p>
+
 <div class="row">
   <div class="col">
     <p>
-      <strong>Status:</strong>
-      <%= link_to @item.item_status, @item.item_status %>
+      <%= link_to @item.work_order.customer, @item.work_order.customer %> (<%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>)
     </p>
-
+    <p>
+      <%= link_to @item.work_order.customer.phone_number, "tel:#{@item.work_order.customer.phone_number}" %>
+    </p>
+  </div>
+  <div class="col">
+    <p>
+      <strong>Date in:</strong>
+      <%= @item.work_order.in_date.to_formatted_s(:long) %>
+    </p>
     <p>
       <strong>Due date:</strong>
       <%= @item.due_date.to_s(:long) %>
     </p>
+    <p>
+      <strong>Level:</strong>
+      <%= %>
+    </p>
 
+  </div>
+
+  <div class="col">
     <p>
       <strong>Estimate:</strong>
       <%= number_to_currency(@item.estimate) %>
     </p>
 
     <p>
-      <strong>Labor estimate:</strong>
+      <strong>Labor:</strong>
       <%= number_to_currency(@item.labor_estimate) %>
     </p>
-
-    <p>
-      <strong>Notes:</strong>
-      <%= @item.notes %>
-    </p>
-
-    <p>
-      <strong>Brand:</strong>
-      <%= link_to @item.brand, @item.brand %>
-    </p>
-
-    <p>
-      <strong>Item type:</strong>
-      <%= link_to @item.item_type, @item.item_type %>
-    </p>
-  </div>
-
-  <div class="col">
-    <p>
-      <strong>Item <%= @item.id %> of <%= @item.work_order.items.length %></strong>
-      <%= %>
-    </p>
-
-    <p>
-      <strong>Intake:</strong>
-      <%= link_to @item.work_order.creator, @item.work_order.creator %>
-    </p>
-
-    <p>
-      <strong>Customer:</strong>
-      <%= link_to @item.work_order.customer, @item.work_order.customer %>
-    </p>
-
-    <p>
-      <strong>In Date:</strong>
-      <%= @item.work_order.in_date.to_formatted_s(:long) %>
-    </p>
-
-    <p>
-      <strong>Phone Number:</strong>
-      <%= link_to @item.work_order.customer.phone_number, "tel:#{@item.work_order.customer.phone_number}" %>
-    </p>
-
-    <p>
-      <strong>Customer Type:</strong>
-      <%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>
-    </p>
-
-    <p>
-      <strong>Level:</strong>
-      <%= %>
-    </p>
-  </div>
-  <div class="col">
     <p>
       <strong>Fees:</strong>
-      <%= %>
-    </p>
 
+    </p>
     <p>
       <strong>Discounts:</strong>
-      <%= %>
+
     </p>
+
   </div>
 </div>
 

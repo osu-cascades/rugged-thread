@@ -10,20 +10,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="mb-3">
-    <%= form.label :standard_repair_id, class: 'form-label'%>
-    <%= form.select :standard_repair_id, StandardRepair.all.map{ |standard_repair| [standard_repair.name, standard_repair.id] }, {include_blank: ''}, class: 'form-select' %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :standard_repair_id, class: 'form-label'%>
+      <%= form.select :standard_repair_id, StandardRepair.all.map{ |standard_repair| [standard_repair.name, standard_repair.id] }, {include_blank: ''}, class: 'form-select' %>
+    </div>
+    <div class="col-2">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
+    </div>
   </div>
 
   <div class="mb-3">
     <%= form.label :notes, class: 'form-label' %>
     <%= form.text_area :notes, class: 'form-control'%>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :price, class: 'form-label' %>
-    <%= form.number_field :price, class: 'form-control'%>
   </div>
 
   <div class="actions">
