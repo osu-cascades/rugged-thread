@@ -39,38 +39,7 @@
 
 <h2 class="mt-5">Items</h2>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Item Status</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Estimate</th>
-      <th scope="col">Labor Estimate</th>
-      <th scope="col">Notes</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Item Type</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <th scope="row"><%= item.id %></th>
-        <td><%= link_to item.item_status, item.item_status %></td>
-        <td><%= item.due_date.to_s(:long) %></td>
-        <td><%= number_to_currency(item.estimate) %></td>
-        <td><%= number_to_currency(item.labor_estimate) %></td>
-        <td><%= item.notes %></td>
-        <td><%= link_to item.brand, item.brand %></td>
-        <td><%= link_to item.item_type, item.item_type %></td>
-        <td class="text-end">
-          <%= link_to 'Details', work_order_item_path(@work_order, item), class: 'btn btn-light btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'items/table', items: @items %>
 
 <h2 class="mt-5">Add Item</h2>
 

@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = @work_order.items
+    if params[:work_order_id].present?
+      @work_order = WorkOrder.find(params[:work_order_id])
+      @items = @work_order.items
+    else
+      @items = Item.all
+    end
   end
 
   def show
