@@ -15,6 +15,7 @@ class QuoteRequestsTest < ApplicationSystemTestCase
   end
 
   test "creating a Quote request" do
+    skip
     visit quote_requests_path
     click_on "New Quote Request"
 
@@ -34,6 +35,7 @@ class QuoteRequestsTest < ApplicationSystemTestCase
   end
 
   test "updating a Quote request" do
+    skip
     visit quote_requests_path
     click_on "Edit", match: :first
 

@@ -1,42 +1,39 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby "3.0.3"
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'airbrake'
-gem 'bootsnap', '>= 1.4.4', require: false
+gem "bootsnap", require: false
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
-gem 'image_processing', '~> 1.2'
-gem 'jbuilder', '~> 2.7'
-gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
+gem "importmap-rails"
+# gem "image_processing", "~> 1.2"
+gem "jbuilder"
+gem 'pg'
+gem "puma", "~> 5.0"
 gem 'pundit'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-gem 'sass-rails', '>= 6'
-gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 5.0'
+gem "rails", "~> 7.0.1"
+gem "sassc-rails"
+gem "sprockets-rails"
+gem "stimulus-rails"
+gem "turbo-rails"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
-  gem 'spring'
-  gem 'web-console', '>= 4.1.0'
+  gem "web-console"
+  # gem "rack-mini-profiler"
+  # gem "spring"
 end
 
 group :test do
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  gem 'rexml'
-  gem 'webdrivers'
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

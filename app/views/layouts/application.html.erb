@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'print', media: 'print', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'print', media: 'print', 'data-turbo-track': 'reload' %>
     <!-- Explicitly import bootstrap rather than rely on webpack. -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
   </head>
   <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
 
@@ -73,7 +73,7 @@
                     <%= link_to 'Profile', current_user, class: 'dropdown-item' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                   </li>
                 </ul>
               </li>
@@ -96,7 +96,7 @@
       <div class="container text-muted">
         <p>&copy; <%= Time.current.year %> Rugged Thread. All rights reserved.</p>
       </div>
-    </footer> 
+    </footer>
 
   </body>
 </html>

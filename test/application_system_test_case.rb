@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # Enable :selenium instead of :rack_test if we need client-side javascript
@@ -9,5 +9,4 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   Capybara.register_driver :rack_test do |app|
     Capybara::RackTest::Driver.new(app, respect_data_method: true)
   end
-
 end

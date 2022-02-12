@@ -1,58 +1,24 @@
-# Rugged Thread Ticketing System
+# README
 
-## Setup
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Version Information
+Things you may want to cover:
 
-* Ruby version 3.0.2
+* Ruby version
 
-* Rails version 6.1.4.1
+* System dependencies
 
-* Postgresql version 13
+* Configuration
 
-### System Dependencies
+* Database creation
 
-* Devise - Authentication
+* Database initialization
 
-* Pundit - Authorization
-
-### Configuration
-
-We store API credentials in the nominal Rails credentials files, one for each
-environment:
-
-* config/credentials/development.yml.enc
-* config/credentials/production.yml.enc
-
-You must have a _config/credentials/development.key_ file containing the appropriate
-key. Consult the project documentation or development team members for this key.
-View and edit the credentials with
-`rails credentials:edit --environment development`.
-
-To view and modify the production credentials, you must have a
-_config/credentials/production.key_ file containing the appropriate key. Consult
-the project documentation or development team members for this key.
-
-### Database (TODO)
-
-* Creation
-
-* Initialization
-
-## Test Suite
-
-We use minitest, and you can run the test suite with `rails test` and
-`rails test:system`. At the time of this writing (see `git blame README`), the
-application doesn't use any client-side JavaScript, so the system tests use the
-`:rack_test` driver to speed up the system tests.
-See _test/application_system_test_case.rb_.
-
-### TODO
+* How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions - forthcoming (heroku)
+* Deployment instructions
 
 * ...
-
-&copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly and Yong Bakos. All rights reserved.
