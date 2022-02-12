@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.3"
+ruby "3.1.0"
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -15,7 +15,7 @@ gem "jbuilder"
 gem 'pg'
 gem "puma", "~> 5.0"
 gem 'pundit'
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.0.2.2"
 gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
