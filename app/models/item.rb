@@ -9,10 +9,10 @@ class Item < ApplicationRecord
   after_initialize :set_default_status
 
   def estimate
-    labor_estimate + parts_special_orders_discounts
+    labor_estimate + parts_special_orders_standard_discounts
   end
 
-  def parts_special_orders_discounts
+  def parts_special_orders_standard_discounts
     0
   end
 

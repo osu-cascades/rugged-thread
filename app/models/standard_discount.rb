@@ -1,4 +1,4 @@
-class Discount < ApplicationRecord
+class StandardDiscount < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :percentage_amount , numericality: { only_integer: true }, allow_nil: true

@@ -31,11 +31,11 @@ customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
   billing_city: 'Bend', billing_state: 'OR', billing_zip_code: '97704',
   customer_type: b2c_local_customer_type)
 
-Discount.create!(name: 'Coupon', dollar_amount: 10)
-Discount.create!(name: 'Employee', percentage_amount: 30)
-Discount.create!(name: 'Investor', percentage_amount: 30)
-Discount.create!(name: 'OEM Cost Share', percentage_amount: 30)
-Discount.create!(name: 'Warranty', percentage_amount: 100)
+StandardDiscount.create!(name: 'Coupon', dollar_amount: 10)
+StandardDiscount.create!(name: 'Employee', percentage_amount: 30)
+StandardDiscount.create!(name: 'Investor', percentage_amount: 30)
+StandardDiscount.create!(name: 'OEM Cost Share', percentage_amount: 30)
+StandardDiscount.create!(name: 'Warranty', percentage_amount: 100)
 
 Fee.create!(name: 'Cleaning', price: 35)
 Fee.create!(name: 'Expedite', price: 25)

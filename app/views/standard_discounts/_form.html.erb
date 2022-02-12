@@ -1,10 +1,10 @@
-<%= form_with(model: discount) do |form| %>
-  <% if discount.errors.any? %>
+<%= form_with(model: standard_discount) do |form| %>
+  <% if standard_discount.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(discount.errors.count, "error") %> prohibited this discount from being saved:</h2>
+      <h2><%= pluralize(standard_discount.errors.count, "error") %> prohibited this standard_discount from being saved:</h2>
 
       <ul>
-        <% discount.errors.each do |error| %>
+        <% standard_discount.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

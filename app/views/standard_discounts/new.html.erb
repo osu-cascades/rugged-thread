@@ -1,6 +1,6 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Editing <%= @discount.name_was %></h1>
+    <h1>New Standard Discount</h1>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
@@ -8,5 +8,5 @@
 </div>
 
 <div class="form-container">
-  <%= render 'form', discount: @discount %>
+  <%= render 'form', standard_discount: @standard_discount %>
 </div>

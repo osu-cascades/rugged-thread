@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :customers do
     resources :work_orders, only: :new
   end
-  resources :discounts
+  resources :standard_discounts
   resources :fees
   resources :invoice_items
   resources :invoices
