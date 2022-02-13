@@ -17,6 +17,34 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :repairs)
   end
 
+  test "must have a brand" do
+    item = items(:one)
+    assert item.valid?
+    item.brand = nil
+    refute item.valid?
+  end
+
+  test "must have a status" do
+    item = items(:one)
+    assert item.valid?
+    item.item_status = nil
+    refute item.valid?
+  end
+
+  test "must have a type" do
+    item = items(:one)
+    assert item.valid?
+    item.item_type = nil
+    refute item.valid?
+  end
+
+  test "must have a work order" do
+    item = items(:one)
+    assert item.valid?
+    item.work_order = nil
+    refute item.valid?
+  end
+
   test "has a status that is the default item status" do
     item = Item.new
     assert_equal(ItemStatus.default, item.item_status)
