@@ -35,7 +35,7 @@ class ItemsTest < ApplicationSystemTestCase
   test "Adding an invalid item redisplays the work order view with errors" do
     visit work_order_path(work_orders(:shipping))
     click_on 'Create Item'
-    assert_text 'There was a problem adding this item to the work order'
+    assert_text 'prohibited this item from being saved'
   end
 
   test "new item's item status is the default one" do
@@ -53,7 +53,7 @@ class ItemsTest < ApplicationSystemTestCase
 
   test 'updating an invalid item redisplays the edit view with errors' do
     visit edit_item_path(items(:one))
-    select 'Select a Brand', from: 'Brand'
+    select '', from: 'Brand'
     click_on "Update Item"
     assert_text "prohibited this item from being saved"
   end

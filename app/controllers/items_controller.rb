@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
         @brands = Brand.all
         @item_statuses = ItemStatus.all
         @item_types = ItemType.all
-        flash.now[:alert] = 'There was a problem adding this item to the work order.'
         format.html { render 'work_orders/show', status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
