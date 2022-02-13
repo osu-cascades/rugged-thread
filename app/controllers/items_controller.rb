@@ -61,10 +61,14 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
     respond_to do |format|
-      format.html { redirect_to work_order_path(@item.work_order), notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
+      if @item.destroy
+        format.html { redirect_to work_order_path(@item.work_order), notice: 'Item was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @item, alert: 'Cannot delete this item.' }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
     end
   end
 

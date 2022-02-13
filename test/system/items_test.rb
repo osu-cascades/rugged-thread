@@ -58,11 +58,16 @@ class ItemsTest < ApplicationSystemTestCase
     assert_text "prohibited this item from being saved"
   end
 
-  test "destroying an Item" do
-    skip
-    visit items_path
-    click_on "Destroy", match: :first
+  test "destroying an item without repairs succeeds" do
+    visit item_path(items(:repairless))
+    click_on 'Delete'
     assert_text "Item was successfully destroyed"
+  end
+
+  test "destroying an item with repairs fails" do
+    visit item_path(items(:one))
+    click_on 'Delete'
+    assert_text "Cannot delete this item"
   end
 
 end
