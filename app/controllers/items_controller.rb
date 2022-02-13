@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.includes(:brand, :brand, :item_status, :item_type).find(params[:id])
+    @item = Item.find(params[:id])
     @brands = Brand.all
     @item_statuses = ItemStatus.all
     @item_types = ItemType.all
@@ -50,6 +50,9 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
+        @brands = Brand.all
+        @item_statuses = ItemStatus.all
+        @item_types = ItemType.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end

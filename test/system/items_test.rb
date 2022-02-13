@@ -51,6 +51,13 @@ class ItemsTest < ApplicationSystemTestCase
     assert_text "Item was successfully updated"
   end
 
+  test 'updating an invalid item redisplays the edit view with errors' do
+    visit edit_item_path(items(:one))
+    select 'Select a Brand', from: 'Brand'
+    click_on "Update Item"
+    assert_text "prohibited this item from being saved"
+  end
+
   test "destroying an Item" do
     skip
     visit items_path
