@@ -1,7 +1,7 @@
 <%= form_with(model: standard_repair) do |form| %>
   <% if standard_repair.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(standard_repair.errors.count, "error") %> prohibited this standard_repair from being saved:</h2>
+      <h2><%= pluralize(standard_repair.errors.count, "error") %> prohibited this standard repair from being saved:</h2>
 
       <ul>
         <% standard_repair.errors.each do |error| %>

@@ -27,7 +27,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
     visit new_standard_repair_path
     fill_in "Name", with: ''
     click_on "Save"
-    assert_text "prohibited this standard_repair from being saved"
+    assert_text "prohibited this standard repair from being saved"
   end
 
   test "updating a standard repair" do
@@ -42,7 +42,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
     visit edit_standard_repair_path(standard_repairs(:one))
     fill_in "Name", with: ''
     click_on "Save"
-    assert_text "prohibited this standard_repair from being saved"
+    assert_text "prohibited this standard repair from being saved"
   end
 
   test "destroying a standard repair with no repairs" do

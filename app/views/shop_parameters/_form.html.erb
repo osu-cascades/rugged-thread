@@ -1,7 +1,7 @@
 <%= form_with(model: shop_parameter) do |form| %>
   <% if shop_parameter.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(shop_parameter.errors.count, "error") %> prohibited this shop_parameter from being saved:</h2>
+      <h2><%= pluralize(shop_parameter.errors.count, "error") %> prohibited this shop parameter from being saved:</h2>
 
       <ul>
         <% shop_parameter.errors.each do |error| %>
