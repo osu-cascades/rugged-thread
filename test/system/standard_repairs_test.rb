@@ -23,12 +23,26 @@ class StandardRepairsTest < ApplicationSystemTestCase
     assert_text "Standard repair was successfully created"
   end
 
+  test "creating a standard repair with invalid attributes fails" do
+    visit new_standard_repair_path
+    fill_in "Name", with: ''
+    click_on "Save"
+    assert_text "prohibited this standard_repair from being saved"
+  end
+
   test "updating a standard repair" do
     visit edit_standard_repair_path(standard_repairs(:one))
     fill_in "Name", with: 'Updated Name'
     click_on "Save"
     assert_text "Standard repair was successfully updated"
     assert_text "Updated Name"
+  end
+
+  test "updating a standard repair with invalid attributes fails" do
+    visit edit_standard_repair_path(standard_repairs(:one))
+    fill_in "Name", with: ''
+    click_on "Save"
+    assert_text "prohibited this standard_repair from being saved"
   end
 
   test "destroying a standard repair with no repairs" do

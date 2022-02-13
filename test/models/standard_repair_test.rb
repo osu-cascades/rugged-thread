@@ -20,6 +20,27 @@ class StandardRepairTest < ActiveSupport::TestCase
     refute standard_repair.destroyed?
   end
 
+  test 'is not valid without a name' do
+    standard_repair = standard_repairs(:one)
+    assert standard_repair.valid?
+    standard_repair.name = ''
+    refute standard_repair.valid?
+  end
+
+  test 'name must be unique' do
+    standard_repair = standard_repairs(:repairless)
+    assert standard_repair.valid?
+    standard_repair.name = standard_repairs(:one).name
+    refute standard_repair.valid?
+  end
+
+  test 'charge must be a positive integer' do
+    standard_repair = standard_repairs(:one)
+    assert standard_repair.valid?
+    standard_repair.charge = -1
+    refute standard_repair.valid?
+  end
+
   test "#to_s string representation is name" do
     name = 'FAKE'
     standard_repair = StandardRepair.new(name: name)
