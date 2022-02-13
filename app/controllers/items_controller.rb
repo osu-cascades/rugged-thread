@@ -1,39 +1,43 @@
 class ItemsController < ApplicationController
 
   def index
-    if params[:work_order_id].present?
-      @work_order = WorkOrder.find(params[:work_order_id])
-      @items = @work_order.items
-    else
-      @items = Item.all
-    end
+    @items = Item.all
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.includes(
+      :brand,
+      :item_status,
+      :item_type,
+      {repairs: [:standard_repair]},
+      {work_order: [:creator, {customer: [:customer_type]}]},
+      ).find(params[:id])
     @repair = Repair.new
-    @repairs = @item.repairs
-  end
-
-  def new
-    @work_order = WorkOrder.find(params[:work_order_id])
-    @item = @work_order.items.build
+    @standard_repairs = StandardRepair.all
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.includes(:brand, :brand, :item_status, :item_type).find(params[:id])
+    @brands = Brand.all
+    @item_statuses = ItemStatus.all
+    @item_types = ItemType.all
   end
 
   def create
     @work_order = WorkOrder.find(params[:work_order_id])
     @item = @work_order.items.build(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @work_order, notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @work_order.items.reset
+        @items = @work_order.items
+        @brands = Brand.all
+        @item_statuses = ItemStatus.all
+        @item_types = ItemType.all
+        flash.now[:alert] = 'There was a problem adding this item to the work order.'
+        format.html { render 'work_orders/show', status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end

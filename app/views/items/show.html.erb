@@ -6,7 +6,7 @@
         <%= link_to @item.item_status, @item.item_status, class: 'text-decoration-none' %>
       </span>
     </h1>
-    From <%= link_to @item.work_order, @item.work_order %> by       <%= link_to @item.work_order.creator, @item.work_order.creator %>
+    From <%= link_to @item.work_order, @item.work_order %> by <%= link_to @item.work_order.creator, @item.work_order.creator %>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to Work Order'.html_safe, @item.work_order, class: 'btn btn-outline-primary me-5' %>
@@ -88,7 +88,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @repairs.each do |repair| %>
+    <% @item.repairs.each do |repair| %>
       <tr>
         <th scope="row"><%= repair.id %></th>
         <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
@@ -108,6 +108,6 @@
   <h2 class="mt-5">Add Repair</h2>
 
   <div class="form-container">
-    <%= render 'repairs/form', repair: @repair, item: @item %>
+    <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
   </div>
 </div>

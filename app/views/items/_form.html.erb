@@ -1,4 +1,4 @@
-<%= form_with(model: [@work_order, item]) do |form| %>
+<%= form_with(model: [work_order, item]) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -26,17 +26,17 @@
     <div class="col">
       <div class="mb-3">
         <%= form.label :item_status_id, class: 'form-label' %>
-        <%= form.select :item_status_id, ItemStatus.all.map{ |item_status| [item_status.name, item_status.id] }, {}, class: 'form-select' %>
+        <%= form.select :item_status_id, item_statuses.map { |item_status| [item_status.name, item_status.id] }, {}, class: 'form-select' %>
       </div>
 
       <div class="mb-3">
         <%= form.label :brand_id, class: 'form-label' %>
-        <%= form.select :brand_id, Brand.all.map{ |brand| [brand.name, brand.id] }, {include_blank: "Select a Brand"}, class: 'form-select' %>
+        <%= form.select :brand_id, brands.all.map { |brand| [brand.name, brand.id] }, {include_blank: "Select a Brand"}, class: 'form-select' %>
       </div>
 
       <div class="mb-3">
         <%= form.label :item_type_id, class: 'form-label' %>
-        <%= form.select :item_type_id, ItemType.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: "Select an Item Type"}, class: 'form-select' %>
+        <%= form.select :item_type_id, item_types.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: "Select an Item Type"}, class: 'form-select' %>
       </div>
     </div>
   </div>

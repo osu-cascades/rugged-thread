@@ -9,9 +9,11 @@ class ItemsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index" do
-    visit work_order_path(work_orders(:shipping))
-    assert_selector "h1", text: "Work Order "
+  test "visiting the index shows a table of all items, each with a Details link" do
+    visit items_path
+    assert_selector "h1", text: "Items"
+    assert_selector "#items_table"
+    assert_link 'Details'
   end
 
   test "viewing an item's total estimate" do
@@ -28,6 +30,12 @@ class ItemsTest < ApplicationSystemTestCase
     select item_types(:one).name, from: :item_item_type_id
     click_on "Create Item"
     assert_text "Item was successfully created"
+  end
+
+  test "Adding an invalid item redisplays the work order view with errors" do
+    visit work_order_path(work_orders(:shipping))
+    click_on 'Create Item'
+    assert_text 'There was a problem adding this item to the work order'
   end
 
   test "new item's item status is the default one" do

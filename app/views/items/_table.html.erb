@@ -24,7 +24,7 @@
         <td><%= number_to_currency(item.labor_estimate) %></td>
         <td><%= item.notes %></td>
         <td class="text-end">
-          <%= link_to 'Details', work_order_item_path(item.work_order, item), class: 'btn btn-light btn-sm' %>
+          <%= link_to 'Details', item_path(item), class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

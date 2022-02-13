@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     patch 'set_default', on: :member
   end
   resources :item_types
-  resources :items do
+  resources :items, except: [:new, :create] do
     resources :repairs
   end
   resources :quote_requests
@@ -40,6 +40,6 @@ Rails.application.routes.draw do
   resources :technicians
   resources :tickets
   resources :work_orders do
-    resources :items
+    resources :items, only: :create
   end
 end

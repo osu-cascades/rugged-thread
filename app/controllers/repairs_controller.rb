@@ -14,7 +14,8 @@ class RepairsController < ApplicationController
   end
 
   def edit
-    @repair = Repair.find(params[:id])
+    @repair = Repair.includes(:item).find(params[:id])
+    @standard_repairs = StandardRepair.all
   end
 
   def create

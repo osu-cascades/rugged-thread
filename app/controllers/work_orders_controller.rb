@@ -8,6 +8,9 @@ class WorkOrdersController < ApplicationController
     @work_order = WorkOrder.find(params[:id])
     @item = Item.new
     @items = @work_order.items
+    @brands = Brand.all
+    @item_statuses = ItemStatus.all
+    @item_types = ItemType.all
   end
 
   def new
