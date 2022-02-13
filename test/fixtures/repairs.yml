@@ -9,3 +9,9 @@ two:
   item: one
   notes: 'Fake notes 2'
   price: 15
+
+complicationless:
+  standard_repair: two
+  item: one
+  notes: 'Fake notes 3'
+  price: 20

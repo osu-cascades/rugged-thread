@@ -97,7 +97,7 @@
         <td><%= repair.standard_repair.description %></td>
         <td class="text-end"><%= number_to_currency(repair.price) %></td>
         <td class="text-end">
-          <%= link_to 'Details', item_repair_path(@item, repair), class: 'btn btn-light btn-sm' %>
+          <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
     <% end %>

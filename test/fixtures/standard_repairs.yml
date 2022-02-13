@@ -4,8 +4,14 @@ one:
   description: Fake description 1
   charge: 2
 
-repairless:
+two:
   name: Fake Standard Repair 2
   method: Fake Method 2
-  description: Fake descriptions 2
+  description: Fake description 2
+  charge: 4
+
+repairless:
+  name: Fake Repairless Standard Repair
+  method: Fake Repairless Method
+  description: Fake repairless description
   charge: 1
