@@ -44,8 +44,7 @@ class ItemsTest < ApplicationSystemTestCase
     assert(page.has_select?('Item status', selected: default_item_status.name))
   end
 
-  test "updating a Item" do
-    skip
+  test "updating an item" do
     visit edit_item_path(items(:one))
     fill_in "Notes", with: 'Fake Updated Note'
     click_on "Update Item"
