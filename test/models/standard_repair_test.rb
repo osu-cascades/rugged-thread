@@ -6,6 +6,7 @@ class StandardRepairTest < ActiveSupport::TestCase
     assert_respond_to(StandardRepair.new, :name)
     assert_respond_to(StandardRepair.new, :method)
     assert_respond_to(StandardRepair.new, :description)
+    assert_respond_to(StandardRepair.new, :level)
     assert_respond_to(StandardRepair.new, :charge)
   end
 
@@ -32,6 +33,18 @@ class StandardRepairTest < ActiveSupport::TestCase
     assert standard_repair.valid?
     standard_repair.name = standard_repairs(:one).name
     refute standard_repair.valid?
+  end
+
+  test 'level must be a positive integer' do
+    standard_repair = standard_repairs(:one)
+    assert standard_repair.valid?
+    standard_repair.charge = -1
+    refute standard_repair.valid?
+  end
+
+  test 'level is 1 by default' do
+    standard_repair = StandardRepair.new
+    assert_equal 1, standard_repair.level
   end
 
   test 'charge must be a positive integer' do

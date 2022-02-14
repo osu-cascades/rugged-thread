@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_12_105327) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_13_235819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -206,6 +206,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_12_105327) do
     t.integer "charge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level", default: 1, null: false
   end
 
   create_table "task_types", force: :cascade do |t|
@@ -257,8 +258,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_12_105327) do
     t.date "end_date"
     t.float "efficiency"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.integer "role", default: 0, null: false

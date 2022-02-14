@@ -2,16 +2,19 @@ one:
   name: Fake Standard Repair 1
   method: Fake Method 1
   description: Fake description 1
+  level: 1
   charge: 2
 
 two:
   name: Fake Standard Repair 2
   method: Fake Method 2
   description: Fake description 2
+  level: 2
   charge: 4
 
 repairless:
   name: Fake Repairless Standard Repair
   method: Fake Repairless Method
   description: Fake repairless description
+  level: 3
   charge: 1

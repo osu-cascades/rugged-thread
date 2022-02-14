@@ -60,13 +60,14 @@ class StandardRepairsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_standard_repair
       @standard_repair = StandardRepair.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+
     def standard_repair_params
-      params.require(:standard_repair).permit(:name, :method, :description, :charge)
+      params.require(:standard_repair).permit(:name, :method, :description, :level, :charge)
     end
+
 end
