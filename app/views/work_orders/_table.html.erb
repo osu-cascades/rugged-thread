@@ -5,9 +5,9 @@
       <th scope="col">Customer</th>
       <th scope="col">Customer type</th>
       <th scope="col">In date</th>
-      <th scope="col">Estimate</th>
-      <th scope="col">Ship?</th>
       <th scope="col">Created by</th>
+      <th scope="col">Ship?</th>
+      <th scope="col" class="text-end">Estimate</th>
       <th></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= link_to_unless(controller.controller_name == 'customers', work_order.customer, work_order.customer) %></td>
         <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
-        <td><%= number_to_currency(work_order.estimate) %></td>
-        <td><%= work_order.shipping ? '📦' : '' %></td>
         <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator) %></td>
+        <td><%= work_order.shipping ? '📦' : '' %></td>
+        <td class="text-end"><%= number_to_currency(work_order.estimate) %></td>
         <td class="text-end">
           <%= link_to 'Details', work_order, class: 'btn btn-light btn-sm' %>
         </td>

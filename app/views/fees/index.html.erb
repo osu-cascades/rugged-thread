@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
+      <th scope="col" class="text-end">Price</th>
       <th></th>
     </tr>
   </thead>
@@ -21,8 +21,8 @@
         <td>
           <%= fee %>
         </td>
-        <td>
-          <%= fee.price %>
+        <td class="text-end">
+          <%= number_to_currency(fee.price) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', fee, class: 'btn btn-light btn-sm' %>

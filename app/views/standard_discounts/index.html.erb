@@ -11,8 +11,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Percentage Amount</th>
-      <th scope="col">Dollar Amount</th>
+      <th scope="col" class="text-end">Percentage Amount</th>
+      <th scope="col" class="text-end">Dollar Amount</th>
       <th></th>
     </tr>
   </thead>
@@ -22,11 +22,11 @@
         <td>
           <%= standard_discount %>
         </td>
-        <td>
-          <%= standard_discount.percentage_amount %>
+        <td class="text-end">
+          <%= number_to_percentage(standard_discount.percentage_amount, precision: 0) %>
         </td>
-        <td>
-          <%= standard_discount.dollar_amount %>
+        <td class="text-end">
+          <%= number_to_currency(standard_discount.dollar_amount) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_discount, class: 'btn btn-light btn-sm' %>

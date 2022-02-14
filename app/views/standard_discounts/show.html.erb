@@ -16,10 +16,10 @@
   </dd>
   <dt class="col-sm-3">Percentage Amount</dt>
   <dd class="col-sm-9">
-    <%= @standard_discount.percentage_amount %>
+    <%= number_to_percentage(@standard_discount.percentage_amount, precision: 0) %>
   </dd>
   <dt class="col-sm-3">Dollar Amount</dt>
   <dd class="col-sm-9">
-    <%= @standard_discount.dollar_amount %>
+    <%= number_to_currency(@standard_discount.dollar_amount) %>
   </dd>
 </dl>
