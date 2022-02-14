@@ -38,7 +38,7 @@ class StandardRepairTest < ActiveSupport::TestCase
   test 'level must be a positive integer' do
     standard_repair = standard_repairs(:one)
     assert standard_repair.valid?
-    standard_repair.charge = -1
+    standard_repair.level = -1
     refute standard_repair.valid?
   end
 
