@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_14_185017) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_14_211528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -101,13 +101,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_185017) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_discounts_on_item_id"
     t.index ["standard_discount_id"], name: "index_discounts_on_standard_discount_id"
-  end
-
-  create_table "fees", force: :cascade do |t|
-    t.text "name"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -207,6 +200,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_185017) do
     t.datetime "updated_at", null: false
     t.integer "percentage_amount"
     t.integer "dollar_amount"
+  end
+
+  create_table "standard_fees", force: :cascade do |t|
+    t.text "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "standard_repairs", force: :cascade do |t|

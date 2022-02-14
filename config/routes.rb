@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :work_orders, only: :new
   end
   resources :standard_discounts
-  resources :fees
+  resources :standard_fees
   resources :invoice_items
   resources :invoices
   resources :item_statuses do

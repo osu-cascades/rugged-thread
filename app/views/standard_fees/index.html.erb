@@ -1,0 +1,33 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Standard Fees</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'Add New Standard Fee', new_standard_fee_path, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<table class="table table-hover" id="standard_fees_table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col" class="text-end">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @standard_fees.each do |standard_fee| %>
+      <tr class="<%= dom_class(standard_fee) %>" id="<%= dom_id(standard_fee) %>">
+        <td>
+          <%= standard_fee %>
+        </td>
+        <td class="text-end">
+          <%= number_to_currency(standard_fee.price) %>
+        </td>
+        <td class="text-end">
+          <%= link_to 'Details', standard_fee, class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
