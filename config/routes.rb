@@ -30,9 +30,10 @@ Rails.application.routes.draw do
   resources :item_types
   resources :items, except: [:new, :create] do
     resources :repairs, only: :create
-    resources :standard_discounts, only: :create
+    resources :discounts, only: :create
   end
   resources :quote_requests
+  resources :discounts, except: [:new, :create]
   resources :repairs, except: [:new, :create]
   resources :shop_parameters
   resources :standard_repairs

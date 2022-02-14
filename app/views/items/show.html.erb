@@ -84,3 +84,16 @@
     <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
   </div>
 </div>
+
+
+<h2 class="mt-5">Discounts</h2>
+
+<%= render 'discounts/table', discounts: @item.discounts %>
+
+<div class="exclude-from-print">
+  <h2 class="mt-5">Add Discount</h2>
+
+  <div class="form-container-medium">
+    <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
+  </div>
+</div>

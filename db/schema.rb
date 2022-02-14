@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_14_043430) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_14_185017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_043430) do
     t.string "billing_state"
     t.string "billing_zip_code"
     t.index ["customer_type_id"], name: "index_customers_on_customer_type_id"
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.bigint "standard_discount_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_discounts_on_item_id"
+    t.index ["standard_discount_id"], name: "index_discounts_on_standard_discount_id"
   end
 
   create_table "fees", force: :cascade do |t|
@@ -283,6 +292,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_043430) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "customers", "customer_types"
+  add_foreign_key "discounts", "items"
+  add_foreign_key "discounts", "standard_discounts"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "customers"
   add_foreign_key "items", "brands"

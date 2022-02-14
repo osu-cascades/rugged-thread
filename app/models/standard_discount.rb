@@ -1,6 +1,6 @@
 class StandardDiscount < ApplicationRecord
 
-  belongs_to :item
+  has_many :discounts, dependent: :restrict_with_error
   
   validates :name, presence: true, uniqueness: true
   validates :percentage_amount , numericality: { only_integer: true }, allow_nil: true

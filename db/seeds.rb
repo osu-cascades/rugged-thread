@@ -74,3 +74,7 @@ item = Item.create!(due_date: Date.today, notes: 'This is the place for notes.',
 standard_repair = StandardRepair.create!(name: "Fake Standard Repair", method: "Patch", description:"Fake Description", level: 1, charge:20)
 
 repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1, price: 15, notes:"Fake Notes")
+
+standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)
+
+discount = Discount.create!(item: item, standard_discount: standard_discount)

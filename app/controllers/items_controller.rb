@@ -10,10 +10,13 @@ class ItemsController < ApplicationController
       :item_status,
       :item_type,
       {repairs: [:standard_repair]},
+      {discounts: [:standard_discount]},
       {work_order: [:creator, {customer: [:customer_type]}]},
       ).find(params[:id])
     @repair = Repair.new
+    @discount = Discount.new
     @standard_repairs = StandardRepair.all
+    @standard_discounts = StandardDiscount.all
   end
 
   def edit
