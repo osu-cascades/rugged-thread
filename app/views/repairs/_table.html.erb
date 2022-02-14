@@ -6,6 +6,7 @@
       <th scope="col">Notes</th>
       <th scope="col">Method</th>
       <th scope="col">Description</th>
+      <th scope="col">Level</th>
       <th scope="col" class="text-end">Price</th>
       <th></th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= repair.notes %></td>
         <td><%= repair.standard_repair.method %></td>
         <td><%= repair.standard_repair.description %></td>
+        <td><%= repair.level %></td>
         <td class="text-end"><%= number_to_currency(repair.price) %></td>
         <td class="text-end">
           <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>

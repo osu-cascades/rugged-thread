@@ -25,6 +25,7 @@ class RepairsTest < ApplicationSystemTestCase
     visit repair_path(repairs(:one))
     assert_text repairs(:one).standard_repair.name
     assert_text repairs(:one).notes
+    assert_text repairs(:one).level
     assert_text repairs(:one).price
     assert_text repairs(:one).item.brand.name
     assert_text repairs(:one).item.item_type.name
@@ -35,6 +36,7 @@ class RepairsTest < ApplicationSystemTestCase
     select standard_repairs(:one).name, from: :repair_standard_repair_id
     fill_in "Notes", with: "Fake repair notes"
     fill_in "Price", with: standard_repairs(:one).charge
+    fill_in "Level", with: '2'
     click_on "Create Repair"
     assert_text "Repair was successfully created"
   end

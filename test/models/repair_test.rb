@@ -4,6 +4,7 @@ class RepairTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Repair.new, :notes)
+    assert_respond_to(Repair.new, :level)
     assert_respond_to(Repair.new, :price)
   end
 
@@ -26,6 +27,18 @@ class RepairTest < ActiveSupport::TestCase
     refute repair.valid?
   end
 
+  test 'level must be a positive integer' do
+    repair = repairs(:one)
+    assert repair.valid?
+    repair.level = -1
+    refute repair.valid?
+  end
+
+  test 'level is 1 by default' do
+    repair = Repair.new
+    assert_equal 1, repair.level
+  end
+
   test "has a price that is the default repair price" do
     repair = Repair.new
     assert_equal(repair.price, 0)
@@ -37,6 +50,5 @@ class RepairTest < ActiveSupport::TestCase
     repair.price = -1
     refute repair.valid?
   end
-
 
 end

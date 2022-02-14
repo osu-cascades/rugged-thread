@@ -2,16 +2,19 @@ one:
   standard_repair: one
   item: one
   notes: 'Fake Notes'
+  level: 1
   price: 10
 
 two:
   standard_repair: one
   item: one
   notes: 'Fake notes 2'
+  level: 2
   price: 15
 
 complicationless:
   standard_repair: two
   item: one
   notes: 'Fake notes 3'
+  level: 3
   price: 20

@@ -75,39 +75,12 @@
 
 <h2 class="mt-5">Repairs</h2>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Notes</th>
-      <th scope="col">Method</th>
-      <th scope="col">Description</th>
-      <th scope="col" class="text-end">Price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @item.repairs.each do |repair| %>
-      <tr>
-        <th scope="row"><%= repair.id %></th>
-        <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
-        <td><%= repair.notes %></td>
-        <td><%= repair.standard_repair.method %></td>
-        <td><%= repair.standard_repair.description %></td>
-        <td class="text-end"><%= number_to_currency(repair.price) %></td>
-        <td class="text-end">
-          <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'repairs/table', repairs: @item.repairs %>
 
 <div class="exclude-from-print">
   <h2 class="mt-5">Add Repair</h2>
 
-  <div class="form-container">
+  <div class="form-container-medium">
     <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
   </div>
 </div>
