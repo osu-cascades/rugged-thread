@@ -70,4 +70,8 @@ class ItemTest < ActiveSupport::TestCase
     skip
   end
 
+  test "#level is the maximum level of its repirs" do
+    assert_equal(3, items(:one).level)
+  end
+
 end

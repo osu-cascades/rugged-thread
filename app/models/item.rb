@@ -13,6 +13,10 @@ class Item < ApplicationRecord
     labor_estimate + parts_special_orders_standard_discounts
   end
 
+  def level
+    repairs.collect(&:level).max
+  end
+
   def parts_special_orders_standard_discounts
     0
   end
