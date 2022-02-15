@@ -13,8 +13,8 @@
       <tr>
         <th scope="row"><%= discount.id %></th>
         <td><%= link_to discount.standard_discount, discount.standard_discount %></td>
-        <td><%= discount.standard_discount.percentage_amount %></td>
-        <td><%= discount.standard_discount.dollar_amount %></td>
+        <td><%= discount.percentage_amount %></td>
+        <td><%= discount.dollar_amount %></td>
         <td class="text-end">
           <%= link_to 'Details', discount_path(discount), class: 'btn btn-light btn-sm' %>
         </td>
