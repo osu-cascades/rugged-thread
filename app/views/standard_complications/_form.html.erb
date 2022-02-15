@@ -1,0 +1,53 @@
+<%= form_with(model: standard_complication) do |form| %>
+  <% if standard_complication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(standard_complication.errors.count, "error") %> prohibited this standard complication from being saved:</h2>
+
+      <ul>
+        <% standard_complication.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
+  <% if form.object.errors.include?(:standard_repair) %>
+    <div class='field_with_errors'>
+  <% end %>
+    <div class="mb-3">
+      <%= form.label :standard_repair_id, class: 'form-label' %>
+      <%= form.collection_select :standard_repair_id, standard_repairs, :id, :name, {include_blank: ''}, class: 'form-select' %>
+    </div>
+  <% if form.object.errors.include?(:standard_repair) %>
+    </div>
+  <% end %>
+  <!-- /hack -->
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control'%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :method, class: 'form-label' %>
+    <%= form.text_field :method, class: 'form-control'%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form.label :level, class: 'form-label' %>
+      <%= form.number_field :level, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :charge, class: 'form-label' %>
+      <%= form.number_field :charge, class: 'form-control'%>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'form-control btn btn-success' %>
+  </div>
+<% end %>
