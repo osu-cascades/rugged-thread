@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   resources :discounts, except: [:new, :create]
   resources :repairs, except: [:new, :create]
   resources :shop_parameters
-  resources :standard_repairs
+  resources :standard_complications
+  resources :standard_repairs do
+    resources :standard_complications, only: :new
+  end
   resources :task_types
   resources :tasks
   resources :technicians
