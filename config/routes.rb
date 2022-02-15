@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :accounts
   resources :brands
-  resources :complication_types
   resources :customer_types
   resources :customers do
     resources :work_orders, only: :new

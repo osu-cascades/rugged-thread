@@ -1,2 +1,0 @@
-class ComplicationType < ApplicationRecord
-end
