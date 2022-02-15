@@ -155,6 +155,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_211528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "item_status_id", null: false
+    t.boolean "shipping"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"

@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
 
   def create
     @work_order = WorkOrder.find(params[:work_order_id])
-    @item = @work_order.items.build(item_params)
+    @item = Item.new(item_params)
+    @item.work_order = @work_order
     respond_to do |format|
       if @item.save
         format.html { redirect_to @work_order, notice: "Item was successfully created." }
@@ -77,7 +78,7 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:due_date, :notes, :brand_id, :work_order_id, :item_type_id, :item_status_id)
+      params.require(:item).permit(:due_date, :notes, :shipping, :brand_id, :work_order_id, :item_type_id, :item_status_id)
     end
 
 end

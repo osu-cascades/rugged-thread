@@ -35,6 +35,10 @@
     <p>
       <%= link_to @item.work_order.customer.phone_number, "tel:#{@item.work_order.customer.phone_number}" %>
     </p>
+    <p>
+      <strong>Ship?</strong>
+      <%= @item.shipping ? '📦' : 'no' %>
+    </p>
   </div>
   <div class="col">
     <p>
@@ -43,7 +47,7 @@
     </p>
     <p>
       <strong>Due date:</strong>
-      <%= @item.due_date.to_formatted_s(:long) %>
+      <%= @item.due_date&.to_formatted_s(:long) %>
     </p>
     <p>
       <strong>Level:</strong>

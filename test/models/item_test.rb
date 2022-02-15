@@ -7,6 +7,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :estimate)
     assert_respond_to(Item.new, :labor_estimate)
     assert_respond_to(Item.new, :notes)
+    assert_respond_to(Item.new, :shipping)
   end
 
   test "associations" do
@@ -48,6 +49,37 @@ class ItemTest < ActiveSupport::TestCase
   test "has a status that is the default item status" do
     item = Item.new
     assert_equal(ItemStatus.default, item.item_status)
+  end
+
+  test "shipping must be true or false" do
+    item = items(:one)
+    assert item.valid?
+    item.shipping = nil
+    refute item.valid?
+  end
+
+  test "shipping is the same as its work order upon build" do
+    shipping_work_order = work_orders(:shipping)
+    item = shipping_work_order.items.build
+    assert shipping_work_order.shipping
+    assert item.shipping
+    not_shipped_work_order = work_orders(:not_shipping)
+    item = not_shipped_work_order.items.build
+    refute not_shipped_work_order.shipping
+    refute item.shipping
+  end
+
+  test "shipping is nil when created without a work order" do
+    assert_nil Item.new.shipping
+  end
+
+  test "shipping does not update to match work order when item is already persisted" do
+    item = items(:one)
+    assert_equal item.work_order.shipping, item.shipping
+    item.shipping = !item.work_order.shipping
+    item.save!
+    item = items(:one)
+    refute_equal item.work_order.shipping, item.shipping
   end
 
   test "#estimate is labor_estimate plus parts, special order, minus standard discounts" do
