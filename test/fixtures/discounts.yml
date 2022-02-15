@@ -1,7 +1,11 @@
 one:
   standard_discount: one
   item: one
+  percentage_amount: 10
+  dollar_amount: 20
 
 two:
   standard_discount: one
   item: one
+  percentage_amount: 12
+  dollar_amount: 5

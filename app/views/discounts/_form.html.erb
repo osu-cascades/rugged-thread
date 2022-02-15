@@ -24,6 +24,16 @@
     <!-- /hack -->
     </div>
 
+    <div class="mb-3">
+      <%= form.label :percentage_amount, class: 'form-label' %>
+      <%= form.number_field :percentage_amount, class: 'form-control'%>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :dollar_amount, class: 'form-label' %>
+      <%= form.number_field :dollar_amount, class: 'form-control'%>
+    </div>
+
   <div class="actions">
     <%= form.submit class: 'form-control btn btn-success' %>
   </div>

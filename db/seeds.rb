@@ -77,4 +77,4 @@ repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1, 
 
 standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)
 
-discount = Discount.create!(item: item, standard_discount: standard_discount)
+discount = Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 10, dollar_amount:15)

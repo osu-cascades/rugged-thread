@@ -29,6 +29,7 @@ class DiscountsController < ApplicationController
           :item_status,
           :item_type,
           {discounts: [:standard_discount]},
+          {repairs: [:standard_repair]},
           {work_order: [:creator, {customer: [:customer_type]}]},
         ).find(params[:item_id])
         @standard_discounts = StandardDiscount.all
@@ -68,7 +69,7 @@ class DiscountsController < ApplicationController
   private
 
     def discount_params
-      params.require(:discount).permit(:item_id, :standard_discount_id)
+      params.require(:discount).permit(:item_id, :standard_discount_id, :dollar_amount, :percentage_amount)
     end
 
 end
