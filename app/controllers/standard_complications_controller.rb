@@ -9,7 +9,7 @@ class StandardComplicationsController < ApplicationController
   end
 
   def new
-    @standard_complication = StandardComplication.new
+    @standard_complication = StandardComplication.new(standard_repair_id: params[:standard_repair_id])
     @standard_repairs = StandardRepair.all
   end
 
@@ -22,7 +22,7 @@ class StandardComplicationsController < ApplicationController
     @standard_complication = StandardComplication.new(standard_complication_params)
     respond_to do |format|
       if @standard_complication.save
-        format.html { redirect_to @standard_complication, notice: "Standard complication was successfully created." }
+        format.html { redirect_to @standard_complication.standard_repair, notice: "Standard complication was successfully created." }
         format.json { render :show, status: :created, location: @standard_complication }
       else
         @standard_repairs = StandardRepair.all
