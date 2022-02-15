@@ -1,6 +1,7 @@
 one:
   due_date: 2022-01-25
   notes: First fake item
+  shipping: true
   work_order: shipping
   brand: one
   item_type: one
@@ -9,6 +10,7 @@ one:
 repairless:
   due_date: 2022-01-25
   notes: Repairless fake item
+  shipping: true
   work_order: shipping
   brand: two
   item_type: two

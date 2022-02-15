@@ -7,7 +7,10 @@ class Item < ApplicationRecord
   has_many :repairs, dependent: :restrict_with_error
   has_many :standard_discounts, dependent: :restrict_with_error
 
+  validates :shipping, inclusion: { in: [ true, false ] }
+
   after_initialize :set_default_status
+  after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 
   def estimate
     labor_estimate + parts_special_orders_standard_discounts
@@ -29,6 +32,10 @@ class Item < ApplicationRecord
 
   def set_default_status
     self.item_status = ItemStatus.default
+  end
+
+  def set_shipping
+    self.shipping = work_order.shipping
   end
 
 end

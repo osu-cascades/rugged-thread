@@ -6,7 +6,7 @@ class WorkOrdersController < ApplicationController
 
   def show
     @work_order = WorkOrder.find(params[:id])
-    @item = Item.new
+    @item = Item.new(work_order: @work_order)
     @items = @work_order.items
     @brands = Brand.all
     @item_statuses = ItemStatus.all

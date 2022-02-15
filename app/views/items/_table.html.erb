@@ -8,6 +8,7 @@
       <th scope="col">Due Date</th>
       <th scope="col">Level</th>
       <th scope="col">Notes</th>
+      <th scope="col">Ship?</th>
       <th scope="col" class="text-end">Estimate</th>
       <th scope="col" class="text-end">Labor Estimate</th>
       <th></th>
@@ -20,9 +21,10 @@
         <td><%= link_to item.item_type, item.item_type %></td>
         <td><%= link_to item.brand, item.brand %></td>
         <td><%= link_to item.item_status, item.item_status %></td>
-        <td><%= item.due_date.to_formatted_s(:long) %></td>
+        <td><%= item.due_date&.to_formatted_s(:long) %></td>
         <td><%= item.level %></td>
         <td><%= item.notes %></td>
+        <td><%= item.shipping ? '📦' : '' %></td>
         <td class="text-end"><%= number_to_currency(item.estimate) %></td>
         <td class="text-end"><%= number_to_currency(item.labor_estimate) %></td>
         <td class="text-end">
