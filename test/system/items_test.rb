@@ -95,9 +95,16 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "destroying an item without repairs succeeds" do
+    skip # Need to add Discounts and Fees to Item fixture
     visit item_path(items(:repairless))
     click_on 'Delete'
     assert_text "Item was successfully destroyed"
+  end
+
+  test "destroying an item without repairs fails" do
+    visit item_path(items(:repairless))
+    click_on 'Delete'
+    assert_text "Cannot delete this item"
   end
 
   test "destroying an item with repairs fails" do
