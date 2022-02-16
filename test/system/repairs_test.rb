@@ -42,7 +42,6 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "Adding an invalid repair redisplays the item view with errors" do
-    skip
     visit item_path(items(:one))
     click_on 'Create Repair'
     assert_text 'prohibited this repair from being saved'
