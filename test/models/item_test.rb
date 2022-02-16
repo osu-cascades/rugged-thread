@@ -98,7 +98,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal(10, item.labor_estimate)
   end
 
-  test "#parts_special_orders_standard_discounts returns 0 for now" do
+  test "#fees_and_discounts returns 0 for now" do
     skip
   end
 

@@ -14,14 +14,14 @@ class Item < ApplicationRecord
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 
   def estimate
-    labor_estimate + parts_special_orders_standard_discounts
+    labor_estimate + fees_and_discounts
   end
 
   def level
     repairs.collect(&:level).max
   end
 
-  def parts_special_orders_standard_discounts
+  def fees_and_discounts
     0
   end
 
