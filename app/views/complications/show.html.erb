@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col">
+    <h1>Complication <%= @complication.id %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Back to Repair'.html_safe, repair_path(@complication.repair), class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_complication_path(@complication), class: 'btn btn-outline-primary me-2' %>
+    <%= button_to 'Delete', @complication, method: :delete, class: 'btn btn-outline-danger' %>
+  </div>
+</div>
+
+<p class="mb-5">
+  For <%= link_to @complication.repair, @complication.repair %> on <%= link_to "Item #{@complication.repair.item.id}", @complication.repair.item %> in
+    <%= link_to @complication.repair.item.work_order, @complication.repair.item.work_order %>.
+</h2>
+
+<dl class="row">
+  <dt class="col-sm-3">Standard Complication</dt>
+  <dd class="col-sm-9">
+    <%= link_to @complication.standard_complication, @complication.standard_complication %>
+  </dd>
+  <dt class="col-sm-3">Method</dt>
+  <dd class="col-sm-9">
+    <%= @complication.standard_complication.method %>
+  </dd>
+  <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9">
+    <%= @complication.standard_complication.description %>
+  </dd>
+  <dt class="col-sm-3">Level</dt>
+  <dd class="col-sm-9">
+    <%= @complication.standard_complication.level %>
+  </dd>
+  <dt class="col-sm-3">Price</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@complication.price) %>
+  </dd>
+</dl>

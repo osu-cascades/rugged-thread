@@ -66,4 +66,14 @@ class RepairTest < ActiveSupport::TestCase
     refute repair.valid?
   end
 
+  test '#name is the standard_repair name' do
+    standard_repair = standard_repairs.first
+    assert_equal standard_repair.name, standard_repair.repairs.first.name
+  end
+
+  test '#to_s returns the name' do
+    repair = repairs.first
+    assert_equal repair.name, repair.to_s
+  end
+
 end

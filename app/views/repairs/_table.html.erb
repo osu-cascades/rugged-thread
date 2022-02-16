@@ -25,6 +25,21 @@
           <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>
         </td>
       </tr>
+      <% if render_complications %>
+        <% repair.complications.each do |complication| %>
+        <tr>
+          <td></td>
+          <td colspan="2" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
+          <td><%= complication.standard_complication.method %></td>
+          <td><%= complication.standard_complication.description %></td>
+          <td></td>
+          <td class="text-end"><%= number_to_currency(complication.price) %></td>
+          <td class="text-end">
+            <%= link_to 'Details', complication_path(complication), class: 'btn btn-light btn-sm' %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

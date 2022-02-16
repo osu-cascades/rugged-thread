@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :accounts
   resources :brands
+  resources :complications, except: [:new, :create]
   resources :customer_types
   resources :customers do
     resources :work_orders, only: :new
@@ -33,7 +34,9 @@ Rails.application.routes.draw do
   resources :quote_requests
   resources :fees, except: [:new, :create]
   resources :discounts, except: [:new, :create]
-  resources :repairs, except: [:new, :create]
+  resources :repairs, except: [:new, :create] do
+    resources :complications, only: :create
+  end
   resources :shop_parameters
   resources :standard_complications
   resources :standard_discounts

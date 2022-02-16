@@ -38,3 +38,13 @@
   <strong>Price:</strong>
   <%= number_to_currency(@repair.price) %>
 </p>
+
+<h2 class="mt-5">Complications</h2>
+
+<%= render 'complications/table', complications: @repair.complications %>
+
+<h2 class="mt-5">Add Complication</h2>
+
+<div class="form-container">
+  <%= render 'complications/form', complication: @complication, repair: @repair, repairs: @repairs, standard_complications: @standard_complications %>
+</div>

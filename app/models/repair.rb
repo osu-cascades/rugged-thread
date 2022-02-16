@@ -7,4 +7,12 @@ class Repair < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def name
+    standard_repair.name
+  end
+
+  def to_s
+    name
+  end
+
 end

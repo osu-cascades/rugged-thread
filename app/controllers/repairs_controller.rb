@@ -7,8 +7,12 @@ class RepairsController < ApplicationController
   def show
     @repair = Repair.includes(
       :standard_repair,
+      :complications,
       {item: [:work_order, :brand, :item_type]}
     ).find(params[:id])
+    @complication = Complication.new(repair: @repair)
+    @standard_complications = @repair.standard_repair.standard_complications
+    @repairs = Repair.includes(:standard_repair).all
   end
 
   def edit

@@ -1,0 +1,34 @@
+<%= form_with(model: [repair, complication]) do |form| %>
+  <% if complication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complication.errors.count, "error") %> prohibited this complication from being saved:</h2>
+
+      <ul>
+        <% complication.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row mb-3">
+    <div class="col">
+      <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
+      <% if form.object.errors.include?(:standard_complication) %>
+        <div class='field_with_errors'>
+      <% end %>
+        <%= form.label :standard_complication_id, class: 'form-label'%>
+        <%= form.select :standard_complication_id, standard_complications.map{ |standard_complication| [standard_complication.name, standard_complication.id] }, {include_blank: ''}, class: 'form-select' %>
+      <% if form.object.errors.include?(:standard_complication) %>
+        </div>
+      <% end %>
+      <!-- /hack -->
+    </div>
+    <div class="col-2">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit class: 'form-control btn btn-success' %>
+  </div>
+<% end %>
