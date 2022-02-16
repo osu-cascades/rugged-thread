@@ -101,3 +101,15 @@
     <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
   </div>
 </div>
+
+<h2 class="mt-5">Fees</h2>
+
+<%= render 'fees/table', fees: @item.fees %>
+
+<div class="exclude-from-print">
+  <h2 class="mt-5">Add Fee</h2>
+
+  <div class="form-container-medium">
+    <%= render 'fees/form', fee: @fee, item: @item, standard_fees: @standard_fees %>
+  </div>
+</div>
