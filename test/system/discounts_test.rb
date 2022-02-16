@@ -40,8 +40,9 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "Adding an invalid discount redisplays the item view with errors" do
-    skip
     visit item_path(items(:one))
+    fill_in "Percentage amount", with: standard_discounts(:one).dollar_amount
+    fill_in "Dollar amount", with: standard_discounts(:one).percentage_amount
     click_on 'Create Discount'
     assert_text 'prohibited this discount from being saved'
   end

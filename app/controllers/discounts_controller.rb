@@ -29,9 +29,15 @@ class DiscountsController < ApplicationController
           :item_status,
           :item_type,
           {discounts: [:standard_discount]},
+          {fees: [:standard_fee]},
+          {repairs: [:standard_repair]},
           {work_order: [:creator, {customer: [:customer_type]}]},
-        ).find(params[:item_id])
+          ).find(params[:item_id])
+        @repair = Repair.new
+        @fee = Fee.new
         @standard_discounts = StandardDiscount.all
+        @standard_repairs = StandardRepair.all
+        @standard_fees = StandardFee.all
         format.html { render 'items/show', status: :unprocessable_entity }
         format.json { render json: @discount.errors, status: :unprocessable_entity }
       end
@@ -68,7 +74,7 @@ class DiscountsController < ApplicationController
   private
 
     def discount_params
-      params.require(:discount).permit(:item_id, :standard_discount_id, :dollar_amount, :percentage_amount)
+      params.require(:discount).permit(:item_id, :standard_discount_id, :percentage_amount, :dollar_amount)
     end
 
 end
