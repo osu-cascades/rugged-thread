@@ -48,7 +48,11 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "updating a discount" do
-    skip # TODO
+    visit edit_discount_path(discounts(:one))
+    fill_in "Percentage amount", with: 5
+    fill_in "Dollar amount", with: 3
+    click_on "Update Discount"
+    assert_text "Discount was successfully updated"
   end
 
   test "updating an invalid discount redisplays the edit view with errors" do
@@ -59,7 +63,9 @@ class DiscountsTest < ApplicationSystemTestCase
   end
 
   test "destroying a discount succeeds" do
-    skip # TODO
+    visit discount_path(discounts(:one))
+    click_on "Delete"
+    assert_text "Discount was successfully destroyed"
   end
 
 end
