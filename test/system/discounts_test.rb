@@ -47,12 +47,19 @@ class DiscountsTest < ApplicationSystemTestCase
     assert_text 'prohibited this discount from being saved'
   end
 
+  test "updating a discount" do
+    skip # TODO
+  end
 
   test "updating an invalid discount redisplays the edit view with errors" do
     visit edit_discount_path(discounts(:one))
     select '', from: :discount_standard_discount_id
     click_on "Update Discount"
     assert_text "prohibited this discount from being saved"
+  end
+
+  test "destroying a discount succeeds" do
+    skip # TODO
   end
 
 end
