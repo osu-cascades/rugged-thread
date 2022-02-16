@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   resources :customers do
     resources :work_orders, only: :new
   end
-  resources :standard_discounts
-  resources :standard_fees
   resources :invoice_items
   resources :invoices
   resources :item_statuses do
@@ -38,6 +36,8 @@ Rails.application.routes.draw do
   resources :repairs, except: [:new, :create]
   resources :shop_parameters
   resources :standard_complications
+  resources :standard_discounts
+  resources :standard_fees
   resources :standard_repairs do
     resources :standard_complications, only: :new
   end
