@@ -11,6 +11,21 @@ class RepairTest < ActiveSupport::TestCase
   test "associations" do
     assert_respond_to(Repair.new, :item)
     assert_respond_to(Repair.new, :standard_repair)
+    assert_respond_to(Repair.new, :complications)
+  end
+
+  test 'cannot be deleted if it has associated complications' do
+    repair = repairs(:one)
+    assert_not_empty repair.complications
+    repair.destroy
+    refute repair.destroyed?
+  end
+
+  test 'can be deleted if it has no associated complications' do
+    repair = repairs(:complicationless)
+    assert_empty repair.complications
+    repair.destroy
+    assert repair.destroyed?
   end
 
   test "must have a standard repair" do

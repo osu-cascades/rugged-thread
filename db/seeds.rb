@@ -71,13 +71,16 @@ work_order = WorkOrder.create!(creator: staff_user, in_date: Date.today,
 item = Item.create!(due_date: Date.today, notes: 'This is the place for notes.',
   brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
 
-standard_repair = StandardRepair.create!(name: "Fake Standard Repair", method: "Patch", description: "Fake repair description", level: 1, charge: 20)
+standard_repair = StandardRepair.create!(name: "Fake Standard Repair", method: "Patch",
+ description: "Fake repair description", level: 1, charge: 20)
+repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
+ price: 15, notes:"Fake Notes")
 
-standard_repair.standard_complications.create!(name: "Fake Standard Complication 1", method: "Patch", description:"Fake complication description", level: 1, charge: 5)
-standard_repair.standard_complications.create!(name: "Fake Standard Complication 2", method: "Glue", description:"Fake second complication description", level: 2, charge: 10)
-
-repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1, price: 15, notes:"Fake Notes")
+standard_repair.standard_complications.create!(name: "Fake Standard Complication 1",
+  method: "Patch", description:"Fake complication description", level: 1, charge: 5)
+standard_complication = standard_repair.standard_complications.create!(name: "Fake Standard Complication 2",
+  method: "Glue", description:"Fake second complication description", level: 2, charge: 10)
+Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
 
 standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)
-
-discount = Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 10, dollar_amount:15)
+Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 10, dollar_amount:15)
