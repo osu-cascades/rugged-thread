@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_075822) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_15_200422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,12 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_075822) do
   create_table "brands_item_types", id: false, force: :cascade do |t|
     t.bigint "item_type_id", null: false
     t.bigint "brand_id", null: false
-  end
-
-  create_table "complication_types", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "customer_types", force: :cascade do |t|
@@ -197,6 +191,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_075822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "standard_complications", force: :cascade do |t|
+    t.string "name"
+    t.string "method"
+    t.text "description"
+    t.integer "charge", default: 0, null: false
+    t.integer "level", default: 1, null: false
+    t.bigint "standard_repair_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["standard_repair_id"], name: "index_standard_complications_on_standard_repair_id"
+  end
+
   create_table "standard_discounts", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -305,6 +311,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_075822) do
   add_foreign_key "items", "work_orders"
   add_foreign_key "repairs", "items"
   add_foreign_key "repairs", "standard_repairs"
+  add_foreign_key "standard_complications", "standard_repairs"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"
   add_foreign_key "tickets", "invoices"

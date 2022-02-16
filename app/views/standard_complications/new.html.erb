@@ -1,6 +1,6 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>New Standard Repair</h1>
+    <h1>New Standard Complication</h1>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
@@ -8,5 +8,5 @@
 </div>
 
 <div class="form-container">
-  <%= render 'form', standard_repair: @standard_repair %>
+  <%= render 'form', standard_complication: @standard_complication, standard_repairs: @standard_repairs %>
 </div>

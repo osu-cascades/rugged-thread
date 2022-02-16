@@ -13,6 +13,7 @@
       <th scope="col">Name</th>
       <th scope="col">Method</th>
       <th scope="col">Description</th>
+      <th scope="col"># of Complications</th>
       <th scope="col">Level</th>
       <th scope="col" class="text-end">Charge</th>
       <th scope="col"></th>
@@ -29,6 +30,9 @@
         </td>
         <td>
           <%= standard_repair.description %>
+        </td>
+        <td>
+          <%= link_to standard_repair.standard_complications.count, standard_repair %>
         </td>
         <td>
           <%= standard_repair.level %>

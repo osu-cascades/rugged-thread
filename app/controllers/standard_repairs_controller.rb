@@ -1,13 +1,14 @@
 class StandardRepairsController < ApplicationController
-  before_action :set_standard_repair, only: %i[ show edit update destroy ]
+  before_action :set_standard_repair, only: %i[ edit update destroy ]
 
   # GET /standard_repairs or /standard_repairs.json
   def index
     @standard_repairs = StandardRepair.all
   end
 
-  # GET /standard_repairs/1 or /standard_repairs/1.json
   def show
+    @standard_repair = StandardRepair.find(params[:id])
+    @standard_complications = @standard_repair.standard_complications
   end
 
   # GET /standard_repairs/new
@@ -64,7 +65,6 @@ class StandardRepairsController < ApplicationController
     def set_standard_repair
       @standard_repair = StandardRepair.find(params[:id])
     end
-
 
     def standard_repair_params
       params.require(:standard_repair).permit(:name, :method, :description, :level, :charge)

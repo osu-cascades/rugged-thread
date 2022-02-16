@@ -13,6 +13,16 @@ class StandardRepairsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Standard Repairs"
   end
 
+  test "viewing a standard repair lists the associated standard complications" do
+    standard_complication = standard_complications.first
+    standard_repair = standard_complication.standard_repair
+    visit standard_repair_path(standard_repair)
+    assert_text standard_repair.name
+    within 'table' do
+      assert_text standard_complication.name
+    end
+  end
+
   test "creating a standard repair" do
     visit new_standard_repair_path
     fill_in "Name", with: 'New Fake Name'

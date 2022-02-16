@@ -1,0 +1,40 @@
+<table class="table table-hover" id="standard_complications_table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Standard Repair</th>
+      <th scope="col">Method</th>
+      <th scope="col">Description</th>
+      <th scope="col">Level</th>
+      <th scope="col" class="text-end">Charge</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% standard_complications.each do |standard_complication| %>
+      <tr class="<%= dom_class(standard_complication) %>" id="<%= dom_id(standard_complication) %>">
+        <td>
+          <%= standard_complication %>
+        </td>
+        <td>
+          <%= link_to standard_complication.standard_repair, standard_complication.standard_repair %>
+        </td>
+        <td>
+          <%= standard_complication.method %>
+        </td>
+        <td>
+          <%= standard_complication.description %>
+        </td>
+        <td>
+          <%= standard_complication.level %>
+        </td>
+        <td class="text-end">
+          <%= number_to_currency(standard_complication.charge) %>
+        </td>
+        <td class="text-end">
+          <%= link_to 'Details', standard_complication, class: 'btn btn-light btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
