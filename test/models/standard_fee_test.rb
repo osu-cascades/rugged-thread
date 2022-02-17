@@ -16,7 +16,7 @@ class StandardFeeTest < ActiveSupport::TestCase
 
   test 'name must be unique' do
     existing_standard_fee_name = standard_fees(:one).name
-    standard_fee = standard_fees(:two)
+    standard_fee = standard_fees(:feeless)
     assert standard_fee.valid?
     standard_fee.name = existing_standard_fee_name
     refute standard_fee.valid?
