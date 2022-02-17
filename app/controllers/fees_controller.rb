@@ -68,7 +68,7 @@ class FeesController < ApplicationController
   private
 
     def fee_params
-      params.require(:fee).permit(:item_id, :standard_fee_id)
+      params.require(:fee).permit(:item_id, :standard_fee_id, :price)
     end
 
 end

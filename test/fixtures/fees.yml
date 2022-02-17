@@ -1,9 +1,11 @@
 one:
   item: one
   standard_fee: one
+  price: 1
 
 two:
   item: repairless
   standard_fee: two
+  price: 2
   
 

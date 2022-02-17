@@ -12,7 +12,7 @@
       <tr>
         <th scope="row"><%= fee.id %></th>
         <td><%= link_to fee.standard_fee, fee.standard_fee %></td>
-        <td class="text-end"><%= number_to_currency(fee.standard_fee.price) %></td>
+        <td class="text-end"><%= number_to_currency(fee.price) %></td>
         <td class="text-end">
           <%= link_to 'Details', fee_path(fee), class: 'btn btn-light btn-sm' %>
         </td>

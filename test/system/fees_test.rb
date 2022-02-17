@@ -26,11 +26,13 @@ class FeesTest < ApplicationSystemTestCase
     assert_text fees(:one).standard_fee.name
     assert_text fees(:one).item.brand.name
     assert_text fees(:one).item.item_type.name
+    assert_text fees(:one).price
   end
 
   test "creating a fee for an item" do
     visit item_path(items(:one))
     select standard_fees(:one).name, from: :fee_standard_fee_id
+    fill_in "fee_price", with: standard_fees(:one).price
     click_on "Create Fee"
     assert_text "Fee was successfully created"
   end
