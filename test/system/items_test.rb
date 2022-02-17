@@ -63,7 +63,6 @@ class ItemsTest < ApplicationSystemTestCase
     end
   end
 
-
   test "Adding an invalid item redisplays the work order view with errors" do
     visit work_order_path(work_orders(:shipping))
     click_on 'Create Item'
@@ -94,21 +93,28 @@ class ItemsTest < ApplicationSystemTestCase
     assert_text "prohibited this item from being saved"
   end
 
-  test "destroying an item without repairs succeeds" do
-    skip # Need to add Discounts and Fees to Item fixture
-    visit item_path(items(:repairless))
+  test "destroying an item without repairs, discounts and fees succeeds" do
+    visit item_path(items(:associationless))
     click_on 'Delete'
     assert_text "Item was successfully destroyed"
   end
 
-  test "destroying an item without repairs fails" do
-    visit item_path(items(:repairless))
+  test "destroying an item with repairs fails" do
+    visit item_path(items(:one))
     click_on 'Delete'
     assert_text "Cannot delete this item"
   end
 
-  test "destroying an item with repairs fails" do
-    visit item_path(items(:one))
+  test "destroying an item with discounts fails" do
+    skip
+    visit item_path(items(:WITH_ONLY_DISCOUNTS))
+    click_on 'Delete'
+    assert_text "Cannot delete this item"
+  end
+
+  test "destroying an item with fees fails" do
+    skip
+    visit item_path(items(:WITH_ONLY_FEES))
     click_on 'Delete'
     assert_text "Cannot delete this item"
   end

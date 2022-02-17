@@ -7,7 +7,7 @@ one:
   item_type: one
   item_status: one
 
-repairless:
+associationless:
   due_date: 2022-01-25
   notes: Repairless fake item
   shipping: true

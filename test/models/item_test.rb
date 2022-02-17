@@ -18,6 +18,22 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :repairs)
   end
 
+  test "can be deleted if it has no associated repairs, discounts, or fees" do
+    skip
+  end
+
+  test "cannot be deleted if it has repairs" do
+    skip
+  end
+
+  test "cannot be deleted if it has discounts" do
+    skip
+  end
+
+  test "cannot be deleted if it has fees" do
+    skip
+  end
+
   test "must have a brand" do
     item = items(:one)
     assert item.valid?
@@ -83,14 +99,14 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   test "#estimate is labor_estimate plus parts, special order, minus standard discounts" do
-    item = items(:repairless)
+    item = items(:associationless)
     assert_equal(0, item.estimate)
     item.repairs << Repair.new(price: 3)
     assert_equal(3, item.estimate)
   end
 
   test "#labor_estimate is the sum of all repair prices" do
-    item = items(:repairless)
+    item = items(:associationless)
     assert_equal(0, item.labor_estimate)
     item.repairs << Repair.new(price: 3)
     assert_equal(3, item.labor_estimate)

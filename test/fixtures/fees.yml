@@ -4,8 +4,7 @@ one:
   price: 1
 
 two:
-  item: repairless
+  item: one
   standard_fee: one
   price: 2
   
-
