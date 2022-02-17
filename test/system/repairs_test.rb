@@ -68,10 +68,9 @@ class RepairsTest < ApplicationSystemTestCase
   end
 
   test "destroying a repair with complications fails" do
-    skip
-    isit repair_path(repairs(:one))
+    visit repair_path(repairs(:one))
     click_on "Delete"
-    assert_text "Cannot delete this item"
+    assert_text "Cannot delete this repair"
   end
 
 end
