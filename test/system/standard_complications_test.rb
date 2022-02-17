@@ -62,8 +62,9 @@ class StandardComplicationsTest < ApplicationSystemTestCase
   end
 
   test "failing to destroy a standard complication that has complications" do
-    skip
-    visit standard_complication_path(standard_complications(:one))
+    standard_complication = standard_complications(:one)
+    assert_not_empty standard_complication.complications
+    visit standard_complication_path(standard_complication)
     click_on 'Delete'
     assert_text "Cannot delete this standard complication"
   end
