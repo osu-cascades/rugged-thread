@@ -7,6 +7,11 @@ class StandardFeeTest < ActiveSupport::TestCase
     assert_respond_to(StandardFee.new, :price)
   end
 
+  test "associations" do
+    assert_respond_to(StandardFee.new, :fees)
+  end
+
+
   test 'must have a name' do
     standard_fee = standard_fees(:one)
     assert standard_fee.valid?
