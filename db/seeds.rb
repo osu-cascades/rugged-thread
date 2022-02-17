@@ -84,3 +84,6 @@ Complication.create!(standard_complication: standard_complication, repair: repai
 
 standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)
 Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 10, dollar_amount:15)
+
+standard_fee = StandardFee.create!(name: "Fake Standard Fee", price: 10)
+Fee.create!(item: item, standard_fee: standard_fee, price: 10)
