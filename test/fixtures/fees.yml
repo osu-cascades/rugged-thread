@@ -5,7 +5,7 @@ one:
 
 two:
   item: repairless
-  standard_fee: two
+  standard_fee: one
   price: 2
   
 

@@ -49,10 +49,14 @@ class StandardFeesController < ApplicationController
 
   # DELETE /standard_fees/1 or /standard_fees/1.json
   def destroy
-    @standard_fee.destroy
     respond_to do |format|
-      format.html { redirect_to standard_fees_url, notice: "Standard Fee was successfully destroyed." }
-      format.json { head :no_content }
+      if @standard_fee.destroy
+        format.html { redirect_to standard_fees_url, notice: "Standard fee was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @standard_fee, alert: 'Cannot delete this standard fee.' }
+        format.json { render json: @standard_fee.errors, status: :unprocessable_entity }
+      end
     end
   end
 

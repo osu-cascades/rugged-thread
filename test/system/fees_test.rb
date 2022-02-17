@@ -46,7 +46,7 @@ class FeesTest < ApplicationSystemTestCase
 
   test "updating a fee" do
     visit edit_fee_path(fees(:one))
-    select standard_fees(:two).name, from: :fee_standard_fee_id
+    select standard_fees(:one).name, from: :fee_standard_fee_id
     click_on "Update Fee"
     assert_text "Fee was successfully updated"
   end

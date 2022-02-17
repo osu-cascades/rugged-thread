@@ -44,9 +44,16 @@ class StandardFeesTest < ApplicationSystemTestCase
     assert_text "Name has already been taken"
   end
 
-  test "destroying a Standard Fee" do
+  test "destroying a Standard Fee without fees" do
+    visit standard_fee_path(standard_fees(:feeless))
+    click_on 'Delete'
+    assert_text "Standard fee was successfully destroyed"
+  end
+
+  test "destroying a Standard Fee that has fees" do
     visit standard_fee_path(standard_fees(:one))
     click_on 'Delete'
-    assert_text "Standard Fee was successfully destroyed"
+    assert_text "Cannot delete this standard fee"
   end
+
 end
