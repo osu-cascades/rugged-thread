@@ -1,8 +1,11 @@
 one:
   name: Fake Customer Type 1
+  customers_count: 3
 
 two:
   name: Fake Customer Type 2
+  customers_count: 0
 
 customerless:
   name: Fake Customerless Customer Type
+  customers_count: 0

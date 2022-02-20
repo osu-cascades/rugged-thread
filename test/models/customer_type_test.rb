@@ -4,6 +4,7 @@ class CustomerTypeTest < ActiveSupport::TestCase
 
   test 'attributes' do
     assert_respond_to(CustomerType.new, :name)
+    assert_respond_to(CustomerType.new, :customers_count)
   end
 
   test 'associations' do
