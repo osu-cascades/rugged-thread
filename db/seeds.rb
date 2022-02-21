@@ -77,9 +77,9 @@ repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
  price: 15, notes:"Fake Notes")
 
 standard_repair.standard_complications.create!(name: "Fake Standard Complication 1",
-  method: "Patch", description:"Fake complication description", level: 1, charge: 5)
-standard_complication = standard_repair.standard_complications.create!(name: "Fake Standard Complication 2",
-  method: "Glue", description:"Fake second complication description", level: 2, charge: 10)
+  charge: 5)
+standard_complication = standard_repair.standard_complications.create!(
+  name: "Fake Standard Complication 2", charge: 10)
 Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
 
 standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)

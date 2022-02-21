@@ -4,9 +4,6 @@ class StandardComplicationTest < ActiveSupport::TestCase
 
   test "attribtues" do
     assert_respond_to(StandardComplication.new, :name)
-    assert_respond_to(StandardComplication.new, :method)
-    assert_respond_to(StandardComplication.new, :description)
-    assert_respond_to(StandardComplication.new, :level)
     assert_respond_to(StandardComplication.new, :charge)
   end
 
@@ -34,18 +31,6 @@ class StandardComplicationTest < ActiveSupport::TestCase
     assert standard_complication.valid?
     standard_complication.name = ''
     refute standard_complication.valid?
-  end
-
-  test 'level must be a positive integer' do
-    standard_complication = standard_complications(:one)
-    assert standard_complication.valid?
-    standard_complication.level = -1
-    refute standard_complication.valid?
-  end
-
-  test 'level is 1 by default' do
-    standard_complication = StandardComplication.new
-    assert_equal 1, standard_complication.level
   end
 
   test 'charge must be a positive integer' do

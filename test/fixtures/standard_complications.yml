@@ -1,23 +1,14 @@
 one:
   name: Fake Standard Complication 1
-  method: Fake Standard Complication Method 1
-  description: Fake standard complication description 1
-  level: 1
   charge: 1
   standard_repair: one
 
 two:
   name: Fake Standard Complication 2
-  method: Fake Standard Complication Method 2
-  description: Fake standard complication description 2
-  level: 2
   charge: 2
   standard_repair: one
 
 complicationless:
   name: Fake Complicationless Standard Complication
-  method: Fake Complicationless Method
-  description: Fake complicationless standard complication description
-  level: 3
   charge: 3
   standard_repair: one

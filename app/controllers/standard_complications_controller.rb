@@ -62,7 +62,7 @@ class StandardComplicationsController < ApplicationController
   private
 
     def standard_complication_params
-      params.require(:standard_complication).permit(:name, :method, :description, :level, :charge, :standard_repair_id)
+      params.require(:standard_complication).permit(:name, :charge, :standard_repair_id)
     end
 
 end

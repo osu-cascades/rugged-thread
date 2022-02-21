@@ -4,9 +4,6 @@
       <th scope="col">id</th>
       <th scope="col">Name</th>
       <th scope="col">Repair</th>
-      <th scope="col">Method</th>
-      <th scope="col">Description</th>
-      <th scope="col">Level</th>
       <th scope="col" class="text-end">Price</th>
       <th></th>
     </tr>
@@ -17,9 +14,6 @@
         <th scope="row"><%= complication.id %></th>
         <td><%= link_to complication.standard_complication, complication.standard_complication %></td>
         <td><%= link_to_unless(controller.controller_name == 'repairs', complication.repair, complication.repair) %></td>
-        <td><%= complication.standard_complication.method %></td>
-        <td><%= complication.standard_complication.description %></td>
-        <td><%= complication.standard_complication.level %></td>
         <td class="text-end"><%= number_to_currency(complication.price) %></td>
         <td class="text-end">
           <%= link_to 'Details', complication_path(complication), class: 'btn btn-light btn-sm' %>

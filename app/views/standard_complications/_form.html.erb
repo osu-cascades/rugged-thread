@@ -24,29 +24,16 @@
   <% end %>
   <!-- /hack -->
 
-  <div class="mb-3">
-    <%= form.label :name, class: 'form-label' %>
-    <%= form.text_field :name, class: 'form-control'%>
-  </div>
-  <div class="mb-3">
-    <%= form.label :method, class: 'form-label' %>
-    <%= form.text_field :method, class: 'form-control'%>
-  </div>
-  <div class="mb-3">
-    <%= form.label :description, class: 'form-label' %>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
-      <%= form.label :level, class: 'form-label' %>
-      <%= form.number_field :level, class: 'form-control'%>
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'%>
     </div>
-    <div class="col">
+    <div class="col-3">
       <%= form.label :charge, class: 'form-label' %>
       <%= form.number_field :charge, class: 'form-control'%>
     </div>
   </div>
-
   <div class="actions">
     <%= form.submit 'Save', class: 'form-control btn btn-success' %>
   </div>

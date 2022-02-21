@@ -3,9 +3,6 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Standard Repair</th>
-      <th scope="col">Method</th>
-      <th scope="col">Description</th>
-      <th scope="col">Level</th>
       <th scope="col" class="text-end">Charge</th>
       <th scope="col"></th>
     </tr>
@@ -18,15 +15,6 @@
         </td>
         <td>
           <%= link_to standard_complication.standard_repair, standard_complication.standard_repair %>
-        </td>
-        <td>
-          <%= standard_complication.method %>
-        </td>
-        <td>
-          <%= standard_complication.description %>
-        </td>
-        <td>
-          <%= standard_complication.level %>
         </td>
         <td class="text-end">
           <%= number_to_currency(standard_complication.charge) %>

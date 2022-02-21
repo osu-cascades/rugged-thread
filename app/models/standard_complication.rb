@@ -4,7 +4,6 @@ class StandardComplication < ApplicationRecord
   has_many :complications, dependent: :restrict_with_error
 
   validates :name, presence: true
-  validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :charge, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   default_scope { order('name ASC') }
