@@ -19,7 +19,7 @@
     <% @customer_types.each do |customer_type| %>
       <tr class="<%= dom_class(customer_type) %>" id="<%= dom_id(customer_type) %>">
         <td><%= customer_type %></td>
-        <td><%= customer_type.customers.count %></td>
+        <td><%= customer_type.customers_count %></td>
         <td class="text-end">
           <%= link_to 'Details', customer_type, class: 'btn btn-light btn-sm' %>
         </td>
