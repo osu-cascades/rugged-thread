@@ -17,22 +17,24 @@
 </div>
 
 <h2 class="display-1">
-  <%= link_to @item.item_type, @item.item_type %>
+  <%= link_to @item.work_order.customer, @item.work_order.customer %>
   <span class="fs-6 badge bg-light fw-normal align-top">
-    <%= link_to @item.brand, @item.brand %>
+    <%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>
   </span>
 </h2>
-<p>
-  <strong>Notes:</strong>
-  <%= @item.notes %>
-</p>
+<h3 class="display-5">
+  <%= link_to @item.brand, @item.brand %>
+  <%= link_to @item.item_type, @item.item_type %>
+</h3>
 
 <div class="row">
   <div class="col">
     <p>
-      <%= link_to @item.work_order.customer, @item.work_order.customer %> (<%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>)
+      <strong>Notes:</strong>
+      <%= @item.notes %>
     </p>
     <p>
+      <strong>Phone:</strong>
       <%= link_to @item.work_order.customer.phone_number, "tel:#{@item.work_order.customer.phone_number}" %>
     </p>
     <p>
@@ -88,7 +90,6 @@
     <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
   </div>
 </div>
-
 
 <h2 class="mt-5">Discounts</h2>
 
