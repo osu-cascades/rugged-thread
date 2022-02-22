@@ -14,7 +14,7 @@
           <%= standard_complication %>
         </td>
         <td>
-          <%= link_to standard_complication.standard_repair, standard_complication.standard_repair %>
+          <%= link_to_unless(controller.controller_name == 'standard_repairs', standard_complication.standard_repair, standard_complication.standard_repair) %>
         </td>
         <td class="text-end">
           <%= number_to_currency(standard_complication.charge) %>
