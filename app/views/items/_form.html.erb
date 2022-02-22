@@ -2,7 +2,6 @@
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
       <ul>
         <% item.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -13,55 +12,48 @@
 
   <div class="row">
     <div class="col">
-      <div class="mb-3">
-        <%= form.label :due_date, class: 'form-label' %>
-        <%= form.date_field :due_date, class: 'form-control' %>
-      </div>
-
+      <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
+      <% if form.object.errors.include?(:brand) %>
+        <div class='field_with_errors'>
+      <% end %>
+        <div class="mb-3">
+          <%= form.label :brand_id, class: 'form-label' %>
+          <%= form.select :brand_id, brands.all.map { |brand| [brand.name, brand.id] }, {include_blank: ''}, class: 'form-select' %>
+        </div>
+      <% if form.object.errors.include?(:brand) %>
+        </div>
+      <% end %>
+      <!-- /hack -->
+      <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
+      <% if form.object.errors.include?(:item_type) %>
+        <div class='field_with_errors'>
+      <% end %>
+        <div class="mb-3">
+          <%= form.label :item_type_id, class: 'form-label' %>
+          <%= form.select :item_type_id, item_types.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: ''}, class: 'form-select' %>
+        </div>
+      <% if form.object.errors.include?(:item_type) %>
+        </div>
+      <% end %>
+      <!-- /hack -->
       <div class="mb-3">
         <%= form.label :notes, class: 'form-label' %>
         <%= form.text_area :notes, class: 'form-control' %>
       </div>
-
-      <div class="form-check mb-3 mt-4">
-        <%= form.check_box :shipping, class: 'form-check-input' %>
-        <%= form.label :shipping, class: 'form-check-label' %>
-      </div>
-
     </div>
     <div class="col">
-
+      <div class="mb-3">
+        <%= form.label :due_date, class: 'form-label' %>
+        <%= form.date_field :due_date, class: 'form-control' %>
+      </div>
       <div class="mb-3">
         <%= form.label :item_status_id, class: 'form-label' %>
         <%= form.select :item_status_id, item_statuses.map { |item_status| [item_status.name, item_status.id] }, {}, class: 'form-select' %>
       </div>
-
-    <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
-    <% if form.object.errors.include?(:brand) %>
-      <div class='field_with_errors'>
-    <% end %>
-      <div class="mb-3">
-        <%= form.label :brand_id, class: 'form-label' %>
-        <%= form.select :brand_id, brands.all.map { |brand| [brand.name, brand.id] }, {include_blank: ''}, class: 'form-select' %>
+      <div class="form-check mb-3 mt-4">
+        <%= form.check_box :shipping, class: 'form-check-input' %>
+        <%= form.label :shipping, class: 'form-check-label' %>
       </div>
-    <% if form.object.errors.include?(:brand) %>
-      </div>
-    <% end %>
-    <!-- /hack -->
-
-    <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
-    <% if form.object.errors.include?(:item_type) %>
-      <div class='field_with_errors'>
-    <% end %>
-      <div class="mb-3">
-        <%= form.label :item_type_id, class: 'form-label' %>
-        <%= form.select :item_type_id, item_types.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: ''}, class: 'form-select' %>
-      </div>
-    <% if form.object.errors.include?(:item_type) %>
-      </div>
-    <% end %>
-    <!-- /hack -->
-
     </div>
   </div>
   <div class="actions">

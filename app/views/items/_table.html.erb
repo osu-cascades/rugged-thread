@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Item Type</th>
       <th scope="col">Brand</th>
+      <th scope="col">Item Type</th>
       <th scope="col">Item Status</th>
       <th scope="col">Due Date</th>
       <th scope="col">Level</th>
@@ -18,8 +18,8 @@
     <% items.each do |item| %>
       <tr>
         <th scope="row"><%= item.id %></th>
-        <td><%= link_to item.item_type, item.item_type %></td>
         <td><%= link_to item.brand, item.brand %></td>
+        <td><%= link_to item.item_type, item.item_type %></td>
         <td><%= link_to item.item_status, item.item_status %></td>
         <td><%= item.due_date&.to_formatted_s(:long) %></td>
         <td><%= item.level %></td>
