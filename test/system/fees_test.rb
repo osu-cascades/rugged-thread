@@ -38,7 +38,6 @@ class FeesTest < ApplicationSystemTestCase
   end
 
   test "Adding an invalid fee redisplays the item view with errors" do
-    skip
     visit item_path(items(:one))
     click_on 'Create Fee'
     assert_text 'prohibited this fee from being saved'

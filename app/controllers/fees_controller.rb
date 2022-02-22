@@ -29,9 +29,15 @@ class FeesController < ApplicationController
           :item_status,
           :item_type,
           {fees: [:standard_fee]},
+          {discounts: [:standard_discount]},
+          {repairs: [:standard_repair]},
           {work_order: [:creator, {customer: [:customer_type]}]},
         ).find(params[:item_id])
+        @repair = Repair.new
+        @discount = Discount.new
         @standard_fees = StandardFee.all
+        @standard_discounts = StandardDiscount.all
+        @standard_repairs = StandardRepair.all
         format.html { render 'items/show', status: :unprocessable_entity }
         format.json { render json: @fee.errors, status: :unprocessable_entity }
       end
