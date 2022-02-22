@@ -25,7 +25,7 @@ class RepairsController < ApplicationController
     @repair = @item.repairs.build(repair_params)
     respond_to do |format|
       if @repair.save
-        format.html { redirect_to @item, notice: "Repair was successfully created." }
+        format.html { redirect_to @repair, notice: "Repair was successfully created." }
         format.json { render :show, status: :created, location: @repair }
       else
         @item = Item.includes(
