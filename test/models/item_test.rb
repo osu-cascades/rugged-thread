@@ -19,19 +19,33 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   test "can be deleted if it has no associated repairs, discounts, or fees" do
-    skip
+    item = items(:associationless)
+    assert_empty item.repairs
+    assert_empty item.discounts
+    assert_empty item.fees
+    item.destroy
+    assert item.destroyed?
   end
 
   test "cannot be deleted if it has repairs" do
-    skip
+    item = items(:one)
+    assert_not_empty item.repairs
+    item.destroy
+    refute item.destroyed?
   end
 
   test "cannot be deleted if it has discounts" do
-    skip
+    item = items(:one)
+    assert_not_empty item.discounts
+    item.destroy
+    refute item.destroyed?
   end
 
   test "cannot be deleted if it has fees" do
-    skip
+    item = items(:one)
+    assert_not_empty item.fees
+    item.destroy
+    refute item.destroyed?
   end
 
   test "must have a brand" do
