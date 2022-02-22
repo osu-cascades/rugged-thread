@@ -5,7 +5,9 @@
       <th scope="col">Name</th>
       <th scope="col">Notes</th>
       <th scope="col">Method</th>
-      <th scope="col">Description</th>
+      <% unless controller.controller_name == 'items' %>
+        <th scope="col">Description</th>
+      <% end %>
       <th scope="col">Level</th>
       <th scope="col" class="text-end">Price</th>
       <th></th>
@@ -18,7 +20,9 @@
         <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
         <td><%= repair.notes %></td>
         <td><%= repair.standard_repair.method %></td>
-        <td><%= repair.standard_repair.description %></td>
+        <% unless controller.controller_name == 'items' %>
+          <td><%= repair.standard_repair.description %></td>
+        <% end %>
         <td><%= repair.level %></td>
         <td class="text-end"><%= number_to_currency(repair.price) %></td>
         <td class="text-end">
@@ -29,8 +33,7 @@
         <% repair.complications.each do |complication| %>
         <tr>
           <td></td>
-          <td colspan="2" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
-          <td></td>
+          <td colspan="4" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
           <td class="text-end"><%= number_to_currency(complication.price) %></td>
           <td class="text-end">
             <%= link_to 'Details', complication_path(complication), class: 'btn btn-light btn-sm' %>
