@@ -29,6 +29,10 @@ class Item < ApplicationRecord
     repairs.reduce(0) { |sum, r| sum + r.price }
   end
 
+  def fee_total
+    fees.reduce(0) { |sum, f| sum + f.price }
+  end
+
   private
 
   def set_default_status
