@@ -16,4 +16,8 @@ class Repair < ApplicationRecord
     name
   end
 
+  def sub_total 
+    price + complications.reduce(0) { |sum, c| sum + c.price }
+  end
+
 end

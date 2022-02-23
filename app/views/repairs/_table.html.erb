@@ -10,6 +10,7 @@
       <% end %>
       <th scope="col">Level</th>
       <th scope="col" class="text-end">Price</th>
+      <th scope="col" class="text-end">Sub Total</th>
       <th></th>
     </tr>
   </thead>
@@ -25,6 +26,7 @@
         <% end %>
         <td><%= repair.level %></td>
         <td class="text-end"><%= number_to_currency(repair.price) %></td>
+        <td class="text-end"><%= number_to_currency(repair.sub_total) %></td>
         <td class="text-end">
           <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>
         </td>
@@ -35,7 +37,7 @@
           <td></td>
           <td colspan="4" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
           <td class="text-end"><%= number_to_currency(complication.price) %></td>
-          <td class="text-end">
+          <td colspan="2" class="text-end">
             <%= link_to 'Details', complication_path(complication), class: 'btn btn-light btn-sm' %>
           </td>
         </tr>
