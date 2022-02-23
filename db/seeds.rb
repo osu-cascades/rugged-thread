@@ -22,8 +22,8 @@ CustomerType.create!(name: 'B2B National')
 b2c_local_customer_type = CustomerType.create!(name: 'B2C Local')
 CustomerType.create!(name: 'B2C Ship')
 
-customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
-  business_name: 'Example Business', email_address: 'customer@example.com',
+customer = Customer.create!(first_name: 'Fred', last_name: 'Examplero',
+  business_name: 'Example Biz Inc.', email_address: 'customer@example.com',
   phone_number: '541-555-5555', alternative_phone_number: '541-555-5556',
   shipping_street_address: '123 Sesame Street',
   shipping_city: 'Bend', shipping_state: 'OR', shipping_zip_code: '97704',
@@ -31,13 +31,13 @@ customer = Customer.create!(first_name: 'Example', last_name: 'Customer',
   billing_city: 'Bend', billing_state: 'OR', billing_zip_code: '97704',
   customer_type: b2c_local_customer_type)
 
-StandardDiscount.create!(name: 'Coupon', dollar_amount: 10)
+standard_discount = StandardDiscount.create!(name: 'Coupon', dollar_amount: 10)
 StandardDiscount.create!(name: 'Employee', percentage_amount: 30)
 StandardDiscount.create!(name: 'Investor', percentage_amount: 30)
 StandardDiscount.create!(name: 'OEM Cost Share', percentage_amount: 30)
 StandardDiscount.create!(name: 'Warranty', percentage_amount: 100)
 
-StandardFee.create!(name: 'Cleaning', price: 35)
+standard_fee = StandardFee.create!(name: 'Cleaning', price: 35)
 StandardFee.create!(name: 'Expedite', price: 25)
 StandardFee.create!(name: 'Handling', price: 5)
 StandardFee.create!(name: 'Large Item', price: 35)
@@ -68,22 +68,19 @@ ShopParameter.create!(name: 'Standard Labor Rate', amount: 80)
 work_order = WorkOrder.create!(creator: staff_user, in_date: Date.today,
  shipping: true, customer: customer)
 
-item = Item.create!(due_date: Date.today, notes: 'This is the place for notes.',
+item = Item.create!(due_date: Date.today, notes: 'Collectors item, please handle carefully.',
   brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
 
-standard_repair = StandardRepair.create!(name: "Fake Standard Repair", method: "Patch",
- description: "Fake repair description", level: 1, charge: 20)
-repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
- price: 15, notes:"Fake Notes")
-
-standard_repair.standard_complications.create!(name: "Fake Standard Complication 1",
-  charge: 5)
-standard_complication = standard_repair.standard_complications.create!(
-  name: "Fake Standard Complication 2", charge: 10)
-Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
-
-standard_discount = StandardDiscount.create!(name: "Fake Standard Discount", percentage_amount: 10, dollar_amount: 15)
+Fee.create!(item: item, standard_fee: standard_fee, price: 35)
 Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 10, dollar_amount:15)
 
-standard_fee = StandardFee.create!(name: "Fake Standard Fee", price: 10)
-Fee.create!(item: item, standard_fee: standard_fee, price: 10)
+standard_repair = StandardRepair.create!(name: "Zipper Replacement: Separating Zipper : As-Manufactured (per Half Zipper)", method: "",
+ description: "< 24\" zipper length", level: 1, charge: 45)
+repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
+ price: 45, notes:"Fake Notes")
+
+standard_repair.standard_complications.create!(name: "< 25-36\" zipper length",
+  charge: 5)
+standard_complication = standard_repair.standard_complications.create!(
+  name: "< 37-48\" zipper length", charge: 10)
+Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
