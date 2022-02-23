@@ -4,10 +4,10 @@ class Item < ApplicationRecord
   belongs_to :item_status
   belongs_to :item_type
   belongs_to :work_order
+  acts_as_list :scope => :work_order
   has_many :repairs, dependent: :restrict_with_error
   has_many :discounts, dependent: :restrict_with_error
   has_many :fees, dependent: :restrict_with_error
-
   validates :shipping, inclusion: { in: [ true, false ] }
 
   after_initialize :set_default_status
