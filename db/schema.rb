@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_23_001718) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_23_183019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -202,6 +202,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_001718) do
     t.text "notes"
     t.integer "price", default: 0
     t.integer "level", default: 1, null: false
+    t.integer "position"
     t.index ["item_id"], name: "index_repairs_on_item_id"
     t.index ["standard_repair_id"], name: "index_repairs_on_standard_repair_id"
   end
