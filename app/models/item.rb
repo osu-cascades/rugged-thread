@@ -33,6 +33,10 @@ class Item < ApplicationRecord
     fees.reduce(0) { |sum, f| sum + f.price }
   end
 
+  def discount_total
+    discounts.reduce(0) { |sum, d| sum + d.dollar_amount }
+  end
+
   private
 
   def set_default_status
