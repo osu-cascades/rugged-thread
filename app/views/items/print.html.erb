@@ -8,13 +8,108 @@
     <%= stylesheet_link_tag 'print', 'data-turbo-track': 'reload' %>
   </head>
   <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
+abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzzaaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz
 
-    <%= @item %>
+    <h1><%= @item.work_order.customer %> (<%= @item.work_order.customer.customer_type %>)</h1>
+    <p><%= @item.work_order.customer.phone_number %></p>
+    <h2><%= @item.brand %> <%= @item.item_type %></h2>
+    <p>Item <%= @item.position %> of <%= @item.work_order.items.count %> from Work Order <%= @item.work_order.id %> by <%= @item.work_order.creator %>.</p>
+    <p>Date in: <%= @item.work_order.in_date.to_formatted_s(:long) %></p>
+    <p>Due date: <%= @item.due_date.to_formatted_s(:long) %></p>
+
+    <h4>Notes</h4>
+    <p><%= @item.notes %></p>
+
+    <h4>Estimated Price</h4>
+    <p>$<%= @item.estimate %></p>
 
 
+    <h4>Fees</h4>
+    <% @item.fees.each do |fee| %>
+    <%= fee.standard_fee.name %> ($<%= fee.price %>)
+    <% end %>
 
+    <h4>Discounts</h4>
+    <% @item.discounts.each do |discount| %>
+    <%= discount.standard_discount.name %> (<%= discount.percentage_amount %>% / $<%= discount.dollar_amount %>)
+    <% end %>
 
+    <h4>Repairs</h4>
+    <% @item.repairs.each do |repair| %>
+      <table>
+        <tr>
+          <td>
+            <p>Repair <%= repair.position %></p>
+            <p>Labor $<%= @item.labor_estimate %></p>
+            <p>Level <%= repair.level %></p>
+          </td>
+          <td>
+            <%= repair.standard_repair %>
+            <h5>Complications</h5>
+            <% repair.complications.each do |complication| %>
+              <p><%= complication.standard_complication %> ($<%= complication.price %>)</p>
+            <% end %>
+            <%= repair.notes %>
+          </td>
+        </tr>
+      </table>
+      <h5>Production Data</h5>
+      <table width="100%">
+        <tr>
+          <td>Date</td>
+          <td>Tech</td>
+          <td>Time</td>
+          <td>Task</td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <h5>Quality Data</h5>
+      <p>Inspector: _________________    Date: ________</p>
+      <p>Defect description: __________________________________</p>
+      <h5>Rework</h5>
+      <table width="100%">
+        <tr>
+          <td>Date</td>
+          <td>Tech</td>
+          <td>Task</td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <br>
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <h5>Final Approval</h5>
+      <p>Inspector: _________________    Date: ________</p>
+    <% end %>
 
+<!--- ---><br><hr><hr>
+
+    <h1>Rugged Thread Outerwear Repair</h1>
+    <h2>Claim Ticket <%= @item.work_order.id %> - <%= @item.position %></h2>
+
+    <h3><%= @item.brand %> <%= @item.item_type %></h3>
+    <p>Estimate: <%= @item.estimate %></p>
+    <p>Expected Completion Date: <%= @item.due_date %></p>
+    <p>Please call or text if you haven't heard from us by the Expected Completion Date. We will always call or text when your repair is complete.</p>
+    <p>Estimates are for budgeting purposes only. We will call or text for approval before proceeding if the repairs will exceed the estimate by more than 25%.</p>
+    <h4>2525 NE Twin Knolls Dr. Suite 9 &nbsp;&nbsp;&nbsp;&nbsp; 541-306-8727</h4>
 
   <script>
     // if (window.print) window.print()
