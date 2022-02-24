@@ -6,7 +6,7 @@
         <%= link_to @item.item_status, @item.item_status, class: 'text-decoration-none' %>
       </span>
     </h1>
-    From <%= link_to @item.work_order, @item.work_order %> by <%= link_to @item.work_order.creator, @item.work_order.creator %>
+    From <%= link_to @item.work_order, @item.work_order %> by <%= link_to @item.work_order.creator, @item.work_order.creator %>.
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to Work Order'.html_safe, @item.work_order, class: 'btn btn-outline-primary me-5' %>
