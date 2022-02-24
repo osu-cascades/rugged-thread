@@ -1,7 +1,7 @@
 <table class="table table-hover" id="fees_table">
   <thead>
     <tr>
-      <th scope="col">id</th>
+      <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col" class="text-end">Price</th>
       <th></th>
@@ -10,7 +10,7 @@
   <tbody>
     <% fees.each do |fee| %>
       <tr>
-        <th scope="row"><%= fee.id %></th>
+        <th scope="row"><%= fee.position %></th>
         <td><%= link_to fee.standard_fee, fee.standard_fee %></td>
         <td class="text-end"><%= number_to_currency(fee.price) %></td>
         <td class="text-end">
