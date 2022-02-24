@@ -22,6 +22,25 @@ class ItemsController < ApplicationController
     @standard_fees = StandardFee.all
   end
 
+  def print
+    @item = Item.includes(
+      :brand,
+      :item_status,
+      :item_type,
+      {repairs: [:standard_repair]},
+      {discounts: [:standard_discount]},
+      {fees: [:standard_fee]},
+      {work_order: [:creator, {customer: [:customer_type]}]},
+      ).find(params[:id])
+    @repair = Repair.new
+    @discount = Discount.new
+    @fee = Fee.new
+    @standard_repairs = StandardRepair.all
+    @standard_discounts = StandardDiscount.all
+    @standard_fees = StandardFee.all
+    render 'print', layout: false
+  end
+
   def edit
     @item = Item.find(params[:id])
     @brands = Brand.all

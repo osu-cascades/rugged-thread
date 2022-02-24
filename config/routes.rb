@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   resources :item_types
   resources :items, except: [:new, :create] do
+    get 'print', on: :member
     resources :repairs, only: :create
     resources :discounts, only: :create
     resources :fees, only: :create
