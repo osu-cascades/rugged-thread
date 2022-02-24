@@ -1,4 +1,10 @@
 @media print {
+  body {
+    color: #000 !important;
+  }
+  a {
+    color:  #000 !important;
+  }
   form, header, footer, nav.navbar , div.text-end {
     display: none;
   }
