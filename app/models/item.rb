@@ -14,19 +14,15 @@ class Item < ApplicationRecord
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 
   def estimate
-    labor_estimate + fees_and_discounts
+    labor_estimate + fee_total - discount_total
   end
 
   def level
     repairs.collect(&:level).max
   end
 
-  def fees_and_discounts
-    0
-  end
-
   def labor_estimate
-    repairs.reduce(0) { |sum, r| sum + r.price }
+    repairs.reduce(0) { |sum, r| sum + r.sub_total }
   end
 
   def fee_total
