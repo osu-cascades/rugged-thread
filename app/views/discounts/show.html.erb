@@ -1,6 +1,6 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Discount <%= @discount.id %></h1>
+    <h1>Discount <%= @discount.position %></h1>
     <h2>
       For <%= link_to "Item #{@discount.item.id}", @discount.item %> on
       <%= link_to @discount.item.work_order, @discount.item.work_order %>
