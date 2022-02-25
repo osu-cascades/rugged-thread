@@ -2,7 +2,7 @@
   <div class="col">
     <h1>Repair <%= @repair.position %></h1>
     <h2>
-      For <%= link_to "Item #{@repair.item.id}", @repair.item %> on
+      For <%= link_to "Item #{@repair.item.position}", @repair.item %> on
       <%= link_to @repair.item.work_order, @repair.item.work_order %>
     </h2>
   </div>

@@ -2,7 +2,7 @@
   <div class="col">
     <h1>Discount <%= @discount.position %></h1>
     <h2>
-      For <%= link_to "Item #{@discount.item.id}", @discount.item %> on
+      For <%= link_to "Item #{@discount.item.position}", @discount.item %> on
       <%= link_to @discount.item.work_order, @discount.item.work_order %>
     </h2>
   </div>
