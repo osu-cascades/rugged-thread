@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   end
 
   def fee_total
-    fees.reduce(0) { |sum, f| sum + f.price }
+    Price.new(fees).total
   end
 
   def discount_total
