@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :item_type
   belongs_to :work_order
   acts_as_list :scope => :work_order
+  default_scope { order('position ASC') }
   has_many :repairs, dependent: :restrict_with_error
   has_many :discounts, dependent: :restrict_with_error
   has_many :fees, dependent: :restrict_with_error
