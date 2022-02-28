@@ -1,0 +1,2 @@
+class StandardInventoryItemController < ApplicationController
+end
