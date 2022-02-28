@@ -37,4 +37,14 @@ class ComplicationTest < ActiveSupport::TestCase
     refute complication.valid?
   end
 
+  test '#name is the standard complication name' do
+    complication = complications(:one)
+    assert_equal complication.standard_complication.name, complication.name
+  end
+
+  test '#to_s string representation is name' do
+    complication = complications(:one)
+    assert_equal complication.name, complication.to_s
+  end
+
 end
