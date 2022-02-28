@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   end
   resources :shop_parameters
   resources :standard_complications
+  resources :standard_inventory_items
   resources :standard_discounts
   resources :standard_fees
   resources :standard_repairs do
