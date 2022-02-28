@@ -18,14 +18,14 @@ class DiscountsTest < ApplicationSystemTestCase
   test "viewing a list of discounts for an item" do
     item = items(:one)
     visit item_path(item)
-    assert_text item.discounts.first.standard_discount.name
+    assert_text item.discounts.first.name
   end
 
   test "viewing a discount shows the standard discount name, notes, item brand name and item type name" do
     visit discount_path(discounts(:one))
-    assert_text discounts(:one).standard_discount.name
-    assert_text discounts(:one).standard_discount.percentage_amount
-    assert_text discounts(:one).standard_discount.dollar_amount
+    assert_text discounts(:one).name
+    assert_text discounts(:one).percentage_amount
+    assert_text discounts(:one).dollar_amount
     assert_text discounts(:one).item.brand.name
     assert_text discounts(:one).item.item_type.name
   end

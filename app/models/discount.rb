@@ -10,4 +10,12 @@ class Discount < ApplicationRecord
 
   default_scope { order('position ASC') }
 
+  def name
+    standard_discount&.name
+  end
+
+  def to_s
+    name
+  end
+
 end

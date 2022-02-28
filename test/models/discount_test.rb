@@ -40,4 +40,14 @@ class DiscountTest < ActiveSupport::TestCase
     refute discount.valid?
   end
 
+  test '#name is the standard discount name' do
+    discount = discounts(:one)
+    assert_equal discount.standard_discount.name, discount.name
+  end
+
+  test '#to_s string representation is name' do
+    discount = discounts(:one)
+    assert_equal discount.name, discount.to_s
+  end
+
 end
