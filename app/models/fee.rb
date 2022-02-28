@@ -13,6 +13,10 @@ class Fee < ApplicationRecord
     standard_fee&.name
   end
 
+  def expedite?
+    standard_fee&.expedite?
+  end
+
   def to_s
     name
   end

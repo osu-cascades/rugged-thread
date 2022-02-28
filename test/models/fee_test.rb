@@ -42,6 +42,13 @@ class FeeTest < ActiveSupport::TestCase
     assert_equal fee.standard_fee.name, fee.name
   end
 
+  test '#expedite? is true when the standard fee is the expedite standard fee' do
+    fee = Fee.new
+    refute fee.expedite?
+    fee.standard_fee = StandardFee.new(name: StandardFee::EXPEDITE_FEE_NAME)
+    assert fee.expedite?
+  end
+
   test '#to_s string representation is name' do
     fee = fees(:one)
     assert_equal fee.name, fee.to_s

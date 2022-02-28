@@ -5,3 +5,7 @@ one:
 feeless:
   name: Fake Large Item
   price: 2
+
+expedite:
+  name: Expedite
+  price: 25
