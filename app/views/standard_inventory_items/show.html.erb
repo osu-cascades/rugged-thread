@@ -1,0 +1,25 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Standard Inventory Item Information</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo All Inventory Items'.html_safe, standard_inventory_items_path, class: 'btn btn-outline-primary' %>
+    <%= link_to 'Edit', edit_standard_inventory_item_path(@standard_inventory_item), class: 'btn btn-outline-primary me-2' %>
+    <%= button_to 'Delete', @standard_inventory_item, method: :delete, class: 'btn btn-outline-danger' %>
+  </div>
+</div>
+
+<dl class="row">
+  <dt class="col-sm-3">Name</dt>
+  <dd class="col-sm-9">
+    <%= @standard_inventory_item.name %>
+  </dd>
+  <dt class="col-sm-3">SKU</dt>
+  <dd class="col-sm-9">
+    <%= @standard_inventory_item.sku %>
+  </dd>
+  <dt class="col-sm-3">Price</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@standard_inventory_item.price) %>
+  </dd>
+</dl>

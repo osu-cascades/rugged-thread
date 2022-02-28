@@ -1,0 +1,32 @@
+<%= form_with(model: standard_inventory_item) do |form| %>
+  <% if standard_inventory_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(standard_inventory_item.errors.count, "error") %> prohibited this standard inventory_item from being saved:</h2>
+
+      <ul>
+        <% standard_inventory_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :sku, class: 'form-label' %>
+    <%= form.text_field :sku, class: 'form-control'%>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :price, class: 'form-label' %>
+    <%= form.number_field :price, class: 'form-control'%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'form-control btn btn-success' %>
+  </div>
+<% end %>
