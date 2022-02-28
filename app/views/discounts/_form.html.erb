@@ -17,7 +17,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_discount_id, class: 'form-label'%>
-        <%= form.select :standard_discount_id, standard_discounts.map{ |standard_discount| [standard_discount.name, standard_discount.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select' %>
     <% if form.object.errors.include?(:standard_discount) %>
       </div>
     <% end %>

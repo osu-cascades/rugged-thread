@@ -18,7 +18,7 @@
       <% end %>
         <div class="mb-3">
           <%= form.label :brand_id, class: 'form-label' %>
-          <%= form.select :brand_id, brands.all.map { |brand| [brand.name, brand.id] }, {include_blank: ''}, class: 'form-select' %>
+          <%= form.select :brand_id, brands.all.map { |b| [b.name, b.id] }, {include_blank: ''}, class: 'form-select' %>
         </div>
       <% if form.object.errors.include?(:brand) %>
         </div>
@@ -30,7 +30,7 @@
       <% end %>
         <div class="mb-3">
           <%= form.label :item_type_id, class: 'form-label' %>
-          <%= form.select :item_type_id, item_types.all.map{ |item_type| [item_type.name, item_type.id] }, {include_blank: ''}, class: 'form-select' %>
+          <%= form.select :item_type_id, item_types.all.map { |it| [it.name, it.id] }, {include_blank: ''}, class: 'form-select' %>
         </div>
       <% if form.object.errors.include?(:item_type) %>
         </div>
@@ -48,7 +48,7 @@
       </div>
       <div class="mb-3">
         <%= form.label :item_status_id, class: 'form-label' %>
-        <%= form.select :item_status_id, item_statuses.map { |item_status| [item_status.name, item_status.id] }, {}, class: 'form-select' %>
+        <%= form.select :item_status_id, item_statuses.map { |is| [is.name, is.id] }, {}, class: 'form-select' %>
       </div>
       <div class="form-check mb-3 mt-4">
         <%= form.check_box :shipping, class: 'form-check-input' %>
