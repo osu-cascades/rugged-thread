@@ -37,6 +37,10 @@ class Item < ApplicationRecord
     discounts.reduce(0) { |sum, d| sum + d.dollar_amount }
   end
 
+  def expedite?
+    fees.any? { |f| f.expedite? }
+  end
+
   private
 
   def set_default_status

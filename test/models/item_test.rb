@@ -144,4 +144,11 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal(3, items(:one).level)
   end
 
+  test "#expedite? is true if any of the fees are the expedite fee" do
+    item = Item.new
+    refute item.expedite?
+    item.fees << Fee.new(standard_fee: StandardFee.new(name: StandardFee::EXPEDITE_FEE_NAME))
+    assert item.expedite?
+  end
+
 end
