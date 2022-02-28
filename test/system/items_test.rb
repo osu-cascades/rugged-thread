@@ -46,20 +46,20 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "Adding an item to a work order with a different shipping attribute" do
-    visit work_order_path(work_orders(:shipping))
+    visit work_order_path(work_orders(:not_shipping))
     within all('tr').last do
-      assert_text '📦'
+      refute_text '📦'
     end
     fill_in 'Due date', with: Date.current.to_s
     fill_in "Notes", with: 'FAKE'
-    uncheck 'Shipping'
+    check 'Shipping'
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
     select item_types(:one).name, from: :item_item_type_id
     click_on "Create Item"
     assert_text "Item was successfully created"
     within all('tr').last do
-      refute_text '📦'
+      assert_text '📦'
     end
   end
 
