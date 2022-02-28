@@ -17,7 +17,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_complication_id, class: 'form-label'%>
-        <%= form.select :standard_complication_id, standard_complications.map{ |standard_complication| [standard_complication.name, standard_complication.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_complication_id, standard_complications.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select' %>
       <% if form.object.errors.include?(:standard_complication) %>
         </div>
       <% end %>
