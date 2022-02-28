@@ -8,7 +8,7 @@ class StandardFee < ApplicationRecord
   default_scope { order('name ASC') }
 
   def to_s
-    "#{name}"
+    name
   end
 
 end

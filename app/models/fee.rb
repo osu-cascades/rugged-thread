@@ -9,4 +9,12 @@ class Fee < ApplicationRecord
 
   default_scope { order('position ASC') }
 
+  def name
+    standard_fee&.name
+  end
+
+  def to_s
+    name
+  end
+
 end

@@ -26,7 +26,7 @@ abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzzaa
 
     <h4>Fees</h4>
     <% @item.fees.each do |fee| %>
-    <%= fee.standard_fee.name %> ($<%= fee.price %>)
+    <%= fee %> ($<%= fee.price %>)
     <% end %>
 
     <h4>Discounts</h4>

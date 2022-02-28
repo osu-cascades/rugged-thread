@@ -18,12 +18,12 @@ class FeesTest < ApplicationSystemTestCase
   test "viewing a list of fees for an item" do
     item = items(:one)
     visit item_path(item)
-    assert_text item.fees.first.standard_fee.name
+    assert_text item.fees.first.name
   end
 
   test "viewing a fee shows the standard fee name, item brand name and item type name" do
     visit fee_path(fees(:one))
-    assert_text fees(:one).standard_fee.name
+    assert_text fees(:one).name
     assert_text fees(:one).item.brand.name
     assert_text fees(:one).item.item_type.name
     assert_text fees(:one).price

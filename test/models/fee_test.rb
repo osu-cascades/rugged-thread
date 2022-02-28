@@ -6,7 +6,6 @@ class FeeTest < ActiveSupport::TestCase
     assert_respond_to(Fee.new, :price)
   end
 
-
   test "associations" do
     assert_respond_to(Fee.new, :item)
     assert_respond_to(Fee.new, :standard_fee)
@@ -36,6 +35,16 @@ class FeeTest < ActiveSupport::TestCase
     assert fee.valid?
     fee.price = -1
     refute fee.valid?
+  end
+
+  test '#name is the standard fee name' do
+    fee = fees(:one)
+    assert_equal fee.standard_fee.name, fee.name
+  end
+
+  test '#to_s string representation is name' do
+    fee = fees(:one)
+    assert_equal fee.name, fee.to_s
   end
 
 end
