@@ -16,7 +16,7 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :item_type)
     assert_respond_to(Item.new, :work_order)
     assert_respond_to(Item.new, :repairs)
-    assert_respond_to(Item.new, :discount)
+    assert_respond_to(Item.new, :discounts)
     assert_respond_to(Item.new, :fees)
   end
 
