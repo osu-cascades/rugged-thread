@@ -30,10 +30,6 @@ class StandardInventoryItemTest < ActiveSupport::TestCase
     skip
   end
 
-  test "is not valid without a name" do
-    skip
-  end
-
   test "price must be a non-negative integer" do
     skip
   end
