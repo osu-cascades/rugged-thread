@@ -1,18 +1,21 @@
 class Item < ApplicationRecord
 
+  acts_as_list :scope => :work_order
+
   belongs_to :brand
   belongs_to :item_status
   belongs_to :item_type
   belongs_to :work_order
-  acts_as_list :scope => :work_order
-  default_scope { order('position ASC') }
   has_many :repairs, dependent: :restrict_with_error
   has_many :discounts, dependent: :restrict_with_error
   has_many :fees, dependent: :restrict_with_error
+
   validates :shipping, inclusion: { in: [ true, false ] }
 
   after_initialize :set_default_status
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
+
+  default_scope { order('position ASC') }
 
   def estimate
     labor_estimate + fee_total - discount_total
