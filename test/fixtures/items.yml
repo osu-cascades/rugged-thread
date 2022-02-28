@@ -15,3 +15,30 @@ associationless:
   brand: two
   item_type: two
   item_status: two
+
+with_only_fee:
+  due_date: 2022-01-25
+  notes: Item with only a fee and nothing else
+  shipping: true
+  work_order: shipping
+  brand: one
+  item_type: one
+  item_status: one
+
+with_only_discount:
+  due_date: 2022-01-25
+  notes: Item with only a discount and nothing else
+  shipping: true
+  work_order: shipping
+  brand: one
+  item_type: one
+  item_status: one
+
+with_only_repair:
+  due_date: 2022-01-25
+  notes: Item with only a repair and nothing else
+  shipping: true
+  work_order: shipping
+  brand: one
+  item_type: one
+  item_status: one

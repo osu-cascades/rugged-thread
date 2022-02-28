@@ -100,21 +100,19 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test "destroying an item with repairs fails" do
-    visit item_path(items(:one))
+    visit item_path(items(:with_only_repair))
     click_on 'Delete'
     assert_text "Cannot delete this item"
   end
 
   test "destroying an item with discounts fails" do
-    skip
-    visit item_path(items(:WITH_ONLY_DISCOUNTS))
+    visit item_path(items(:with_only_discount))
     click_on 'Delete'
     assert_text "Cannot delete this item"
   end
 
   test "destroying an item with fees fails" do
-    skip
-    visit item_path(items(:WITH_ONLY_FEES))
+    visit item_path(items(:with_only_fee))
     click_on 'Delete'
     assert_text "Cannot delete this item"
   end

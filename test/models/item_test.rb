@@ -16,6 +16,8 @@ class ItemTest < ActiveSupport::TestCase
     assert_respond_to(Item.new, :item_type)
     assert_respond_to(Item.new, :work_order)
     assert_respond_to(Item.new, :repairs)
+    assert_respond_to(Item.new, :discount)
+    assert_respond_to(Item.new, :fees)
   end
 
   test "can be deleted if it has no associated repairs, discounts, or fees" do
@@ -28,21 +30,27 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   test "cannot be deleted if it has repairs" do
-    item = items(:one)
+    item = items(:with_only_repair)
+    assert_empty item.discounts
+    assert_empty item.fees
     assert_not_empty item.repairs
     item.destroy
     refute item.destroyed?
   end
 
   test "cannot be deleted if it has discounts" do
-    item = items(:one)
+    item = items(:with_only_discount)
+    assert_empty item.fees
+    assert_empty item.repairs
     assert_not_empty item.discounts
     item.destroy
     refute item.destroyed?
   end
 
   test "cannot be deleted if it has fees" do
-    item = items(:one)
+    item = items(:with_only_fee)
+    assert_empty item.discounts
+    assert_empty item.repairs
     assert_not_empty item.fees
     item.destroy
     refute item.destroyed?

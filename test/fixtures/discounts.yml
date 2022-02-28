@@ -9,3 +9,9 @@ two:
   item: one
   percentage_amount: 12
   dollar_amount: 5
+
+for_item_with_only_discount:
+  standard_discount: one
+  item: with_only_discount
+  percentage_amount: 12
+  dollar_amount: 5

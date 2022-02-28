@@ -7,4 +7,8 @@ two:
   item: one
   standard_fee: one
   price: 2
-  
+
+for_item_with_only_fee:
+  item: with_only_fee
+  standard_fee: one
+  price: 2
