@@ -20,9 +20,9 @@
         <th scope="row"><%= repair.position %></th>
         <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
         <td><%= repair.notes %></td>
-        <td><%= repair.standard_repair.method %></td>
+        <td><%= repair.method %></td>
         <% unless controller.controller_name == 'items' %>
-          <td><%= repair.standard_repair.description %></td>
+          <td><%= repair.description %></td>
         <% end %>
         <td><%= repair.level %></td>
         <td class="text-end"><%= number_to_currency(repair.price) %></td>

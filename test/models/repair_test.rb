@@ -67,11 +67,21 @@ class RepairTest < ActiveSupport::TestCase
   end
 
   test '#name is the standard_repair name' do
-    standard_repair = standard_repairs.first
-    assert_equal standard_repair.name, standard_repair.repairs.first.name
+    repair = repairs(:one)
+    assert_equal repair.standard_repair.name, repair.name
   end
 
-  test '#to_s returns the name' do
+  test '#method is the standard_repair method' do
+    repair = repairs(:one)
+    assert_equal repair.standard_repair.method, repair.method
+  end
+
+  test '#description is the standard_repair description' do
+    repair = repairs(:one)
+    assert_equal repair.standard_repair.description, repair.description
+  end
+
+  test '#to_s string representation is name' do
     repair = repairs.first
     assert_equal repair.name, repair.to_s
   end

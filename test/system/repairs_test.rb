@@ -18,12 +18,12 @@ class RepairsTest < ApplicationSystemTestCase
   test "viewing a list of repairs for an item" do
     item = items(:one)
     visit item_path(item)
-    assert_text item.repairs.first.standard_repair.name
+    assert_text item.repairs.first.name
   end
 
   test "viewing a repair shows the standard repair name, notes, item brand name and item type name" do
     visit repair_path(repairs(:one))
-    assert_text repairs(:one).standard_repair.name
+    assert_text repairs(:one).name
     assert_text repairs(:one).notes
     assert_text repairs(:one).level
     assert_text repairs(:one).price
