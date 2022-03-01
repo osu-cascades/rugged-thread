@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :customers do
     resources :work_orders, only: :new
   end
+  resources :inventory_items, except: [:new, :create]
   resources :invoice_items
   resources :invoices
   resources :item_statuses do
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
   resources :discounts, except: [:new, :create]
   resources :repairs, except: [:new, :create] do
     resources :complications, only: :create
+    resources :inventory_items, only: :create
   end
   resources :shop_parameters
   resources :standard_complications

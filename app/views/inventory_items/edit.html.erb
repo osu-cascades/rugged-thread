@@ -1,0 +1,12 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Editing Inventory Item <%= @inventory_item.id %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, @inventory_item, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<div class="form-container">
+  <%= render 'form', inventory_item: @inventory_item, repair: nil, repairs: @repairs, standard_inventory_items: @standard_inventory_items %>
+</div>
