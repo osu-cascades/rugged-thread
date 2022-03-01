@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1
+  repair: one
+  standard_inventory_item: one
+
+two:
+  price: 1
+  repair: two
+  standard_inventory_item: two
