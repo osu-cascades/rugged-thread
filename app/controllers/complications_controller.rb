@@ -19,10 +19,13 @@ class ComplicationsController < ApplicationController
         @repair = Repair.includes(
           :standard_repair,
           :complications,
+          {inventory_items: [:standard_inventory_item]},
           {item: [:work_order, :brand, :item_type]}
         ).find(params[:repair_id])
         @standard_complications = @repair.standard_repair.standard_complications
         @repairs = Repair.includes(:standard_repair).all
+        @inventory_item = InventoryItem.new
+        @standard_inventory_items = StandardInventoryItem.all
         format.html { render 'repairs/show', status: :unprocessable_entity }
         format.json { render json: @complication.errors, status: :unprocessable_entity }
       end
