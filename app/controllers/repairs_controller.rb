@@ -8,10 +8,13 @@ class RepairsController < ApplicationController
     @repair = Repair.includes(
       :standard_repair,
       :complications,
+      :inventory_items,
       {item: [:work_order, :brand, :item_type]}
     ).find(params[:id])
     @complication = Complication.new(repair: @repair)
     @standard_complications = @repair.standard_repair.standard_complications
+    @inventory_item = InventoryItem.new
+    @standard_inventory_items =  StandardInventoryItem.all
     @repairs = Repair.includes(:standard_repair).all
   end
 
