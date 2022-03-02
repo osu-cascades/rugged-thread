@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :customers do
     resources :work_orders, only: :new
   end
+  resources :discounts, except: [:new, :create]
+  resources :fees, except: [:new, :create]
   resources :inventory_items, except: [:new, :create]
   resources :invoice_items
   resources :invoices
@@ -29,21 +31,19 @@ Rails.application.routes.draw do
   resources :item_types
   resources :items, except: [:new, :create] do
     get 'print', on: :member
-    resources :repairs, only: :create
     resources :discounts, only: :create
     resources :fees, only: :create
+    resources :repairs, only: :create
   end
   resources :quote_requests
-  resources :fees, except: [:new, :create]
-  resources :discounts, except: [:new, :create]
   resources :repairs, except: [:new, :create] do
     resources :complications, only: :create
     resources :inventory_items, only: :create
   end
   resources :shop_parameters
   resources :standard_complications
-  resources :standard_inventory_items
   resources :standard_discounts
+  resources :standard_inventory_items
   resources :standard_fees
   resources :standard_repairs do
     resources :standard_complications, only: :new
