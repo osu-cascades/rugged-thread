@@ -9,7 +9,7 @@ class InventoryItemsController < ApplicationController
   end
 
   def edit
-    @inventory_item = InventoryItem.includes(:item).find(params[:id])
+    @inventory_item = InventoryItem.includes(:repair).find(params[:id])
     @standard_inventory_items = StandardInventoryItem.all
   end
 
@@ -55,10 +55,10 @@ class InventoryItemsController < ApplicationController
     @inventory_item = InventoryItem.find(params[:id])
     respond_to do |format|
       if @inventory_item.destroy
-        format.html { redirect_to item_path(@inventory_item.item), notice: 'Inventory Item was successfully destroyed.' }
+        format.html { redirect_to repair_path(@inventory_item.repair), notice: 'Inventory Item was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @inventory_item, alert: 'Cannot delete this inventory_item.' }
+        format.html { redirect_to @inventory_item, alert: 'Cannot delete this inventory item.' }
         format.json { render json: @inventory_item.errors, status: :unprocessable_entity }
       end
     end
