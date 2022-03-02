@@ -9,3 +9,8 @@ two:
   name: Fake Name 2
   sku: Fake Sku 2
   price: 1
+
+inventory_itemless:
+  name: Fake Name 3
+  sku: Fake Sku 3
+  price: 1

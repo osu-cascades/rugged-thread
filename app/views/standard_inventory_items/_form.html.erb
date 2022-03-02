@@ -1,7 +1,7 @@
 <%= form_with(model: standard_inventory_item) do |form| %>
   <% if standard_inventory_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(standard_inventory_item.errors.count, "error") %> prohibited this standard inventory_item from being saved:</h2>
+      <h2><%= pluralize(standard_inventory_item.errors.count, "error") %> prohibited this standard inventory item from being saved:</h2>
 
       <ul>
         <% standard_inventory_item.errors.each do |error| %>
