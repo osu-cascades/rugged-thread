@@ -9,11 +9,14 @@ class StandardInventoryItemTest < ActiveSupport::TestCase
   end
 
   test "associations" do
-    skip
+    assert_respond_to(StandardInventoryItem.new, :inventory_items)
   end
 
   test "cannot be deleted if it has associated inventory items" do
-    skip
+    standard_inventory_item = standard_inventory_items(:one)
+    assert_not_empty standard_inventory_item.inventory_items
+    standard_inventory_item.destroy
+    refute standard_inventory_item.destroyed?
   end
 
   test "is not valid without a name" do
