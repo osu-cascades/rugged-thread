@@ -1,3 +1,11 @@
+
+<% javascript_tag do %>
+  function autofill() {
+    var standard_repair = <%= @standard_repair.to_json %>;
+    document.getElementById('repair_price') = standard_repair.price; 
+  });
+<% end %>
+
 <%= form_with(model: [item, repair]) do |form| %>
   <% if repair.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +18,7 @@
       </ul>
     </div>
   <% end %>
+  <%= javascript_import_module_tag "custom" %>
   <div class="row mb-3">
     <div class="col">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
@@ -17,7 +26,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_repair_id, class: 'form-label'%>
-        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'autofill();' %>
     <% if form.object.errors.include?(:standard_repair) %>
       </div>
     <% end %>
