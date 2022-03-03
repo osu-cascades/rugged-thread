@@ -1,17 +1,16 @@
 <script type="text/javascript">
   function updateRepairPrice() {
     var e = document.getElementById("repair_standard_repair_id");
-    // console.log(document.getElementById("repair_standard_repair_id"));
-    var repair_id = e.value;
-    // alert(repair_id);
-    // document.getElementById('repair_price').value = repair_id; 
-    const fetchResponsePromise = fetch(`/repairs/${repair_id}.json`).then((response) => {
+    var standard_repair_id = e.value;
+
+    // Call to retrive standard repair JSON
+    const fetchResponsePromise = fetch(`/standard_repairs/${standard_repair_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      return data.price;
+      document.getElementById('repair_price').value = data.charge; 
     });
+
     console.log(fetchResponsePromise);
-    document.getElementById('repair_price').value = fetchResponsePromise; 
   };
 </script>
 
