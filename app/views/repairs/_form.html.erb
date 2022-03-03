@@ -1,4 +1,19 @@
-
+<script type="text/javascript">
+  function updateRepairPrice() {
+    var e = document.getElementById("repair_standard_repair_id");
+    // console.log(document.getElementById("repair_standard_repair_id"));
+    var repair_id = e.value;
+    // alert(repair_id);
+    // document.getElementById('repair_price').value = repair_id; 
+    const fetchResponsePromise = fetch(`/repairs/${repair_id}.json`).then((response) => {
+      return response.json();
+    }).then((data) => {
+      return data.price;
+    });
+    console.log(fetchResponsePromise);
+    document.getElementById('repair_price').value = fetchResponsePromise; 
+  };
+</script>
 
 <%= form_with(model: [item, repair]) do |form| %>
   <% if repair.errors.any? %>
@@ -12,7 +27,6 @@
       </ul>
     </div>
   <% end %>
-  <%= javascript_import_module_tag "custom" %>
   <div class="row mb-3">
     <div class="col">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
@@ -20,7 +34,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_repair_id, class: 'form-label'%>
-        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'autofill();' %>
+        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateRepairPrice();' %>
     <% if form.object.errors.include?(:standard_repair) %>
       </div>
     <% end %>
