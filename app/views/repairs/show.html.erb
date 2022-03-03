@@ -59,3 +59,14 @@
 <div class="form-container">
   <%= render 'inventory_items/form', inventory_item: @inventory_item, repair: @repair, repairs: @repairs, standard_inventory_items: @standard_inventory_items %>
 </div>
+
+
+<h2 class="mt-5">Special Order Items</h2>
+
+<%= render 'special_order_items/table', special_order_items: @repair.special_order_items %>
+
+<h2 class="mt-5">Add Special Order Item</h2>
+
+<div class="form-container">
+  <%= render 'special_order_items/form', special_order_item: @special_order_item, repair: @repair, repairs: @repairs %>
+</div>

@@ -1,0 +1,26 @@
+<%= form_with(model: [repair, special_order_item]) do |form| %>
+  <% if special_order_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(special_order_item.errors.count, "error") %> prohibited this special order item from being saved:</h2>
+
+      <ul>
+        <% special_order_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'%>
+    </div>
+    <div class="col-2">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit class: 'form-control btn btn-success' %>
+  </div>
+<% end %>
