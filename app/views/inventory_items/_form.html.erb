@@ -1,3 +1,21 @@
+<script type="text/javascript">
+  function updateInventoryItemPrice() {
+    // Capture id of selected item
+    var e = document.getElementById("inventory_item_standard_inventory_item_id");
+    var standard_inventory_item_id = e.value;
+
+    // Call to retrive standard inventory_item JSON
+    const fetchResponsePromise = fetch(`/standard_inventory_items/${standard_inventory_item_id}.json`).then((response) => {
+      return response.json();
+    }).then((data) => {
+      document.getElementById('inventory_item_price').value = data.price; 
+    });
+
+    // Verifying payload recieved
+    console.log(fetchResponsePromise);
+  };
+</script>
+
 <%= form_with(model: [repair, inventory_item]) do |form| %>
   <% if inventory_item.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +35,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_inventory_item_id, class: 'form-label'%>
-        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateInventoryItemPrice();' %>
       <% if form.object.errors.include?(:standard_inventory_item) %>
         </div>
       <% end %>

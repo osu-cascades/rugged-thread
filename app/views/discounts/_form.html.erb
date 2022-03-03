@@ -1,3 +1,26 @@
+<script type="text/javascript">
+  function updateDiscountDollarAmount() {
+    // Capture id of selected item
+    var e = document.getElementById("discount_standard_discount_id");
+    var standard_discount_id = e.value;
+
+    // Call to retrive standard discount JSON
+    const fetchResponsePromise = fetch(`/standard_discounts/${standard_discount_id}.json`).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (data.dollar_amount) {
+        document.getElementById('discount_dollar_amount').value = data.dollar_amount; 
+      }
+      else if (data.percentage_amount) {
+        document.getElementById('discount_percentage_amount').value = data.percentage_amount; 
+      }
+    });
+
+    // Verifying payload recieved
+    console.log(fetchResponsePromise);
+  };
+</script>
+
 <%= form_with(model: [item, discount]) do |form| %>
   <% if discount.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +40,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_discount_id, class: 'form-label'%>
-        <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateDiscountDollarAmount();' %>
     <% if form.object.errors.include?(:standard_discount) %>
       </div>
     <% end %>

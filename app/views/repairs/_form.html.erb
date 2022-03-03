@@ -1,5 +1,6 @@
 <script type="text/javascript">
   function updateRepairPrice() {
+    // Capture id of selected item
     var e = document.getElementById("repair_standard_repair_id");
     var standard_repair_id = e.value;
 
@@ -10,6 +11,7 @@
       document.getElementById('repair_price').value = data.charge; 
     });
 
+    // Verifying payload recieved
     console.log(fetchResponsePromise);
   };
 </script>

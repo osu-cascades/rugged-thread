@@ -1,3 +1,21 @@
+<script type="text/javascript">
+  function updateComplicationPrice() {
+    // Capture id of selected item
+    var e = document.getElementById("complication_standard_complication_id");
+    var standard_complication_id = e.value;
+
+    // Call to retrive standard complication JSON
+    const fetchResponsePromise = fetch(`/standard_complications/${standard_complication_id}.json`).then((response) => {
+      return response.json();
+    }).then((data) => {
+      document.getElementById('complication_price').value = data.charge; 
+    });
+
+    // Verifying payload recieved
+    console.log(fetchResponsePromise);
+  };
+</script>
+
 <%= form_with(model: [repair, complication]) do |form| %>
   <% if complication.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +35,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_complication_id, class: 'form-label'%>
-        <%= form.select :standard_complication_id, standard_complications.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_complication_id, standard_complications.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateComplicationPrice();' %>
       <% if form.object.errors.include?(:standard_complication) %>
         </div>
       <% end %>

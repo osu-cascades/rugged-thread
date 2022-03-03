@@ -1,3 +1,22 @@
+<script type="text/javascript"> 
+  function updateFeePrice() {
+    // Capture id of selected item
+    var e = document.getElementById("fee_standard_fee_id");
+    var standard_fee_id = e.value;
+
+    // Call to retrive standard fee JSON
+    const fetchResponsePromise = fetch(`/standard_fees/${standard_fee_id}.json`).then((response) => {
+      return response.json();
+    }).then((data) => {
+      document.getElementById('fee_price').value = data.price; 
+    });
+
+    // Verifying payload recieved
+    console.log(fetchResponsePromise);
+  };
+
+</script>
+
 <%= form_with(model: [item, fee]) do |form| %>
   <% if fee.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +36,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_fee_id, class: 'form-label'%>
-        <%= form.select :standard_fee_id, standard_fees.map { |sf| [sf.name, sf.id] }, {include_blank: ''}, class: 'form-select' %>
+        <%= form.select :standard_fee_id, standard_fees.map { |sf| [sf.name, sf.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateFeePrice();' %>
     <% if form.object.errors.include?(:standard_fee) %>
       </div>
     <% end %>
