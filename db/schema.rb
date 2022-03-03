@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_01_005228) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_03_024705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -226,6 +226,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_005228) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "special_order_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.bigint "repair_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["repair_id"], name: "index_special_order_items_on_repair_id"
+  end
+
   create_table "standard_complications", force: :cascade do |t|
     t.string "name"
     t.integer "charge", default: 0, null: false
@@ -357,6 +366,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_005228) do
   add_foreign_key "items", "work_orders"
   add_foreign_key "repairs", "items"
   add_foreign_key "repairs", "standard_repairs"
+  add_foreign_key "special_order_items", "repairs"
   add_foreign_key "standard_complications", "standard_repairs"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"

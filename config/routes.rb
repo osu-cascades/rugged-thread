@@ -39,8 +39,10 @@ Rails.application.routes.draw do
   resources :repairs, except: [:new, :create] do
     resources :complications, only: :create
     resources :inventory_items, only: :create
+    resources :special_order_items, only: :create
   end
   resources :shop_parameters
+  resources :special_order_items, except: [:new, :create]
   resources :standard_complications
   resources :standard_discounts
   resources :standard_inventory_items

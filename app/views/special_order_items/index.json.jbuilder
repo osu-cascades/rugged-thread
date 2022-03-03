@@ -1,0 +1,1 @@
+json.array! @special_order_items, partial: "special_order_items/special_order_item", as: :special_order_item

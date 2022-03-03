@@ -1,0 +1,1 @@
+json.partial! "special_order_items/special_order_item", special_order_item: @special_order_item

@@ -1,24 +1,57 @@
-# README
+# Rugged Thread Ticketing System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+### Version Information
 
-* Ruby version
+* Ruby version 3.x
 
-* System dependencies
+* Rails version 7.x
 
-* Configuration
+* Postgresql version 13 or greater
 
-* Database creation
+### System Dependencies
 
-* Database initialization
+* [Devise](https://rubygems.org/gems/devise) - Authentication
+* [Pundit](https://rubygems.org/gems/pundit) - Authorization
+* [ActsAsList](https://rubygems.org/gems/acts_as_list) - Numbering Items, Repairs, etc.
 
-* How to run the test suite
+### Configuration
+
+We store API credentials in the nominal Rails credentials files, one for each
+environment:
+
+* config/credentials/development.yml.enc
+* config/credentials/production.yml.enc
+
+You must have a _config/credentials/development.key_ file containing the appropriate
+key. Consult the project documentation or development team members for this key.
+View and edit the credentials with
+`rails credentials:edit --environment development`.
+
+To view and modify the production credentials, you must have a
+_config/credentials/production.key_ file containing the appropriate key. Consult
+the project documentation or development team members for this key.
+
+### Database (TODO)
+
+The migrations should run cleanly, and there is seed data in _db/seeds.rb_.
+But, get up and running with `rails db:setup`.
+
+## Test Suite
+
+We use minitest, and you can run the test suite with `rails test` and
+`rails test:system`. At the time of this writing (see `git blame README`), the
+application doesn't use any client-side JavaScript, so the system tests use the
+`:rack_test` driver to speed up the system tests.
+See _test/application_system_test_case.rb_.
+
+### TODO
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions - forthcoming (heroku)
 
 * ...
+
+&copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly and Yong Bakos. All rights reserved.

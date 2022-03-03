@@ -1,0 +1,12 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Editing Special Order Item <%= @special_order_item.id %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to '&laquo Cancel'.html_safe, @special_order_item, class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<div class="form-container">
+  <%= render 'form', special_order_item: @special_order_item, repair: nil, repairs: @repairs%>
+</div>
