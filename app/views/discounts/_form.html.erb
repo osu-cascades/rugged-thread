@@ -1,6 +1,6 @@
 <script type="text/javascript">
   function updateDiscountDollarAmount() {
-    // Capture id of selected item
+    // Autopopulation
     var e = document.getElementById("discount_standard_discount_id");
     var standard_discount_id = e.value;
 
@@ -9,15 +9,29 @@
       return response.json();
     }).then((data) => {
       if (data.dollar_amount) {
-        document.getElementById('discount_dollar_amount').value = data.dollar_amount; 
+        const dollar_field = document.getElementById('discount_dollar_amount');
+        // Set the value
+        dollar_field.value = data.dollar_amount; 
+        // Enable if disabled
+        dollar_field.disabled = false;
+        const percent = document.getElementById('discount_percentage_amount');
+        // Disable unused field & clear it
+        percent.disabled = true;
+        percent.value = "";
       }
       else if (data.percentage_amount) {
-        document.getElementById('discount_percentage_amount').value = data.percentage_amount; 
+        const percent = document.getElementById('discount_percentage_amount');
+        // Set the value
+        percent.value = data.percentage_amount; 
+        // Enable if disabled
+        percent.disabled = false;
+        const dollar_amount = document.getElementById('discount_dollar_amount');
+        // Disable unused field & clear it
+        dollar_amount.disabled = true;
+        dollar_amount.value = "";
       }
     });
 
-    // Verifying payload recieved
-    console.log(fetchResponsePromise);
   };
 </script>
 
