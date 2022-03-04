@@ -66,6 +66,22 @@ class RepairTest < ActiveSupport::TestCase
     refute repair.valid?
   end
 
+  test "#sub_total is the price plus price of complications, inventory items and special order items" do
+    skip
+  end
+
+  test "#total_price_of_complications is the sum of the prices of all complications" do
+    skip
+  end
+
+  test "#total_price_of_inventory_items is the sum of the prices of all inventory items" do
+    skip
+  end
+
+  test "#total_price_of_special_order_items is the sum of the prices of all special order items" do
+    skip
+  end
+
   test '#name is the standard_repair name' do
     repair = repairs(:one)
     assert_equal repair.standard_repair.name, repair.name
