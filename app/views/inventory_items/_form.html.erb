@@ -28,7 +28,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="row mb-3">
+  <div class="row mb-3 align-items-end">
     <div class="col">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
       <% if form.object.errors.include?(:standard_inventory_item) %>
@@ -41,12 +41,14 @@
       <% end %>
       <!-- /hack -->
     </div>
-    <div class="col-2">
+    <div class="col-1">
       <%= form.label :price, class: 'form-label' %>
       <%= form.number_field :price, class: 'form-control'%>
     </div>
-  </div>
-  <div class="actions">
-    <%= form.submit class: 'form-control btn btn-success' %>
+    <div class="col">
+      <div class="actions">
+        <%= form.submit class: 'form-control btn btn-success' %>
+      </div>
+    </div>
   </div>
 <% end %>

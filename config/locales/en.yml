@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      complication:
+        create: "Add %{model}"
+      inventory_item:
+        create: "Add %{model}"
+      special_order_item:
+        create: "Add %{model}"

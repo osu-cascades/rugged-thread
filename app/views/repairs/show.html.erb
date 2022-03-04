@@ -1,10 +1,13 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Repair <%= @repair.position %></h1>
-    <h2>
-      For <%= link_to "Item #{@repair.item.position}", @repair.item %> on
-      <%= link_to @repair.item.work_order, @repair.item.work_order %>
-    </h2>
+    <h1>
+      Repair <%= @repair.position %> of <%= @repair.item.repairs.length %>
+      <span class="fs-6 badge bg-secondary fw-normal align-top">
+        Level <%= @repair.level %>
+      </span>
+    </h1>
+    For <%= link_to "Item #{@repair.item.position}", @repair.item %> on
+      <%= link_to @repair.item.work_order, @repair.item.work_order %> by <%= link_to @repair.item.work_order.creator, @repair.item.work_order.creator %>.
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to Item'.html_safe, item_path(@repair.item), class: 'btn btn-outline-primary me-5' %>
@@ -13,60 +16,35 @@
   </div>
 </div>
 
-<p>
-  <strong>Standard repair:</strong>
-  <%= link_to @repair.standard_repair, @repair.standard_repair %>
-</p>
+<h2 class="display-1"><%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %></h2>
 
-<p>
-  <strong>Item:</strong>
-  <%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %>
-</p>
+<h3 class="fw-normal"><%= link_to @repair.standard_repair, @repair.standard_repair %></h3>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @repair.notes %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @repair.level %>
-</p>
-
-
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@repair.price) %>
-</p>
+<div class="row">
+  <div class="col">
+    <p class="mt-4 mb-0"><strong>Notes:</strong> <%= @repair.notes %></p>
+    <p><strong>Base Repair Price:</strong> <%= number_to_currency(@repair.price) %></p>
+  </div>
+  <div class="col text-end">
+    <h2 class="display-2"><%= number_to_currency(@repair.sub_total) %></h2>
+  </div>
+</div>
 
 <h2 class="mt-5">Complications</h2>
-
 <%= render 'complications/table', complications: @repair.complications %>
-
-<h2 class="mt-5">Add Complication</h2>
-
-<div class="form-container">
+<div class="form-container-wide">
   <%= render 'complications/form', complication: @complication, repair: @repair, repairs: @repairs, standard_complications: @standard_complications %>
 </div>
 
-
 <h2 class="mt-5">Inventory Items</h2>
-
 <%= render 'inventory_items/table', inventory_items: @repair.inventory_items %>
-
-<h2 class="mt-5">Add Inventory Item</h2>
-
-<div class="form-container">
+<div class="form-container-wide">
   <%= render 'inventory_items/form', inventory_item: @inventory_item, repair: @repair, repairs: @repairs, standard_inventory_items: @standard_inventory_items %>
 </div>
 
 
 <h2 class="mt-5">Special Order Items</h2>
-
 <%= render 'special_order_items/table', special_order_items: @repair.special_order_items %>
-
-<h2 class="mt-5">Add Special Order Item</h2>
-
-<div class="form-container">
+<div class="form-container-wide">
   <%= render 'special_order_items/form', special_order_item: @special_order_item, repair: @repair, repairs: @repairs %>
 </div>
