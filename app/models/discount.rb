@@ -5,8 +5,9 @@ class Discount < ApplicationRecord
   belongs_to :standard_discount
   belongs_to :item
 
-  validates :percentage_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :dollar_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  # removed to allow submission of only one or the other
+  # validates :percentage_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  # validates :dollar_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   default_scope { order('position ASC') }
 
