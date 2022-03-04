@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   default_scope { order('position ASC') }
 
   def estimate
-    labor_estimate + fee_total - discount_total
+    (labor_estimate + fee_total - discount_dollar_total).div((!discount_percent_total.zero? ? discount_percent_total : 1)) 
   end
 
   def level
@@ -33,8 +33,12 @@ class Item < ApplicationRecord
     fees.reduce(0) { |sum, f| sum + f.price}
   end
 
-  def discount_total
-    discounts.reduce(0) { |sum, d| sum + d.dollar_amount }
+  def discount_dollar_total
+    discounts.reduce(0) { |sum, d| sum + (d.dollar_amount ? d.dollar_amount : 0) }
+  end
+
+  def discount_percent_total
+    (discounts.reduce(0) { |sum, d| sum + (d.percentage_amount ? d.percentage_amount : 0) }).div(10)
   end
 
   def expedite?
