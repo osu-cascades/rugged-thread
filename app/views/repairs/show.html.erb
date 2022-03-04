@@ -26,7 +26,8 @@
     <p><strong>Base Repair Price:</strong> <%= number_to_currency(@repair.price) %></p>
   </div>
   <div class="col text-end">
-    <h2 class="display-2"><%= number_to_currency(@repair.sub_total) %></h2>
+    <h2 class="display-2"><%= number_to_currency(@repair.total_price) %></h2>
+    Labor: <strong><%= number_to_currency(@repair.price_of_labor) %></strong>
   </div>
 </div>
 

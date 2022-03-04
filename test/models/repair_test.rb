@@ -66,11 +66,11 @@ class RepairTest < ActiveSupport::TestCase
     refute repair.valid?
   end
 
-  test "#sub_total is the price plus price of complications, inventory items and special order items" do
+  test "#price_of_labor is the price plus price of complications" do
     skip
   end
 
-  test "#total_price_of_complications is the sum of the prices of all complications" do
+  test "#total_price is the price_of_labor plus price of inventory items and special order items" do
     skip
   end
 

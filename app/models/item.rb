@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   end
 
   def labor_estimate
-    repairs.reduce(0) { |sum, r| sum + r.sub_total }
+    repairs.reduce(0) { |sum, r| sum + r.price_of_labor }
   end
 
   def fee_total
