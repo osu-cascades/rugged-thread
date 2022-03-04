@@ -35,7 +35,15 @@ en:
     submit:
       complication:
         create: "Add %{model}"
+      discount:
+        create: "Add %{model}"
+      fee:
+        create: "Add %{model}"
       inventory_item:
+        create: "Add %{model}"
+      item:
+        create: "Add %{model}"
+      repair:
         create: "Add %{model}"
       special_order_item:
         create: "Add %{model}"
