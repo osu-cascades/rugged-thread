@@ -47,7 +47,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="row mb-3">
+  <div class="row mb-3 align-items-end">
     <div class="col">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
       <% if form.object.errors.include?(:standard_discount) %>
@@ -55,23 +55,23 @@
       <% end %>
         <%= form.label :standard_discount_id, class: 'form-label'%>
         <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateDiscountDollarAmount();' %>
-    <% if form.object.errors.include?(:standard_discount) %>
-      </div>
-    <% end %>
-    <!-- /hack -->
+      <% if form.object.errors.include?(:standard_discount) %>
+        </div>
+      <% end %>
+      <!-- /hack -->
     </div>
-
-    <div class="mb-3">
+    <div class="col-2">
       <%= form.label :percentage_amount, class: 'form-label' %>
       <%= form.number_field :percentage_amount, class: 'form-control'%>
     </div>
-
-    <div class="mb-3">
+    <div class="col-2">
       <%= form.label :dollar_amount, class: 'form-label' %>
       <%= form.number_field :dollar_amount, class: 'form-control'%>
     </div>
-
-  <div class="actions">
-    <%= form.submit class: 'form-control btn btn-success' %>
+    <div class="col">
+      <div class="actions">
+        <%= form.submit class: 'form-control btn btn-success' %>
+      </div>
+    </div>
   </div>
 <% end %>

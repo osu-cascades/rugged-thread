@@ -85,24 +85,18 @@
 
 <h2 class="mt-5">Repairs</h2>
 <%= render 'repairs/table', repairs: @item.repairs, render_complications: true  %>
-
-<h2 class="mt-5">Add Repair</h2>
-<div class="form-container-medium">
+<div class="form-container-wide">
   <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
 </div>
 
 <h2 class="mt-5">Discounts</h2>
 <%= render 'discounts/table', discounts: @item.discounts %>
-
-<h2 class="mt-5">Add Discount</h2>
-<div class="form-container-medium">
+<div class="form-container-wide">
   <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
 </div>
 
 <h2 class="mt-5">Fees</h2>
 <%= render 'fees/table', fees: @item.fees %>
-
-<h2 class="mt-5">Add Fee</h2>
-<div class="form-container-medium">
+<div class="form-container-wide">
   <%= render 'fees/form', fee: @fee, item: @item, standard_fees: @standard_fees %>
 </div>

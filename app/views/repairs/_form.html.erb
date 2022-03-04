@@ -28,7 +28,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="row mb-3">
+  <div class="row mb-3 align-items-end">
     <div class="col">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
       <% if form.object.errors.include?(:standard_repair) %>
@@ -49,14 +49,17 @@
       <%= form.label :level, class: 'form-label' %>
       <%= form.number_field :level, class: 'form-control'%>
     </div>
+    <div class="col">
+      <div class="actions">
+        <%= form.submit class: 'form-control btn btn-success' %>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-8">
+      <%= form.label :notes, class: 'form-label' %>
+      <%= form.text_area :notes, class: 'form-control'%>
+    </div>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :notes, class: 'form-label' %>
-    <%= form.text_area :notes, class: 'form-control'%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: 'form-control btn btn-success' %>
-  </div>
 <% end %>
