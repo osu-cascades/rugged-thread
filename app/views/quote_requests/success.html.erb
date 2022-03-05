@@ -1,0 +1,32 @@
+<p class="float-end"><%= @quote_request.created_at.to_formatted_s(:long) %>
+  <br>
+  Repair Quote Request #<%= @quote_request.id %>
+</p>
+<h1>Your Repair Quote Request</h1>
+
+<h2>Contact Information</h2>
+<h3><%= @quote_request.first_name %> <%= @quote_request.last_name %></h3>
+<p>Email: <%= @quote_request.email %></p>
+<p>Phone: <%= @quote_request.phone_number %></p>
+
+<h2>Item Information</h2>
+<p><%= @quote_request.brand %> <%= @quote_request.item_type %>
+<h3>Description</h3>
+<p><%= @quote_request.description %></p>
+
+<h3>Photos</h3>
+<% @quote_request.photos.each do |photo| %>
+  <div><%= link_to photo.filename, photo %></div>
+<% end %>
+</p>
+
+<h3>Additional Details</h3>
+<% if @quote_request.shipping %>
+  <p>I plan to mail this item in.</p>
+<% else %>
+  <p>I plan to drop this off in person.</p>
+<% end %>
+
+<% if @quote_request.promo_code.present? %>
+  <p>Promo code <strong><%= @quote_request.promo_code %></strong></p>
+<% end %>

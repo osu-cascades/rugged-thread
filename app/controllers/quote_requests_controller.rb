@@ -23,15 +23,18 @@ class QuoteRequestsController < ApplicationController
   def edit
   end
 
-  # POST /quote_requests or /quote_requests.json
   def create
     @quote_request = QuoteRequest.new(quote_request_params)
-
     respond_to do |format|
       if @quote_request.save
-        format.html { redirect_to @quote_request, notice: "Quote request was successfully created." }
+        format.html do
+          flash.now[:notice] = "Thank you! Your quote request has been received."
+          render :success
+        end
         format.json { render :show, status: :created, location: @quote_request }
       else
+        @item_types = ItemType.all
+        @brands = Brand.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @quote_request.errors, status: :unprocessable_entity }
       end
