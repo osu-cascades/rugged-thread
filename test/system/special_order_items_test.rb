@@ -25,13 +25,13 @@ class SpecialOrderItemsTest < ApplicationSystemTestCase
     visit repair_path(repairs(:one))
     fill_in "Name", with: 'New Fake Name'
     fill_in "special_order_item_price", with: special_order_items(:one).price
-    click_on "Create Special order item"
+    click_on "Add Special order item"
     assert_text "Special Order Item was successfully created"
   end
 
   test "Adding an invalid special_order_item redisplays the repair view with errors" do
     visit repair_path(repairs(:one))
-    click_on 'Create Special order item'
+    click_on 'Add Special order item'
     assert_text 'prohibited this special order item from being saved'
   end
 

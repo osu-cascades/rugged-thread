@@ -31,13 +31,13 @@ class ComplicationsTest < ApplicationSystemTestCase
     visit repair_path(repairs(:one))
     select standard_complications(:one).name, from: :complication_standard_complication_id
     fill_in "complication_price", with: standard_complications(:one).charge
-    click_on "Create Complication"
+    click_on "Add Complication"
     assert_text "Complication was successfully created"
   end
 
   test "Adding an invalid complication redisplays the repair view with errors" do
     visit repair_path(repairs(:one))
-    click_on 'Create Complication'
+    click_on 'Add Complication'
     assert_text 'prohibited this complication from being saved'
   end
 

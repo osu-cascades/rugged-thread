@@ -33,13 +33,13 @@ class FeesTest < ApplicationSystemTestCase
     visit item_path(items(:one))
     select standard_fees(:one).name, from: :fee_standard_fee_id
     fill_in "fee_price", with: standard_fees(:one).price
-    click_on "Create Fee"
+    click_on "Add Fee"
     assert_text "Fee was successfully created"
   end
 
   test "Adding an invalid fee redisplays the item view with errors" do
     visit item_path(items(:one))
-    click_on 'Create Fee'
+    click_on 'Add Fee'
     assert_text 'prohibited this fee from being saved'
   end
 

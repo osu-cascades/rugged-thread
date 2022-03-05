@@ -35,7 +35,7 @@ class DiscountsTest < ApplicationSystemTestCase
     select standard_discounts(:one).name, from: :discount_standard_discount_id
     fill_in "Percentage amount", with: standard_discounts(:one).dollar_amount
     fill_in "Dollar amount", with: standard_discounts(:one).percentage_amount
-    click_on "Create Discount"
+    click_on "Add Discount"
     assert_text "Discount was successfully created"
   end
 
@@ -43,7 +43,7 @@ class DiscountsTest < ApplicationSystemTestCase
     visit item_path(items(:one))
     fill_in "Percentage amount", with: standard_discounts(:one).dollar_amount
     fill_in "Dollar amount", with: standard_discounts(:one).percentage_amount
-    click_on 'Create Discount'
+    click_on 'Add Discount'
     assert_text 'prohibited this discount from being saved'
   end
 

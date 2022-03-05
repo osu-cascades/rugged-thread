@@ -31,13 +31,13 @@ class InventoryItemsTest < ApplicationSystemTestCase
     visit repair_path(repairs(:one))
     select standard_inventory_items(:one).name, from: :inventory_item_standard_inventory_item_id
     fill_in "inventory_item_price", with: standard_inventory_items(:one).price
-    click_on "Create Inventory item"
+    click_on "Add Inventory item"
     assert_text "Inventory Item was successfully created"
   end
 
   test "Adding an invalid inventory_item redisplays the repair view with errors" do
     visit repair_path(repairs(:one))
-    click_on 'Create Inventory item'
+    click_on 'Add Inventory item'
     assert_text 'prohibited this inventory item from being saved'
   end
 

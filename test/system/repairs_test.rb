@@ -37,13 +37,13 @@ class RepairsTest < ApplicationSystemTestCase
     fill_in "Notes", with: "Fake repair notes"
     fill_in "repair_price", with: standard_repairs(:one).charge
     fill_in "Level", with: '2'
-    click_on "Create Repair"
+    click_on "Add Repair"
     assert_text "Repair was successfully created"
   end
 
   test "Adding an invalid repair redisplays the item view with errors" do
     visit item_path(items(:one))
-    click_on 'Create Repair'
+    click_on 'Add Repair'
     assert_text 'prohibited this repair from being saved'
   end
 

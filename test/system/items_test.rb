@@ -41,7 +41,7 @@ class ItemsTest < ApplicationSystemTestCase
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
     select item_types(:one).name, from: :item_item_type_id
-    click_on "Create Item"
+    click_on "Add Item"
     assert_text "Item was successfully created"
   end
 
@@ -56,7 +56,7 @@ class ItemsTest < ApplicationSystemTestCase
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
     select item_types(:one).name, from: :item_item_type_id
-    click_on "Create Item"
+    click_on "Add Item"
     assert_text "Item was successfully created"
     within all('tr').last do
       assert_text '📦'
@@ -65,7 +65,7 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "Adding an invalid item redisplays the work order view with errors" do
     visit work_order_path(work_orders(:shipping))
-    click_on 'Create Item'
+    click_on 'Add Item'
     assert_text 'prohibited this item from being saved'
   end
 
