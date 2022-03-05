@@ -31,8 +31,8 @@ class InventoryItemsController < ApplicationController
         @complication = Complication.new(repair: @repair)
         @repairs = Repair.includes(:standard_repair).all
         @standard_inventory_items = StandardInventoryItem.all
-        @standard_complication = @repair.standard_repair.standard_complications
-        @special_order_items = SpecialOrderItem.new
+        @standard_complications = @repair.standard_repair.standard_complications
+        @special_order_item = SpecialOrderItem.new
         format.html { render 'repairs/show', status: :unprocessable_entity }
         format.json { render json: @inventory_item.errors, status: :unprocessable_entity }
       end
