@@ -1,23 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+fresh:
+  status: fresh
+  first_name: Fake
+  last_name: Requester
+  email: fake@example.com
+  phone_number: '5415551234'
+  description: First fake quote request description
+  promo_code:
+  shipping: true
+  item_type: one
+  brand: one
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone_number: MyString
-  item_type: MyString
-  brand: MyString
-  will_mail_item: MyString
-  promo_code: MyString
-  description: MyText
-
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone_number: MyString
-  item_type: MyString
-  brand: MyString
-  will_mail_item: MyString
-  promo_code: MyString
-  description: MyText
+not_shipping:
+  status: fresh
+  first_name: Second Fake
+  last_name: Requester
+  email: fake2@example.com
+  phone_number: '5415551235'
+  description: Second fake quote request description
+  promo_code: FAKE
+  shipping: false
+  item_type: one
+  brand: one

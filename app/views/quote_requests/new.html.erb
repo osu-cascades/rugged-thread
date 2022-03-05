@@ -1,5 +1,6 @@
-<h1>New Quote Request</h1>
+<h1>Get a Price Quote for a Repair</h1>
+<p>Fill out the form below and our repair team will get back to you within three business days with a quote. If you are unable to submit the form, please email us directly at <%= link_to 'myrepair@ruggedthread.com', 'mailto:myrepair@ruggedthread.com' %>. Thank you!</p>
 
-<%= render 'form', quote_request: @quote_request %>
-
-<%= link_to 'Back', quote_requests_path %>
+<div class="form-container-medium">
+  <%= render 'form', quote_request: @quote_request, item_types: @item_types, brands: @brands %>
+</div>

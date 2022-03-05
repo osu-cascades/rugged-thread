@@ -1,8 +1,7 @@
 <%= form_with(model: quote_request) do |form| %>
   <% if quote_request.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(quote_request.errors.count, "error") %> prohibited this quote_request from being saved:</h2>
-
+      <h2><%= pluralize(quote_request.errors.count, "error") %> prohibited this quote request from being saved:</h2>
       <ul>
         <% quote_request.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,57 +10,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :first_name, class: 'form-label' %>
+      <%= form.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.label :last_name, class: 'form-label' %>
+      <%= form.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.text_field :email, class: 'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.label :phone_number, class: 'form-label' %>
+      <%= form.text_field :phone_number, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <%= form.label :item_type, class: 'form-label' %>
+      <%= form.collection_select :item_type_id, item_types, :id, :name, {include_blank: 'Choose...' }, class: 'form-select' %>
+    </div>
+    <div class="col">
+      <%= form.label :brand, class: 'form-label' %>
+      <%= form.collection_select :brand_id, brands, :id, :name, { include_blank: 'Choose...' }, class: 'form-select' %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col align-self-center">
+      <%= form.check_box :shipping, class: 'form-check-input', checked: 'checked' %>
+      <%= form.label :shipping, 'I need to mail this in', class: 'form-check-label' %>
+      <p class="form-text my-0">Live in Central Oregon? You can just drop it off.</p>
+    </div>
+    <div class="col">
+      <%= form.label :promo_code, class: 'form-label' %>
+      <%= form.text_field :promo_code, class: 'form-control', placeholder: "(Optional) Got a promo code? Enter it here." %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="mt-5">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-control', rows: 5, placeholder: "Please describe the issues with your item(s) and be as specific as possible." %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="mt-5">
+    <%= form.label :photos, class: 'form-label' %>
+    <p class="form-text">Please upload clear photos of each item, specifically the area that needs repair.</p>
+    <%= form.file_field :photos, multiple: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :item_type %>
-    <%= form.text_field :item_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div class="field">
-    <%= form.label :will_mail_item %>
-    <%= form.text_field :will_mail_item %>
-  </div>
-
-  <div class="field">
-    <%= form.label :promo_code %>
-    <%= form.text_field :promo_code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions mt-5">
+    <%= form.submit 'Send This Quote Request', class: 'btn btn-success' %>
   </div>
 <% end %>

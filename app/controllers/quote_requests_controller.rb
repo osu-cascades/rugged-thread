@@ -1,4 +1,7 @@
 class QuoteRequestsController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:new, :create]
+
   before_action :set_quote_request, only: %i[ show edit update destroy ]
 
   # GET /quote_requests or /quote_requests.json
@@ -10,9 +13,10 @@ class QuoteRequestsController < ApplicationController
   def show
   end
 
-  # GET /quote_requests/new
   def new
     @quote_request = QuoteRequest.new
+    @item_types = ItemType.all
+    @brands = Brand.all
   end
 
   # GET /quote_requests/1/edit
@@ -57,13 +61,14 @@ class QuoteRequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_quote_request
       @quote_request = QuoteRequest.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def quote_request_params
-      params.require(:quote_request).permit(:first_name, :last_name, :email, :phone_number, :item_type, :brand, :will_mail_item, :promo_code, :description, images: [])
+      params.require(:quote_request).permit(:first_name, :last_name, :email,
+        :phone_number, :shipping, :promo_code, :description, :item_type_id, :brand_id,
+        photos: [])
     end
 end
