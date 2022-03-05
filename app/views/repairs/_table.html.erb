@@ -28,7 +28,7 @@
         <td class="text-end"><%= number_to_currency(repair.price) %></td>
         <td class="text-end"><%= number_to_currency(repair.price_of_labor) %></td>
         <td class="text-end">
-          <%= link_to 'Details', repair_path(repair), class: 'btn btn-light btn-sm' %>
+          <%= link_to 'Details', repair_path(repair), class: 'btn btn-outline-secondary btn-sm' %>
         </td>
       </tr>
       <% if render_complications %>
@@ -38,7 +38,7 @@
           <td colspan="4" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
           <td class="text-end"><%= number_to_currency(complication.price) %></td>
           <td colspan="2" class="text-end">
-            <%= link_to 'Details', complication_path(complication), class: 'btn btn-light btn-sm' %>
+            <%= link_to 'Details', complication_path(complication), class: 'btn btn-outline-secondary btn-sm' %>
           </td>
         </tr>
         <% end %>
