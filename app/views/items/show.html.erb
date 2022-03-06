@@ -2,7 +2,7 @@
   <div class="col">
     <h1>
       Item <%= @item.position %> of <%= @item.work_order.items.length %>
-      <span class="fs-6 badge bg-light fw-normal align-top">
+      <span class="fs-6 badge fw-normal align-top">
         <%= link_to @item.item_status, @item.item_status, class: 'text-decoration-none' %>
       </span>
     </h1>
@@ -18,7 +18,7 @@
 
 <h2 class="display-1">
   <%= link_to @item.work_order.customer, @item.work_order.customer %>
-  <span class="fs-6 badge bg-light fw-normal align-top">
+  <span class="fs-6 badge fw-normal align-top">
     <%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>
   </span>
 </h2>
