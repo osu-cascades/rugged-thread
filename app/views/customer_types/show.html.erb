@@ -9,6 +9,8 @@
   </div>
 </div>
 
+<p>Turn around (days): <%= @customer_type.turn_around %></p>
+
 <h2 class="mt-5"><%= pluralize(@customer_type.customers_count, 'Customer') %></h2>
 
 <%= render 'customers/table', customers: @customers %>

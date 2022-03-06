@@ -16,6 +16,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
   test "creating a Customer type" do
     visit new_customer_type_path
     fill_in "Name", with: "Fake Customer"
+    fill_in "Turn around", with: "21"
     click_on "Save"
     assert_text "Customer type was successfully created"
   end
@@ -27,11 +28,13 @@ class CustomerTypesTest < ApplicationSystemTestCase
     assert_text "Customer type was successfully updated"
   end
 
-  test "creating a blank Customer Type" do
+  test "creating an unnamed Customer Type fails" do
     visit new_customer_type_path
     fill_in "Name", with: ""
+    fill_in "Turn around", with: ""
     click_on "Save"
     assert_text "Name can't be blank"
+    assert_text "Turn around can't be blank"
   end
 
   test "creating a duplicate Customer Type" do

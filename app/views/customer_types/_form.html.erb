@@ -11,9 +11,14 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
+  <div>
     <%= form.label :name, class: 'form-label' %>
     <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="mt-3">
+    <%= form.label :turn_around, class: 'form-label' %>
+    <%= form.number_field :turn_around, class: 'form-control' %>
   </div>
 
   <div class="actions">

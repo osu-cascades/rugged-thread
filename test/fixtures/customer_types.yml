@@ -1,11 +1,14 @@
 one:
   name: Fake Customer Type 1
+  turn_around: 14
   customers_count: 3
 
 two:
   name: Fake Customer Type 2
+  turn_around: 21
   customers_count: 0
 
 customerless:
   name: Fake Customerless Customer Type
+  turn_around: 21
   customers_count: 0

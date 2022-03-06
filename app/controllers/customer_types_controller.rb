@@ -67,7 +67,7 @@ class CustomerTypesController < ApplicationController
     end
 
     def customer_type_params
-      params.require(:customer_type).permit(:name)
+      params.require(:customer_type).permit(:name, :turn_around)
     end
 
 end

@@ -11,7 +11,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th>Number of Customers</th>
+      <th scope="col">Turn around (days)</th>
+      <th scope="col">Number of Customers</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
     <% @customer_types.each do |customer_type| %>
       <tr class="<%= dom_class(customer_type) %>" id="<%= dom_id(customer_type) %>">
         <td><%= customer_type %></td>
+        <td><%= customer_type.turn_around %></td>
         <td><%= customer_type.customers_count %></td>
         <td class="text-end">
           <%= link_to 'Details', customer_type, class: 'btn btn-outline-secondary btn-sm' %>
