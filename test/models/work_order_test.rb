@@ -66,6 +66,12 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test 'due date is customer type turn-around days from current date' do
+    work_order = customers.first.work_orders.build
+    turn_around = customers.first.customer_type.turn_around
+    assert_equal Date.current + turn_around, work_order.due_date
+  end
+
   test '#estimate is the sum of all item estimates' do
     work_order = work_orders(:itemless)
     assert_equal(0, work_order.estimate)

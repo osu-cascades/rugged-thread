@@ -4,8 +4,10 @@ class WorkOrder < ApplicationRecord
   belongs_to :customer
   has_many :items, dependent: :restrict_with_error
 
-  validates :in_date, presence: true, comparison: { less_than: :due_date }
+  validates :in_date, presence: true
   validates :due_date, presence: true, comparison: { greater_than: :in_date }
+
+  after_initialize :set_due_date, if: -> { new_record? && customer&.customer_type.present? }
 
   default_scope { order('created_at ASC') }
 
@@ -15,6 +17,12 @@ class WorkOrder < ApplicationRecord
 
   def estimate
     items.reduce(0) { |sum, i| sum + i.estimate }
+  end
+
+  private
+
+  def set_due_date
+    self.due_date = Date.current + customer.customer_type.turn_around.days
   end
 
 end
