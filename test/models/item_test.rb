@@ -84,6 +84,20 @@ class ItemTest < ActiveSupport::TestCase
     refute item.valid?
   end
 
+  test "must have a due date" do
+    item = items(:one)
+    assert item.valid?
+    item.due_date = nil
+    refute item.valid?
+  end
+
+  test "must have a due date greater than its work order's in date" do
+    item = items(:one)
+    assert item.valid?
+    item.due_date = item.work_order.in_date
+    refute item.valid?
+  end
+
   test "has a status that is the default item status" do
     item = Item.new
     assert_equal(ItemStatus.default, item.item_status)

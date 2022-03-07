@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_many :discounts, dependent: :restrict_with_error
   has_many :fees, dependent: :restrict_with_error
 
+  validates :due_date, presence: true, comparison: { greater_than: ->(item) { item.work_order&.in_date } }
   validates :shipping, inclusion: { in: [ true, false ] }
 
   after_initialize :set_default_status

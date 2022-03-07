@@ -36,7 +36,7 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "Adding an item to a work order" do
     visit work_order_path(work_orders(:shipping))
-    fill_in 'Due date', with: Date.current.to_s
+    fill_in 'Due date', with: (Date.current + 10.days)
     fill_in "Notes", with: 'FAKE'
     select item_statuses(:one).name, from: :item_item_status_id
     select brands(:one).name, from: :item_brand_id
@@ -47,10 +47,12 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "Adding an item to a work order with a different shipping attribute" do
     visit work_order_path(work_orders(:not_shipping))
-    within all('tr').last do
-      refute_text '📦'
+    within '#items_table' do
+      within all('tr').last do
+        refute_text '📦'
+      end
     end
-    fill_in 'Due date', with: Date.current.to_s
+    fill_in 'Due date', with: (Date.current + 10.days)
     fill_in "Notes", with: 'FAKE'
     check 'Shipping'
     select item_statuses(:one).name, from: :item_item_status_id
@@ -58,8 +60,10 @@ class ItemsTest < ApplicationSystemTestCase
     select item_types(:one).name, from: :item_item_type_id
     click_on "Add Item"
     assert_text "Item was successfully created"
-    within all('tr').last do
-      assert_text '📦'
+    within '#items_table' do
+      within all('tr').last do
+        assert_text '📦'
+      end
     end
   end
 
@@ -115,6 +119,43 @@ class ItemsTest < ApplicationSystemTestCase
     visit item_path(items(:with_only_fee))
     click_on 'Delete'
     assert_text "Cannot delete this item"
+  end
+
+  # Due date
+
+  test "new item's due date matches its work order due date" do
+    work_order = work_orders(:shipping)
+    visit work_order_path(work_order)
+    within('#item_form') { assert has_field? 'Due date', with: work_order.due_date }
+  end
+
+  test "Adding an item to a work order with a different due date" do
+    work_order = work_orders(:itemless)
+    custom_due_date = work_order.due_date + 10.days
+    refute_equal work_order.due_date, custom_due_date
+    visit work_order_path(work_order)
+    fill_in 'Due date', with: custom_due_date
+    select brands(:one).name, from: :item_brand_id
+    select item_types(:one).name, from: :item_item_type_id
+    click_on "Add Item"
+    assert_text "Item was successfully created"
+    within '#items_table' do
+      within all('tr').last do
+        assert_text custom_due_date.to_formatted_s(:long)
+      end
+    end
+  end
+
+  test "Adding an item to a work order with a due date older than its work order in date fails" do
+    work_order = work_orders(:itemless)
+    invalid_due_date = work_order.in_date
+    visit work_order_path(work_order)
+    fill_in 'Due date', with: invalid_due_date
+    select brands(:one).name, from: :item_brand_id
+    select item_types(:one).name, from: :item_item_type_id
+    click_on "Add Item"
+    assert_text "prohibited this item from being saved"
+    assert_text "Due date must be"
   end
 
 end

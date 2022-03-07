@@ -1,5 +1,5 @@
 one:
-  due_date: 2022-01-25
+  due_date: <%= 1.year.from_now %>
   notes: First fake item
   shipping: true
   work_order: shipping
@@ -8,7 +8,7 @@ one:
   item_status: one
 
 associationless:
-  due_date: 2022-01-25
+  due_date: <%= 1.year.from_now %>
   notes: Repairless fake item
   shipping: true
   work_order: shipping
@@ -17,7 +17,7 @@ associationless:
   item_status: two
 
 with_only_fee:
-  due_date: 2022-01-25
+  due_date: <%= 1.year.from_now %>
   notes: Item with only a fee and nothing else
   shipping: true
   work_order: shipping
@@ -26,7 +26,7 @@ with_only_fee:
   item_status: one
 
 with_only_discount:
-  due_date: 2022-01-25
+  due_date: <%= 1.year.from_now %>
   notes: Item with only a discount and nothing else
   shipping: true
   work_order: shipping
@@ -35,7 +35,7 @@ with_only_discount:
   item_status: one
 
 with_only_repair:
-  due_date: 2022-01-25
+  due_date: <%= 1.year.from_now %>
   notes: Item with only a repair and nothing else
   shipping: true
   work_order: shipping
