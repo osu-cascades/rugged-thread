@@ -17,10 +17,10 @@ Brand.create!(name: 'Black Diamond')
 Brand.create!(name: 'Granite Gear')
 Brand.create!(name: 'Zpacks')
 
-CustomerType.create!(name: 'B2B Local')
-CustomerType.create!(name: 'B2B National')
-b2c_local_customer_type = CustomerType.create!(name: 'B2C Local')
-CustomerType.create!(name: 'B2C Ship')
+CustomerType.create!(name: 'B2B Local', turn_around: 14)
+CustomerType.create!(name: 'B2B National', turn_around: 21)
+b2c_local_customer_type = CustomerType.create!(name: 'B2C Local', turn_around: 14)
+CustomerType.create!(name: 'B2C Ship', turn_around: 30)
 
 customer = Customer.create!(first_name: 'Fred', last_name: 'Examplero',
   business_name: 'Example Biz Inc.', email_address: 'customer@example.com',
