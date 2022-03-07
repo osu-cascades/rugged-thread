@@ -120,6 +120,23 @@ class ItemTest < ActiveSupport::TestCase
     refute_equal item.work_order.shipping, item.shipping
   end
 
+  test "due date is the same as its work order upon build" do
+    work_order = work_orders(:shipping)
+    item = work_order.items.build
+    assert_equal work_order.shipping, item.shipping
+  end
+
+  test "due date is nil when created without a work order" do
+    assert_nil Item.new.due_date
+  end
+
+  test "due date does not update to match work order when item is already persisted" do
+    item = items(:one)
+    item.due_date = item.due_date + 1.day
+    item.save!
+    refute_equal item.work_order.due_date, item.due_date
+  end
+
   test "#estimate is labor_estimate plus parts, special order, minus standard discounts" do
     item = items(:associationless)
     assert_equal(0, item.estimate)

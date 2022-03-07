@@ -13,6 +13,7 @@ class Item < ApplicationRecord
   validates :shipping, inclusion: { in: [ true, false ] }
 
   after_initialize :set_default_status
+  after_initialize :set_due_date, if: -> { new_record? && work_order.present? }
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 
   default_scope { order('position ASC') }
@@ -49,6 +50,10 @@ class Item < ApplicationRecord
 
   def set_default_status
     self.item_status = ItemStatus.default
+  end
+
+  def set_due_date
+    self.due_date = work_order.due_date
   end
 
   def set_shipping
