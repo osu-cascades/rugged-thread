@@ -1,4 +1,4 @@
-class WorkOrdersController < ApplicationController
+ class WorkOrdersController < ApplicationController
 
   def index
     @work_orders = WorkOrder.all
@@ -72,7 +72,7 @@ class WorkOrdersController < ApplicationController
   private
 
     def work_order_params
-      params.require(:work_order).permit(:creator_id, :in_date, :shipping, :customer_id)
+      params.require(:work_order).permit(:creator_id, :in_date, :due_date, :shipping, :customer_id)
     end
 
 end

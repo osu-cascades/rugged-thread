@@ -18,7 +18,6 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert_text("$#{work_orders(:shipping).estimate}")
   end
 
-
   test "new work order default creator is current_user" do
     sign_in(users(:staff))
     visit new_work_order_path
@@ -34,6 +33,7 @@ class WorkOrdersTest < ApplicationSystemTestCase
     visit new_work_order_path
     select customers(:one).full_name, from: :work_order_customer_id
     fill_in "In date", with: "1/1/2022"
+    fill_in "Due date", with: "2/1/2022"
     check "Shipping"
     click_on "Create Work order"
     assert_text "Work order was successfully created"

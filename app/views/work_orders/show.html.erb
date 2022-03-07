@@ -27,6 +27,10 @@
       <%= @work_order.in_date.to_formatted_s(:long) %>
     </p>
     <p>
+      <strong>Due date:</strong>
+      <%= @work_order.due_date.to_formatted_s(:long) %>
+    </p>
+    <p>
       <strong>Ship?</strong>
       <%= @work_order.shipping ? '📦' : 'no' %>
     </p>
