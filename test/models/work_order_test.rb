@@ -4,6 +4,7 @@ class WorkOrderTest < ActiveSupport::TestCase
 
   test 'attributes'do
     assert_respond_to(WorkOrder.new, :in_date)
+    assert_respond_to(WorkOrder.new, :due_date)
     assert_respond_to(WorkOrder.new, :shipping)
   end
 
@@ -26,12 +27,28 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert_equal expected, work_order.to_s
   end
 
-  test 'is invalid without a date' do
+  test 'is invalid without a date in' do
     work_order = work_orders(:shipping)
     assert work_order.valid?
     work_order.in_date = nil
     refute work_order.valid?
     work_order.in_date = ''
+    refute work_order.valid?
+  end
+
+  test 'is invalid without a due date' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.due_date = nil
+    refute work_order.valid?
+    work_order.due_date = ''
+    refute work_order.valid?
+  end
+
+  test 'due date must be after date in' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.due_date = work_order.in_date
     refute work_order.valid?
   end
 

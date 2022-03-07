@@ -4,7 +4,8 @@ class WorkOrder < ApplicationRecord
   belongs_to :customer
   has_many :items, dependent: :restrict_with_error
 
-  validates :in_date, presence: true
+  validates :in_date, presence: true, comparison: { less_than: :due_date }
+  validates :due_date, presence: true, comparison: { greater_than: :in_date }
 
   default_scope { order('created_at ASC') }
 
