@@ -72,7 +72,7 @@ item = Item.create!(due_date: Date.today, notes: 'Collectors item, please handle
   brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
 
 Fee.create!(item: item, standard_fee: standard_fee, price: 35)
-Discount.create!(item: item, standard_discount: standard_discount, percentage_amount: 0, dollar_amount:15)
+Discount.create!(item: item, standard_discount: standard_discount, dollar_amount: 10)
 
 StandardRepair.create(name: "Slider Replacement: Separating Zipper", method: "",
   description: "YKK separating", level: 1, charge: 20).tap do |sr|

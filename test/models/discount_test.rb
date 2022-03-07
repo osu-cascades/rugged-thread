@@ -27,16 +27,33 @@ class DiscountTest < ActiveSupport::TestCase
   end
 
   test 'percentage_amount must be a positive integer' do
-    discount = discounts(:one)
+    discount = discounts(:percentage)
     assert discount.valid?
     discount.percentage_amount = -1
     refute discount.valid?
   end
 
   test 'dollar_amount must be a positive integer' do
-    discount = discounts(:one)
+    discount = discounts(:price)
     assert discount.valid?
     discount.dollar_amount = -1
+    refute discount.valid?
+  end
+
+  test 'is invalid when both percentage and price are not present' do
+    discount = discounts(:price)
+    assert discount.valid?
+    discount.dollar_amount = nil
+    discount.percentage_amount = 10
+    assert discount.valid?
+    discount.percentage_amount = nil
+    refute discount.valid?
+  end
+
+  test 'is invalid when both percentage and price are present' do
+    discount = discounts(:price)
+    assert discount.valid?
+    discount.percentage_amount = 10
     refute discount.valid?
   end
 

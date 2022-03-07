@@ -24,7 +24,6 @@ class DiscountsTest < ApplicationSystemTestCase
   test "viewing a discount shows the standard discount name, notes, item brand name and item type name" do
     visit discount_path(discounts(:one))
     assert_text discounts(:one).name
-    assert_text discounts(:one).percentage_amount
     assert_text discounts(:one).dollar_amount
     assert_text discounts(:one).item.brand.name
     assert_text discounts(:one).item.item_type.name
@@ -33,8 +32,7 @@ class DiscountsTest < ApplicationSystemTestCase
   test "creating a discount for an item" do
     visit item_path(items(:one))
     select standard_discounts(:one).name, from: :discount_standard_discount_id
-    fill_in "Percentage amount", with: standard_discounts(:one).dollar_amount
-    fill_in "Dollar amount", with: standard_discounts(:one).percentage_amount
+    fill_in "Percentage amount", with: 10
     click_on "Add Discount"
     assert_text "Discount was successfully created"
   end
@@ -49,7 +47,7 @@ class DiscountsTest < ApplicationSystemTestCase
 
   test "updating a discount" do
     visit edit_discount_path(discounts(:one))
-    fill_in "Percentage amount", with: 5
+    fill_in "Percentage amount", with: ''
     fill_in "Dollar amount", with: 3
     click_on "Update Discount"
     assert_text "Discount was successfully updated"

@@ -40,6 +40,23 @@ class StandardDiscountTest < ActiveSupport::TestCase
     refute standard_discount.valid?
   end
 
+  test 'is invalid when both percentage and price are not present' do
+    standard_discount = standard_discounts(:price)
+    assert standard_discount.valid?
+    standard_discount.dollar_amount = nil
+    standard_discount.percentage_amount = 10
+    assert standard_discount.valid?
+    standard_discount.percentage_amount = nil
+    refute standard_discount.valid?
+  end
+
+  test 'is invalid when both percentage and price are present' do
+    standard_discount = standard_discounts(:price)
+    assert standard_discount.valid?
+    standard_discount.percentage_amount = 10
+    refute standard_discount.valid?
+  end
+
   test 'name must be unique' do
     existing_standard_discount_name = standard_discounts(:one).name
     standard_discount = standard_discounts(:two)

@@ -1,17 +1,29 @@
 one:
   standard_discount: one
   item: one
-  percentage_amount: 10
-  dollar_amount: 20
+  percentage_amount: nil
+  dollar_amount: 10
 
 two:
   standard_discount: one
   item: one
-  percentage_amount: 12
-  dollar_amount: 5
+  percentage_amount: 10
+  dollar_amount: nil
 
 for_item_with_only_discount:
   standard_discount: one
   item: with_only_discount
-  percentage_amount: 12
-  dollar_amount: 5
+  percentage_amount: 5
+  dollar_amount: nil
+
+percentage:
+  standard_discount: one
+  item: one
+  percentage_amount: 1
+  dollar_amount: nil
+
+price:
+  standard_discount: one
+  item: one
+  percentage_amount: nil
+  dollar_amount: 1

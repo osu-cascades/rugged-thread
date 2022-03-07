@@ -1,8 +1,16 @@
 one:
   name: Fake Discount 1
-  percentage_amount: 1
-  dollar_amount: 1
+  percentage_amount: 10
+  dollar_amount: nil
 two:
   name: Fake Discount 2
-  percentage_amount: 2
+  percentage_amount: nil
+  dollar_amount: 10
+price:
+  name: Fake Discount 3
+  percentage_amount: nil
   dollar_amount: 2
+percentage:
+  name: Fake Discount 4
+  percentage_amount: 2
+  dollar_amount: nil
