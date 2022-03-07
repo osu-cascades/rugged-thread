@@ -36,6 +36,11 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test 'date in is the current date by default' do
+    work_order = WorkOrder.new
+    assert_equal work_order.in_date, Date.current
+  end
+
   test 'is invalid without a due date' do
     work_order = work_orders(:shipping)
     assert work_order.valid?
@@ -52,6 +57,12 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test 'due date is customer type turn-around days from date in' do
+    work_order = customers.first.work_orders.build
+    turn_around = customers.first.customer_type.turn_around
+    assert_equal work_order.in_date + turn_around.days, work_order.due_date
+  end
+
   test 'is invalid without a creator' do
     work_order = work_orders(:shipping)
     assert work_order.valid?
@@ -64,12 +75,6 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert work_order.valid?
     work_order.customer = nil
     refute work_order.valid?
-  end
-
-  test 'due date is customer type turn-around days from current date' do
-    work_order = customers.first.work_orders.build
-    turn_around = customers.first.customer_type.turn_around
-    assert_equal Date.current + turn_around, work_order.due_date
   end
 
   test '#estimate is the sum of all item estimates' do

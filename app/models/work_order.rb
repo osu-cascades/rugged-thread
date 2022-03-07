@@ -7,6 +7,7 @@ class WorkOrder < ApplicationRecord
   validates :in_date, presence: true
   validates :due_date, presence: true, comparison: { greater_than: :in_date }
 
+  after_initialize :set_in_date
   after_initialize :set_due_date, if: -> { new_record? && customer&.customer_type.present? }
 
   default_scope { order('created_at ASC') }
@@ -22,7 +23,11 @@ class WorkOrder < ApplicationRecord
   private
 
   def set_due_date
-    self.due_date = Date.current + customer.customer_type.turn_around.days
+    self.due_date = self.in_date + customer.customer_type.turn_around.days
+  end
+
+  def set_in_date
+    self.in_date = Date.current
   end
 
 end
