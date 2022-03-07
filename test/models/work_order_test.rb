@@ -36,11 +36,6 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
-  test 'date in is the current date by default' do
-    work_order = WorkOrder.new
-    assert_equal work_order.in_date, Date.current
-  end
-
   test 'is invalid without a due date' do
     work_order = work_orders(:shipping)
     assert work_order.valid?
@@ -50,17 +45,11 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
-  test 'due date must be after date in' do
+  test 'is invalid when due date is before date in' do
     work_order = work_orders(:shipping)
     assert work_order.valid?
     work_order.due_date = work_order.in_date
     refute work_order.valid?
-  end
-
-  test 'due date is customer type turn-around days from date in' do
-    work_order = customers.first.work_orders.build
-    turn_around = customers.first.customer_type.turn_around
-    assert_equal work_order.in_date + turn_around.days, work_order.due_date
   end
 
   test 'is invalid without a creator' do
@@ -75,6 +64,54 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert work_order.valid?
     work_order.customer = nil
     refute work_order.valid?
+  end
+
+  # Default initialization of in date and due date
+
+  test 'in date is initialized to current date by default' do
+    work_order = WorkOrder.new
+    assert_equal Date.current, work_order.in_date
+  end
+
+  test 'in date is not automatically initialized if it already exists' do
+    specific_in_date = Date.current - 1.day
+    work_order = WorkOrder.new(in_date: specific_in_date)
+    assert_equal specific_in_date, work_order.in_date
+  end
+
+  test 'due date is initialized to customer type turn-around days from the in date by default' do
+    work_order = customers.first.work_orders.build
+    turn_around = customers.first.customer_type.turn_around
+    assert_equal work_order.in_date + turn_around.days, work_order.due_date
+  end
+
+  test 'due date is initialized to the in date when no customer exists' do
+    work_order = WorkOrder.new
+    assert_equal work_order.in_date, work_order.due_date
+  end
+
+  test 'due date is not automatically initialized if it already exists' do
+    specific_due_date = Date.current + 1.day
+    work_order = customers.first.work_orders.build(due_date: specific_due_date)
+    assert_equal specific_due_date, work_order.due_date
+  end
+
+  test "in date does not automaticallay initialize when work order is already persisted" do
+    work_order = work_orders(:shipping)
+    original_in_date = work_order.in_date
+    work_order.in_date = original_in_date - 1.day
+    work_order.save!
+    work_order = work_orders(:shipping)
+    refute_equal original_in_date, work_order.in_date
+  end
+
+  test "due date does not automaticallay initialize when work order is already persisted" do
+    work_order = work_orders(:shipping)
+    original_due_date = work_order.due_date
+    work_order.due_date = original_due_date + 1.day
+    work_order.save!
+    work_order = work_orders(:shipping)
+    refute_equal original_due_date, work_order.due_date
   end
 
   test '#estimate is the sum of all item estimates' do
