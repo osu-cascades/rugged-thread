@@ -36,7 +36,7 @@ class Item < ApplicationRecord
   end
 
   def discount_dollar_total
-    discounts.reduce(0) { |sum, d| sum + (d.dollar_amount ? d.dollar_amount : 0) }
+    discounts.reduce(0) { |sum, d| sum + (d.price ? d.price : 0) }
   end
 
   def discount_percent_total

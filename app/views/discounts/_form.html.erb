@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  function updateDiscountDollarAmount() {
+  function updateDiscountPrice() {
     // Autopopulation
     var e = document.getElementById("discount_standard_discount_id");
     var standard_discount_id = e.value;
@@ -8,10 +8,10 @@
     const fetchResponsePromise = fetch(`/standard_discounts/${standard_discount_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      if (data.dollar_amount) {
-        const dollar_field = document.getElementById('discount_dollar_amount');
+      if (data.price) {
+        const dollar_field = document.getElementById('discount_price');
         // Set the value
-        dollar_field.value = data.dollar_amount; 
+        dollar_field.value = data.price; 
         // Enable if disabled
         dollar_field.disabled = false;
         const percent = document.getElementById('discount_percentage_amount');
@@ -25,10 +25,10 @@
         percent.value = data.percentage_amount; 
         // Enable if disabled
         percent.disabled = false;
-        const dollar_amount = document.getElementById('discount_dollar_amount');
+        const price = document.getElementById('discount_price');
         // Disable unused field & clear it
-        dollar_amount.disabled = true;
-        dollar_amount.value = "";
+        price.disabled = true;
+        price.value = "";
       }
     });
 
@@ -54,7 +54,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_discount_id, class: 'form-label'%>
-        <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateDiscountDollarAmount();' %>
+        <%= form.select :standard_discount_id, standard_discounts.map { |sd| [sd.name, sd.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateDiscountPrice();' %>
       <% if form.object.errors.include?(:standard_discount) %>
         </div>
       <% end %>
@@ -65,8 +65,8 @@
       <%= form.number_field :percentage_amount, class: 'form-control'%>
     </div>
     <div class="col-2">
-      <%= form.label :dollar_amount, class: 'form-label' %>
-      <%= form.number_field :dollar_amount, class: 'form-control'%>
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
     </div>
     <div class="col">
       <div class="actions">

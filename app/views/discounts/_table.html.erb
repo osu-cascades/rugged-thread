@@ -14,7 +14,7 @@
         <th scope="row"><%= discount.position %></th>
         <td><%= link_to discount.standard_discount, discount.standard_discount %></td>
         <td><%= number_to_percentage(discount.percentage_amount, strip_insignificant_zeros: true) %></td>
-        <td><%= number_to_currency(discount.dollar_amount) %></td>
+        <td><%= number_to_currency(discount.price) %></td>
         <td class="text-end">
           <%= link_to 'Details', discount_path(discount), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

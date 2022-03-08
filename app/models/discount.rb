@@ -7,7 +7,7 @@ class Discount < ApplicationRecord
 
   validates :percentage_amount,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
-  validates :dollar_amount,
+  validates :price,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validate :percentage_xor_price_present
 
@@ -25,7 +25,7 @@ class Discount < ApplicationRecord
 
   # https://stackoverflow.com/questions/2134188/validate-presence-of-one-field-or-another-xor
   def percentage_xor_price_present
-    unless percentage_amount.blank? ^ dollar_amount.blank?
+    unless percentage_amount.blank? ^ price.blank?
       errors.add(:base, "Specify a percentage or a price, not both")
     end
   end

@@ -24,7 +24,7 @@ class DiscountsTest < ApplicationSystemTestCase
   test "viewing a discount shows the standard discount name, notes, item brand name and item type name" do
     visit discount_path(discounts(:one))
     assert_text discounts(:one).name
-    assert_text discounts(:one).dollar_amount
+    assert_text discounts(:one).price
     assert_text discounts(:one).item.brand.name
     assert_text discounts(:one).item.item_type.name
   end
@@ -39,8 +39,8 @@ class DiscountsTest < ApplicationSystemTestCase
 
   test "Adding an invalid discount redisplays the item view with errors" do
     visit item_path(items(:one))
-    fill_in "Percentage amount", with: standard_discounts(:one).dollar_amount
-    fill_in "Dollar amount", with: standard_discounts(:one).percentage_amount
+    fill_in "Percentage amount", with: standard_discounts(:one).price
+    fill_in "Price", with: standard_discounts(:one).percentage_amount
     click_on 'Add Discount'
     assert_text 'prohibited this discount from being saved'
   end
@@ -48,7 +48,7 @@ class DiscountsTest < ApplicationSystemTestCase
   test "updating a discount" do
     visit edit_discount_path(discounts(:one))
     fill_in "Percentage amount", with: ''
-    fill_in "Dollar amount", with: 3
+    fill_in "Price", with: 3
     click_on "Update Discount"
     assert_text "Discount was successfully updated"
   end
