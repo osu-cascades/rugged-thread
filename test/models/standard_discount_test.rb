@@ -5,7 +5,7 @@ class StandardDiscountTest < ActiveSupport::TestCase
   test 'attributes' do
     assert_respond_to(StandardDiscount.new, :name)
     assert_respond_to(StandardDiscount.new, :percentage_amount)
-    assert_respond_to(StandardDiscount.new, :dollar_amount)
+    assert_respond_to(StandardDiscount.new, :price)
   end
 
   test "associations" do
@@ -33,17 +33,17 @@ class StandardDiscountTest < ActiveSupport::TestCase
     refute standard_discount.valid?
   end
 
-  test 'dollar_amount must be a positive integer' do
+  test 'price must be a positive integer' do
     standard_discount = standard_discounts(:one)
     assert standard_discount.valid?
-    standard_discount.dollar_amount = -1
+    standard_discount.price = -1
     refute standard_discount.valid?
   end
 
   test 'is invalid when both percentage and price are not present' do
     standard_discount = standard_discounts(:price)
     assert standard_discount.valid?
-    standard_discount.dollar_amount = nil
+    standard_discount.price = nil
     standard_discount.percentage_amount = 10
     assert standard_discount.valid?
     standard_discount.percentage_amount = nil

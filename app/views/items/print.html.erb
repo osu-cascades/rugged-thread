@@ -32,7 +32,7 @@ abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz
 
       <h4>Discounts</h4>
       <% @item.discounts.each do |discount| %>
-        <%= discount %> (<%= discount.percentage_amount %>% / $<%= discount.dollar_amount %>)
+        <%= discount %> (<%= discount.percentage_amount %>% / $<%= discount.price %>)
       <% end %>
     </div><!-- /item -->
 

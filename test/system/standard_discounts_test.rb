@@ -17,7 +17,7 @@ class StandardDiscountsTest < ApplicationSystemTestCase
     visit new_standard_discount_path
     fill_in "Name", with: "Fake Item Name"
     fill_in "Percentage amount", with: 1
-    fill_in "Dollar amount", with: nil
+    fill_in "Price", with: nil
     click_on "Save"
     assert_text "Standard Discount was successfully created"
   end
@@ -33,7 +33,7 @@ class StandardDiscountsTest < ApplicationSystemTestCase
     visit new_standard_discount_path
     fill_in "Name", with: ""
     fill_in "Percentage amount", with: 1
-    fill_in "Dollar amount", with: nil
+    fill_in "Price", with: nil
     click_on "Save"
     assert_text "Name can't be blank"
   end
@@ -42,7 +42,7 @@ class StandardDiscountsTest < ApplicationSystemTestCase
     visit new_standard_discount_path
     fill_in "Name", with: standard_discounts(:one).name
     fill_in "Percentage amount", with: 1
-    fill_in "Dollar amount", with: nil
+    fill_in "Price", with: nil
     click_on "Save"
     assert_text "Name has already been taken"
   end
