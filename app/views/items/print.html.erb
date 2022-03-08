@@ -11,7 +11,7 @@
 abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz
 
     <h1 class="customer"><%= @item.work_order.customer %> (<%= @item.work_order.customer.customer_type %>)</h1>
-    <p class="phone"><%= @item.work_order.customer.phone_number %></p>
+    <p class="phone"><%= "#{@item.work_order.customer.phone_number}".phony_formatted(normalize: :US, format: :national, spaces: '-') %></p>
 
     <div class="item">
       <h2 class="item"><%= @item.brand %> <%= @item.item_type %></h2>

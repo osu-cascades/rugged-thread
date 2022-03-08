@@ -20,7 +20,7 @@
         <td><%= link_to_unless(controller.controller_name == 'customers', customer.last_name, customer) %>
         <td><%= customer.business_name %></td>
         <td><%= mail_to customer.email_address %></td>
-        <td><%= link_to customer.phone_number, "tel:#{customer.phone_number}" %></td>
+        <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), "tel:#{customer.phone_number}" %></td>
         <td>
           <%= customer.shipping_street_address %><br>
           <%= customer.shipping_city %>, <%= customer.shipping_state %> <%= customer.shipping_zip_code %>
