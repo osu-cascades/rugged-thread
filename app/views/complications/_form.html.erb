@@ -8,7 +8,7 @@
     const fetchResponsePromise = fetch(`/standard_complications/${standard_complication_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('complication_price').value = data.charge; 
+      document.getElementById('complication_price').value = data.price; 
     });
 
     // Verifying payload recieved

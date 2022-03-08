@@ -30,7 +30,7 @@ class ComplicationsTest < ApplicationSystemTestCase
   test "creating a complication for an repair" do
     visit repair_path(repairs(:one))
     select standard_complications(:one).name, from: :complication_standard_complication_id
-    fill_in "complication_price", with: standard_complications(:one).charge
+    fill_in "complication_price", with: standard_complications(:one).price
     click_on "Add Complication"
     assert_text "Complication was successfully created"
   end

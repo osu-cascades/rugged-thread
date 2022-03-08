@@ -4,7 +4,7 @@ class StandardComplicationTest < ActiveSupport::TestCase
 
   test "attribtues" do
     assert_respond_to(StandardComplication.new, :name)
-    assert_respond_to(StandardComplication.new, :charge)
+    assert_respond_to(StandardComplication.new, :price)
   end
 
   test "associations" do
@@ -33,10 +33,10 @@ class StandardComplicationTest < ActiveSupport::TestCase
     refute standard_complication.valid?
   end
 
-  test 'charge must be a positive integer' do
+  test 'price must be a positive integer' do
     standard_complication = standard_complications(:one)
     assert standard_complication.valid?
-    standard_complication.charge = -1
+    standard_complication.price = -1
     refute standard_complication.valid?
   end
 

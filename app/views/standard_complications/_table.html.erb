@@ -3,7 +3,7 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Standard Repair</th>
-      <th scope="col" class="text-end">Charge</th>
+      <th scope="col" class="text-end">Price</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
           <%= link_to_unless(controller.controller_name == 'standard_repairs', standard_complication.standard_repair, standard_complication.standard_repair) %>
         </td>
         <td class="text-end">
-          <%= number_to_currency(standard_complication.charge) %>
+          <%= number_to_currency(standard_complication.price) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_complication, class: 'btn btn-outline-secondary btn-sm' %>
