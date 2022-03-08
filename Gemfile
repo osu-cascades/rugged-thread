@@ -13,6 +13,7 @@ gem "importmap-rails"
 # gem "image_processing", "~> 1.2"
 gem "jbuilder"
 gem 'pg'
+gem 'phony_rails'
 gem "puma", "~> 5.0"
 gem 'pundit'
 gem "rails", "~> 7.0.2.2"
