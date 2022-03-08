@@ -34,6 +34,14 @@ class CustomersTest < ApplicationSystemTestCase
     assert_text "Customer was successfully created"
   end
 
+  test "creating a Customer with an invalid number fails" do
+    visit new_customer_path
+    select customer_types(:one).name, from: 'Customer type'
+    fill_in "Phone number", with: '88888888888'
+    click_on "Save"
+    assert_text "Phone number is an invalid number"
+  end
+
   test "updating a Customer" do
     visit edit_customer_path(customers(:one))
     fill_in "Last name", with: 'Updated Fake Last Name'

@@ -38,6 +38,13 @@ class CustomerTest < ActiveSupport::TestCase
     refute customer.valid?
   end
 
+  test 'Customer has a valid  alternative phone number' do
+    customer = customers(:one)
+    assert customer.valid?
+    customer.alternative_phone_number = '1234567891011'
+    refute customer.valid?
+  end
+
   test "full name is first and last name" do
     customer = customers(:one)
     assert_equal("#{customer.first_name} #{customer.last_name}", customer.full_name)
