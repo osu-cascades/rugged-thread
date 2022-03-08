@@ -1,18 +1,14 @@
 <script type="text/javascript">
-  function updateRepairPrice() {
-    // Capture id of selected item
-    var e = document.getElementById("repair_standard_repair_id");
-    var standard_repair_id = e.value;
+  function updateRepairFields() {
+    const e = document.getElementById("repair_standard_repair_id");
+    const standard_repair_id = e.value;
 
-    // Call to retrive standard repair JSON
     const fetchResponsePromise = fetch(`/standard_repairs/${standard_repair_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
       document.getElementById('repair_price').value = data.charge; 
+      document.getElementById('repair_level').value = data.level;
     });
-
-    // Verifying payload recieved
-    console.log(fetchResponsePromise);
   };
 </script>
 
@@ -35,7 +31,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_repair_id, class: 'form-label'%>
-        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateRepairPrice();' %>
+        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateRepairFields();' %>
     <% if form.object.errors.include?(:standard_repair) %>
       </div>
     <% end %>
@@ -47,7 +43,7 @@
     </div>
     <div class="col-2">
       <%= form.label :level, class: 'form-label' %>
-      <%= form.number_field :level, class: 'form-control'%>
+      <%= form.number_field :level, class: 'form-control', onchange: 'updateRepairLevel();'%>
     </div>
     <div class="col">
       <div class="actions">
