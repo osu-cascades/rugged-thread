@@ -15,7 +15,7 @@
       <th scope="col">Description</th>
       <th scope="col"># of Complications</th>
       <th scope="col">Level</th>
-      <th scope="col" class="text-end">Charge</th>
+      <th scope="col" class="text-end">Price</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -38,7 +38,7 @@
           <%= standard_repair.level %>
         </td>
         <td class="text-end">
-          <%= number_to_currency(standard_repair.charge) %>
+          <%= number_to_currency(standard_repair.price) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm' %>

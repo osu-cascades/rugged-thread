@@ -35,7 +35,7 @@ class RepairsTest < ApplicationSystemTestCase
     visit item_path(items(:one))
     select standard_repairs(:one).name, from: :repair_standard_repair_id
     fill_in "Notes", with: "Fake repair notes"
-    fill_in "repair_price", with: standard_repairs(:one).charge
+    fill_in "repair_price", with: standard_repairs(:one).price
     fill_in "Level", with: '2'
     click_on "Add Repair"
     assert_text "Repair was successfully created"

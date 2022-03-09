@@ -75,20 +75,20 @@ Fee.create!(item: item, standard_fee: standard_fee, price: 35)
 Discount.create!(item: item, standard_discount: standard_discount, price: 10)
 
 StandardRepair.create(name: "Slider Replacement: Separating Zipper", method: "",
-  description: "YKK separating", level: 1, charge: 20).tap do |sr|
-    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", charge: 5)
-    sr.standard_complications.create!(name: "Add staple", charge: 5)
+  description: "YKK separating", level: 1, price: 20).tap do |sr|
+    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", price: 5)
+    sr.standard_complications.create!(name: "Add staple", price: 5)
   end
 
 standard_repair = StandardRepair.create!(name: "Zipper Replacement: Separating Zipper : As-Manufactured (per Half Zipper)", method: "",
- description: "< 24\" zipper length", level: 1, charge: 45)
+ description: "< 24\" zipper length", level: 1, price: 45)
 repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
  price: 45, notes:"Fake Notes")
 
 standard_repair.standard_complications.create!(name: "< 25-36\" zipper length",
-  charge: 5)
+  price: 5)
 standard_complication = standard_repair.standard_complications.create!(
-  name: "< 37-48\" zipper length", charge: 10)
+  name: "< 37-48\" zipper length", price: 10)
 Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
 
 SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 50, repair: repair)

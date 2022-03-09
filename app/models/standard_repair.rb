@@ -5,7 +5,7 @@ class StandardRepair < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
-  validates :charge, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   default_scope { order('name ASC') }
 

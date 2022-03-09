@@ -7,7 +7,7 @@ class StandardRepairTest < ActiveSupport::TestCase
     assert_respond_to(StandardRepair.new, :method)
     assert_respond_to(StandardRepair.new, :description)
     assert_respond_to(StandardRepair.new, :level)
-    assert_respond_to(StandardRepair.new, :charge)
+    assert_respond_to(StandardRepair.new, :price)
   end
 
   test "associations" do
@@ -55,10 +55,10 @@ class StandardRepairTest < ActiveSupport::TestCase
     assert_equal 1, standard_repair.level
   end
 
-  test 'charge must be a positive integer' do
+  test 'price must be a positive integer' do
     standard_repair = standard_repairs(:one)
     assert standard_repair.valid?
-    standard_repair.charge = -1
+    standard_repair.price = -1
     refute standard_repair.valid?
   end
 

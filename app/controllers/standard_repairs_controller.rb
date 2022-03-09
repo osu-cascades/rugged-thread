@@ -67,7 +67,7 @@ class StandardRepairsController < ApplicationController
     end
 
     def standard_repair_params
-      params.require(:standard_repair).permit(:name, :method, :description, :level, :charge)
+      params.require(:standard_repair).permit(:name, :method, :description, :level, :price)
     end
 
 end

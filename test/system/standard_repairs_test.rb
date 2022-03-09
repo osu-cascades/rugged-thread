@@ -28,7 +28,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
     fill_in "Name", with: 'New Fake Name'
     fill_in "Description", with: 'New fake description'
     fill_in "Method", with: 'New fake method'
-    fill_in "Charge", with: 1
+    fill_in "Price", with: 1
     click_on "Save"
     assert_text "Standard repair was successfully created"
   end
