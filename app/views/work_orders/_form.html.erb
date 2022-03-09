@@ -22,7 +22,7 @@
   <% end %>
     <div class="mb-3">
       <%= form.label :customer_id, class: 'form-label' %>
-      <%= form.collection_select :customer_id, customers, :id, :full_name, {include_blank: ''}, class: 'form-select' %>
+      <%= form.collection_select :customer_id, customers, :id, :full_name, {include_blank: ''}, class: 'form-select', data: { controller: 'work-order-form', action: 'change->work-order-form#setDueDate'} %>
     </div>
   <% if form.object.errors.include?(:customer) %>
     </div>

@@ -85,6 +85,19 @@ footer {
   background-color: $gray-200;
 }
 
+@keyframes highlight {
+  0% {
+    background: lemonchiffon;
+  }
+  100% {
+    background: #fff;
+  }
+}
+
+.highlight {
+  animation: highlight 2s;
+}
+
 /* Authentication */
 
 .container-auth {
