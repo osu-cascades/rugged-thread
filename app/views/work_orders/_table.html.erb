@@ -22,7 +22,7 @@
         <td><%= work_order.due_date.to_formatted_s(:long) %></td>
         <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator) %></td>
         <td><%= work_order.shipping ? '📦' : '' %></td>
-        <td class="text-end"><%= number_to_currency(work_order.estimate) %></td>
+        <td class="text-end"><%= number_to_currency(work_order.price_estimate) %></td>
         <td class="text-end">
           <%= link_to 'Details', work_order, class: 'btn btn-outline-secondary btn-sm' %>
         </td>

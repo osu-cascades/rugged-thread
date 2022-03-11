@@ -60,20 +60,20 @@
   <div class="col">
     <p>
       <strong>Estimate:</strong>
-      <%= number_to_currency(@item.estimate) %>
+      <%= number_to_currency(@item.price_estimate) %>
     </p>
 
     <p>
       <strong>Labor:</strong>
-      <%= number_to_currency(@item.labor_estimate) %>
+      <%= number_to_currency(@item.estimated_price_of_labor) %>
     </p>
     <p>
       <strong>Fees:</strong>
-      <%= number_to_currency(@item.fee_total) %>
+      <%= number_to_currency(@item.price_of_fees) %>
     </p>
     <p>
       <strong>Discounts ($):</strong>
-      <%= number_to_currency(@item.discount_dollar_total) %>
+      <%= number_to_currency(@item.price_of_discounts) %>
     </p>
     <p>
       <strong>Discounts (%):</strong>

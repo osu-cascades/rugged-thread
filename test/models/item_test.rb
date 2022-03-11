@@ -4,8 +4,8 @@ class ItemTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Item.new, :due_date)
-    assert_respond_to(Item.new, :estimate)
-    assert_respond_to(Item.new, :labor_estimate)
+    assert_respond_to(Item.new, :price_estimate)
+    assert_respond_to(Item.new, :estimated_price_of_labor)
     assert_respond_to(Item.new, :notes)
     assert_respond_to(Item.new, :shipping)
   end
@@ -151,20 +151,20 @@ class ItemTest < ActiveSupport::TestCase
     refute_equal item.work_order.due_date, item.due_date
   end
 
-  test "#estimate is labor_estimate plus parts, special order, minus standard discounts" do
+  test "#price_estimate is estimated_price_of_labor plus parts, special order, minus standard discounts" do
     item = items(:associationless)
-    assert_equal(0, item.estimate)
+    assert_equal(0, item.price_estimate)
     item.repairs << Repair.new(price: 3)
-    assert_equal(3, item.estimate)
+    assert_equal(3, item.price_estimate)
   end
 
-  test "#labor_estimate is the sum of all repair prices" do
+  test "#estimated_price_of_labor is the sum of all repair prices" do
     item = items(:associationless)
-    assert_equal(0, item.labor_estimate)
+    assert_equal(0, item.estimated_price_of_labor)
     item.repairs << Repair.new(price: 3)
-    assert_equal(3, item.labor_estimate)
+    assert_equal(3, item.estimated_price_of_labor)
     item.repairs << Repair.new(price: 7)
-    assert_equal(10, item.labor_estimate)
+    assert_equal(10, item.estimated_price_of_labor)
   end
 
   test "#fees_and_discounts returns 0 for now" do

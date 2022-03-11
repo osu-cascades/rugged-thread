@@ -19,23 +19,23 @@ class Item < ApplicationRecord
 
   default_scope { order('position ASC') }
 
-  def estimate
-    (labor_estimate + fee_total - discount_dollar_total).div((!discount_percent_total.zero? ? discount_percent_total : 1)) 
+  def price_estimate
+    (estimated_price_of_labor + price_of_fees - price_of_discounts).div((!discount_percent_total.zero? ? discount_percent_total : 1)) 
   end
 
   def level
     repairs.collect(&:level).max
   end
 
-  def labor_estimate
+  def estimated_price_of_labor
     repairs.reduce(0) { |sum, r| sum + r.price_of_labor }
   end
 
-  def fee_total
+  def price_of_fees
     fees.reduce(0) { |sum, f| sum + f.price}
   end
 
-  def discount_dollar_total
+  def price_of_discounts
     discounts.reduce(0) { |sum, d| sum + (d.price ? d.price : 0) }
   end
 

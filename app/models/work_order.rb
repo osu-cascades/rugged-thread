@@ -16,8 +16,8 @@ class WorkOrder < ApplicationRecord
     "Work Order #{id}"
   end
 
-  def estimate
-    items.reduce(0) { |sum, i| sum + i.estimate }
+  def price_estimate
+    items.reduce(0) { |sum, i| sum + i.price_estimate }
   end
 
   private
