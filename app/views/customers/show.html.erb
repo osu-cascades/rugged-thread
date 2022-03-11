@@ -20,8 +20,8 @@
     <h3>Email &amp; Phone</h3>
     <address>
       <%= mail_to @customer.email_address %><br>
-      <%= link_to @customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), "tel:#{@customer.phone_number}" %><br>
-      <%= link_to @customer.alternative_phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), "tel:#{@customer.alternative_phone_number}" %>
+      <%= link_to @customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), @customer.phone_number.empty? ? "" :  "tel:#{@customer.phone_number}" %><br>
+      <%= link_to @customer.alternative_phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), @customer.alternative_phone_number.empty? ? "" :  "tel:#{@customer.alternative_phone_number}" %>
     </address>
   </div>
   <div class="col">
