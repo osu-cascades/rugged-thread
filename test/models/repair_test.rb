@@ -66,20 +66,45 @@ class RepairTest < ActiveSupport::TestCase
     refute repair.valid?
   end
 
-  test "#price_of_labor is the price plus price of complications" do
-    skip
+  test "#price_of_labor is the price plus price of all complications" do
+    repair = repairs(:complicationless)
+    assert_equal(20, repair.price_of_labor)
+    repair.complications << Complication.new(price: 5)
+    assert_equal(25, repair.price_of_labor)
+    repair.complications << Complication.new(price: 5)
+    assert_equal(30, repair.price_of_labor)
   end
 
   test "#total_price is the price_of_labor plus price of inventory items and special order items" do
-    skip
+    repair = repairs(:complicationless)
+    assert_equal(20, repair.total_price)
+    repair.complications << Complication.new(price: 5)
+    repair.complications << Complication.new(price: 5)
+    assert_equal(30, repair.total_price)
+    repair.inventory_items << InventoryItem.new(price: 5)
+    repair.inventory_items << InventoryItem.new(price: 5)
+    assert_equal(40, repair.total_price)
+    repair.special_order_items << SpecialOrderItem.new(price: 10)
+    repair.special_order_items << SpecialOrderItem.new(price: 10)
+    assert_equal(60, repair.total_price)
   end
 
   test "#total_price_of_inventory_items is the sum of the prices of all inventory items" do
-    skip
+    repair = repairs(:complicationless)
+    assert_equal(0, repair.total_price_of_inventory_items)
+    repair.inventory_items << InventoryItem.new(price: 5)
+    assert_equal(5, repair.total_price_of_inventory_items)
+    repair.inventory_items << InventoryItem.new(price: 10)
+    assert_equal(15, repair.total_price_of_inventory_items)
   end
 
   test "#total_price_of_special_order_items is the sum of the prices of all special order items" do
-    skip
+    repair = repairs(:complicationless)
+    assert_equal(0, repair.total_price_of_special_order_items)
+    repair.special_order_items << SpecialOrderItem.new(price: 5)
+    assert_equal(5, repair.total_price_of_special_order_items)
+    repair.special_order_items << SpecialOrderItem.new(price: 10)
+    assert_equal(15, repair.total_price_of_special_order_items)
   end
 
   test '#name is the standard_repair name' do
