@@ -1,0 +1,124 @@
+<head>
+  <title>Rugged Thread</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'print', 'data-turbo-track': 'reload' %>
+</head>
+
+<body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
+  abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz
+  
+      <h1 class="customer"><%= @item.work_order.customer %> (<%= @item.work_order.customer.customer_type %>)</h1>
+      <p class="phone"><%= "#{@item.work_order.customer.phone_number}".phony_formatted(normalize: :US, format: :national, spaces: '-') %></p>
+  
+      <div class="item">
+        <h2 class="item"><%= @item.brand %> <%= @item.item_type %></h2>
+        <p>Item <%= @item.position %> of <%= @item.work_order.items.count %> from Work Order <%= @item.work_order.id %> by <%= @item.work_order.creator %>.</p>
+        <p>Date in: <%= @item.work_order.in_date.to_formatted_s(:long) %></p>
+        <p>Due date: <%= @item.due_date.to_formatted_s(:long) %></p>
+  
+        <h3>Notes</h3>
+        <p><%= @item.notes %></p>
+  
+        <h4>Estimated Price</h4>
+        <p>$<%= @item.estimate %></p>
+  
+        <h4>Fees</h4>
+        <% @item.fees.each do |fee| %>
+        <%= fee %> ($<%= fee.price %>)
+        <% end %>
+  
+        <h4>Discounts</h4>
+        <% @item.discounts.each do |discount| %>
+          <%= discount %> (<%= discount.percentage_amount %>% / $<%= discount.price %>)
+        <% end %>
+      </div><!-- /item -->
+  
+      <div class="repairs">
+        <h2>Repairs</h2>
+        <% @item.repairs.each do |repair| %>
+          <div class="repair">
+            <h3><%= repair %></h3>
+            <table>
+              <tr>
+                <td>
+                  <p>Repair <%= repair.position %></p>
+                  <p>Labor $<%= @item.labor_estimate %></p>
+                  <p>Level <%= repair.level %></p>
+                </td>
+                <td width="20">&nbsp;</td>
+                <td>
+                  <p><strong>Notes:</strong> <%= repair.notes %></p>
+                  <h4>Complications</h4>
+                  <% repair.complications.each do |complication| %>
+                    <p><%= complication %> ($<%= complication.price %>)</p>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+            <h4>Production Data</h4>
+            <table width="100%">
+              <tr>
+                <td>Date</td>
+                <td>Tech</td>
+                <td>Time</td>
+                <td>Task</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <br>
+                  <hr>
+                  <br>
+                  <hr>
+                  <br>
+                  <hr>
+                  <br>
+                  <hr>
+                  <br>
+                  <hr>
+                  <br>
+                  <hr>
+                </td>
+              </tr>
+            </table>
+            <h4>Quality Data</h4>
+            <p>Inspector: _________________    Date: ________</p>
+            <p>Defect description: __________________________________</p>
+            <h4>Rework</h4>
+            <table width="100%">
+              <tr>
+                <td>Date</td>
+                <td>Tech</td>
+                <td>Task</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <br>
+                  <hr>
+                </td>
+              </tr>
+            </table>
+            <h4>Final Approval</h4>
+            <p>Inspector: _________________    Date: ________</p>
+          </div><!-- /repair -->
+        <% end %>
+      </div><!-- /repairs -->
+  
+      <div class="claim_ticket">
+        <h1>Rugged Thread Outerwear Repair</h1>
+        <h2>Claim Ticket <%= @item.work_order.id %> - <%= @item.position %></h2>
+  
+        <h3><%= @item.brand %> <%= @item.item_type %></h3>
+        <p>Estimate: <%= number_to_currency(@item.estimate) %></p>
+        <p>Expected Completion Date: <%= @item.due_date.to_formatted_s(:long) %></p>
+        <p>Please call or text if you haven't heard from us by the Expected Completion Date. We will always call or text when your repair is complete.
+        <br>
+        Estimates are for budgeting purposes only. We will call or text for approval before proceeding if the repairs will exceed the estimate by more than 25%.</p>
+        <h4>2525 NE Twin Knolls Dr. Suite 9 &nbsp;&nbsp;&nbsp;&nbsp; 541-306-8727</h4>
+      </div>
+  
+    <script>
+      if (window.print) window.print()
+    </script>
+</body>
