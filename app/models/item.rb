@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :due_date, presence: true, comparison: { greater_than: ->(item) { item.work_order&.in_date } }
   validates :shipping, inclusion: { in: [ true, false ] }
 
-  after_initialize :set_default_status
+  after_initialize :set_default_status, unless: -> { item_status.present? }
   after_initialize :set_due_date, if: -> { new_record? && work_order.present? }
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 

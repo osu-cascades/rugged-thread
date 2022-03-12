@@ -98,9 +98,14 @@ class ItemTest < ActiveSupport::TestCase
     refute item.valid?
   end
 
-  test "has a status that is the default item status" do
+  test "has a default status when item status is not present" do
     item = Item.new
-    assert_equal(ItemStatus.default, item.item_status)
+    assert_equal ItemStatus.default, item.item_status
+  end
+
+  test "does not have a default status when it already has a status" do
+    item = Item.new(item_status: item_statuses(:two))
+    refute_equal ItemStatus.default, item.item_status
   end
 
   test "shipping must be true or false" do

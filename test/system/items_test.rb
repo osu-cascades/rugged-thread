@@ -80,6 +80,17 @@ class ItemsTest < ApplicationSystemTestCase
     assert_text "Item was successfully updated"
   end
 
+  test "updating an item's status" do
+    item = items(:one)
+    new_status = item_statuses(:two)
+    refute_equal new_status, item.item_status
+    visit edit_item_path(item)
+    select new_status.name, from: 'Item status'
+    click_on "Update Item"
+    assert_text "Item was successfully updated"
+    assert_text new_status.name
+  end
+
   test "updating an item's shipping" do
     item = work_orders(:shipping).items.first
     assert item.shipping
