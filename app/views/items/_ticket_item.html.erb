@@ -1,0 +1,92 @@
+<div class="item">
+  <h2 class="item"><%= item.brand %> <%= item.item_type %></h2>
+  <p>Item <%= item.position %> of <%= item.work_order.items.count %> from Work Order <%= item.work_order.id %> by <%= item.work_order.creator %>.</p>
+  <p>Date in: <%= item.work_order.in_date.to_formatted_s(:long) %></p>
+  <p>Due date: <%= item.due_date.to_formatted_s(:long) %></p>
+
+  <h3>Notes</h3>
+  <p><%= item.notes %></p>
+
+  <h4>Estimated Price</h4>
+  <p>$<%= item.price_estimate %></p>
+
+  <h4>Fees</h4>
+  <% item.fees.each do |fee| %>
+  <%= fee %> ($<%= fee.price %>)
+  <% end %>
+
+  <h4>Discounts</h4>
+  <% item.discounts.each do |discount| %>
+    <%= discount %> (<%= discount.percentage_amount %>% / $<%= discount.price %>)
+  <% end %>
+</div><!-- /item -->
+
+<div class="repairs">
+  <h2>Repairs</h2>
+  <% item.repairs.each do |repair| %>
+    <div class="repair">
+      <h3><%= repair %></h3>
+      <table>
+        <tr>
+          <td>
+            <p>Repair <%= repair.position %></p>
+            <p>Labor $<%= item.estimated_price_of_labor %></p>
+            <p>Level <%= repair.level %></p>
+          </td>
+          <td width="20">&nbsp;</td>
+          <td>
+            <p><strong>Notes:</strong> <%= repair.notes %></p>
+            <h4>Complications</h4>
+            <% repair.complications.each do |complication| %>
+              <p><%= complication %> ($<%= complication.price %>)</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <h4>Production Data</h4>
+      <table width="100%">
+        <tr>
+          <td>Date</td>
+          <td>Tech</td>
+          <td>Time</td>
+          <td>Task</td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <h4>Quality Data</h4>
+      <p>Inspector: _________________    Date: ________</p>
+      <p>Defect description: __________________________________</p>
+      <h4>Rework</h4>
+      <table width="100%">
+        <tr>
+          <td>Date</td>
+          <td>Tech</td>
+          <td>Task</td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <br>
+            <hr>
+          </td>
+        </tr>
+      </table>
+      <h4>Final Approval</h4>
+      <p>Inspector: _________________    Date: ________</p>
+    </div><!-- /repair -->
+  <% end %>
+</div><!-- /repairs -->

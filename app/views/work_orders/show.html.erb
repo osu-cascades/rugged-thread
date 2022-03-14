@@ -5,7 +5,6 @@
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Back to List'.html_safe, work_orders_path, class: 'btn btn-outline-primary me-5' %>
-    <%= link_to 'Print All Items', printall_work_order_item_path(@items), class: 'btn btn-outline-primary me-2', target: '_new' %>
     <%= link_to 'Edit', edit_work_order_path(@work_order), class: 'btn btn-outline-primary me-2' %>
     <%= button_to 'Delete', @work_order, method: :delete, class: 'btn btn-outline-danger' %>
   </div>

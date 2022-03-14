@@ -1,1 +1,33 @@
-<%= render 'items/print', items: @items %>
+<head>
+  <title>Rugged Thread</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'print', 'data-turbo-track': 'reload' %>
+</head>
+
+<body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
+  abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz
+
+<h1 class="customer"><%= @item.work_order.customer %> (<%= @item.work_order.customer.customer_type %>)</h1>
+<p class="phone"><%= "#{@item.work_order.customer.phone_number}".phony_formatted(normalize: :US, format: :national, spaces: '-') %></p>
+
+<%= render 'ticket_item', item: @item %>
+
+<div class="claim_ticket">
+  <h1>Rugged Thread Outerwear Repair</h1>
+  <h2>Claim Ticket <%= @item.work_order.id %> - <%= @item.position %></h2>
+
+  <h3><%= @item.brand %> <%= @item.item_type %></h3>
+  <p>Estimate: <%= number_to_currency(@item.price_estimate) %></p>
+  <p>Expected Completion Date: <%= @item.due_date.to_formatted_s(:long) %></p>
+  <p>Please call or text if you haven't heard from us by the Expected Completion Date. We will always call or text when your repair is complete.
+  <br>
+  Estimates are for budgeting purposes only. We will call or text for approval before proceeding if the repairs will exceed the estimate by more than 25%.</p>
+  <h4>2525 NE Twin Knolls Dr. Suite 9 &nbsp;&nbsp;&nbsp;&nbsp; 541-306-8727</h4>
+</div>
+
+<script>
+if (window.print) window.print()
+</script>
+</body>
