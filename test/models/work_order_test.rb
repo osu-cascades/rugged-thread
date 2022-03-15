@@ -6,6 +6,7 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert_respond_to(WorkOrder.new, :in_date)
     assert_respond_to(WorkOrder.new, :due_date)
     assert_respond_to(WorkOrder.new, :shipping)
+    assert_respond_to(WorkOrder.new, :number)
   end
 
   test 'associations' do
@@ -66,6 +67,22 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  test 'is invalid without a formatted number' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.number = nil
+    refute work_order.valid?
+    work_order.number = 'FAKE'
+    refute work_order.valid?
+  end
+
+  test 'is invalid when number is not unique' do
+    work_order = work_orders(:shipping)
+    assert work_order.valid?
+    work_order.number = work_orders(:not_shipping).number
+    refute work_order.valid?
+  end
+
   # Default initialization of in date and due date
 
   test 'in date is initialized to current date by default' do
@@ -112,6 +129,12 @@ class WorkOrderTest < ActiveSupport::TestCase
     work_order.save!
     work_order = work_orders(:shipping)
     refute_equal original_due_date, work_order.due_date
+  end
+
+  test 'number is assigned after saving' do
+    work_order = WorkOrder.new(creator: users(:staff), customer: customers(:one))
+    work_order.save!
+    refute work_order.number.blank?
   end
 
   test '#price_estimate is the sum of all item estimates' do

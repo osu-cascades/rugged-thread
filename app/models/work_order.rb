@@ -1,3 +1,5 @@
+require 'work_order_number'
+
 class WorkOrder < ApplicationRecord
 
   belongs_to :creator, class_name: 'User', inverse_of: :created_work_orders
@@ -6,9 +8,12 @@ class WorkOrder < ApplicationRecord
 
   validates :in_date, presence: true
   validates :due_date, presence: true, comparison: { greater_than: :in_date }
+  validates :number, presence: true, uniqueness: true,
+    format: { with: /\A\d{4}-\d{4}\z/, message: 'should be YYMM-nnnn' }
 
   after_initialize :set_in_date, if: -> { new_record? && in_date.blank? }
   after_initialize :set_due_date, if: -> { new_record? && due_date.blank? }
+  before_validation :set_number, on: :create
 
   default_scope { order('created_at ASC') }
 
@@ -28,6 +33,10 @@ class WorkOrder < ApplicationRecord
 
   def set_in_date
     self.in_date = default_in_date
+  end
+
+  def set_number
+    self.number = WorkOrderNumber.to_s
   end
 
   def default_in_date

@@ -1,6 +1,7 @@
 shipping:
   in_date: <%= Date.current %>
   due_date: <%= Date.current + 1.day %>
+  number: 2201-0001
   shipping: true
   creator: staff
   customer: one
@@ -8,6 +9,7 @@ shipping:
 not_shipping:
   in_date: <%= Date.current %>
   due_date: <%= Date.current + 1.day %>
+  number: 2201-0002
   shipping: false
   creator: staff
   customer: one
@@ -15,6 +17,7 @@ not_shipping:
 itemless:
   in_date: <%= Date.current %>
   due_date: <%= Date.current + 1.day %>
+  number: 2201-0003
   shipping: false
   creator: staff
   customer: one
