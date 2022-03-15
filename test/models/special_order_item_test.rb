@@ -42,6 +42,11 @@ class SpecialOrderItemTest < ActiveSupport::TestCase
     refute special_order_item.valid?
   end
 
+  test '#total_price is sum of price, ordering fee, and freight fee' do
+    special_order_item = SpecialOrderItem.new(price: 1, ordering_fee_price: 3, freight_fee_price: 5)
+    assert_equal 9, special_order_item.total_price
+  end
+
   test '#to_s string representation is name' do
     special_order_item = special_order_items(:one)
     assert_equal special_order_item.name, special_order_item.to_s
