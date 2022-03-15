@@ -18,7 +18,7 @@ class WorkOrder < ApplicationRecord
   default_scope { order('created_at ASC') }
 
   def to_s
-    "Work Order #{id}"
+    "Work Order #{number}"
   end
 
   def price_estimate

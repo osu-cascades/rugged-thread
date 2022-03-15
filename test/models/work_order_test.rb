@@ -24,7 +24,7 @@ class WorkOrderTest < ActiveSupport::TestCase
 
   test '#to_s string representation' do
     work_order = work_orders(:shipping)
-    expected = "Work Order #{work_order.id}"
+    expected = "Work Order #{work_order.number}"
     assert_equal expected, work_order.to_s
   end
 
