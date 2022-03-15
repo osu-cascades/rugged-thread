@@ -1,0 +1,540 @@
+Product/Service Name,SKU,Type,Sales Price / Rate,Income Account,Purchase Description,Purchase Cost,Expense Account,Quantity On Hand,Inventory Asset Account
+"World Side Release Dual Adjust Buckle Latch (2"") Nexus",550-1100,Inventory,0.05,2. Repair Parts & Materials Revenue,,0.02,COGS-Repair Material:Repair Materials,28,Inventory Asset
+"World Side Release Dual Adjust Buckle Body (2"") Nexus",550-0100,Inventory,0.25,2. Repair Parts & Materials Revenue,,0.14,COGS-Repair Material:Repair Materials,28,Inventory Asset
+"World Side Release Buckle Latch (2"") Nexus",540-1100,Inventory,0.05,2. Repair Parts & Materials Revenue,,0.02,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"World Side Release Buckle Latch (1"") Nexus",525-1100,Inventory,0.05,2. Repair Parts & Materials Revenue,,0.02,COGS-Repair Material:Repair Materials,15,Inventory Asset
+"World Side Release Buckle Body (2"") Nexus",540-0000,Inventory,0.06,2. Repair Parts & Materials Revenue,,0.03,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"World Side Release Buckle Body (1"") Nexus",525-0000,Inventory,0.06,2. Repair Parts & Materials Revenue,,0.03,COGS-Repair Material:Repair Materials,18,Inventory Asset
+"Whistleloc Buckle Latch (3/4"") Nexus",520-1500,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,13,Inventory Asset
+"Whistleloc Buckle Body (3/4"") Nexus",520-0000,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,13,Inventory Asset
+"Trovato Side Release Buckle (3/4"") Nexus",150-0075,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Tri Glide (2"") Unknown Source",x,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Tri Glide (1"") Hi-Tex",BN105-0100-6023,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,22,Inventory Asset
+Toaster Eclipse Cordloc (OS) Hi-Tex,BN350-2000-SPBK,Inventory,0.2,2. Repair Parts & Materials Revenue,,0.1,COGS-Repair Material:Repair Materials,18,Inventory Asset
+"TLL (1"") Nexus",154-0100,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,24,Inventory Asset
+"Tenacious Tape, Reflective",10785,Inventory,8,3. Product Sales Revenue,,3.98,COGS-Repair Material:Product Cost,6,Inventory Asset
+"Tenacious Tape, Clear Non-standard size",10770,Inventory,9,3. Product Sales Revenue,,4.48,COGS-Repair Material:Product Cost,0,Inventory Asset
+"Tenacious Tape Repair Tape, Yellow",10686,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,2,Inventory Asset
+"Tenacious Tape Repair Tape, Sage",10695,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,0,Inventory Asset
+"Tenacious Tape Repair Tape, Red",10687,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,2,Inventory Asset
+"Tenacious Tape repair tape, OD Green",10668,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,12,Inventory Asset
+"Tenacious Tape Repair Tape, Coyote",10667,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,10,Inventory Asset
+"Tenacious Tape Repair Tape, Clear",10691,Inventory,6,3. Product Sales Revenue,,2.98,COGS-Repair Material:Product Cost,0,Inventory Asset
+"Tenacious Tape Repair Tape, Black",10689,Inventory,6,3. Product Sales Revenue,,5.25,COGS-Repair Material:Product Cost,12,Inventory Asset
+"Tenacious Tape Gear Patch, Wildlife (Bison)",10820,Inventory,10,3. Product Sales Revenue,,9.95,COGS-Repair Material:Product Cost,2,Inventory Asset
+"Tenacious Tape Gear Patch, Camping (Sasquatch)",10810,Inventory,10,3. Product Sales Revenue,,9.95,COGS-Repair Material:Product Cost,5,Inventory Asset
+"Standard Tri Glide (2"") Nexus",105-0200,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Standard Tri Glide (1 1/2"") Nexus",105-0150,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,20,Inventory Asset
+"Standard Superloc (1"") Nexus",104-1100,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,24,Inventory Asset
+"Standard D-Ring (1"") Nexus",110-0100,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Single Bar Curved Tension Lock (1"") Duraflex",5142,Inventory,,2. Repair Parts & Materials Revenue,Acetal,,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Side Release Single Adjust Buckle Latch (1 1/2"") Hi-Tex",BN540-1100-5614,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,22,Inventory Asset
+"Side Release Single Adjust Buckle Body (1 1/2"") Hi-Tex",BN540-0100-5614,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,23,Inventory Asset
+"Side Release Dual Adjust Buckle Latch (1 1/2"") Hi-Tex",BN540-0000-5614,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,25,Inventory Asset
+"Side Release Dual Adjust Buckle Body (1 1/2"") Hi-Tex",BN540-1100-5614 DUPLICATE,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,23,Inventory Asset
+"Side Release Buckle White (1"") Unknown Source",UNKNOWN 1,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,8,Inventory Asset
+"Side Release Buckle (5/8"") Nexus",101-0063,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Side Release Buckle (1/2"") Unknown Source",UNKNOWN 2,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Side Release Buckle (1"") Nexus",101-0100,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,-11,Inventory Asset
+Rugged Thread Hoodie,HDY,Inventory,65,3. Product Sales Revenue,,35,COGS-Repair Material:Product Cost,8,Inventory Asset
+"Round Shoulder Pad (2"") Hi-Tex",PV801,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,4,Inventory Asset
+Revivex Gear Cleaner,36299,Inventory,10,3. Product Sales Revenue,,4.98,COGS-Repair Material:Product Cost,5,Inventory Asset
+"Metal Open End Loc (1"") No Reorder",UNKNOWN 3,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#8V 2-way Periwinkle 36"" H20",MZ82WR36280,Inventory,20,2. Repair Parts & Materials Revenue,,9.69,COGS-Repair Material:Repair Materials,25,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#8V 1-way Periwinkle 36"" H20",MZ8WR36280,Inventory,15,2. Repair Parts & Materials Revenue,,6.62,COGS-Repair Material:Repair Materials,23,Inventory Asset
+Materials:Zipper:Vislon:Waterproof:#5V zipper by the foot Black H2O,6249,Inventory,8,2. Repair Parts & Materials Revenue,per foot,4,COGS-Repair Material:Repair Materials,-4.25,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#5V 2-way Black 36"" H2O",MZ52WR36BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.69,COGS-Repair Material:Repair Materials,34,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#5V 2-way Black 35"" H2O",MZ52WR35BK,Inventory,32,2. Repair Parts & Materials Revenue,,16,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#5V 1-way Tropic Blue 36"" H20",MZ5WR36838,Inventory,15,2. Repair Parts & Materials Revenue,,5.93,COGS-Repair Material:Repair Materials,14,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#5V 1-way Dark Grey 36"" H20",MZ5WR36182,Inventory,15,2. Repair Parts & Materials Revenue,,5.93,COGS-Repair Material:Repair Materials,21,Inventory Asset
+"Materials:Zipper:Vislon:Waterproof:#5V 1-way Black 36"" H2O",MZ5WR36BK,Inventory,15,2. Repair Parts & Materials Revenue,,5.93,COGS-Repair Material:Repair Materials,66,Inventory Asset
+"Materials:Zipper:Vislon:#8V 2-way Black 48""",MF8248BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.95,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#8V 2-way Black 44""",MZ8244BK,Inventory,10,2. Repair Parts & Materials Revenue,,1.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 2-way Black 36""",MZ8236BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.41,COGS-Repair Material:Repair Materials,48,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way White 36""",MZ836WH,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Royal Blue 36""",MZ836RO,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Royal Blue 30""",MZ830RO,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Red 36""",MZ836RE,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Red 30""",MZ830RE,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Navy 36""",MZ836NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Navy 30""",MZ830NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Medium Grey 36""",MZ836MG,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Medium Brown 36""",MZ836MBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Medium Brown 30""",MZ830MBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Graphite 36""",MZ836GR,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Graphite 30""",MZ830GR,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Dark Grey 36""",MZ836DG,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Dark Grey 30""",MZ830DG,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Dark  Brown 36""",MZ836DBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Dark  Brown 30""",MZ830DBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Black 36""",MZ836BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Black 30""",MZ830BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Black 24""",MZ824BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.1,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Beige 36""",MZ836BE,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#8V 1-way Beige 30""",MZ830BE,Inventory,10,2. Repair Parts & Materials Revenue,,3.75,COGS-Repair Material:Repair Materials,3,Inventory Asset
+Materials:Zipper:Vislon:#5V zipper by the foot White,28218,Inventory,1,2. Repair Parts & Materials Revenue,per foot,0.55,COGS-Repair Material:Repair Materials,19,Inventory Asset
+Materials:Zipper:Vislon:#5V zipper by the foot Black,5TOOTH,Inventory,1,2. Repair Parts & Materials Revenue,per foot,0.53,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Wine 36""",MZ5236WI,Inventory,10,2. Repair Parts & Materials Revenue,,2.39,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way White 36""",MZ5236WH,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way White 30""",MZ5230WH,Inventory,10,2. Repair Parts & Materials Revenue,,3,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way White 26""",2158,Inventory,10,2. Repair Parts & Materials Revenue,,2.75,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Rust 36""",MZ5236RU,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Rust 30""",MZ5230RU,Inventory,10,2. Repair Parts & Materials Revenue,,3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Royal Blue 36""",MZ5236RO,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Royal Blue 28""",2163,Inventory,10,2. Repair Parts & Materials Revenue,,2.85,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Red 36""",MZ5236RE,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Purple 36""",MZ5236PU,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Orange 36""",MZ5236OR,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Navy 60""",MZ5260NV,Inventory,15,2. Repair Parts & Materials Revenue,,5.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Navy 48""",MZ5248NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.79,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Navy 40""",2197,Inventory,10,2. Repair Parts & Materials Revenue,,3.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Navy 36""",MZ5236NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Navy 30""",MZ5230NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Natural 36""",MZ5236NA,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Medium Brown 36""",MZ5236MBR,Inventory,10,2. Repair Parts & Materials Revenue,,2.39,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Medium Blue 36""",MZ5236MB,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Light Grey 48""",MZ5248LG,Inventory,10,2. Repair Parts & Materials Revenue,,3.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Light Grey 36""",MZ5236LG,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Light Brown 36""",MZ5236LBR,Inventory,10,2. Repair Parts & Materials Revenue,,2.39,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Graphite 36""",MZ5236GR,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Graphite 30""",MZ5230GR,Inventory,10,2. Repair Parts & Materials Revenue,,3,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Dark Grey 36""",MZ5236DG,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Dark Forest Green 32""",2178,Inventory,10,2. Repair Parts & Materials Revenue,,3.05,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Dark Brown 36""",MZ5236DBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Camel 36""",MZ5236CA,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 60""",MZ5260BK,Inventory,10,2. Repair Parts & Materials Revenue,,5.15,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 48""",MZ5248BK,Inventory,10,2. Repair Parts & Materials Revenue,,5.1,COGS-Repair Material:Repair Materials,12,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 47"" H2O",MZ52WR47BK,Inventory,40,2. Repair Parts & Materials Revenue,,23.63,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 36""",MZ5236BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 35""",5T2SW35BLK,Inventory,10,2. Repair Parts & Materials Revenue,,6.34,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 32""",2175,Inventory,10,2. Repair Parts & Materials Revenue,,3.05,COGS-Repair Material:Repair Materials,20,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Black 30""",MZ5230BK,Inventory,10,2. Repair Parts & Materials Revenue,,3,COGS-Repair Material:Repair Materials,32,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Beige 36""",MZ5236BE,Inventory,10,2. Repair Parts & Materials Revenue,,2.69,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 2-way Army Green 36""",MZ5236AG,Inventory,10,2. Repair Parts & Materials Revenue,,3.4,COGS-Repair Material:Repair Materials,8,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Yellow 24""",2084,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Wine 36""",MZ536WI,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,16,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Wine 30""",MZ530WI,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Wine 29""",MP529WI,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Wine 27""",MZ527WI,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.34,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way White 30""",MZ530WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.49,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way White 22""",MZ522WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.69,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Watermelon 36""",MZ536354,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Watermelon 30""",MZ530354,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Violet 36""",MZ536029,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Violet 30""",MZ530029,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,-2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Violet 24""",MZ524029,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Teal 36""",MZ536840,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Spring Green 36""",MZ536536,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Silver Black 27""",MP527BKS,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Silver Black 26""",MP526BKS,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Salmon 36""",MZ536813,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Rust 36""",MZ536RU,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Rust 30""",MZ530RU,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,2.05,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Rust 29""",MP529RU,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Rust 27""",MZ527RU,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Royal Purple 36""",MZ536303,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,2.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Royal Purple 30""",MZ530303,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-Way Royal Blue 36""",MZ536RO,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Royal Blue 30""",MZ530RO,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Red 36""",MZ536RE,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Red 30""",MZ530RE,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Purple 36"" (patagonia)",MP536PU,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Purple 36""",MZ536PU,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Purple 29""",MP529PU,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.34,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Powder Blue 26""",MP526PB,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,3,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Pink 36""",MZ536PK,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Pink 30""",MZ530PK,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Pewter 36""",MZ536326,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Periwinkle 36""",MZ536264,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Orange 36""",MZ536OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Orange 30""",MZ530OR,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Orange 25""",MP525OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Olive 28""",MP528OL,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Olive 26""",MP526OL,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Olive 24""",MP524OL,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 36""",MZ536NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,13,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 30""",MZ530NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 27""",MZ527NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 26""",MP526NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 24""",MZ524NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.69,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Navy 22""",MZ522NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.69,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Natural 36""",MZ536NA,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,2.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Grey 27""",MZ527MG,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Grey 26""",MP526MG,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Green 26""",MP526DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Brown 22""",MP522MBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.14,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Blue 36""",MZ536MB,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.89,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Blue 30""",MZ530MB,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Blue 29""",MP529MB,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Blue 27""",MZ527MB,Inventory,5,2. Repair Parts & Materials Revenue,,1.7,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Medium Blue 26""",MP526MB,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Maroon 26""",MP526MA,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.19,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Grey 36""",MZ536LG,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,15,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Grey 32""",MP532LG,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Green 36""",MZ536LGR,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,2.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Green 27""",MZ527LGN,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Green 26""",MP526LG,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Brown 36""",MZ536LBR,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.89,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Brown 29""",MP529LB,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Light Blue 27""",MZ527LB,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Khaki 36""",MZ536KH,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Jade 36""",MZ536877,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Jade 30""",MZ530877,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Indigo 36""",MZ536918,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Indigo 30""",MZ530918,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Ideal MagZip Black 36""",242915B1244,Inventory,15,2. Repair Parts & Materials Revenue,,7.5,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Green 36""",MZ536GN,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Green 30""",MZ530GR,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.44,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Green 29""",MP529GR,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Green 20""",MZ520GN,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Graphite 36""",MZ536GR,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Grape 36""",MZ536867,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Gold 36""",MZ536087,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Fuschia 28""",MP528FU,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Forest Green 36""",MP536FG,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Forest Green 28""",MP528FG,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Fire Red 36""",MZ536820,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Eggplant 36""",MZ536Z122,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,18,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Deep Violet 36""",MZ536Y0997,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Deep Red 36""",MZ536520,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Deep Red 30""",MZ530520,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Dark Grey 36""",MZ536DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Dark Grey 30""",MZ530DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Dark Grey 27""",MZ527DG,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Dark Brown 30""",MZ530DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Dark Brown 20""",MZ520DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.09,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Cranberry 36""",MZ536021,Inventory,5,2. Repair Parts & Materials Revenue,,1.69,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Clover 36""",MZ536528,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.89,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Clover 30""",MZ530528,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Clover 24""",MZ524528,Inventory,5,2. Repair Parts & Materials Revenue,Unknown Color,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Charcoal 36""",MZ536916,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Camel 36""",MZ536CA,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Burgundy 26""",MP526BG,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Bronze Dark Brown 29""",MP529DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Bronze Dark Brown 28""",MP528DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Bronze Army Green 22""",MP522AGB,Inventory,5,2. Repair Parts & Materials Revenue,,1.14,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Bright Green 28""",MP528BG,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Blue Frost 30""",MZ530544,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Blue 28""",MP528BL,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 48""",MZ548BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.75,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 36""",MZ536BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,25.5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 30""",MZ530BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.05,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 27""",MZ527BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.7,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 24""",MZ524BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Black 20""",MZ520BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Beige 36""",MZ536BE,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Army Green 36""",MZ536AG,Inventory,5,2. Repair Parts & Materials Revenue,,2.9,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Army Green 30""",MZ530AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Army Green 29""",MP529AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Army Green 27""",MZ527AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Army Green 24""",MZ524AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Aqua 36""",MZ536548,Inventory,5,2. Repair Parts & Materials Revenue,,1.89,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Aqua 30""",MZ530548,Inventory,5,2. Repair Parts & Materials Revenue,,1.44,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#5V 1-way Aqua 26""",MP526AQ,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#4V 1-way Aqua 26""",MF426548,Inventory,5,2. Repair Parts & Materials Revenue,Patagonia-no reorder,1.09,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#3V 2-way Navy 36""",MZ3236NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.77,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 2-way Navy 30""",MZ3222NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#3V 2-way Black 36""",MZ3236BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.87,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#3V 2-way Black 30""",MZ3230BK,Inventory,10,2. Repair Parts & Materials Revenue,,5,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way White 24""",MZ324WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.7,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Violet 24""",MZ324029,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Red 30""",MZ330RE,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Purple 36""",MZ336PU,Inventory,5,2. Repair Parts & Materials Revenue,,2.29,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Navy 36""",MZ336NV,Inventory,5,2. Repair Parts & Materials Revenue,,2.7,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Navy 30""",MZ330NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Navy 24""",MZ324NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Medium Blue 30""",MZ330MB,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Light Blue 24""",MZ324LB,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Dark Grey 24""",MZ324DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Dark Grey 22""",MZ322DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.4,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Dark Brown 30""",MZ330DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Black 36""",MZ336BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.7,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Black 30""",MZ330BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Black 24""",MZ324BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#3v 1-way Army Green 36""",MZ336AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#3V 1-way Army Green 30""",MZ330AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.8,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Navy 36""",MZ10236NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.85,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Navy 30""",MZ10230NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,2,Inventory Asset
+Materials:Zipper:Vislon:#10V 2-way Medium Brown,MZ10236MBR,Inventory,10,2. Repair Parts & Materials Revenue,,3.99,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Graphite 36""",MZ10236GR,Inventory,10,2. Repair Parts & Materials Revenue,,4.85,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Dark Grey 36""",MZ10236DG,Inventory,10,2. Repair Parts & Materials Revenue,,4.85,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Dark Grey 30""",MZ10230DG,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Black 36""",MZ10236BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.85,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Black 30""",MZ10230BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Beige 36""",MZ10236BE,Inventory,10,2. Repair Parts & Materials Revenue,,3.99,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#10V 2-way Army Green 30""",MZ10230AG,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way White 83""",MF1083WH,Inventory,20,2. Repair Parts & Materials Revenue,Not reorderable,10,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Orange 36""",MZ1036OR,Inventory,10,2. Repair Parts & Materials Revenue,,4.5,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Navy 36""",MZ1036NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.5,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Navy 30""",MZ1030NV,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Graphite 36""",MZ1036GR,Inventory,10,2. Repair Parts & Materials Revenue,,4.5,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Graphite 30""",MZ1030GR,Inventory,10,2. Repair Parts & Materials Revenue,,3.42,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Vislon:#10V 1-way Black 30""",MZ1030BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.9,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#7M 1-way Antique Brass Dark Brown 30""",ABZ730DBR,Inventory,15,2. Repair Parts & Materials Revenue,,7.5,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#7M 1-way Antique Brass Black 36""",ABZ736BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.95,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#7M 1-way Antique Brass Black 30""",ABZ730BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.5,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Metal:#5M 2-way Brass Natural 36""",BZ5236NA,Inventory,10,2. Repair Parts & Materials Revenue,,4.5,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 2-way Antique Brass Dark Brown 30""",ABZ5230DBR,Inventory,15,2. Repair Parts & Materials Revenue,,6.5,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 2-way Antique Brass Black 36""",ABZ5236BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.15,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Gunmetal Black 30""",GMZF530BK,Inventory,25,2. Repair Parts & Materials Revenue,Not YKK,12.29,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Brass Rust 26""",BZ526RU,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Brass Pink 30""",BZ530PK,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Brass Navy 26""",BZ526NV,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Brass Midnight 30""",BZ530058,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Brass Black 24""",BZ524BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.69,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Nickle Black 36""",ANK536BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Nickle Black 24""",ANK524BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass White 30""",ABZ530WH,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Navy 28""",ABZ528NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Navy 11""",ABZ511NV,Inventory,3,2. Repair Parts & Materials Revenue,Front fly zipper,1.08,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Medium Grey 28""",ABZ528MG,Inventory,5,2. Repair Parts & Materials Revenue,,2.2,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Medium Brown 36""",ABZ536MBR,Inventory,5,2. Repair Parts & Materials Revenue,,2.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Graphite 22""",ABZ522GR,Inventory,5,2. Repair Parts & Materials Revenue,,2,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Dark Grey 36""",ABZ536DG,Inventory,5,2. Repair Parts & Materials Revenue,,2.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Dark Grey 24""",ABZ524DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Dark Brown 36""",ABZ536DBR,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,8,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Dark Brown 30""",ABZ530DBR,Inventory,5,2. Repair Parts & Materials Revenue,,2.3,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Dark Brown 11""",ABZ511DBR,Inventory,3,2. Repair Parts & Materials Revenue,Front fly zipper,1.08,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Black 36""",ABZ536BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.2,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Black 30""",ABZ530BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.2,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Black 11""",ABZ511BK,Inventory,3,2. Repair Parts & Materials Revenue,Front fly zipper,1.08,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Antique Brass Beige 36""",ABZ536BE,Inventory,5,2. Repair Parts & Materials Revenue,,2.2,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Aluminum White 36""",AJ536WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.99,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Metal:#5M 1-way Aluminum Black 36""",AJ536BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.2,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#4.5M non-separating zipper Antique Brass White 9""",ABZ459WH,Inventory,3,2. Repair Parts & Materials Revenue,front fly,0.71,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Metal:#4.5M non-separating zipper Antique Brass Navy 9""",ABZ459NV,Inventory,3,2. Repair Parts & Materials Revenue,front fly,0.71,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Metal:#4.5M non-separating zipper Antique Brass Dark Grey 9""",ABZ459DG,Inventory,3,2. Repair Parts & Materials Revenue,front fly,0.71,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Metal:#4.5M non-separating zipper Antique Brass Black 9""",ABZ459BK,Inventory,3,2. Repair Parts & Materials Revenue,front fly,0.71,COGS-Repair Material:Repair Materials,12,Inventory Asset
+"Materials:Zipper:Metal:#4.5M non-separating zipper Antique Brass Beige 9""",ABZ459BE,Inventory,3,2. Repair Parts & Materials Revenue,front fly,0.71,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Red 7""",BZ457RE,Inventory,3,2. Repair Parts & Materials Revenue,,0.38,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Navy 11""",BZ4511NV,Inventory,3,2. Repair Parts & Materials Revenue,,0.48,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Medium Blue 11""",BZ4511MB,Inventory,3,2. Repair Parts & Materials Revenue,,0.48,COGS-Repair Material:Repair Materials,8,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Khaki 11""",BZ4511KH,Inventory,3,2. Repair Parts & Materials Revenue,,0.48,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Dark Grey 11""",BZ4511DG,Inventory,3,2. Repair Parts & Materials Revenue,,0.48,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Camel 11""",BZ4511CA,Inventory,3,2. Repair Parts & Materials Revenue,,0.48,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#4.5M 1-way Brass Beige 7""",BZ457BE,Inventory,3,2. Repair Parts & Materials Revenue,Pant zipper,0.54,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Brass Light Brown 30""",BZ10230LBR,Inventory,25,2. Repair Parts & Materials Revenue,,12.4,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-Way Brass Dark Brown 36""",BZ10236DB,Inventory,25,2. Repair Parts & Materials Revenue,,12.3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Brass Canvas 45""",BF10245CV,Inventory,25,2. Repair Parts & Materials Revenue,Not reorderable,12.5,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Brass Canvas 40""",BF10240CV,Inventory,25,2. Repair Parts & Materials Revenue,Not reorderable,12.5,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Brass Black 36""",BZ10236BK,Inventory,25,2. Repair Parts & Materials Revenue,,12.3,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Antique Brass Medium Brown 30""",ABZ10230MBR,Inventory,25,2. Repair Parts & Materials Revenue,,11.35,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Antique Brass Black 30""",ABZ10230BK,Inventory,25,2. Repair Parts & Materials Revenue,,11.95,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Metal:#10M 2-way Aluminum Navy 36""",AJ10236NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.37,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#10M 1-way Brass Dark Grey 36""",BZ1036DG,Inventory,10,2. Repair Parts & Materials Revenue,,4.95,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#10M 1-way Brass Dark Brown 30""",ABZ1030DBR,Inventory,20,2. Repair Parts & Materials Revenue,,9.95,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Metal:#10M 1-way Brass Black 36""",BZ1036BK,Inventory,10,2. Repair Parts & Materials Revenue,,5.05,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Metal:#10M 1-way Brass Black 24""",BZ1024BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.6,COGS-Repair Material:Repair Materials,1,Inventory Asset
+Materials:Zipper:Metal:#10M 1-way Antique Brass Black,ABZ1036BK,Inventory,20,2. Repair Parts & Materials Revenue,,10.49,COGS-Repair Material:Repair Materials,0,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#8RC H20 zipper by the foot Matte Black,8RCPUBTF,Inventory,2,2. Repair Parts & Materials Revenue,per meter,2.2,COGS-Repair Material:Repair Materials,195,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#8C H2O zipper by the foot Shiny Black,4999,Inventory,4,2. Repair Parts & Materials Revenue,,2.07,COGS-Repair Material:Repair Materials,13.5,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#8C H2O zipper by the foot Matte Black,4974,Inventory,6,2. Repair Parts & Materials Revenue,by the foot,2.41,COGS-Repair Material:Repair Materials,39,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#8C 1-way Black H2O 36""",NZ8WR36BK,Inventory,20,2. Repair Parts & Materials Revenue,,9.99,COGS-Repair Material:Repair Materials,15,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#5C H2O zipper by the foot Shiny Black,2326,Inventory,4,2. Repair Parts & Materials Revenue,,1.73,COGS-Repair Material:Repair Materials,-15.5,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#5C H2O zipper by the foot Matte Black,5COILBLKM,Inventory,6,2. Repair Parts & Materials Revenue,per foot,2.8,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Navy 30"" H2O",NF5WR230NV,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Light Grey 36"" H2O",NF5WR236LG,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Light Grey 32"" H2O",NF5WR232LG,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 51"" H2O",NF5WR251BK,Inventory,20,2. Repair Parts & Materials Revenue,Missing top Pull,10,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 45"" H2O",NF5WR245BK,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 40"" H2O",NF5WR240BK,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,-3,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 34"" H2O",NF5WR234BK,Inventory,20,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 30"" H2O",NF5WR230BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 2-way Black 28"" H2O",NF5WR28BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,13,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way White 30"" H2O",NF5WR30WH,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Red 36"" H2O",NZ5WR36RE,Inventory,15,2. Repair Parts & Materials Revenue,,7.8,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Red 30"" H2O",NZ5WR30RE,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,-2,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Navy 30"" H2O",NF5WR30NV,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,-3,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Black 36"" H2O",NZ5WR36BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.8,COGS-Repair Material:Repair Materials,18,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Black 30"" H2O",NZ5WR30BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.2,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:Waterproof:#5C 1-way Army Green 36"" H2O",NZ5WR36AG,Inventory,15,2. Repair Parts & Materials Revenue,,7.8,COGS-Repair Material:Repair Materials,6,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#3C H2O zipper by the foot Shiny Black,3COILUBLKSH,Inventory,4,2. Repair Parts & Materials Revenue,per foot,2.18,COGS-Repair Material:Repair Materials,18,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#10RC H20 by the foot Matte Black,10RCPUBTF,Inventory,2,2. Repair Parts & Materials Revenue,per meter,3.08,COGS-Repair Material:Repair Materials,100,Inventory Asset
+Materials:Zipper:Coil:Waterproof:#10C H2O zipper by the foot Shiny Black,10WRBTF,Inventory,7,2. Repair Parts & Materials Revenue,per foot,3.5,COGS-Repair Material:Repair Materials,28,Inventory Asset
+"Materials:Zipper:Coil:DO NOT USE - YKK #8C 2-way Black 110""",DO NOT USE - NZ82110BK,Inventory,15,2. Repair Parts & Materials Revenue,,6.02,COGS-Repair Material:Repair Materials,30,Inventory Asset
+"Materials:Zipper:Coil:DO NOT USE - YKK #5C 2-way Black 110""",DO NOT USE - NZ52110BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.96,COGS-Repair Material:Repair Materials,30,Inventory Asset
+Materials:Zipper:Coil:#8RC zipper by the foot,8RCBTF,Inventory,1,2. Repair Parts & Materials Revenue,per meter,0.5,COGS-Repair Material:Repair Materials,-438,Inventory Asset
+"Materials:Zipper:Coil:#8C 2-way Navy 36""",NZ8236NV,Inventory,15,2. Repair Parts & Materials Revenue,,7.1,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#8C 2-way Dark Brown 36""",NZ8236DBR,Inventory,15,2. Repair Parts & Materials Revenue,,7.1,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#8C 2-way Black 36""",NZ8236BK,Inventory,15,2. Repair Parts & Materials Revenue,,7.1,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#8C 2-way Black 110""",ZB8C110/2,Inventory,40,2. Repair Parts & Materials Revenue,,18.5,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#8C 2-way Black 100""",2234,Inventory,25,2. Repair Parts & Materials Revenue,,11.95,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Royal Blue 36""",NZ836RO,Inventory,10,2. Repair Parts & Materials Revenue,,4.95,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Red 36""",NZ836RE,Inventory,10,2. Repair Parts & Materials Revenue,,10,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Orange 36""",NZ836OR,Inventory,10,2. Repair Parts & Materials Revenue,,4.95,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Navy 36""",NZ836NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.78,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Medium Grey 36""",NZ836MG,Inventory,10,2. Repair Parts & Materials Revenue,,4.24,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Dark Grey 36""",NZ836DG,Inventory,10,2. Repair Parts & Materials Revenue,,4.24,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Dark Brown 36""",NZ836DBR,Inventory,10,2. Repair Parts & Materials Revenue,,4.24,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Black 36""",NZ836BK,Inventory,10,2. Repair Parts & Materials Revenue,,5.95,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Black 30""",NZ830BK,Inventory,15,2. Repair Parts & Materials Revenue,,6.65,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#8C 1-way Army Green 36""",NZ836AG,Inventory,10,2. Repair Parts & Materials Revenue,,5.45,COGS-Repair Material:Repair Materials,3,Inventory Asset
+Materials:Zipper:Coil:#5RC zipper by the foot,5RCBTF,Inventory,1,2. Repair Parts & Materials Revenue,per meter,0.34,COGS-Repair Material:Repair Materials,112,Inventory Asset
+Materials:Zipper:Coil:#5C zipper by the foot Black,5COILBLK6,Inventory,1,2. Repair Parts & Materials Revenue,per foot,0.33,COGS-Repair Material:Repair Materials,-14.18,Inventory Asset
+"Materials:Zipper:Coil:#5C non-separating zipper Navy 10""",NZ510NSNV,Inventory,3,2. Repair Parts & Materials Revenue,pant/skirt/dress/handbag,0.65,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way White 36""",NZ5236WH,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way White 30""",NZ5230WH,Inventory,10,2. Repair Parts & Materials Revenue,,3.6,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Red 36""",NZ5236RE,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Navy 36""",NZ5236NV,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Graphite 36""",NZ5236GR,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Dark Grey 36""",NZ5236DG,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Dark Brown 36""",NZ5236DBR,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Black 69""",NZ5269BK,Inventory,25,2. Repair Parts & Materials Revenue,,11.95,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Black 40""",1299,Inventory,10,2. Repair Parts & Materials Revenue,,5.25,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Black 36""",NZ5236BK,Inventory,10,2. Repair Parts & Materials Revenue,,4.2,COGS-Repair Material:Repair Materials,19,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Black 30""",NZ5230BK,Inventory,10,2. Repair Parts & Materials Revenue,,3.6,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Black 110""",ZB5C110/2,Inventory,40,2. Repair Parts & Materials Revenue,,17.5,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 2-way Beige 36""",NZ536BE,Inventory,10,2. Repair Parts & Materials Revenue,,3.69,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Yellow 36""",NZ536YE,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Yellow 30""",NZ530YE,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Wine 36""",NZ536WI,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Wine 30""",NZ530WI,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Wine 24""",NZ524WI,Inventory,5,2. Repair Parts & Materials Revenue,,1.19,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way White 36""",NZ536WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way White 30""",NZ530WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Violet 36""",NZ536029,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Teal 36""",NZ536840,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Teal 30""",130,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Spring Green 36""",NZ536536,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Spring Green 30""",MP530SGN,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Slate Blue 30""",129,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Sapphire 30""",NF530SA,Inventory,5,2. Repair Parts & Materials Revenue,Discontinued color,1.45,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Salmon 36""",NZ536813,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Rust 36""",NZ536RU,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Rust 30""",NZ530RU,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Royal Blue 36""",NZ536RO,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Royal Blue 30""",NZ530RO,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Red 36""",NZ536RE,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Red 30""",NZ530RE,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Purple 36""",NZ536PU,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Purple 30""",NZ530PU,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Pink 36""",NZ536PK,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Pewter 36""",NZ536326,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Petunia 36""",NZ536341,Inventory,5,2. Repair Parts & Materials Revenue,,1.39,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Peach 36""",NZ536521,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Orange 36""",NZ536OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Orange 30""",NZ530OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Orange 20""",NZ520OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.14,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Navy 36""",NZ536NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Navy 30""",NZ530NV,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Natural 36""",NZ536NA,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Natural 30""",NZ530NA,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Midnight 36""",NZ536058,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Medium Grey 36""",NZ536MG,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Medium Brown 36""",NZ536MBR,Inventory,5,2. Repair Parts & Materials Revenue,,2.09,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Medium Brown 24""",NZ524MBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Medium Blue 30""",NZ530MB,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Lilac 36""",NZ536Y0997,Inventory,5,2. Repair Parts & Materials Revenue,,1.39,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Light Grey 36""",NZ536LG,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Light Grey 30""",124,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Light Green 36""",NZ536LGN,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Light Brown 36""",NZ536LBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.39,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Light Blue 36""",NZ536LB,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Lavender 30""",NZ530LA,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Khaki 36""",NZ536KH,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Kelly Green 30""",122,Inventory,5,2. Repair Parts & Materials Revenue,Most likely discontinued color,1.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Indigo 36""",NZ536918,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Hot Pink 36""",NZ536516,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Green 36""",NZ536GN,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Green 30""",NZ530GN,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Graphite 36""",NZ536GR,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Graphite 30""",NZ530GR,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Grape 36""",NZ536867,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Gold 36""",NZ536087,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Global 30""",3730,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Gabardine 36""",NZ536810,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Fuchsia 30""",118,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Fire Red 36""",NZ536820,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Eggplant 36""",NZ536Z122,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dusty Rose 36""",NZ536274,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Deep Red 36""",NZ536520,Inventory,5,2. Repair Parts & Materials Revenue,,1.39,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Deep Fuchsia 36""",NZ536Y0997 DUPLICATE,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Olive 30""",116,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Mushroom 30""",119,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Grey 36""",NZ536DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Grey 30""",NZ530DG,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,-1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Burgundy 30""",115,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Dark Brown 36""",NZ536DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Cream 36""",NZ536125,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Cranberry 36""",NZ536021,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Clover 36""",NZ536528,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Chocolate 36""",NZ536568,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Charcoal RainShed 30""",113,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Charcoal 36""",NZ536916,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Charcoal 30""",NZ530916,Inventory,5,2. Repair Parts & Materials Revenue,,1.29,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Camel 36""",NZ536CA,Inventory,5,2. Repair Parts & Materials Revenue,,1.34,COGS-Repair Material:Repair Materials,8,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Buttercup 36""",NZ536089,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Brown 30""",4461,Inventory,5,2. Repair Parts & Materials Revenue,,2.45,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Bridal Ivory 36""",NZ536IV,Inventory,5,2. Repair Parts & Materials Revenue,,1.79,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Blue Frost 36""",NZ536544,Inventory,5,2. Repair Parts & Materials Revenue,,1.39,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-Way Black 48""",NZ548BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.89,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Black 36""",NZ536BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,27,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Black 30""",NZ530BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,-2,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Army Green 36""",NZ536AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.65,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Army Green 30""",NZ530AG,Inventory,5,2. Repair Parts & Materials Revenue,,1.45,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#5C 1-way Aqua 36""",NZ536548,Inventory,5,2. Repair Parts & Materials Revenue,,1.59,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#5 non-separating zipper Beige 10""",NZ510NSBE,Inventory,3,2. Repair Parts & Materials Revenue,pant/skirt/dress/handbag,0.65,COGS-Repair Material:Repair Materials,8,Inventory Asset
+Materials:Zipper:Coil:#4.5C zipper by the foot Black,4.5COILBLK,Inventory,1,2. Repair Parts & Materials Revenue,per foot,0.27,COGS-Repair Material:Repair Materials,34,Inventory Asset
+"Materials:Zipper:Coil:#4.5C 1-way River Blue 10""",NZP4510555,Inventory,5,2. Repair Parts & Materials Revenue,,0.77,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#4.5C 1-way Ivory 24""",NZ4524IV,Inventory,5,2. Repair Parts & Materials Revenue,,1.16,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#4.5C 1-way Black 23""",3712,Inventory,4,2. Repair Parts & Materials Revenue,,2,COGS-Repair Material:Repair Materials,3,Inventory Asset
+Materials:Zipper:Coil:#3C zipper by the foot Black,3COILBLK5,Inventory,1,2. Repair Parts & Materials Revenue,per foot,0.27,COGS-Repair Material:Repair Materials,41,Inventory Asset
+"Materials:Zipper:Coil:#3C non-separating zipper Khaki 10""",NZ2510KH,Inventory,3,2. Repair Parts & Materials Revenue,pant/skirt/dress/handbag,0.32,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Materials:Zipper:Coil:#3C non-separating zipper Apple Green 11""",NZ2511537,Inventory,5,2. Repair Parts & Materials Revenue,,0.34,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Yellow 36""",NZ336YE,Inventory,5,2. Repair Parts & Materials Revenue,,2.29,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way White 30""",NZ330WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.93,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way White 24""",NZ324WH,Inventory,5,2. Repair Parts & Materials Revenue,,1.41,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Teal 11""",NZ2511840,Inventory,5,2. Repair Parts & Materials Revenue,,0.4,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Spring Green 18""",NZ2518536,Inventory,5,2. Repair Parts & Materials Revenue,,0.42,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way River Blue 10""",NZ2510555,Inventory,5,2. Repair Parts & Materials Revenue,,0.32,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Red 36""",NZ336RE,Inventory,5,2. Repair Parts & Materials Revenue,,2.29,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Pewter 24""",NF324PW,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Orange 24""",NZ324OR,Inventory,5,2. Repair Parts & Materials Revenue,,1.41,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Navy 36""",NZ336NV,Inventory,5,2. Repair Parts & Materials Revenue,,2.29,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Medium Brown 11""",NZ311MBR,Inventory,5,2. Repair Parts & Materials Revenue,,0.32,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Graphite 24""",NZ324GR,Inventory,5,2. Repair Parts & Materials Revenue,,1.41,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Dark Grey 11""",NZ2511DG,Inventory,5,2. Repair Parts & Materials Revenue,,0.32,COGS-Repair Material:Repair Materials,4,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Dark Brown 24""",NZ324DBR,Inventory,5,2. Repair Parts & Materials Revenue,,1.41,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Cranberry 24""",NZ324021,Inventory,5,2. Repair Parts & Materials Revenue,,1.5,COGS-Repair Material:Repair Materials,0,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Camel 11""",NZ2511CA,Inventory,5,2. Repair Parts & Materials Revenue,,0.32,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Black 36""",NZ336BK,Inventory,5,2. Repair Parts & Materials Revenue,,2.29,COGS-Repair Material:Repair Materials,-3,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Black 30""",NZ330BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.93,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Black 11""",NZ2511BK,Inventory,5,2. Repair Parts & Materials Revenue,,1.32,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Materials:Zipper:Coil:#3C 1-way Beige 24""",NZ324BE,Inventory,5,2. Repair Parts & Materials Revenue,,1.41,COGS-Repair Material:Repair Materials,1,Inventory Asset
+Materials:Zipper:Coil:#10RC by the foot Black,10RCBTF,Inventory,1,2. Repair Parts & Materials Revenue,by the meter,0.83,COGS-Repair Material:Repair Materials,185,Inventory Asset
+Materials:Zipper:Coil:#10C zipper by the foot Black,10YKKBTF,Inventory,2,2. Repair Parts & Materials Revenue,by the foot,1,COGS-Repair Material:Repair Materials,-230,Inventory Asset
+"Materials:Zipper:Coil:#10C 2-way Black 71""",NF1071BK,Inventory,25,2. Repair Parts & Materials Revenue,,11.95,COGS-Repair Material:Repair Materials,-2,Inventory Asset
+"Materials:Zipper:Coil:#10C 2-way Black 110""",ZB10C110/2,Inventory,40,2. Repair Parts & Materials Revenue,,19.5,COGS-Repair Material:Repair Materials,-2,Inventory Asset
+"Materials:Zipper:Coil:#10C 1-way Black 9"" Giant Loop",GL109BK,Inventory,10,2. Repair Parts & Materials Revenue,,4,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Materials:Zipper:Coil:#10C 1-way Black 71""",4565,Inventory,25,2. Repair Parts & Materials Revenue,,12,COGS-Repair Material:Repair Materials,0,Inventory Asset
+Materials:Special Order,SPORD,Inventory,0,2. Repair Parts & Materials Revenue,,0,COGS-Repair Material:Repair Materials,-15,Inventory Asset
+"Materials:Hardware:5/8"" Buckle Black Zinc Alloy",C-2170-BLK,Inventory,1,2. Repair Parts & Materials Revenue,,0.51,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Mako Tri-Glide (1"") Nexus",105-2025,Inventory,0.15,2. Repair Parts & Materials Revenue,,0.07,COGS-Repair Material:Repair Materials,2,Inventory Asset
+"Low Profile Tri-Glide (3/4"") Nexus",105-2075,Inventory,0.15,2. Repair Parts & Materials Revenue,,0.07,COGS-Repair Material:Repair Materials,15,Inventory Asset
+"Low Profile Tri-Glide (1"") Nexus",105-2100,Inventory,0.15,2. Repair Parts & Materials Revenue,,0.07,COGS-Repair Material:Repair Materials,1,Inventory Asset
+"Low Profile Center Release 3/8"" (3/8"") Nexus",102-0038,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,29,Inventory Asset
+"Low Profile Center Release (3/4"") Nexus",102-3073,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,11,Inventory Asset
+"Looploc (2"") Nexus",111-0200,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.06,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Looploc (1"") Nexus",111-0100,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.06,COGS-Repair Material:Repair Materials,7,Inventory Asset
+"Looploc (1"") Hi-Tex",BN111-0100-5614,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.06,COGS-Repair Material:Repair Materials,31,Inventory Asset
+"Looploc (1 1/2"") Nexus",111-0150,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.06,COGS-Repair Material:Repair Materials,5,Inventory Asset
+"Ladderloc (1 1/2"") Unknown Source",UNKNOWN 4,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,3,Inventory Asset
+"High-Release Curved Tension Lock Buckle (3/4"") Duraflex",5319,Inventory,1,2. Repair Parts & Materials Revenue,Acetal,,COGS-Repair Material:Repair Materials,18,Inventory Asset
+Gore Tex Fabric Repair Kit,UNKNOWN 5,Inventory,8,3. Product Sales Revenue,Discontinued Product,7.95,COGS-Repair Material:Product Cost,4,Inventory Asset
+Gear Aid:Durable Waterproofing Spray,36221-RVX,Inventory,15,3. Product Sales Revenue,,8,COGS-Repair Material:Product Cost,0,Inventory Asset
+Gear Aid:Down Cleaner,36287-RVX,Inventory,12,3. Product Sales Revenue,,6,COGS-Repair Material:Product Cost,5,Inventory Asset
+Eclipse Cordloc (OS) Hi-Tex,BN350-0000-56SH,Inventory,0.2,2. Repair Parts & Materials Revenue,,0.1,COGS-Repair Material:Repair Materials,19,Inventory Asset
+"D-Ring (1"") Hi-Tex",BN110-0100-6023,Inventory,0.15,2. Repair Parts & Materials Revenue,,0.07,COGS-Repair Material:Repair Materials,7,Inventory Asset
+Cordura Fabric Patch Realtree,N/A,Inventory,7,3. Product Sales Revenue,Discontinued Product,6.95,COGS-Repair Material:Product Cost,4,Inventory Asset
+Cord End Snap  (OS) Hi-Tex,BN743-0000-2099,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.04,COGS-Repair Material:Repair Materials,9,Inventory Asset
+Cord End (OS) Hi-Tex,BN743-0000-2099 DUPLICATE,Inventory,0.1,2. Repair Parts & Materials Revenue,,0.04,COGS-Repair Material:Repair Materials,9,Inventory Asset
+"Contoured Superloc (1"") Nexus",104-2200,Inventory,1,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,17,Inventory Asset
+"Contoured Side-Release Buckle (1"") Nexus",128-1250,Inventory,,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,8,Inventory Asset
+Common Loop (20mm) Duraflex,5217,Inventory,,2. Repair Parts & Materials Revenue,Acetal,,COGS-Repair Material:Repair Materials,12,Inventory Asset
+"Cam Buckle (3/4"") Hi-Tex",BN100-320-5614,Inventory,0.5,2. Repair Parts & Materials Revenue,,0.27,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Cam Buckle (1"") Nexus",100-0325,Inventory,1,2. Repair Parts & Materials Revenue,,0.47,COGS-Repair Material:Repair Materials,10,Inventory Asset
+"Cam Buckle (1"") Melo Touch",CA CM001,Inventory,1,2. Repair Parts & Materials Revenue,Metal,0.47,COGS-Repair Material:Repair Materials,6,Inventory Asset
+"Cam Buckle (1"") Hi-Tex",BN100-325-5614,Inventory,1,2. Repair Parts & Materials Revenue,,0.47,COGS-Repair Material:Repair Materials,5,Inventory Asset
+Bug Mesh Patch Kit,10665,Inventory,6,3. Product Sales Revenue,,5.95,COGS-Repair Material:Product Cost,2,Inventory Asset
+"Airloc Dual Adjust Buckle Latch (1"") Nexus",525-1100 DUPLICATE,Inventory,1,2. Repair Parts & Materials Revenue,,0,COGS-Repair Material:Repair Materials,50,Inventory Asset
+"Airloc Dual Adjust Buckle Body (1"") Nexus",525-2100,Inventory,1,2. Repair Parts & Materials Revenue,,,COGS-Repair Material:Repair Materials,50,Inventory Asset

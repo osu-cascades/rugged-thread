@@ -93,15 +93,15 @@ Complication.create!(standard_complication: standard_complication, repair: repai
 
 SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 50, repair: repair)
 
-standard_inventory_item = StandardInventoryItem.create!(name: "World Side Release Dual Adjust Buckle Latch (2\") Nexus",
-  sku: "550-1100", price: 1)
-StandardInventoryItem.create!(name: "World Side Release Dual Adjust Buckle Body (2\") Nexus",
-  sku: "550-0100", price: 1)
-StandardInventoryItem.create!(name: "World Side Release Buckle Latch (2\") Nexus",
-  sku: "540-1100", price: 1)
-StandardInventoryItem.create!(name: "World Side Release Buckle Latch (1\") Nexus",
-  sku: "525-1100", price: 1)
-StandardInventoryItem.create!(name: "World Side Release Buckle Body (2\") Nexus",
-  sku: "540-0000", price: 1)
+standard_inventory_item = StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Latch (2\") Nexus",
+  sku: "550-1100 SEEDED", price: 1)
+StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Body (2\") Nexus",
+  sku: "550-0100 SEEDED", price: 1)
+StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (2\") Nexus",
+  sku: "540-1100 SEEDED", price: 1)
+StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (1\") Nexus",
+  sku: "525-1100 SEEDED", price: 1)
+StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Body (2\") Nexus",
+  sku: "540-0000 SEEDED", price: 1)
 
 standard_inventory_item.inventory_items.create!(repair: repair, price: 1)
