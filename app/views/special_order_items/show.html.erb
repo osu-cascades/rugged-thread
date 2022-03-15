@@ -23,4 +23,12 @@
   <dd class="col-sm-9">
     <%= number_to_currency(@special_order_item.price) %>
   </dd>
+  <dt class="col-sm-3">Ordering fee</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@special_order_item.ordering_fee_price) %>
+  </dd>
+  <dt class="col-sm-3">Incoming Freight Fee</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@special_order_item.freight_fee_price) %>
+  </dd>
 </dl>

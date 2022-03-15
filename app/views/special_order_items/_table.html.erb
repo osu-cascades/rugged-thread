@@ -4,6 +4,9 @@
       <th scope="col">id</th>
       <th scope="col">Name</th>
       <th scope="col" class="text-end">Price</th>
+      <th scope="col" class="text-end">Ordering fee</th>
+      <th scope="col" class="text-end">Freight fee</th>
+      <th scope="col" class="text-end">Total price</th>
       <th></th>
     </tr>
   </thead>
@@ -13,6 +16,9 @@
         <th scope="row"><%= special_order_item.id %></th>
         <td><%= special_order_item %></td>
         <td class="text-end"><%= number_to_currency(special_order_item.price) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.ordering_fee_price) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.freight_fee_price) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.total_price) %></td>
         <td class="text-end">
           <%= link_to 'Details', special_order_item_path(special_order_item), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

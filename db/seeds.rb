@@ -91,7 +91,8 @@ standard_complication = standard_repair.standard_complications.create!(
   name: "< 37-48\" zipper length", price: 10)
 Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
 
-SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 50, repair: repair)
+SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 50,
+  ordering_fee_price: 10, freight_fee_price: 15, repair: repair)
 
 standard_inventory_item = StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Latch (2\") Nexus",
   sku: "550-1100 SEEDED", price: 1)

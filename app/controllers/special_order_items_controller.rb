@@ -1,4 +1,5 @@
 class SpecialOrderItemsController < ApplicationController
+
   def index
     @special_order_items = SpecialOrderItem.includes(:repair).all
   end
@@ -67,6 +68,7 @@ class SpecialOrderItemsController < ApplicationController
   private
 
     def special_order_item_params
-      params.require(:special_order_item).permit(:repair_id, :name, :price)
+      params.require(:special_order_item).permit(:repair_id, :name, :price, :ordering_fee_price, :freight_fee_price)
     end
+
 end

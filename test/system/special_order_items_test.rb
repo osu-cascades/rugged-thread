@@ -24,7 +24,9 @@ class SpecialOrderItemsTest < ApplicationSystemTestCase
   test "creating a special_order_item for an repair" do
     visit repair_path(repairs(:one))
     fill_in "Name", with: 'New Fake Name'
-    fill_in "special_order_item_price", with: special_order_items(:one).price
+    fill_in "special_order_item_price", with: 1
+    fill_in "special_order_item_ordering_fee_price", with: 2
+    fill_in "special_order_item_freight_fee_price", with: 3
     click_on "Add Special order item"
     assert_text "Special Order Item was successfully created"
   end

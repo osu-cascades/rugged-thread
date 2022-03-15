@@ -11,13 +11,21 @@
     </div>
   <% end %>
   <div class="row mb-3 align-items-end">
-    <div class="col">
+    <div class="col-5">
       <%= form.label :name, class: 'form-label' %>
       <%= form.text_field :name, class: 'form-control'%>
     </div>
     <div class="col-1">
       <%= form.label :price, class: 'form-label' %>
       <%= form.number_field :price, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :ordering_fee_price, 'Ordering fee', class: 'form-label' %>
+      <%= form.number_field :ordering_fee_price, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :freight_fee_price, 'Freight fee', class: 'form-label' %>
+      <%= form.number_field :freight_fee_price, class: 'form-control'%>
     </div>
     <div class="col">
       <div class="actions">
