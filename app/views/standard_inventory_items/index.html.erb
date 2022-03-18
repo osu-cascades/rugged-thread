@@ -7,8 +7,10 @@
   </div>
 </div>
 
-<%== pagy_nav(@pagy) %>
+<%= render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
 
 <%= render 'table', standard_inventory_items: @standard_inventory_items %>
 
-<%== pagy_nav(@pagy) %>
+<div class="mt-5">
+  <%= render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
+</div>
