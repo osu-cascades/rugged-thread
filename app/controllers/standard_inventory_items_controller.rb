@@ -1,8 +1,10 @@
 class StandardInventoryItemsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_standard_inventory_item, only: %i[ show edit update destroy ]
 
   def index
-    @standard_inventory_items = StandardInventoryItem.all
+    @pagy, @standard_inventory_items = pagy(StandardInventoryItem.all)
   end
 
   def show
