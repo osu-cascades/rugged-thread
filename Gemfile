@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.0"
+ruby "3.1.1"
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
