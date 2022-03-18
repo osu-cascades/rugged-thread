@@ -12,9 +12,16 @@
 
 ### System Dependencies
 
-* [Devise](https://rubygems.org/gems/devise) - Authentication
-* [Pundit](https://rubygems.org/gems/pundit) - Authorization
+Beyond the Rails defaults, the application uses the following gems.
+
 * [ActsAsList](https://rubygems.org/gems/acts_as_list) - Numbering Items, Repairs, etc.
+* [Airbrake](https://rubygems.org/gems/airbrake) - Exception notifications in production
+* [Bootstrap](https://rubygems.org/gems/bootstrap) - Bootstrap 5 styles
+* [Devise](https://rubygems.org/gems/devise) - Authentication
+* [Kaminari](https://rubygems.org/gems/kaminari) - Pagination
+* [pg](https://rubygems.org/gems/pg) - Postgres database driver
+* [Phony](https://rubygems.org/gems/phony_rails) - Phone number validation and formatting
+* [Pundit](https://rubygems.org/gems/pundit) - Authorization
 
 ### Configuration
 
