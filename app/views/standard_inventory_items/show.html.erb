@@ -1,6 +1,6 @@
 <div class="row mb-5">
-  <div class="col">
-    <h1>Standard Inventory Item Information</h1>
+  <div class="col-8">
+    <h1><%= @standard_inventory_item.name %></h1>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo All Inventory Items'.html_safe, standard_inventory_items_path, class: 'btn btn-outline-primary' %>
