@@ -18,7 +18,7 @@ Beyond the Rails defaults, the application uses the following gems.
 * [Airbrake](https://rubygems.org/gems/airbrake) - Exception notifications in production
 * [Bootstrap](https://rubygems.org/gems/bootstrap) - Bootstrap 5 styles
 * [Devise](https://rubygems.org/gems/devise) - Authentication
-* [Kaminari](https://rubygems.org/gems/kaminari) - Pagination
+* [Pagy](https://rubygems.org/gems/pagy/versions/0.6.0) - Pagination
 * [pg](https://rubygems.org/gems/pg) - Postgres database driver
 * [Phony](https://rubygems.org/gems/phony_rails) - Phone number validation and formatting
 * [Pundit](https://rubygems.org/gems/pundit) - Authorization

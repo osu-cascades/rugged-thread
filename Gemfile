@@ -13,7 +13,7 @@ gem 'devise'
 gem "importmap-rails"
 # gem "image_processing", "~> 1.2"
 gem "jbuilder"
-gem 'kaminari'
+gem 'pagy'
 gem 'pg'
 gem 'phony_rails'
 gem "puma", "~> 5.0"
