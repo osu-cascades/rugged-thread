@@ -12,27 +12,25 @@
   <% end %>
 
   <div class="row">
-    <div class="col">
-      <div class="mb-3">
-        <%= form.label :name, class: 'form-label' %>
-        <%= form.text_field :name, class: 'form-control'%>
-      </div>
-      <div class="mb-3">
-        <%= form.label :method, class: 'form-label' %>
-        <%= form.text_field :method, class: 'form-control'%>
-      </div>
-      <div class="row">
-        <div class="col">
-          <%= form.label :level, class: 'form-label' %>
-          <%= form.number_field :level, class: 'form-control'%>
-        </div>
-        <div class="col">
-          <%= form.label :price, class: 'form-label' %>
-          <%= form.number_field :price, class: 'form-control'%>
-        </div>
-      </div>
+    <div class="col-8">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'%>
     </div>
-    <div class="col">
+    <div class="col-1">
+      <%= form.label :level, class: 'form-label' %>
+      <%= form.number_field :level, class: 'form-control'%>
+    </div>
+    <div class="col-1">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-5">
+      <%= form.label :method, class: 'form-label' %>
+      <%= form.text_field :method, class: 'form-control'%>
+    </div>
+    <div class="col-5">
       <div class="mb-3">
         <%= form.label :description, class: 'form-label' %>
         <%= form.text_area :description, class: 'form-control' %>
