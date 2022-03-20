@@ -16,7 +16,6 @@
   <% if repair.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(repair.errors.count, "error") %> prohibited this repair from being saved:</h2>
-
       <ul>
         <% repair.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -24,8 +23,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="row mb-3 align-items-end">
-    <div class="col">
+  <div class="row align-items-end">
+    <div class="col-8">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
       <% if form.object.errors.include?(:standard_repair) %>
         <div class='field_with_errors'>
@@ -37,21 +36,21 @@
     <% end %>
     <!-- /hack -->
     </div>
-    <div class="col-2">
-      <%= form.label :price, class: 'form-label' %>
-      <%= form.number_field :price, class: 'form-control'%>
-    </div>
-    <div class="col-2">
+    <div class="col-1">
       <%= form.label :level, class: 'form-label' %>
       <%= form.number_field :level, class: 'form-control'%>
     </div>
-    <div class="col">
+    <div class="col-1">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-control'%>
+    </div>
+    <div class="col-2 text-end">
       <div class="actions">
         <%= form.submit class: 'form-control btn btn-success' %>
       </div>
     </div>
   </div>
-  <div class="row mb-3">
+  <div class="row mt-3">
     <div class="col-8">
       <%= form.label :notes, class: 'form-label' %>
       <%= form.text_area :notes, class: 'form-control'%>
