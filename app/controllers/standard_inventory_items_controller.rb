@@ -5,6 +5,8 @@ class StandardInventoryItemsController < ApplicationController
 
   def index
     @pagy, @standard_inventory_items = pagy(StandardInventoryItem.all)
+  rescue Pagy::OverflowError
+    redirect_to standard_inventory_items_url
   end
 
   def show

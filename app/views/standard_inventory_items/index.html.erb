@@ -7,10 +7,6 @@
   </div>
 </div>
 
-<%= render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
-
 <%= render 'table', standard_inventory_items: @standard_inventory_items %>
 
-<div class="mt-5">
-  <%= render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
-</div>
+<%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev), standard_inventory_items_path(page: @pagy.next)) %>

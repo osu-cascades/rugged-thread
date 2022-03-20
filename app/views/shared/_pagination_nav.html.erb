@@ -1,0 +1,12 @@
+<div class="row pager mt-5">
+  <div class="col">
+    <% if pagy.prev %>
+      <%= link_to "&lsaquo; Previous page".html_safe, prev_path, class: "btn btn-outline-secondary", "aria-label": "previous"  %>
+    <% end %>
+  </div>
+  <div class="col text-end">
+    <% if pagy.next %>
+      <%= link_to "Next page &rsaquo;".html_safe, next_path, class: "btn btn-outline-secondary", "aria-label": "next" %>
+    <% end %>
+  </div>
+</div>
