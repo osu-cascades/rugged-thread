@@ -16,13 +16,14 @@
   </div>
 </div>
 
-<h2 class="display-1">
+<h2 class="display-5">
   <%= link_to @item.work_order.customer, @item.work_order.customer %>
   <span class="fs-6 badge fw-normal align-top">
     <%= link_to @item.work_order.customer.customer_type, @item.work_order.customer.customer_type %>
   </span>
 </h2>
-<h3 class="display-5">
+
+<h3 class="fw-normal">
   <%= link_to @item.brand, @item.brand %>
   <%= link_to @item.item_type, @item.item_type %>
 </h3>
@@ -57,25 +58,21 @@
     </p>
   </div>
 
-  <div class="col">
-    <p>
-      <strong>Estimate:</strong>
-      <%= number_to_currency(@item.price_estimate) %>
-    </p>
-
-    <p>
+  <div class="col text-end">
+    <h2 class="display-2"><%= number_to_currency(@item.price_estimate) %></h2>
+    <p class="my-0">
       <strong>Labor:</strong>
       <%= number_to_currency(@item.estimated_price_of_labor) %>
     </p>
-    <p>
+    <p class="my-0">
       <strong>Fees:</strong>
       <%= number_to_currency(@item.price_of_fees) %>
     </p>
-    <p>
+    <p class="my-0">
       <strong>Discounts ($):</strong>
       <%= number_to_currency(@item.price_of_discounts) %>
     </p>
-    <p>
+    <p class="my-0">
       <strong>Discounts (%):</strong>
       <%= number_to_currency(@item.discount_percent_total) %>
     </p>
@@ -89,14 +86,14 @@
   <%= render 'repairs/form', repair: @repair, item: @item, standard_repairs: @standard_repairs %>
 </div>
 
-<h2 class="mt-5">Discounts</h2>
-<%= render 'discounts/table', discounts: @item.discounts %>
-<div class="form-container-wide">
-  <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
-</div>
-
 <h2 class="mt-5">Fees</h2>
 <%= render 'fees/table', fees: @item.fees %>
 <div class="form-container-wide">
   <%= render 'fees/form', fee: @fee, item: @item, standard_fees: @standard_fees %>
+</div>
+
+<h2 class="mt-5">Discounts</h2>
+<%= render 'discounts/table', discounts: @item.discounts %>
+<div class="form-container-wide">
+  <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
 </div>

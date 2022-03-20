@@ -35,9 +35,8 @@
       <%= @work_order.shipping ? '📦' : 'no' %>
     </p>
   </div>
-  <div class="col-3">
-    <p class="mb-0 text-end">Total estimate:</p>
-    <h3 class="fs-1 fw-bolder text-end"><%= number_to_currency(@work_order.price_estimate) %></h3>
+  <div class="col-3 text-end">
+    <h2 class="display-2"><%= number_to_currency(@work_order.price_estimate) %></h3>
   </div>
 </div>
 

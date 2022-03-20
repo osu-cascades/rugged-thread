@@ -6,7 +6,7 @@
         Level <%= @repair.level %>
       </span>
     </h1>
-    For <%= link_to "Item #{@repair.item.position}", @repair.item %> on
+    For <%= link_to "Item #{@repair.item.position}", @repair.item %> (<%= @repair.item.brand %> <%= @repair.item.item_type %>) on
       <%= link_to @repair.item.work_order, @repair.item.work_order %> by <%= link_to @repair.item.work_order.creator, @repair.item.work_order.creator %>.
   </div>
   <div class="col text-end">
@@ -16,18 +16,19 @@
   </div>
 </div>
 
-<h2 class="display-1"><%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %></h2>
-
-<h3 class="fw-normal"><%= link_to @repair.standard_repair, @repair.standard_repair %></h3>
+<h2 class="display-5"><%= link_to @repair.standard_repair, @repair.standard_repair %></h2>
 
 <div class="row">
   <div class="col">
-    <p class="mt-4 mb-0"><strong>Notes:</strong> <%= @repair.notes %></p>
-    <p><strong>Base Repair Price:</strong> <%= number_to_currency(@repair.price) %></p>
+    <h3 class="fw-normal"><%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %></h3>
+
+    <h4>Notes:</h4>
+    <p><%= @repair.notes %></p>
   </div>
   <div class="col text-end">
     <h2 class="display-2"><%= number_to_currency(@repair.total_price) %></h2>
-    Labor: <strong><%= number_to_currency(@repair.price_of_labor) %></strong>
+    <p class="my-0">Total labor: <strong><%= number_to_currency(@repair.price_of_labor) %></strong></p>
+    <p class="my-0">Base repair price: <strong><%= number_to_currency(@repair.price) %></strong></p>
   </div>
 </div>
 
