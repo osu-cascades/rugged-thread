@@ -47,3 +47,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= pagination_nav(@pagy, standard_repairs_path(page: @pagy.prev), standard_repairs_path(page: @pagy.next)) %>

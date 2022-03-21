@@ -8,3 +8,5 @@
 </div>
 
 <%= render 'table', work_orders: @work_orders %>
+
+<%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev), work_orders_path(page: @pagy.next)) %>

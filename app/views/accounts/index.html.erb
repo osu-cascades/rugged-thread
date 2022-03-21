@@ -35,3 +35,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= pagination_nav(@pagy, accounts_path(page: @pagy.prev), accounts_path(page: @pagy.next)) %>

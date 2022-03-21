@@ -1,9 +1,12 @@
 class BrandsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_brand, only: %i[ edit update destroy ]
 
-  # GET /brands or /brands.json
   def index
-    @brands = Brand.all
+    @pagy, @brands = pagy(Brand.all)
+  rescue Pagy::OverflowError
+    redirect_to brands_url
   end
 
   def show

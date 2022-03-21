@@ -1,9 +1,12 @@
 class StandardRepairsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_standard_repair, only: %i[ edit update destroy ]
 
-  # GET /standard_repairs or /standard_repairs.json
   def index
-    @standard_repairs = StandardRepair.all
+    @pagy, @standard_repairs = pagy(StandardRepair.all)
+  rescue Pagy::OverflowError
+    redirect_to standard_repairs_url
   end
 
   def show

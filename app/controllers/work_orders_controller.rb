@@ -1,7 +1,10 @@
  class WorkOrdersController < ApplicationController
+  include Pagy::Backend
 
   def index
-    @work_orders = WorkOrder.all
+    @pagy, @work_orders = pagy(WorkOrder.all)
+  rescue Pagy::OverflowError
+    redirect_to work_orders_url
   end
 
   def show

@@ -27,3 +27,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= pagination_nav(@pagy, brands_path(page: @pagy.prev), brands_path(page: @pagy.next)) %>

@@ -8,3 +8,5 @@
 </div>
 
 <%= render 'table', customers: @customers %>
+
+<%= pagination_nav(@pagy, customers_path(page: @pagy.prev), customers_path(page: @pagy.next)) %>

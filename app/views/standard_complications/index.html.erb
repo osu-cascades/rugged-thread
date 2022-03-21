@@ -8,3 +8,5 @@
 </div>
 
 <%= render 'table', standard_complications: @standard_complications %>
+
+<%= pagination_nav(@pagy, standard_complications_path(page: @pagy.prev), standard_complications_path(page: @pagy.next)) %>

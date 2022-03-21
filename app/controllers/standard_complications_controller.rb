@@ -1,7 +1,10 @@
 class StandardComplicationsController < ApplicationController
+  include Pagy::Backend
 
   def index
-    @standard_complications = StandardComplication.includes(:standard_repair).all
+    @pagy, @standard_complications = pagy(StandardComplication.includes(:standard_repair).all)
+  rescue Pagy::OverflowError
+    redirect_to standard_complications_url
   end
 
   def show

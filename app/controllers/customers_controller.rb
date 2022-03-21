@@ -1,9 +1,12 @@
 class CustomersController < ApplicationController
+  include Pagy::Backend
 
   before_action :set_customer, only: %i[ update destroy ]
 
   def index
-    @customers = Customer.all
+    @pagy, @customers = pagy(Customer.all)
+  rescue Pagy::OverflowError
+    redirect_to customers_url
   end
 
   def show

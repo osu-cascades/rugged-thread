@@ -1,9 +1,12 @@
 class AccountsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_account, only: %i[ show edit update destroy ]
 
-  # GET /accounts or /accounts.json
   def index
-    @accounts = Account.all
+    @pagy, @accounts = pagy(Account.all)
+  rescue Pagy::OverflowError
+    redirect_to accounts_url
   end
 
   # GET /accounts/1 or /accounts/1.json
