@@ -7,6 +7,14 @@
   </div>
 </div>
 
+<%= form_with url: standard_inventory_items_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-8">
+      <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a name or sku and hit [enter]' %>
+    </div>
+  </div>
+<% end %>
+
 <%= render 'table', standard_inventory_items: @standard_inventory_items %>
 
-<%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev), standard_inventory_items_path(page: @pagy.next)) %>
+<%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev, query: params[:query]), standard_inventory_items_path(page: @pagy.next, query: params[:query])) %>

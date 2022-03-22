@@ -11,10 +11,10 @@
     <% standard_inventory_items.each do |standard_inventory_item| %>
       <tr class="<%= dom_class(standard_inventory_item) %>" id="<%= dom_id(standard_inventory_item) %>">
         <td>
-          <%= standard_inventory_item %>
+          <%= highlight(standard_inventory_item.name, params.dig(:query)) %>
         </td>
         <td>
-          <%= standard_inventory_item.sku %>
+          <%= highlight(standard_inventory_item.sku, params.dig(:query)) %>
         </td>
         <td class="text-end">
           <%= number_to_currency(standard_inventory_item.price) %>

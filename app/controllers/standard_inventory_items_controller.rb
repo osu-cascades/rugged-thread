@@ -4,7 +4,7 @@ class StandardInventoryItemsController < ApplicationController
   before_action :set_standard_inventory_item, only: %i[ show edit update destroy ]
 
   def index
-    @pagy, @standard_inventory_items = pagy(StandardInventoryItem.all)
+    @pagy, @standard_inventory_items = pagy(StandardInventoryItem.where('name ILIKE ? OR sku ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
   rescue Pagy::OverflowError
     redirect_to standard_inventory_items_url
   end
