@@ -17,7 +17,7 @@
       <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
         <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>
-        <td><%= link_to_unless(controller.controller_name == 'customers', customer.last_name, customer) %>
+        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.last_name, params[:query]), customer) %>
         <td><%= customer.business_name %></td>
         <td><%= mail_to customer.email_address %></td>
         <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), customer.phone_number.empty? ? "" :  "tel:#{customer.phone_number}" %></td>

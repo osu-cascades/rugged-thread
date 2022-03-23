@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ update destroy ]
 
   def index
-    @pagy, @customers = pagy(Customer.all)
+    @pagy, @customers = pagy(Customer.where('last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc))
   rescue Pagy::OverflowError
     redirect_to customers_url
   end

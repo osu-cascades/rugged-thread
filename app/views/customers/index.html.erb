@@ -7,6 +7,16 @@
   </div>
 </div>
 
-<%= render 'table', customers: @customers %>
+<%= form_with url: customers_path, method: :get, data: { turbo_frame: 'customers' } do |f| %>
+  <div class="row">
+    <div class="col-8">
+      <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a last name and hit [enter]' %>
+    </div>
+  </div>
+<% end %>
 
-<%= pagination_nav(@pagy, customers_path(page: @pagy.prev), customers_path(page: @pagy.next)) %>
+<%= turbo_frame_tag 'customers' do %>
+  <%= render 'table', customers: @customers %>
+
+  <%= pagination_nav(@pagy, customers_path(page: @pagy.prev, query: params[:query]), customers_path(page: @pagy.next, query: params[:query])) %>
+<% end %>
