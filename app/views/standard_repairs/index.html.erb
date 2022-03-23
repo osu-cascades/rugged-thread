@@ -7,45 +7,55 @@
   </div>
 </div>
 
-<table class="table table-hover" id="standard_repairs_table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Method</th>
-      <th scope="col">Description</th>
-      <th scope="col"># of Complications</th>
-      <th scope="col">Level</th>
-      <th scope="col" class="text-end">Price</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @standard_repairs.each do |standard_repair| %>
-      <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
-        <td>
-          <%= standard_repair %>
-        </td>
-        <td>
-          <%= standard_repair.method %>
-        </td>
-        <td>
-          <%= standard_repair.description %>
-        </td>
-        <td>
-          <%= link_to standard_repair.standard_complications.count, standard_repair %>
-        </td>
-        <td>
-          <%= standard_repair.level %>
-        </td>
-        <td class="text-end">
-          <%= number_to_currency(standard_repair.price) %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_with url: standard_repairs_path, method: :get, data: { turbo_frame: 'standard_repairs' } do |f| %>
+  <div class="row">
+    <div class="col-8">
+      <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a name, method or description and hit [enter]' %>
+    </div>
+  </div>
+<% end %>
 
-<%= pagination_nav(@pagy, standard_repairs_path(page: @pagy.prev), standard_repairs_path(page: @pagy.next)) %>
+<%= turbo_frame_tag 'standard_repairs' do %>
+  <table class="table table-hover" id="standard_repairs_table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Method</th>
+        <th scope="col">Description</th>
+        <th scope="col"># of Complications</th>
+        <th scope="col">Level</th>
+        <th scope="col" class="text-end">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @standard_repairs.each do |standard_repair| %>
+        <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
+          <td>
+            <%= highlight(standard_repair.name, params[:query]) %>
+          </td>
+          <td>
+            <%= highlight(standard_repair.method, params[:query]) %>
+          </td>
+          <td>
+            <%= highlight(standard_repair.description, params[:query]) %>
+          </td>
+          <td>
+            <%= link_to standard_repair.standard_complications.count, standard_repair %>
+          </td>
+          <td>
+            <%= standard_repair.level %>
+          </td>
+          <td class="text-end">
+            <%= number_to_currency(standard_repair.price) %>
+          </td>
+          <td class="text-end">
+            <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= pagination_nav(@pagy, standard_repairs_path(page: @pagy.prev, query: params[:query]), standard_repairs_path(page: @pagy.next, query: params[:query])) %>
+<% end %>

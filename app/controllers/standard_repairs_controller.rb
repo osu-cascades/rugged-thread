@@ -4,7 +4,7 @@ class StandardRepairsController < ApplicationController
   before_action :set_standard_repair, only: %i[ edit update destroy ]
 
   def index
-    @pagy, @standard_repairs = pagy(StandardRepair.all)
+    @pagy, @standard_repairs = pagy(StandardRepair.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
   rescue Pagy::OverflowError
     redirect_to standard_repairs_url
   end
