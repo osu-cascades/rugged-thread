@@ -7,6 +7,16 @@
   </div>
 </div>
 
-<%= render 'table', standard_complications: @standard_complications %>
+<%= form_with url: standard_complications_path, method: :get, data: { turbo_frame: 'standard_complications' } do |f| %>
+  <div class="row">
+    <div class="col-8">
+      <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a complication name or repair name and hit [enter]' %>
+    </div>
+  </div>
+<% end %>
 
-<%= pagination_nav(@pagy, standard_complications_path(page: @pagy.prev), standard_complications_path(page: @pagy.next)) %>
+<%= turbo_frame_tag 'standard_complications' do %>
+  <%= render 'table', standard_complications: @standard_complications %>
+
+  <%= pagination_nav(@pagy, standard_complications_path(page: @pagy.prev, query: params[:query]), standard_complications_path(page: @pagy.next, query: params[:query])) %>
+<% end %>

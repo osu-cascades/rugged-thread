@@ -11,10 +11,10 @@
     <% standard_complications.each do |standard_complication| %>
       <tr class="<%= dom_class(standard_complication) %>" id="<%= dom_id(standard_complication) %>">
         <td>
-          <%= standard_complication %>
+          <%= highlight(standard_complication.name, params[:query]) %>
         </td>
         <td>
-          <%= link_to_unless(controller.controller_name == 'standard_repairs', standard_complication.standard_repair, standard_complication.standard_repair) %>
+          <%= link_to_unless(controller.controller_name == 'standard_repairs', highlight(standard_complication.standard_repair.name, params[:query]), standard_complication.standard_repair) %>
         </td>
         <td class="text-end">
           <%= number_to_currency(standard_complication.price) %>

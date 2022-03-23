@@ -2,7 +2,7 @@ class StandardComplicationsController < ApplicationController
   include Pagy::Backend
 
   def index
-    @pagy, @standard_complications = pagy(StandardComplication.includes(:standard_repair).all)
+    @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
   rescue Pagy::OverflowError
     redirect_to standard_complications_url
   end
