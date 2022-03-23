@@ -7,6 +7,16 @@
   </div>
 </div>
 
-<%= render 'table', work_orders: @work_orders %>
+<%= form_with url: work_orders_path, method: :get, data: { turbo_frame: 'work_orders' } do |f| %>
+  <div class="row">
+    <div class="col-8">
+      <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a work order number or last name and hit [enter]' %>
+    </div>
+  </div>
+<% end %>
 
-<%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev), work_orders_path(page: @pagy.next)) %>
+<%= turbo_frame_tag 'work_orders' do %>
+  <%= render 'table', work_orders: @work_orders %>
+
+  <%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev, query: params[:query]), work_orders_path(page: @pagy.next, query: params[:query])) %>
+<% end %>

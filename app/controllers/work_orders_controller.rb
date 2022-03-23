@@ -2,7 +2,7 @@
   include Pagy::Backend
 
   def index
-    @pagy, @work_orders = pagy(WorkOrder.all)
+    @pagy, @work_orders = pagy(WorkOrder.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
   rescue Pagy::OverflowError
     redirect_to work_orders_url
   end

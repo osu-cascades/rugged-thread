@@ -15,8 +15,8 @@
   <tbody>
     <% work_orders.each do |work_order| %>
       <tr class="<%= dom_class(work_order) %>" id="<%= dom_id(work_order) %>">
-        <th scope="row"><%= work_order.number %></th>
-        <td><%= link_to_unless(controller.controller_name == 'customers', work_order.customer, work_order.customer) %></td>
+        <th scope="row"><%= highlight(work_order.number, params[:query]) %></th>
+        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer) %></td>
         <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
         <td><%= work_order.due_date.to_formatted_s(:long) %></td>
