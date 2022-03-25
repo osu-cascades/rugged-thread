@@ -16,15 +16,15 @@
     <% work_orders.each do |work_order| %>
       <tr class="<%= dom_class(work_order) %>" id="<%= dom_id(work_order) %>">
         <th scope="row"><%= highlight(work_order.number, params[:query]) %></th>
-        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer) %></td>
-        <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type %></td>
+        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer, data: { "turbo-frame": :"_top" }) %></td>
+        <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type, data: { "turbo-frame": :"_top" } %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
         <td><%= work_order.due_date.to_formatted_s(:long) %></td>
-        <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator) %></td>
+        <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator, data: { "turbo-frame": :"_top" }) %></td>
         <td><%= work_order.shipping ? '📦' : '' %></td>
         <td class="text-end"><%= number_to_currency(work_order.price_estimate) %></td>
         <td class="text-end">
-          <%= link_to 'Details', work_order, class: 'btn btn-outline-secondary btn-sm' %>
+          <%= link_to 'Details', work_order, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
         </td>
       </tr>
     <% end %>

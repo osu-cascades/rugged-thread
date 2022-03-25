@@ -20,7 +20,7 @@
           <%= number_to_currency(standard_inventory_item.price) %>
         </td>
         <td class="text-end">
-          <%= link_to 'Details', standard_inventory_item, class: 'btn btn-outline-secondary btn-sm' %>
+          <%= link_to 'Details', standard_inventory_item, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
         </td>
       </tr>
     <% end %>

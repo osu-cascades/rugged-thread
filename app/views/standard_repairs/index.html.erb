@@ -41,7 +41,7 @@
             <%= highlight(standard_repair.description, params[:query]) %>
           </td>
           <td>
-            <%= link_to standard_repair.standard_complications.count, standard_repair %>
+            <%= link_to standard_repair.standard_complications.count, standard_repair, data: { "turbo-frame": :"_top" } %>
           </td>
           <td>
             <%= standard_repair.level %>
@@ -50,7 +50,7 @@
             <%= number_to_currency(standard_repair.price) %>
           </td>
           <td class="text-end">
-            <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm' %>
+            <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
           </td>
         </tr>
       <% end %>
