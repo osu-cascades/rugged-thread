@@ -11,6 +11,23 @@ p.phone {
   margin: 0px;
 }
 
+.items {
+  h3 {
+    font-weight: normal;
+    margin-bottom: 0px;
+  }
+  table td {
+    vertical-align: top;
+    p {
+      margin: 0px;
+    }
+    h4 {
+      font-size: 1em;
+      margin: 0px;
+    }
+  }
+}
+
 .item {
   h2 {
     margin-bottom: 0px;

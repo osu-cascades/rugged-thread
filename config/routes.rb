@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :technicians
   resources :tickets
   resources :work_orders do
+    get 'print', on: :member
     resources :items, only: :create
   end
 end
