@@ -1,0 +1,21 @@
+<head>
+  <title>Rugged Thread</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'print', 'data-turbo-track': 'reload' %>
+</head>
+
+<body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
+  abcdefghijklmnopqrstuvwxyzaabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz
+
+
+<h1 class="customer"><%= @work_order.customer %> (<%= @work_order.customer.customer_type %>)</h1>
+<p class="phone"><%= "#{@work_order.customer.phone_number}".phony_formatted(normalize: :US, format: :national, spaces: '-') %></p>
+
+<%= render 'ticket_items', work_order: @work_order %>
+
+<script>
+  if (window.print) window.print()
+  </script>
+</body>
