@@ -20,7 +20,15 @@ class Item < ApplicationRecord
   default_scope { order('position ASC') }
 
   def price_estimate
-    (estimated_price_of_labor + price_of_fees - price_of_discounts).div((!discount_percent_total.zero? ? discount_percent_total : 1)) 
+    price_of_labor_and_fees - price_total_of_discount
+  end
+
+  def price_total_of_discount 
+    (price_of_labor_and_fees - price_of_discounts) * ((!discount_percent_total.zero? ? discount_percent_total : 1)).to_f/100
+  end
+
+  def price_of_labor_and_fees
+    estimated_price_of_labor + price_of_fees
   end
 
   def level
@@ -40,7 +48,7 @@ class Item < ApplicationRecord
   end
 
   def discount_percent_total
-    (discounts.reduce(0) { |sum, d| sum + (d.percentage_amount ? d.percentage_amount : 0) }).div(10)
+    (discounts.reduce(0) { |sum, d| sum + (d.percentage_amount ? d.percentage_amount : 0) })
   end
 
   def expedite?

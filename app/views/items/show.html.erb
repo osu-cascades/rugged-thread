@@ -69,12 +69,8 @@
       <%= number_to_currency(@item.price_of_fees) %>
     </p>
     <p class="my-0">
-      <strong>Discounts ($):</strong>
-      <%= number_to_currency(@item.price_of_discounts) %>
-    </p>
-    <p class="my-0">
-      <strong>Discounts (%):</strong>
-      <%= number_to_currency(@item.discount_percent_total) %>
+      <strong>Discounts:</strong>
+      <%= number_to_currency(@item.price_total_of_discount) %>
     </p>
 
   </div>
