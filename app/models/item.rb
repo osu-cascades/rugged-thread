@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   def price_total_of_discount 
-    (price_of_labor_and_fees - price_of_discounts) * ((!discount_percent_total.zero? ? discount_percent_total : 1)).to_f/100
+    (price_of_labor_and_fees - price_of_discounts) * ((!discount_percent_total.zero? ? discount_percent_total : 1))/100
   end
 
   def price_of_labor_and_fees
