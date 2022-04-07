@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
     @item.work_order = @work_order
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @work_order, notice: "Item was successfully created." }
+        format.html { redirect_to @item, notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
         @work_order.items.reset
