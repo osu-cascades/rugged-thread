@@ -16,7 +16,7 @@
   };
 </script>
 
-<%= form_with(model: [repair, complication]) do |form| %>
+<%= form_with(model: [repair, complication], data: { turbo_frame: 'complications_table' }) do |form| %>
   <% if complication.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(complication.errors.count, "error") %> prohibited this complication from being saved:</h2>

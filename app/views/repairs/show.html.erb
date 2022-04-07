@@ -21,7 +21,6 @@
 <div class="row">
   <div class="col">
     <h3 class="fw-normal"><%= link_to @repair.item.brand, @repair.item.brand %> <%= link_to @repair.item.item_type, @repair.item.item_type %></h3>
-
     <h4>Notes:</h4>
     <p><%= @repair.notes %></p>
   </div>
@@ -33,7 +32,9 @@
 </div>
 
 <h2 class="mt-5">Complications</h2>
-<%= render 'complications/table', complications: @repair.complications %>
+<%= turbo_frame_tag 'complications_table' do %>
+  <%= render 'complications/table', complications: @repair.complications %>
+<% end %>
 <div class="form-container-wide">
   <%= render 'complications/form', complication: @complication, repair: @repair, repairs: @repairs, standard_complications: @standard_complications %>
 </div>
