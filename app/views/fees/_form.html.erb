@@ -17,7 +17,7 @@
 
 </script>
 
-<%= form_with(model: [item, fee]) do |form| %>
+<%= form_with(model: [item, fee], data: { turbo_frame: 'fees_table' }) do |form| %>
   <% if fee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fee.errors.count, "error") %> prohibited this fee from being saved:</h2>
