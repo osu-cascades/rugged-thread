@@ -91,7 +91,9 @@
 </div>
 
 <h2 class="mt-5">Discounts</h2>
-<%= render 'discounts/table', discounts: @item.discounts %>
+<%= turbo_frame_tag 'discounts_table' do %>
+  <%= render 'discounts/table', discounts: @item.discounts %>
+<% end %>
 <div class="form-container-wide">
   <%= render 'discounts/form', discount: @discount, item: @item, standard_discounts: @standard_discounts %>
 </div>

@@ -35,7 +35,7 @@
   };
 </script>
 
-<%= form_with(model: [item, discount]) do |form| %>
+<%= form_with(model: [item, discount], data: { turbo_frame: 'discounts_table' }) do |form| %>
   <% if discount.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(discount.errors.count, "error") %> prohibited this discount from being saved:</h2>
