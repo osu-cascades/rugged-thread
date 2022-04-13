@@ -68,6 +68,9 @@ GEM
       tzinfo (~> 2.0)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
+    acts_as_paranoid (0.8.0)
+      activerecord (>= 5.2, < 7.1)
+      activesupport (>= 5.2, < 7.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     airbrake (13.0.0)
@@ -269,6 +272,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  acts_as_paranoid
   airbrake
   bootsnap
   bootstrap (~> 5.1.3)
