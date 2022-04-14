@@ -60,6 +60,7 @@ class ItemsTest < ApplicationSystemTestCase
     select item_types(:one).name, from: :item_item_type_id
     click_on "Add Item"
     assert_text "Item was successfully created"
+    click_on "Back to Work Order"
     within '#items_table' do
       within all('tr').last do
         assert_text '📦'
@@ -150,6 +151,7 @@ class ItemsTest < ApplicationSystemTestCase
     select item_types(:one).name, from: :item_item_type_id
     click_on "Add Item"
     assert_text "Item was successfully created"
+    click_on "Back to Work Order"
     within '#items_table' do
       within all('tr').last do
         assert_text custom_due_date.to_formatted_s(:long)
