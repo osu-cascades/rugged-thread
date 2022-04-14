@@ -29,7 +29,7 @@ class InventoryItemsTest < ApplicationSystemTestCase
 
   test "creating a inventory_item for an repair" do
     visit repair_path(repairs(:one))
-    select standard_inventory_items(:one).name, from: :inventory_item_standard_inventory_item_id
+    select standard_inventory_items(:one).name, :from => "js-select2"
     fill_in "inventory_item_price", with: standard_inventory_items(:one).price
     click_on "Add Inventory item"
     assert_text "Inventory Item was successfully created"
@@ -50,7 +50,7 @@ class InventoryItemsTest < ApplicationSystemTestCase
 
   test "updating an invalid inventory_item redisplays the edit view with errors" do
     visit edit_inventory_item_path(inventory_items(:one))
-    select '', from: :inventory_item_standard_inventory_item_id
+    select '', :from => "js-select2"
     click_on "Update Inventory item"
     assert_text "prohibited this inventory item from being saved"
   end
