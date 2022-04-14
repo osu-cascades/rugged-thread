@@ -1,3 +1,2 @@
-class Paranoiac < ActiveRecord::Base
-  acts_as_paranoid
+class Paranoiac < ApplicationRecord
 end
