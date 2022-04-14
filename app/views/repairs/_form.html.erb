@@ -12,6 +12,15 @@
   };
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#js-select2').select2();
+});
+</script>
+
 <%= form_with(model: [item, repair]) do |form| %>
   <% if repair.errors.any? %>
     <div id="error_explanation">
@@ -30,7 +39,7 @@
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_repair_id, class: 'form-label'%>
-        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateRepairFields();' %>
+        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', id: "js-select2", onchange: 'updateRepairFields();' %>
     <% if form.object.errors.include?(:standard_repair) %>
       </div>
     <% end %>
