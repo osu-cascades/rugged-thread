@@ -21,10 +21,9 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('#js-select2').select2();
+  $('#inventory_item_standard_inventory_item_id').select2();
 });
 </script>
-
 <%= form_with(model: [repair, inventory_item]) do |form| %>
   <% if inventory_item.errors.any? %>
     <div id="error_explanation">
@@ -44,7 +43,7 @@ $(document).ready(function() {
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_inventory_item_id, class: 'form-label'%>
-        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-select', id: "js-select2", onchange: 'updateInventoryItemPrice();' %>
+        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-control', onchange: 'updateInventoryItemPrice();' %>
       <% if form.object.errors.include?(:standard_inventory_item) %>
         </div>
       <% end %>

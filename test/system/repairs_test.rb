@@ -33,7 +33,7 @@ class RepairsTest < ApplicationSystemTestCase
 
   test "creating a repair for an item" do
     visit item_path(items(:one))
-    select standard_repairs(:one).name, :from => "js-select2"
+    select standard_repairs(:one).name, from: :repair_standard_repair_id
     fill_in "Notes", with: "Fake repair notes"
     fill_in "repair_price", with: standard_repairs(:one).price
     fill_in "Level", with: '2'
@@ -56,7 +56,7 @@ class RepairsTest < ApplicationSystemTestCase
 
   test "updating an invalid repair redisplays the edit view with errors" do
     visit edit_repair_path(repairs(:one))
-    select '', :from => "js-select2"
+    select '', from: :repair_standard_repair_id
     click_on "Update Repair"
     assert_text "prohibited this repair from being saved"
   end

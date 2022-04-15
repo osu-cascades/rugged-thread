@@ -17,7 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('#js-select2').select2();
+  $('#repair_standard_repair_id').select2();
 });
 </script>
 
@@ -39,7 +39,7 @@ $(document).ready(function() {
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_repair_id, class: 'form-label'%>
-        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', id: "js-select2", onchange: 'updateRepairFields();' %>
+        <%= form.select :standard_repair_id, standard_repairs.map { |sr| [sr.name, sr.id] }, {include_blank: ''}, class: 'form-select', onchange: 'updateRepairFields();' %>
     <% if form.object.errors.include?(:standard_repair) %>
       </div>
     <% end %>
