@@ -10,6 +10,7 @@ gem 'airbrake'
 gem "bootsnap", require: false
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
+gem 'discard', '~> 1.2'
 gem "importmap-rails"
 # gem "image_processing", "~> 1.2"
 gem "jbuilder"

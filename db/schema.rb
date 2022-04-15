@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_212034) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_15_013137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,7 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_212034) do
     t.string "billing_city"
     t.string "billing_state"
     t.string "billing_zip_code"
+    t.datetime "discarded_at"
     t.index ["customer_type_id"], name: "index_customers_on_customer_type_id"
+    t.index ["discarded_at"], name: "index_customers_on_discarded_at"
   end
 
   create_table "discounts", force: :cascade do |t|

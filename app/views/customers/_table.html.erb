@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% customers.each do |customer| %>
+    <% customers.kept.each do |customer| %>
       <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
         <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>

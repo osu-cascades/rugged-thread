@@ -55,11 +55,11 @@ class CustomersController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @customer.destroy
-        format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+      if @customer.discard
+        format.html { redirect_to customers_url, notice: "Customer was successfully archived." }
         format.json { head :no_content }
       else
-        format.html { redirect_to customers_url, alert: 'Cannot delete this customer.' }
+        format.html { redirect_to customers_url, alert: 'Cannot archive this customer.' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
