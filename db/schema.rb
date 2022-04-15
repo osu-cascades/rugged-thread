@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_215934) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_212034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,7 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_215934) do
     t.string "billing_city"
     t.string "billing_state"
     t.string "billing_zip_code"
-    t.datetime "deleted_at"
     t.index ["customer_type_id"], name: "index_customers_on_customer_type_id"
   end
 
@@ -192,13 +191,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_215934) do
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
     t.index ["work_order_id"], name: "index_items_on_work_order_id"
-  end
-
-  create_table "paranoiacs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_paranoiacs_on_deleted_at"
   end
 
   create_table "quote_requests", force: :cascade do |t|
@@ -359,7 +351,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_215934) do
     t.bigint "creator_id", null: false
     t.date "due_date", null: false
     t.string "number", null: false
-    t.datetime "deleted_at"
     t.index ["creator_id"], name: "index_work_orders_on_creator_id"
     t.index ["customer_id"], name: "index_work_orders_on_customer_id"
   end

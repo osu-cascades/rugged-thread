@@ -6,7 +6,6 @@ ruby "3.1.1"
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_list'
-gem 'acts_as_paranoid'
 gem 'airbrake'
 gem "bootsnap", require: false
 gem 'bootstrap', '~> 5.1.3'
