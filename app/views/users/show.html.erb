@@ -2,7 +2,7 @@
   <div class="col">
     <h1>Employee Information</h1>
   </div>
-  <div class="col text-end">
+  <div class="col-7 text-end">
     <%= link_to '&laquo Back to List'.html_safe, users_path, class: 'btn btn-outline-primary me-5' %>
     <%= link_to_if(policy(@user).edit?, 'Edit', edit_user_path(@user), class: 'btn btn-outline-primary me-2') {} %>
     <% if policy(@user).destroy? %>

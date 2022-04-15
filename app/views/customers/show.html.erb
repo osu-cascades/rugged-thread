@@ -8,7 +8,7 @@
     </h1>
     <h3><%= @customer.business_name %></h3>
   </div>
-  <div class="col text-end">
+  <div class="col-7 text-end">
     <%= link_to '&laquo Back to List'.html_safe, customers_path, class: 'btn btn-outline-primary me-5' %>
     <%= link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-outline-primary me-2' %>
     <%= button_to 'Delete', @customer, method: :delete, class: 'btn btn-outline-danger' %>
