@@ -36,11 +36,22 @@ class StandardRepairTest < ActiveSupport::TestCase
     refute standard_repair.valid?
   end
 
-  test 'name must be unique' do
+  test 'name and method together must be unique' do
+    other_standard_repair = standard_repairs(:one)
     standard_repair = standard_repairs(:repairless)
+    standard_repair.name = other_standard_repair.name
+    refute_equal standard_repair.method, other_standard_repair.method
     assert standard_repair.valid?
-    standard_repair.name = standard_repairs(:one).name
+    standard_repair.method = other_standard_repair.method
     refute standard_repair.valid?
+  end
+
+  test 'names can be the same with different methods' do
+    other_standard_repair = standard_repairs(:one)
+    standard_repair = standard_repairs(:repairless)
+    standard_repair.name = other_standard_repair.name
+    refute_equal standard_repair.method, other_standard_repair.method
+    assert standard_repair.valid?
   end
 
   test 'level must be a positive integer' do

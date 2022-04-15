@@ -33,6 +33,26 @@ class StandardRepairsTest < ApplicationSystemTestCase
     assert_text "Standard repair was successfully created"
   end
 
+  test "creating a standard repair with an existing name but different method succeeds" do
+    visit new_standard_repair_path
+    fill_in "Name", with: standard_repairs.first.name
+    fill_in "Description", with: 'New fake description'
+    fill_in "Method", with: 'New fake method'
+    fill_in "Price", with: 1
+    click_on "Save"
+    assert_text "Standard repair was successfully created"
+  end
+
+  test "creating a standard repair with an existing name and method fails" do
+    visit new_standard_repair_path
+    fill_in "Name", with: standard_repairs.first.name
+    fill_in "Description", with: 'New fake description'
+    fill_in "Method", with: standard_repairs.first.method
+    fill_in "Price", with: 1
+    click_on "Save"
+    assert_text "prohibited this standard repair from being saved"
+  end
+
   test "creating a standard repair with invalid attributes fails" do
     visit new_standard_repair_path
     fill_in "Name", with: ''
