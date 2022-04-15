@@ -1,8 +1,8 @@
 <div class="row mb-5">
-  <div class="col-8">
+  <div class="col-5">
     <h1><%= @standard_inventory_item.name %></h1>
   </div>
-  <div class="col text-end">
+  <div class="col-7 text-end">
     <%= link_to '&laquo All Inventory Items'.html_safe, standard_inventory_items_path, class: 'btn btn-outline-primary' %>
     <%= link_to 'Edit', edit_standard_inventory_item_path(@standard_inventory_item), class: 'btn btn-outline-primary me-2' %>
     <%= button_to 'Delete', @standard_inventory_item, method: :delete, class: 'btn btn-outline-danger' %>

@@ -1,7 +1,4 @@
 <div class="row mb-5">
-  <div class="col">
-    <h1>Standard Complication Information</h1>
-  </div>
   <div class="col text-end">
     <%= link_to '&laquo All Complications'.html_safe, standard_complications_path, class: 'btn btn-outline-primary' %>
     <%= link_to '&laquo Standard Repair'.html_safe, standard_repair_path(@standard_complication.standard_repair), class: 'btn btn-outline-primary me-5' %>
@@ -10,17 +7,6 @@
   </div>
 </div>
 
-<dl class="row">
-  <dt class="col-sm-3">Standard Repair</dt>
-  <dd class="col-sm-9">
-    <%= @standard_complication.standard_repair %>
-  </dd>
-  <dt class="col-sm-3">Name</dt>
-  <dd class="col-sm-9">
-    <%= @standard_complication.name %>
-  </dd>
-  <dt class="col-sm-3">Price</dt>
-  <dd class="col-sm-9">
-    <%= number_to_currency(@standard_complication.price) %>
-  </dd>
-</dl>
+<h1><%= @standard_complication.name %></h1>
+<p>of Standard Repair <%= link_to @standard_complication.standard_repair, @standard_complication.standard_repair %></p>
+<h2><%= number_to_currency(@standard_complication.price) %></h2>
