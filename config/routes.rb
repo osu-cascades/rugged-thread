@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :customer_types
   resources :customers do
     resources :work_orders, only: :new
+    member do
+        patch :archive
+    end
   end
   resources :discounts, except: [:new, :create]
   resources :fees, except: [:new, :create]

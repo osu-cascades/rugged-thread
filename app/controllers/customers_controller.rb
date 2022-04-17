@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_customer, only: %i[ update destroy ]
+  before_action :set_customer, only: %i[ update destroy archive ]
 
   def index
     @pagy, @customers = pagy(Customer.where('last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc))
@@ -53,13 +53,25 @@ class CustomersController < ApplicationController
     end
   end
 
-  def destroy
+  def archive
     respond_to do |format|
       if @customer.discard
         format.html { redirect_to customers_url, notice: "Customer was successfully archived." }
         format.json { head :no_content }
       else
         format.html { redirect_to customers_url, alert: 'Cannot archive this customer.' }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    respond_to do |format|
+      if @customer.destroy
+        format.html { redirect_to customers_url, notice: "Customer was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to customers_url, alert: 'Cannot destroy this customer.' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
