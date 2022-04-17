@@ -51,15 +51,20 @@ class CustomersTest < ApplicationSystemTestCase
 
   test "destroying a customer that has no work orders" do
     visit customer_path(customers(:without_work_order))
-    click_on 'Archive'
-    assert_text "Customer was successfully archived"
+    click_on 'Delete'
+    assert_text "Customer was successfully deleted."
   end
 
   test "failing to destroy a customer that has work orders" do
-    skip
+    visit customer_path(work_orders.first.customer)
+    click_on 'Delete'
+    assert_text "Cannot delete this customer."
+  end
+
+  test "archiving a customer that has work orders succeeds" do
     visit customer_path(work_orders.first.customer)
     click_on 'Archive'
-    assert_text "Cannot delete this customer"
+    assert_text "Customer was successfully archived."
   end
 
 end
