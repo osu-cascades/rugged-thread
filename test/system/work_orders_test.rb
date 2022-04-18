@@ -130,4 +130,10 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert has_field?('Due date', with: Date.current + customer.customer_type.turn_around.days)
   end
 
+  test "archiving a work order that has items succeeds" do
+    visit work_order_path(work_orders(:shipping))
+    click_on 'Archive'
+    assert_text "Work order was successfully archived."
+  end
+
 end

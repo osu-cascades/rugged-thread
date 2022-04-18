@@ -1,6 +1,6 @@
  class WorkOrdersController < ApplicationController
   include Pagy::Backend
-  include Discard::Model
+  before_action :set_work_order, only: %i[ update destroy archive ]
 
   def index
     @pagy, @work_orders = pagy(WorkOrder.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
@@ -89,7 +89,24 @@
     end
   end
 
+  def archive
+    @work_order = WorkOrder.find(params[:id])
+    respond_to do |format|
+      if @work_order.discard
+        format.html { redirect_to work_orders_url, notice: "Work order was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to work_orders_url, alert: 'Cannot archive this work order.' }
+        format.json { render json: @work_order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
+
+    def set_work_order
+      @work_order = WorkOrder.find(params[:id])
+    end
 
     def work_order_params
       params.require(:work_order).permit(:creator_id, :in_date, :due_date, :shipping, :customer_id)

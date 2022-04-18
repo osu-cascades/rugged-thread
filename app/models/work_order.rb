@@ -1,6 +1,7 @@
 require 'work_order_number'
 
 class WorkOrder < ApplicationRecord
+  include Discard::Model
 
   belongs_to :creator, class_name: 'User', inverse_of: :created_work_orders
   belongs_to :customer

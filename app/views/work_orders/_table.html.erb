@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% work_orders.each do |work_order| %>
+    <% work_orders.kept.each do |work_order| %>
       <tr class="<%= dom_class(work_order) %>" id="<%= dom_id(work_order) %>">
         <th scope="row"><%= highlight(work_order.number, params[:query]) %></th>
         <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer, data: { "turbo-frame": :"_top" }) %></td>
