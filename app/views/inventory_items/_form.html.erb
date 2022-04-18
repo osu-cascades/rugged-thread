@@ -43,7 +43,7 @@ $(document).ready(function() {
         <div class='field_with_errors'>
       <% end %>
         <%= form.label :standard_inventory_item_id, class: 'form-label'%>
-        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| [sc.name, sc.id] }, {include_blank: ''}, class: 'form-control', onchange: 'updateInventoryItemPrice();' %>
+        <%= form.select :standard_inventory_item_id, standard_inventory_items.map { |sc| ["#{sc.name} #{sc.sku}", sc.id] }, {include_blank: ''}, class: 'form-control', onchange: 'updateInventoryItemPrice();' %>
       <% if form.object.errors.include?(:standard_inventory_item) %>
         </div>
       <% end %>
