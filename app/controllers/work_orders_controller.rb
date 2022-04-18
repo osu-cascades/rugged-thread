@@ -1,5 +1,6 @@
  class WorkOrdersController < ApplicationController
   include Pagy::Backend
+  include Discard::Model
 
   def index
     @pagy, @work_orders = pagy(WorkOrder.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
