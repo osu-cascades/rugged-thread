@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :work_orders, only: :new
     member do
         patch :archive
+        patch :recover
     end
   end
   resources :discounts, except: [:new, :create]
