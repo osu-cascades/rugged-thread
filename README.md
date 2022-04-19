@@ -18,6 +18,7 @@ Beyond the Rails defaults, the application uses the following gems.
 * [Airbrake](https://rubygems.org/gems/airbrake) - Exception notifications in production
 * [Bootstrap](https://rubygems.org/gems/bootstrap) - Bootstrap 5 styles
 * [Devise](https://rubygems.org/gems/devise) - Authentication
+* [Discard](https://rubygems.org/gems/discard/versions/0.1.0) - Mark objects as discarded
 * [Pagy](https://rubygems.org/gems/pagy/versions/0.6.0) - Pagination
 * [pg](https://rubygems.org/gems/pg) - Postgres database driver
 * [Phony](https://rubygems.org/gems/phony_rails) - Phone number validation and formatting
