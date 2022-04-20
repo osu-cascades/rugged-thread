@@ -31,18 +31,18 @@ customer = Customer.create!(first_name: 'Fred', last_name: 'Examplero',
   billing_city: 'Bend', billing_state: 'OR', billing_zip_code: '97704',
   customer_type: b2c_local_customer_type)
 
-standard_discount = StandardDiscount.create!(name: 'Coupon', price: 10)
+standard_discount = StandardDiscount.create!(name: 'Coupon', price: 1000)
 StandardDiscount.create!(name: 'Employee', percentage_amount: 30)
 StandardDiscount.create!(name: 'Investor', percentage_amount: 30)
 StandardDiscount.create!(name: 'OEM Cost Share', percentage_amount: 30)
 StandardDiscount.create!(name: 'Warranty', percentage_amount: 100)
 
-standard_fee = StandardFee.create!(name: 'Cleaning', price: 35)
-StandardFee.create!(name: 'Expedite', price: 25)
-StandardFee.create!(name: 'Handling', price: 5)
-StandardFee.create!(name: 'Large Item', price: 35)
-StandardFee.create!(name: 'Shipping', price: 10)
-StandardFee.create!(name: 'Special Order', price: 10)
+standard_fee = StandardFee.create!(name: 'Cleaning', price: 3500)
+StandardFee.create!(name: 'Expedite', price: 2500)
+StandardFee.create!(name: 'Handling', price: 500)
+StandardFee.create!(name: 'Large Item', price: 3500)
+StandardFee.create!(name: 'Shipping', price: 1000)
+StandardFee.create!(name: 'Special Order', price: 1000)
 
 ItemStatus.create!(name: 'INVOICED')
 ItemStatus.create!(name: 'ON HOLD')
@@ -60,10 +60,10 @@ ItemType.create!(name: "Water Sports")
 
 ShopParameter.create!(name: 'B2C Local Turn Around', amount: 14)
 ShopParameter.create!(name: 'B2C Ship Turn Around', amount: 21)
-ShopParameter.create!(name: 'Cost of Labor', amount: 46)
-ShopParameter.create!(name: 'Minimum Complication', amount: 5)
-ShopParameter.create!(name: 'Minimum Standard Repair', amount: 20)
-ShopParameter.create!(name: 'Standard Labor Rate', amount: 80)
+ShopParameter.create!(name: 'Cost of Labor', amount: 4600)
+ShopParameter.create!(name: 'Minimum Complication', amount: 500)
+ShopParameter.create!(name: 'Minimum Standard Repair', amount: 2000)
+ShopParameter.create!(name: 'Standard Labor Rate', amount: 8000)
 
 work_order = WorkOrder.create!(creator: staff_user, in_date: Date.today,
  shipping: true, customer: customer)
@@ -71,38 +71,38 @@ work_order = WorkOrder.create!(creator: staff_user, in_date: Date.today,
 item = Item.create!(due_date: Date.today, notes: 'Collectors item, please handle carefully.',
   brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
 
-Fee.create!(item: item, standard_fee: standard_fee, price: 35)
-Discount.create!(item: item, standard_discount: standard_discount, price: 10)
+Fee.create!(item: item, standard_fee: standard_fee, price: 3500)
+Discount.create!(item: item, standard_discount: standard_discount, price: 1000)
 
 StandardRepair.create(name: "Slider Replacement: Separating Zipper", method: "",
-  description: "YKK separating", level: 1, price: 20).tap do |sr|
-    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", price: 5)
-    sr.standard_complications.create!(name: "Add staple", price: 5)
+  description: "YKK separating", level: 1, price: 2000).tap do |sr|
+    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", price: 500)
+    sr.standard_complications.create!(name: "Add staple", price: 500)
   end
 
 standard_repair = StandardRepair.create!(name: "Zipper Replacement: Separating Zipper : As-Manufactured (per Half Zipper)", method: "",
- description: "< 24\" zipper length", level: 1, price: 45)
+ description: "< 24\" zipper length", level: 1, price: 4500)
 repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
- price: 45, notes:"Fake Notes")
+ price: 4500, notes:"Fake Notes")
 
 standard_repair.standard_complications.create!(name: "< 25-36\" zipper length",
-  price: 5)
+  price: 500)
 standard_complication = standard_repair.standard_complications.create!(
-  name: "< 37-48\" zipper length", price: 10)
-Complication.create!(standard_complication: standard_complication, repair: repair, price: 10)
+  name: "< 37-48\" zipper length", price: 1000)
+Complication.create!(standard_complication: standard_complication, repair: repair, price: 1000)
 
-SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 50,
-  ordering_fee_price: 10, freight_fee_price: 15, repair: repair)
+SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 5000,
+  ordering_fee_price: 1000, freight_fee_price: 1500, repair: repair)
 
 standard_inventory_item = StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Latch (2\") Nexus",
-  sku: "550-1100 SEEDED", price: 1)
+  sku: "550-1100 SEEDED", price: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Body (2\") Nexus",
-  sku: "550-0100 SEEDED", price: 1)
+  sku: "550-0100 SEEDED", price: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (2\") Nexus",
-  sku: "540-1100 SEEDED", price: 1)
+  sku: "540-1100 SEEDED", price: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (1\") Nexus",
-  sku: "525-1100 SEEDED", price: 1)
+  sku: "525-1100 SEEDED", price: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Body (2\") Nexus",
-  sku: "540-0000 SEEDED", price: 1)
+  sku: "540-0000 SEEDED", price: 100)
 
-standard_inventory_item.inventory_items.create!(repair: repair, price: 1)
+standard_inventory_item.inventory_items.create!(repair: repair, price: 100)

@@ -43,8 +43,8 @@ class SpecialOrderItemTest < ActiveSupport::TestCase
   end
 
   test '#total_price is sum of price, ordering fee, and freight fee' do
-    special_order_item = SpecialOrderItem.new(price: 1, ordering_fee_price: 3, freight_fee_price: 5)
-    assert_equal 9, special_order_item.total_price
+    special_order_item = SpecialOrderItem.new(price: 100, ordering_fee_price: 300, freight_fee_price: 500)
+    assert_equal 900, special_order_item.total_price
   end
 
   test '#to_s string representation is name' do

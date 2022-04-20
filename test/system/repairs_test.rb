@@ -3,6 +3,7 @@ require "application_system_test_case"
 class RepairsTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+  include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -26,7 +27,7 @@ class RepairsTest < ApplicationSystemTestCase
     assert_text repairs(:one).name
     assert_text repairs(:one).notes
     assert_text repairs(:one).level
-    assert_text repairs(:one).price
+    assert_text number_to_currency(repairs(:one).price)
     assert_text repairs(:one).item.brand.name
     assert_text repairs(:one).item.item_type.name
   end

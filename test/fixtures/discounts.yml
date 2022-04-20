@@ -2,7 +2,7 @@ one:
   standard_discount: one
   item: one
   percentage_amount: nil
-  price: 10
+  price: 1000
 
 two:
   standard_discount: one
@@ -26,4 +26,4 @@ price:
   standard_discount: one
   item: one
   percentage_amount: nil
-  price: 1
+  price: 100

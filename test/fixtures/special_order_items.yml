@@ -1,13 +1,13 @@
 one:
   name: Fake Special Order Item 1
-  price: 1
-  ordering_fee_price: 5
-  freight_fee_price: 10
+  price: 100
+  ordering_fee_price: 500
+  freight_fee_price: 1000
   repair: one
 
 two:
   name: Fake Special Order Item 2
-  price: 2
-  ordering_fee_price: 5
-  freight_fee_price: 20
+  price: 200
+  ordering_fee_price: 500
+  freight_fee_price: 2000
   repair: two

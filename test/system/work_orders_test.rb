@@ -3,6 +3,7 @@ require "application_system_test_case"
 class WorkOrdersTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+  include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -15,7 +16,7 @@ class WorkOrdersTest < ApplicationSystemTestCase
 
   test "viewing a work order's total estimate" do
     visit work_order_path(work_orders(:shipping))
-    assert_text("$#{work_orders(:shipping).price_estimate}")
+    assert_text("#{number_to_currency(work_orders(:shipping).price_estimate)}")
   end
 
   test "new work order default creator is current_user" do

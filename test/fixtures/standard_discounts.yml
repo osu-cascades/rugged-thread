@@ -5,11 +5,11 @@ one:
 two:
   name: Fake Discount 2
   percentage_amount: nil
-  price: 10
+  price: 1000
 price:
   name: Fake Discount 3
   percentage_amount: nil
-  price: 2
+  price: 200
 percentage:
   name: Fake Discount 4
   percentage_amount: 2

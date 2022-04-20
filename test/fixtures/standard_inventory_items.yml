@@ -1,16 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   name: Fake Name
   sku: Fake Sku
-  price: 1
+  price: 100
 
 two:
   name: Fake Name 2
   sku: Fake Sku 2
-  price: 1
+  price: 100
 
 inventory_itemless:
   name: Fake Name 3
   sku: Fake Sku 3
-  price: 1
+  price: 100
