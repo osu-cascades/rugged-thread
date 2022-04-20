@@ -54,4 +54,16 @@ class AccountsTest < ApplicationSystemTestCase
     click_on 'Delete'
     assert_text "Account was successfully destroyed"
   end
+
+  test "archiving a account that has items succeeds" do
+    visit account_path(accounts(:one))
+    click_on 'Archive'
+    assert_text "Account was successfully archived."
+  end
+
+  test "recovering a account that has items succeeds" do
+    visit recover_account_path(accounts(:one))
+    click_on 'Recover'
+    assert_text "Account was successfully recovered."
+  end
 end

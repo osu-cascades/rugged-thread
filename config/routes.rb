@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :destroy]
   end
 
-  resources :accounts
+  resources :accounts do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :brands
   resources :complications, except: [:new, :create]
   resources :customer_types

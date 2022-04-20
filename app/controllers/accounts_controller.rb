@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_account, only: %i[ show edit update destroy ]
+  before_action :set_account, only: %i[ show edit update destroy archive recover ]
 
   def index
     @pagy, @accounts = pagy(Account.all)
@@ -55,6 +55,23 @@ class AccountsController < ApplicationController
     @account.destroy
     respond_to do |format|
       format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  def archive
+    @account.discard
+    respond_to do |format|
+      format.html { redirect_to accounts_url, notice: "Account was successfully archived." }
+      format.json { head :no_content }
+    end
+  end
+
+
+  def recover
+    @account.undiscard
+    respond_to do |format|
+      format.html { redirect_to accounts_url, notice: "Account was successfully recoverd." }
       format.json { head :no_content }
     end
   end

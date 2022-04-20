@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @accounts.each do |account| %>
+    <% @accounts.kept.each do |account| %>
       <tr class="<%= dom_class(account) %>" id="<%= dom_id(account) %>">
         <td>
           <%= account %>
