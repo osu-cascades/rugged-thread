@@ -9,4 +9,4 @@
 
 <h1><%= @standard_complication.name %></h1>
 <p>of Standard Repair <%= link_to @standard_complication.standard_repair, @standard_complication.standard_repair %></p>
-<h2><%= number_to_currency(@standard_complication.price) %></h2>
+<h2><%= number_to_currency(@standard_complication.price/100.0) %></h2>

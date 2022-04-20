@@ -25,8 +25,8 @@
         <td><%= item.level %></td>
         <td><%= item.notes %></td>
         <td><%= item.shipping ? '📦' : '' %></td>
-        <td class="text-end"><%= number_to_currency(item.price_estimate) %></td>
-        <td class="text-end"><%= number_to_currency(item.estimated_price_of_labor) %></td>
+        <td class="text-end"><%= number_to_currency(item.price_estimate/100.0) %></td>
+        <td class="text-end"><%= number_to_currency(item.estimated_price_of_labor/100.0) %></td>
         <td class="text-end">
           <%= link_to 'Details', item_path(item), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

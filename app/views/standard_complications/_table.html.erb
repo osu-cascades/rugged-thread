@@ -17,7 +17,7 @@
           <%= link_to_unless(controller.controller_name == 'standard_repairs', highlight(standard_complication.standard_repair.name, params[:query]), standard_complication.standard_repair, data: { "turbo-frame": :"_top" }) %>
         </td>
         <td class="text-end">
-          <%= number_to_currency(standard_complication.price) %>
+          <%= number_to_currency(standard_complication.price/100.0) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_complication, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>

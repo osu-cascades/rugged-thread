@@ -25,9 +25,9 @@
     <p><%= @repair.notes %></p>
   </div>
   <div class="col text-end">
-    <h2 class="display-2"><%= number_to_currency(@repair.total_price) %></h2>
-    <p class="my-0">Total labor: <strong><%= number_to_currency(@repair.price_of_labor) %></strong></p>
-    <p class="my-0">Base repair price: <strong><%= number_to_currency(@repair.price) %></strong></p>
+    <h2 class="display-2"><%= number_to_currency(@repair.total_price/100.0) %></h2>
+    <p class="my-0">Total labor: <strong><%= number_to_currency(@repair.price_of_labor/100.0) %></strong></p>
+    <p class="my-0">Base repair price: <strong><%= number_to_currency(@repair.price/100.0) %></strong></p>
   </div>
 </div>
 

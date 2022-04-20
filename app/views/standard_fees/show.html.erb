@@ -16,6 +16,6 @@
   </dd>
   <dt class="col-sm-3">Price</dt>
   <dd class="col-sm-9">
-    <%= number_to_currency(@standard_fee.price) %>
+    <%= number_to_currency(@standard_fee.price/100.0) %>
   </dd>
 </dl>

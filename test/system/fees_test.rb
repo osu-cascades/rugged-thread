@@ -3,6 +3,7 @@ require "application_system_test_case"
 class FeesTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+  include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -26,7 +27,7 @@ class FeesTest < ApplicationSystemTestCase
     assert_text fees(:one).name
     assert_text fees(:one).item.brand.name
     assert_text fees(:one).item.item_type.name
-    assert_text fees(:one).price
+    assert_text number_to_currency(fees(:one).price/100.0)
   end
 
   test "creating a fee for an item" do

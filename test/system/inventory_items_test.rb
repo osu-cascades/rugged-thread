@@ -3,6 +3,7 @@ require "application_system_test_case"
 class InventoryItemsTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+    include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -24,7 +25,7 @@ class InventoryItemsTest < ApplicationSystemTestCase
   test "viewing a inventory item shows the standard inventory_item name and price" do
     visit inventory_item_path(inventory_items(:one))
     assert_text inventory_items(:one).standard_inventory_item.name
-    assert_text inventory_items(:one).price
+    assert_text number_to_currency(inventory_items(:one).price/100.0)
   end
 
   test "creating a inventory_item for an repair" do

@@ -3,6 +3,7 @@ require "application_system_test_case"
 class ComplicationsTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
+  include ActionView::Helpers::NumberHelper
 
   setup do
     sign_in users(:staff)
@@ -24,7 +25,7 @@ class ComplicationsTest < ApplicationSystemTestCase
   test "viewing a complication shows the standard complication name and price" do
     visit complication_path(complications(:one))
     assert_text complications(:one).standard_complication.name
-    assert_text complications(:one).price
+    assert_text number_to_currency(complications(:one).price/100.0)
   end
 
   test "creating a complication for an repair" do

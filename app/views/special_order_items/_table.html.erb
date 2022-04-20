@@ -15,10 +15,10 @@
       <tr>
         <th scope="row"><%= special_order_item.id %></th>
         <td><%= special_order_item %></td>
-        <td class="text-end"><%= number_to_currency(special_order_item.price) %></td>
-        <td class="text-end"><%= number_to_currency(special_order_item.ordering_fee_price) %></td>
-        <td class="text-end"><%= number_to_currency(special_order_item.freight_fee_price) %></td>
-        <td class="text-end"><%= number_to_currency(special_order_item.total_price) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.price/100.0) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.ordering_fee_price/100.0) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.freight_fee_price/100.0) %></td>
+        <td class="text-end"><%= number_to_currency(special_order_item.total_price/100.0) %></td>
         <td class="text-end">
           <%= link_to 'Details', special_order_item_path(special_order_item), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

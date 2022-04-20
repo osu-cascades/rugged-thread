@@ -59,18 +59,18 @@
   </div>
 
   <div class="col text-end">
-    <h2 class="display-2"><%= number_to_currency(@item.price_estimate) %></h2>
+    <h2 class="display-2"><%= number_to_currency(@item.price_estimate/100.0) %></h2>
     <p class="my-0">
       <strong>Labor:</strong>
-      <%= number_to_currency(@item.estimated_price_of_labor) %>
+      <%= number_to_currency(@item.estimated_price_of_labor/100.0) %>
     </p>
     <p class="my-0">
       <strong>Fees:</strong>
-      <%= number_to_currency(@item.price_of_fees) %>
+      <%= number_to_currency(@item.price_of_fees/100.0) %>
     </p>
     <p class="my-0">
       <strong>Discounts:</strong>
-      <%= number_to_currency(@item.price_total_of_discount) %>
+      <%= number_to_currency(@item.price_total_of_discount/100.0) %>
     </p>
 
   </div>

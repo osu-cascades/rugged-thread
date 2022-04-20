@@ -20,6 +20,6 @@
   </dd>
   <dt class="col-sm-3">Dollar Amount</dt>
   <dd class="col-sm-9">
-    <%= number_to_currency(@standard_discount.price) %>
+    <%= number_to_currency((@standard_discount.price || 0)/100.0) %>
   </dd>
 </dl>

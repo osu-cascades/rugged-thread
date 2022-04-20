@@ -26,7 +26,7 @@
           <%= number_to_percentage(standard_discount.percentage_amount, precision: 0) %>
         </td>
         <td class="text-end">
-          <%= number_to_currency(standard_discount.price) %>
+          <%= number_to_currency((standard_discount.price || 0)/100.0) %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_discount, class: 'btn btn-outline-secondary btn-sm' %>
