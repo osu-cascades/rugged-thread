@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_042525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -119,14 +119,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price", default: 0
+    t.integer "price", default: 0, null: false
     t.integer "position"
     t.index ["item_id"], name: "index_fees_on_item_id"
     t.index ["standard_fee_id"], name: "index_fees_on_standard_fee_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.bigint "repair_id", null: false
     t.bigint "standard_inventory_item_id", null: false
     t.datetime "created_at", null: false
@@ -218,7 +218,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
-    t.integer "price", default: 0
+    t.integer "price", default: 0, null: false
     t.integer "level", default: 1, null: false
     t.integer "position"
     t.index ["item_id"], name: "index_repairs_on_item_id"
@@ -262,7 +262,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
 
   create_table "standard_fees", force: :cascade do |t|
     t.text "name"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -270,7 +270,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
   create_table "standard_inventory_items", force: :cascade do |t|
     t.string "name"
     t.string "sku"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -279,7 +279,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_202803) do
     t.string "name"
     t.string "method"
     t.text "description"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", default: 1, null: false

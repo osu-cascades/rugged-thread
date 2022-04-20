@@ -41,7 +41,7 @@ standard_fee = StandardFee.create!(name: 'Cleaning', price: 35)
 StandardFee.create!(name: 'Expedite', price: 25)
 StandardFee.create!(name: 'Handling', price: 5)
 StandardFee.create!(name: 'Large Item', price: 35)
-StandardFee.create!(name: 'Shipping')
+StandardFee.create!(name: 'Shipping', price: 10)
 StandardFee.create!(name: 'Special Order', price: 10)
 
 ItemStatus.create!(name: 'INVOICED')
