@@ -6,6 +6,7 @@ class StandardDiscountTest < ActiveSupport::TestCase
     assert_respond_to(StandardDiscount.new, :name)
     assert_respond_to(StandardDiscount.new, :percentage_amount)
     assert_respond_to(StandardDiscount.new, :price)
+    assert_respond_to(StandardDiscount.new, :price_cents)
   end
 
   test "associations" do
@@ -31,12 +32,22 @@ class StandardDiscountTest < ActiveSupport::TestCase
     assert standard_discount.valid?
     standard_discount.percentage_amount = -1
     refute standard_discount.valid?
+    standard_discount.percentage_amount = 0
+    refute standard_discount.valid?
+  end
+
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), StandardDiscount.new(price: 1).price
+    assert_equal Money.from_cents(200), StandardDiscount.new(price: '2').price
+    assert_equal Money.from_cents(300), StandardDiscount.new(price: '3.00').price
   end
 
   test 'price must be a positive integer' do
     standard_discount = standard_discounts(:one)
     assert standard_discount.valid?
     standard_discount.price = -1
+    refute standard_discount.valid?
+    standard_discount.price = 0
     refute standard_discount.valid?
   end
 
