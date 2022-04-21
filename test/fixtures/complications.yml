@@ -1,9 +1,9 @@
 one:
   standard_complication: one
   repair: one
-  price: 100
+  price_cents: 100
 
 two:
   standard_complication: two
   repair: one
-  price: 200
+  price_cents: 200
