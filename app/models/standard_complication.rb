@@ -1,4 +1,5 @@
 class StandardComplication < ApplicationRecord
+  include Discard::Model
 
   belongs_to :standard_repair
   has_many :complications, dependent: :restrict_with_error

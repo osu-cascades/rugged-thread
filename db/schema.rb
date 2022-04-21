@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_224553) do
->>>>>>> b48b3a799dbaea25f20cc65a469bfa771de68d10
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_233558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -265,6 +261,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_224553) do
     t.bigint "standard_repair_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_standard_complications_on_discarded_at"
     t.index ["standard_repair_id"], name: "index_standard_complications_on_standard_repair_id"
   end
 

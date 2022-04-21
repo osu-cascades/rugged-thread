@@ -76,7 +76,12 @@ Rails.application.routes.draw do
     end
   end
   resources :special_order_items, except: [:new, :create]
-  resources :standard_complications
+  resources :standard_complications do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :standard_discounts
   resources :standard_inventory_items
   resources :standard_fees

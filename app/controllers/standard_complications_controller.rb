@@ -1,6 +1,8 @@
 class StandardComplicationsController < ApplicationController
   include Pagy::Backend
 
+  before_action :set_standard_complication, only: %i[ update destroy archive recover ]
+
   def index
     @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
   rescue Pagy::OverflowError
@@ -49,6 +51,30 @@ class StandardComplicationsController < ApplicationController
     end
   end
 
+  def archive
+    respond_to do |format|
+      if @standard_complication.discard
+        format.html { redirect_to standard_complications_url, notice: "Standard Complication was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_complications_url, alert: 'Cannot archive this Standard Complication.' }
+        format.json { render json: @standard_complication.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @standard_complication.undiscard
+        format.html { redirect_to standard_complications_url, notice: "Standard Complication was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_complications_url, alert: 'Cannot recover this Standard Complication.' }
+        format.json { render json: @standard_complication.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @standard_complication = StandardComplication.find(params[:id])
     respond_to do |format|
@@ -63,6 +89,10 @@ class StandardComplicationsController < ApplicationController
   end
 
   private
+
+  def set_standard_complication
+    @standard_complication = StandardComplication.find(params[:id])
+  end
 
     def standard_complication_params
       params.require(:standard_complication).permit(:name, :price, :standard_repair_id)
