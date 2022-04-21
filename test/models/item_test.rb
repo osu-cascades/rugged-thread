@@ -158,18 +158,18 @@ class ItemTest < ActiveSupport::TestCase
 
   test "#price_estimate is estimated_price_of_labor plus parts, special order, minus standard discounts" do
     item = items(:associationless)
-    assert_equal(0, item.price_estimate)
-    item.repairs << Repair.new(price: 300)
-    assert_equal(300, item.price_estimate)
+    assert_equal(Money.from_cents(0), item.price_estimate)
+    item.repairs << Repair.new(price_cents: 300)
+    assert_equal(Money.from_cents(300), item.price_estimate)
   end
 
   test "#estimated_price_of_labor is the sum of all repair prices" do
     item = items(:associationless)
-    assert_equal(0, item.estimated_price_of_labor)
-    item.repairs << Repair.new(price: 300)
-    assert_equal(300, item.estimated_price_of_labor)
-    item.repairs << Repair.new(price: 700)
-    assert_equal(1000, item.estimated_price_of_labor)
+    assert_equal(Money.from_cents(0), item.estimated_price_of_labor)
+    item.repairs << Repair.new(price_cents: 300)
+    assert_equal(Money.from_cents(300), item.estimated_price_of_labor)
+    item.repairs << Repair.new(price_cents: 700)
+    assert_equal(Money.from_cents(1000), item.estimated_price_of_labor)
   end
 
   test "#fees_and_discounts returns 0 for now" do
