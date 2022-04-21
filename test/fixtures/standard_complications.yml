@@ -1,14 +1,14 @@
 one:
   name: Fake Standard Complication 1
-  price: 100
+  price_cents: 100
   standard_repair: one
 
 two:
   name: Fake Standard Complication 2
-  price: 200
+  price_cents: 200
   standard_repair: one
 
 complicationless:
   name: Fake Complicationless Standard Complication
-  price: 300
+  price_cents: 300
   standard_repair: one
