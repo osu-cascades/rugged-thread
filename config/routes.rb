@@ -26,7 +26,12 @@ Rails.application.routes.draw do
     end
   end
   resources :complications, except: [:new, :create]
-  resources :customer_types
+  resources :customer_types do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :customers do
     resources :work_orders, only: :new
     member do

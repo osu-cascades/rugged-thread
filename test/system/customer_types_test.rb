@@ -56,4 +56,10 @@ class CustomerTypesTest < ApplicationSystemTestCase
     assert_text "Cannot delete this customer type"
   end
 
+  test "archiving a customer type that has items succeeds" do
+    visit customer_type_path(customer_types(:one))
+    click_on 'Archive'
+    assert_text "Customer type was successfully archived."
+  end
+
 end

@@ -1,6 +1,6 @@
 class CustomerTypesController < ApplicationController
 
-  before_action :set_customer_type, only: %i[ edit update destroy ]
+  before_action :set_customer_type, only: %i[ edit update destroy archive recover]
 
   def index
     @customer_types = CustomerType.all
@@ -54,8 +54,33 @@ class CustomerTypesController < ApplicationController
         format.html { redirect_to customer_types_url, notice: "Customer type was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to brands_url, alert: 'Cannot delete this customer type.' }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
+        format.html { redirect_to customer_types_url, alert: 'Cannot delete this customer type.' }
+        format.json { render json: @customer_type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @customer_type.discard
+        format.html { redirect_to customer_types_url, notice: "Customer type was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to customer_types_url, alert: 'Cannot archive this customer type.' }
+        format.json { render json: @customer_type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def recover
+    respond_to do |format|
+      if @customer_type.undiscard
+        format.html { redirect_to customer_types_url, notice: "Customertype was successfully recoverd." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to customer_types_url, alert: 'Cannot recover this customer type.' }
+        format.json { render json: @customer_type.errors, status: :unprocessable_entity }
       end
     end
   end

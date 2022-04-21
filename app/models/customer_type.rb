@@ -1,5 +1,7 @@
 class CustomerType < ApplicationRecord
 
+  include Discard::Model
+
   has_many :customers, dependent: :restrict_with_error
 
   validates :name, presence: true
