@@ -76,7 +76,7 @@ class CustomerTypesController < ApplicationController
   def recover
     respond_to do |format|
       if @customer_type.undiscard
-        format.html { redirect_to customer_types_url, notice: "Customertype was successfully recoverd." }
+        format.html { redirect_to customer_types_url, notice: "Customer type was successfully recoverd." }
         format.json { head :no_content }
       else
         format.html { redirect_to customer_types_url, alert: 'Cannot recover this customer type.' }

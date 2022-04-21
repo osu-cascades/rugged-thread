@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_181957) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_185302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -175,7 +175,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_181957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "default", default: false
+    t.datetime "discarded_at"
     t.index ["default"], name: "index_item_statuses_on_default", unique: true, where: "(\"default\" IS TRUE)"
+    t.index ["discarded_at"], name: "index_item_statuses_on_discarded_at"
   end
 
   create_table "item_types", force: :cascade do |t|

@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @item_statuses.each do |item_status| %>
+    <% @item_statuses.kept.each do |item_status| %>
       <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
         <td>
           <%= item_status %>

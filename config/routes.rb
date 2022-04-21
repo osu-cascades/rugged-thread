@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   resources :invoices
   resources :item_statuses do
     patch 'set_default', on: :member
+    member do
+      patch :archive
+      patch :recover
+    end
   end
   resources :item_types
   resources :items, except: [:new, :create] do

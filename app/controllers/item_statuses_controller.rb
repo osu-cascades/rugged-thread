@@ -1,5 +1,5 @@
 class ItemStatusesController < ApplicationController
-  before_action :set_item_status, only: %i[ edit update destroy ]
+  before_action :set_item_status, only: %i[ edit update destroy archive recover]
 
   # GET /item_statuses or /item_statuses.json
   def index
@@ -65,6 +65,31 @@ class ItemStatusesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { redirect_to item_statuses_url, alert: 'Cannot delete this item status.' }
+        format.json { render json: @item_status.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @item_status.discard
+        format.html { redirect_to item_statuses_url, notice: "Item status was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_statuses_url, alert: 'Cannot archive this item status.' }
+        format.json { render json: @item_status.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def recover
+    respond_to do |format|
+      if @item_status.undiscard
+        format.html { redirect_to item_statuses_url, notice: "Item status was successfully recoverd." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_statuses_url, alert: 'Cannot recover this item status.' }
         format.json { render json: @item_status.errors, status: :unprocessable_entity }
       end
     end
