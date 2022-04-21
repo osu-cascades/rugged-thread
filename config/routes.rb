@@ -19,7 +19,12 @@ Rails.application.routes.draw do
       patch :recover
     end
   end
-  resources :brands
+  resources :brands do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :complications, except: [:new, :create]
   resources :customer_types
   resources :customers do

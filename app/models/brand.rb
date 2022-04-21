@@ -1,5 +1,7 @@
 class Brand < ApplicationRecord
 
+  include Discard::Model
+
   has_many :items, dependent: :restrict_with_error
 
   validates :name, presence: true

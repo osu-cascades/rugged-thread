@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @brands.each do |brand| %>
+    <% @brands.kept.each do |brand| %>
       <tr class="<%= dom_class(brand) %>" id="<%= dom_id(brand) %>">
         <td>
           <%= brand %>
