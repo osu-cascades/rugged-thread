@@ -9,11 +9,12 @@
       <th scope="col">Phone number</th>
       <th scope="col">Shipping Address</th>
       <th scope="col">Type</th>
+      
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% customers.kept.each do |customer| %>
+    <% customers.each do |customer| %>
       <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
         <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>
