@@ -1,5 +1,5 @@
 class ShopParametersController < ApplicationController
-  before_action :set_shop_parameter, only: %i[ show edit update destroy ]
+  before_action :set_shop_parameter, only: %i[ show edit update archive recover destroy ]
 
   # GET /shop_parameters or /shop_parameters.json
   def index
@@ -42,6 +42,30 @@ class ShopParametersController < ApplicationController
         format.json { render :show, status: :ok, location: @shop_parameter }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @shop_parameter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @shop_parameter.discard
+        format.html { redirect_to shop_parameters_url, notice: "Shop Parameter was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to shop_parameters_url, alert: 'Cannot archive this shop parameter.' }
+        format.json { render json: @shop_parameter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @shop_parameter.undiscard
+        format.html { redirect_to shop_parameters_url, notice: "Shop Parameter was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to shop_parameters_url, alert: 'Cannot recover this shop parameter.' }
         format.json { render json: @shop_parameter.errors, status: :unprocessable_entity }
       end
     end

@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @shop_parameters.each do |shop_parameter| %>
+    <% @shop_parameters.kept.each do |shop_parameter| %>
       <tr class="<%= dom_class(shop_parameter) %>" id="<%= dom_id(shop_parameter) %>">
         <td>
           <%= shop_parameter %>
