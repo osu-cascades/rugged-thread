@@ -5,9 +5,10 @@ class Discount < ApplicationRecord
   belongs_to :standard_discount
   belongs_to :item
 
+  monetize :price_cents, allow_nil: true,
+    numericality: { greater_than_or_equal_to: 0 }
+
   validates :percentage_amount,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
-  validates :price,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validate :percentage_xor_price_present
 

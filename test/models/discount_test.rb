@@ -9,6 +9,7 @@ class DiscountTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Discount.new, :percentage_amount)
+    assert_respond_to(Discount.new, :price_cents)
     assert_respond_to(Discount.new, :price)
   end
 
@@ -31,6 +32,12 @@ class DiscountTest < ActiveSupport::TestCase
     assert discount.valid?
     discount.percentage_amount = -1
     refute discount.valid?
+  end
+
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), Discount.new(price: 1).price
+    assert_equal Money.from_cents(200), Discount.new(price: '2').price
+    assert_equal Money.from_cents(300), Discount.new(price: '3.00').price
   end
 
   test 'price must be a positive integer' do

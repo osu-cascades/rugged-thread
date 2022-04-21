@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_224553) do
+>>>>>>> b48b3a799dbaea25f20cc65a469bfa771de68d10
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
   create_table "complications", force: :cascade do |t|
     t.bigint "standard_complication_id", null: false
     t.bigint "repair_id", null: false
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["repair_id"], name: "index_complications_on_repair_id"
@@ -113,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
+    t.integer "price_cents"
     t.integer "percentage_amount"
     t.integer "position"
     t.index ["item_id"], name: "index_discounts_on_item_id"
@@ -125,14 +129,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.integer "position"
     t.index ["item_id"], name: "index_fees_on_item_id"
     t.index ["standard_fee_id"], name: "index_fees_on_standard_fee_id"
   end
 
   create_table "inventory_items", force: :cascade do |t|
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.bigint "repair_id", null: false
     t.bigint "standard_inventory_item_id", null: false
     t.datetime "created_at", null: false
@@ -228,7 +232,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "notes"
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.integer "level", default: 1, null: false
     t.integer "position"
     t.index ["item_id"], name: "index_repairs_on_item_id"
@@ -246,18 +250,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
 
   create_table "special_order_items", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.bigint "repair_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ordering_fee_price", default: 0, null: false
-    t.integer "freight_fee_price", default: 0, null: false
+    t.integer "ordering_fee_price_cents", default: 0, null: false
+    t.integer "freight_fee_price_cents", default: 0, null: false
     t.index ["repair_id"], name: "index_special_order_items_on_repair_id"
   end
 
   create_table "standard_complications", force: :cascade do |t|
     t.string "name"
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.bigint "standard_repair_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -269,12 +273,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "percentage_amount"
-    t.integer "price"
+    t.integer "price_cents"
   end
 
   create_table "standard_fees", force: :cascade do |t|
     t.text "name"
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -282,7 +286,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
   create_table "standard_inventory_items", force: :cascade do |t|
     t.string "name"
     t.string "sku"
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -291,7 +295,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_225618) do
     t.string "name"
     t.string "method"
     t.text "description"
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", default: 1, null: false

@@ -6,6 +6,7 @@ class RepairTest < ActiveSupport::TestCase
     assert_respond_to(Repair.new, :notes)
     assert_respond_to(Repair.new, :level)
     assert_respond_to(Repair.new, :price)
+    assert_respond_to(Repair.new, :price_cents)
   end
 
   test "associations" do
@@ -54,6 +55,12 @@ class RepairTest < ActiveSupport::TestCase
     assert_equal 1, repair.level
   end
 
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), Repair.new(price: 1).price
+    assert_equal Money.from_cents(200), Repair.new(price: '2').price
+    assert_equal Money.from_cents(300), Repair.new(price: '3.00').price
+  end
+
   test "has a price that is the default repair price" do
     repair = Repair.new
     assert_equal(repair.price, 0)
@@ -68,43 +75,43 @@ class RepairTest < ActiveSupport::TestCase
 
   test "#price_of_labor is the price plus price of all complications" do
     repair = repairs(:complicationless)
-    assert_equal(2000, repair.price_of_labor)
-    repair.complications << Complication.new(price: 500)
-    assert_equal(2500, repair.price_of_labor)
-    repair.complications << Complication.new(price: 500)
-    assert_equal(3000, repair.price_of_labor)
+    assert_equal(Money.from_cents(2000), repair.price_of_labor)
+    repair.complications << Complication.new(price_cents: 500)
+    assert_equal(Money.from_cents(2500), repair.price_of_labor)
+    repair.complications << Complication.new(price_cents: 500)
+    assert_equal(Money.from_cents(3000), repair.price_of_labor)
   end
 
   test "#total_price is the price_of_labor plus price of inventory items and special order items" do
     repair = repairs(:complicationless)
-    assert_equal(2000, repair.total_price)
-    repair.complications << Complication.new(price: 500)
-    repair.complications << Complication.new(price: 500)
-    assert_equal(3000, repair.total_price)
-    repair.inventory_items << InventoryItem.new(price: 500)
-    repair.inventory_items << InventoryItem.new(price: 500)
-    assert_equal(4000, repair.total_price)
-    repair.special_order_items << SpecialOrderItem.new(price: 1000)
-    repair.special_order_items << SpecialOrderItem.new(price: 1000)
-    assert_equal(6000, repair.total_price)
+    assert_equal(Money.from_cents(2000), repair.total_price)
+    repair.complications << Complication.new(price_cents: 500)
+    repair.complications << Complication.new(price_cents: 500)
+    assert_equal(Money.from_cents(3000), repair.total_price)
+    repair.inventory_items << InventoryItem.new(price_cents: 500)
+    repair.inventory_items << InventoryItem.new(price_cents: 500)
+    assert_equal(Money.from_cents(4000), repair.total_price)
+    repair.special_order_items << SpecialOrderItem.new(price_cents: 1000)
+    repair.special_order_items << SpecialOrderItem.new(price_cents: 1000)
+    assert_equal(Money.from_cents(6000), repair.total_price)
   end
 
   test "#total_price_of_inventory_items is the sum of the prices of all inventory items" do
     repair = repairs(:complicationless)
-    assert_equal(0, repair.total_price_of_inventory_items)
-    repair.inventory_items << InventoryItem.new(price: 500)
-    assert_equal(500, repair.total_price_of_inventory_items)
-    repair.inventory_items << InventoryItem.new(price: 1000)
-    assert_equal(1500, repair.total_price_of_inventory_items)
+    assert_equal(Money.from_cents(0), repair.total_price_of_inventory_items)
+    repair.inventory_items << InventoryItem.new(price_cents: 500)
+    assert_equal(Money.from_cents(500), repair.total_price_of_inventory_items)
+    repair.inventory_items << InventoryItem.new(price_cents: 1000)
+    assert_equal(Money.from_cents(1500), repair.total_price_of_inventory_items)
   end
 
   test "#total_price_of_special_order_items is the sum of the prices of all special order items" do
     repair = repairs(:complicationless)
-    assert_equal(0, repair.total_price_of_special_order_items)
-    repair.special_order_items << SpecialOrderItem.new(price: 500)
-    assert_equal(500, repair.total_price_of_special_order_items)
-    repair.special_order_items << SpecialOrderItem.new(price: 1000)
-    assert_equal(1500, repair.total_price_of_special_order_items)
+    assert_equal(Money.from_cents(0), repair.total_price_of_special_order_items)
+    repair.special_order_items << SpecialOrderItem.new(price_cents: 500)
+    assert_equal(Money.from_cents(500), repair.total_price_of_special_order_items)
+    repair.special_order_items << SpecialOrderItem.new(price_cents: 1000)
+    assert_equal(Money.from_cents(1500), repair.total_price_of_special_order_items)
   end
 
   test '#name is the standard_repair name' do

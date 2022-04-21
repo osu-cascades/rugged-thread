@@ -4,6 +4,7 @@ class ComplicationTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Complication.new, :price)
+    assert_respond_to(Complication.new, :price_cents)
   end
 
   test "associations" do
@@ -25,12 +26,18 @@ class ComplicationTest < ActiveSupport::TestCase
     refute complication.valid?
   end
 
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), Complication.new(price: 1).price
+    assert_equal Money.from_cents(200), Complication.new(price: '2').price
+    assert_equal Money.from_cents(300), Complication.new(price: '3.00').price
+  end
+
   test "has a price that is the default complication price" do
     complication = Complication.new
     assert_equal(complication.price, 0)
   end
 
-  test 'price must be a positive integer' do
+  test 'price must be positive' do
     complication = complications(:one)
     assert complication.valid?
     complication.price = -1

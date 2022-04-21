@@ -2,12 +2,13 @@ require "test_helper"
 
 class StandardRepairTest < ActiveSupport::TestCase
 
-  test "attribtues" do
+  test "attributes" do
     assert_respond_to(StandardRepair.new, :name)
     assert_respond_to(StandardRepair.new, :method)
     assert_respond_to(StandardRepair.new, :description)
     assert_respond_to(StandardRepair.new, :level)
     assert_respond_to(StandardRepair.new, :price)
+    assert_respond_to(StandardRepair.new, :price_cents)
   end
 
   test "associations" do
@@ -64,6 +65,12 @@ class StandardRepairTest < ActiveSupport::TestCase
   test 'level is 1 by default' do
     standard_repair = StandardRepair.new
     assert_equal 1, standard_repair.level
+  end
+
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), StandardRepair.new(price: 1).price
+    assert_equal Money.from_cents(200), StandardRepair.new(price: '2').price
+    assert_equal Money.from_cents(300), StandardRepair.new(price: '3.00').price
   end
 
   test 'price must be a positive integer' do

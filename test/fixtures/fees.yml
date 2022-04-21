@@ -1,14 +1,14 @@
 one:
   item: one
   standard_fee: one
-  price: 100
+  price_cents: 100
 
 two:
   item: one
   standard_fee: one
-  price: 200
+  price_cents: 200
 
 for_item_with_only_fee:
   item: with_only_fee
   standard_fee: one
-  price: 200
+  price_cents: 200

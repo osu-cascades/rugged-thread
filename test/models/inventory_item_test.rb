@@ -4,6 +4,7 @@ class InventoryItemTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(InventoryItem.new, :price)
+        assert_respond_to(InventoryItem.new, :price_cents)
   end
 
   test "associations" do
@@ -17,6 +18,11 @@ class InventoryItemTest < ActiveSupport::TestCase
     refute inventory_item.valid?
   end
 
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), InventoryItem.new(price: 1).price
+    assert_equal Money.from_cents(200), InventoryItem.new(price: '2').price
+    assert_equal Money.from_cents(300), InventoryItem.new(price: '3.00').price
+  end
 
   test 'price must be a positive integer' do
     inventory_item = inventory_items(:one)

@@ -5,6 +5,7 @@ class StandardFeeTest < ActiveSupport::TestCase
   test 'attributes' do
     assert_respond_to(StandardFee.new, :name)
     assert_respond_to(StandardFee.new, :price)
+    assert_respond_to(StandardFee.new, :price_cents)
   end
 
   test "associations" do
@@ -26,19 +27,16 @@ class StandardFeeTest < ActiveSupport::TestCase
     refute standard_fee.valid?
   end
 
-  test 'must have a numeric price' do
-    standard_fee = standard_fees(:one)
-    assert standard_fee.valid?
-    standard_fee.price = 'FAKE'
-    refute standard_fee.valid?
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), StandardFee.new(price: 1).price
+    assert_equal Money.from_cents(200), StandardFee.new(price: '2').price
+    assert_equal Money.from_cents(300), StandardFee.new(price: '3.00').price
   end
 
-  test 'price cannot be negative or zero' do
+  test 'price must be positive' do
     standard_fee = standard_fees(:one)
     assert standard_fee.valid?
     standard_fee.price = -1
-    refute standard_fee.valid?
-    standard_fee.price = 0
     refute standard_fee.valid?
   end
 

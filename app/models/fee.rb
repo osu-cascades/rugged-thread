@@ -5,7 +5,8 @@ class Fee < ApplicationRecord
   belongs_to :standard_fee
   belongs_to :item
 
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  monetize :price_cents, allow_nil: false,
+    numericality: { greater_than_or_equal_to: 0 }
 
   default_scope { order('position ASC') }
 

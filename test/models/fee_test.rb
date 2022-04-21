@@ -4,6 +4,7 @@ class FeeTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Fee.new, :price)
+    assert_respond_to(Fee.new, :price_cents)
   end
 
   test "associations" do
@@ -23,6 +24,12 @@ class FeeTest < ActiveSupport::TestCase
     assert fee.valid?
     fee.item = nil
     refute fee.valid?
+  end
+
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), Fee.new(price: 1).price
+    assert_equal Money.from_cents(200), Fee.new(price: '2').price
+    assert_equal Money.from_cents(300), Fee.new(price: '3.00').price
   end
 
   test "has a price that is the default fee price" do

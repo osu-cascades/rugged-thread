@@ -31,18 +31,18 @@ customer = Customer.create!(first_name: 'Fred', last_name: 'Examplero',
   billing_city: 'Bend', billing_state: 'OR', billing_zip_code: '97704',
   customer_type: b2c_local_customer_type)
 
-standard_discount = StandardDiscount.create!(name: 'Coupon', price: 1000)
+standard_discount = StandardDiscount.create!(name: 'Coupon', price_cents: 1000)
 StandardDiscount.create!(name: 'Employee', percentage_amount: 30)
 StandardDiscount.create!(name: 'Investor', percentage_amount: 30)
 StandardDiscount.create!(name: 'OEM Cost Share', percentage_amount: 30)
 StandardDiscount.create!(name: 'Warranty', percentage_amount: 100)
 
-standard_fee = StandardFee.create!(name: 'Cleaning', price: 3500)
-StandardFee.create!(name: 'Expedite', price: 2500)
-StandardFee.create!(name: 'Handling', price: 500)
-StandardFee.create!(name: 'Large Item', price: 3500)
-StandardFee.create!(name: 'Shipping', price: 1000)
-StandardFee.create!(name: 'Special Order', price: 1000)
+standard_fee = StandardFee.create!(name: 'Cleaning', price_cents: 3500)
+StandardFee.create!(name: 'Expedite', price_cents: 2500)
+StandardFee.create!(name: 'Handling', price_cents: 500)
+StandardFee.create!(name: 'Large Item', price_cents: 3500)
+StandardFee.create!(name: 'Shipping', price_cents: 1000)
+StandardFee.create!(name: 'Special Order', price_cents: 1000)
 
 ItemStatus.create!(name: 'INVOICED')
 ItemStatus.create!(name: 'ON HOLD')
@@ -71,38 +71,38 @@ work_order = WorkOrder.create!(creator: staff_user, in_date: Date.today,
 item = Item.create!(due_date: Date.today, notes: 'Collectors item, please handle carefully.',
   brand: brand, item_status: item_status, item_type: item_type, work_order: work_order)
 
-Fee.create!(item: item, standard_fee: standard_fee, price: 3500)
-Discount.create!(item: item, standard_discount: standard_discount, price: 1000)
+Fee.create!(item: item, standard_fee: standard_fee, price_cents: 3500)
+Discount.create!(item: item, standard_discount: standard_discount, price_cents: 1000)
 
 StandardRepair.create(name: "Slider Replacement: Separating Zipper", method: "",
-  description: "YKK separating", level: 1, price: 2000).tap do |sr|
-    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", price: 500)
-    sr.standard_complications.create!(name: "Add staple", price: 500)
+  description: "YKK separating", level: 1, price_cents: 2000).tap do |sr|
+    sr.standard_complications.create!(name: "Non-YKK brand or non-account inventory", price_cents: 500)
+    sr.standard_complications.create!(name: "Add staple", price_cents: 500)
   end
 
 standard_repair = StandardRepair.create!(name: "Zipper Replacement: Separating Zipper : As-Manufactured (per Half Zipper)", method: "",
- description: "< 24\" zipper length", level: 1, price: 4500)
+ description: "< 24\" zipper length", level: 1, price_cents: 4500)
 repair = Repair.create!(item: item, standard_repair: standard_repair, level: 1,
- price: 4500, notes:"Fake Notes")
+ price_cents: 4500, notes:"Fake Notes")
 
 standard_repair.standard_complications.create!(name: "< 25-36\" zipper length",
-  price: 500)
+  price_cents: 500)
 standard_complication = standard_repair.standard_complications.create!(
-  name: "< 37-48\" zipper length", price: 1000)
-Complication.create!(standard_complication: standard_complication, repair: repair, price: 1000)
+  name: "< 37-48\" zipper length", price_cents: 1000)
+Complication.create!(standard_complication: standard_complication, repair: repair, price_cents: 1000)
 
-SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price: 5000,
-  ordering_fee_price: 1000, freight_fee_price: 1500, repair: repair)
+SpecialOrderItem.create!(name: "Gucci Gold-Plated Zipper Pull", price_cents: 5000,
+  ordering_fee_price_cents: 1000, freight_fee_price_cents: 1500, repair: repair)
 
 standard_inventory_item = StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Latch (2\") Nexus",
-  sku: "550-1100 SEEDED", price: 100)
+  sku: "550-1100 SEEDED", price_cents: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Dual Adjust Buckle Body (2\") Nexus",
-  sku: "550-0100 SEEDED", price: 100)
+  sku: "550-0100 SEEDED", price_cents: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (2\") Nexus",
-  sku: "540-1100 SEEDED", price: 100)
+  sku: "540-1100 SEEDED", price_cents: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Latch (1\") Nexus",
-  sku: "525-1100 SEEDED", price: 100)
+  sku: "525-1100 SEEDED", price_cents: 100)
 StandardInventoryItem.create!(name: "SEEDED World Side Release Buckle Body (2\") Nexus",
-  sku: "540-0000 SEEDED", price: 100)
+  sku: "540-0000 SEEDED", price_cents: 100)
 
-standard_inventory_item.inventory_items.create!(repair: repair, price: 100)
+standard_inventory_item.inventory_items.create!(repair: repair, price_cents: 100)

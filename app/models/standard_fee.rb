@@ -4,8 +4,9 @@ class StandardFee < ApplicationRecord
 
   has_many :fees, dependent: :restrict_with_error
 
+  monetize :price_cents, allow_nil: false, numericality: { greater_than_or_equal_to: 0 }
+
   validates :name, presence: true, uniqueness: true
-  validates :price , numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 
   default_scope { order('name ASC') }
 
