@@ -2,28 +2,28 @@ one:
   standard_discount: one
   item: one
   percentage_amount: nil
-  price: 1000
+  price_cents: 1000
 
 two:
   standard_discount: one
   item: one
   percentage_amount: 10
-  price: nil
+  price_cents: nil
 
 for_item_with_only_discount:
   standard_discount: one
   item: with_only_discount
   percentage_amount: 5
-  price: nil
+  price_cents: nil
 
 percentage:
   standard_discount: one
   item: one
   percentage_amount: 1
-  price: nil
+  price_cents: nil
 
 price:
   standard_discount: one
   item: one
   percentage_amount: nil
-  price: 100
+  price_cents: 100
