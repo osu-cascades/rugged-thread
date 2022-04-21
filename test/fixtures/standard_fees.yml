@@ -1,11 +1,11 @@
 one:
   name: Fake Cleaning
-  price: 100
+  price_cents: 100
 
 feeless:
   name: Fake Large Item
-  price: 200
+  price_cents: 200
 
 expedite:
   name: Expedite
-  price: 2500
+  price_cents: 2500
