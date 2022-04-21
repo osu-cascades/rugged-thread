@@ -51,7 +51,12 @@ Rails.application.routes.draw do
       patch :recover
     end
   end
-  resources :item_types
+  resources :item_types do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :items, except: [:new, :create] do
     get 'print', on: :member
     resources :discounts, only: :create

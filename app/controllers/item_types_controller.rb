@@ -1,5 +1,5 @@
 class ItemTypesController < ApplicationController
-  before_action :set_item_type, only: %i[ edit update destroy ]
+  before_action :set_item_type, only: %i[ edit update destroy archive recover]
 
   # GET /item_types or /item_types.json
   def index
@@ -55,6 +55,31 @@ class ItemTypesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { redirect_to item_types_url, alert: 'Cannot delete this item type.' }
+        format.json { render json: @item_type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @item_type.discard
+        format.html { redirect_to item_types_url, notice: "Item type was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_types_url, alert: 'Cannot archive this item type.' }
+        format.json { render json: @item_type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  def recover
+    respond_to do |format|
+      if @item_type.undiscard
+        format.html { redirect_to item_types_url, notice: "Item type was successfully recoverd." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to item_typees_url, alert: 'Cannot recover this item type.' }
         format.json { render json: @item_type.errors, status: :unprocessable_entity }
       end
     end

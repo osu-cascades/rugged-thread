@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @item_types.each do |item_type| %>
+    <% @item_types.kept.each do |item_type| %>
       <tr class="<%= dom_class(item_type) %>" id="<%= dom_id(item_type) %>">
         <td>
           <%= item_type %>
