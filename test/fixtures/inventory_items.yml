@@ -1,9 +1,9 @@
 one:
-  price: 100
+  price_cents: 100
   repair: one
   standard_inventory_item: one
 
 two:
-  price: 100
+  price_cents: 100
   repair: two
   standard_inventory_item: two
