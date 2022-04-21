@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_220246) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_220711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -244,12 +244,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_220246) do
 
   create_table "special_order_items", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", default: 0, null: false
+    t.integer "price_cents", default: 0, null: false
     t.bigint "repair_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ordering_fee_price", default: 0, null: false
-    t.integer "freight_fee_price", default: 0, null: false
+    t.integer "ordering_fee_price_cents", default: 0, null: false
+    t.integer "freight_fee_price_cents", default: 0, null: false
     t.index ["repair_id"], name: "index_special_order_items_on_repair_id"
   end
 
