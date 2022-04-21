@@ -1,14 +1,14 @@
 one:
   name: Fake Name
   sku: Fake Sku
-  price: 100
+  price_cents: 100
 
 two:
   name: Fake Name 2
   sku: Fake Sku 2
-  price: 100
+  price_cents: 100
 
 inventory_itemless:
   name: Fake Name 3
   sku: Fake Sku 3
-  price: 100
+  price_cents: 100
