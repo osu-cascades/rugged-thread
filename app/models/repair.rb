@@ -8,8 +8,9 @@ class Repair < ApplicationRecord
   has_many :inventory_items, dependent: :restrict_with_error
   has_many :special_order_items, dependent: :restrict_with_error
 
+  monetize :price_cents, allow_nil: false, numericality: { greater_than_or_equal_to: 0 }
+
   validates :level, numericality: { only_integer: true, greater_than: 0 }
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   default_scope { order('position ASC') }
 

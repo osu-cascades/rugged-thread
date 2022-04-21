@@ -6,6 +6,7 @@ class RepairTest < ActiveSupport::TestCase
     assert_respond_to(Repair.new, :notes)
     assert_respond_to(Repair.new, :level)
     assert_respond_to(Repair.new, :price)
+    assert_respond_to(Repair.new, :price_cents)
   end
 
   test "associations" do
@@ -52,6 +53,12 @@ class RepairTest < ActiveSupport::TestCase
   test 'level is 1 by default' do
     repair = Repair.new
     assert_equal 1, repair.level
+  end
+
+  test "price is a value object" do
+    assert_equal Money.from_cents(100), Repair.new(price: 1).price
+    assert_equal Money.from_cents(200), Repair.new(price: '2').price
+    assert_equal Money.from_cents(300), Repair.new(price: '3.00').price
   end
 
   test "has a price that is the default repair price" do

@@ -3,25 +3,25 @@ one:
   item: one
   notes: 'Fake Notes'
   level: 1
-  price: 1000
+  price_cents: 1000
 
 two:
   standard_repair: one
   item: one
   notes: 'Fake notes 2'
   level: 2
-  price: 1500
+  price_cents: 1500
 
 complicationless:
   standard_repair: two
   item: one
   notes: 'Fake notes 3'
   level: 3
-  price: 2000
+  price_cents: 2000
 
 for_item_with_only_repair:
   standard_repair: one
   item: with_only_repair
   notes: 'Fake notes 4'
   level: 4
-  price: 2500
+  price_cents: 2500
