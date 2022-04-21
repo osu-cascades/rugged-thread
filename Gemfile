@@ -14,6 +14,7 @@ gem 'discard', '~> 1.2'
 gem "importmap-rails"
 # gem "image_processing", "~> 1.2"
 gem "jbuilder"
+gem 'money-rails'
 gem 'pagy'
 gem 'pg'
 gem 'phony_rails'
