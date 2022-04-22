@@ -6,7 +6,7 @@
     const fetchResponsePromise = fetch(`/standard_repairs/${standard_repair_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('repair_price').value = data.price; 
+      document.getElementById('repair_price').value = (parseFloat(data.price.cents) / 100.0).toString();
       document.getElementById('repair_level').value = data.level;
     });
   };

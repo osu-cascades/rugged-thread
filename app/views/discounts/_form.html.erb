@@ -11,7 +11,7 @@
       if (data.price) {
         const dollar_field = document.getElementById('discount_price');
         // Set the value
-        dollar_field.value = data.price; 
+        dollar_field.value = (parseFloat(data.price.cents) / 100.0).toString();
         // Enable if disabled
         dollar_field.disabled = false;
         const percent = document.getElementById('discount_percentage_amount');
