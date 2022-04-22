@@ -102,6 +102,10 @@ Rails.application.routes.draw do
   end
   resources :standard_repairs do
     resources :standard_complications, only: :new
+    member do
+      patch :archive
+      patch :recover
+    end
   end
   resources :task_types
   resources :tasks

@@ -1,7 +1,7 @@
 class StandardRepairsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_standard_repair, only: %i[ edit update destroy ]
+  before_action :set_standard_repair, only: %i[ edit update destroy archive recover ]
 
   def index
     @pagy, @standard_repairs = pagy(StandardRepair.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
@@ -46,6 +46,30 @@ class StandardRepairsController < ApplicationController
         format.json { render :show, status: :ok, location: @standard_repair }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @standard_repair.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @standard_repair.discard
+        format.html { redirect_to standard_repairs_url, notice: "Standard Repair was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_repairs_url, alert: 'Cannot archive this Standard Repair.' }
+        format.json { render json: @standard_repair.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @standard_repair.undiscard
+        format.html { redirect_to standard_repairs_url, notice: "Standard Repair was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_repairs_url, alert: 'Cannot recover this Standard Repair.' }
         format.json { render json: @standard_repair.errors, status: :unprocessable_entity }
       end
     end

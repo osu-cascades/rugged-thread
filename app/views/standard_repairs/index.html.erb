@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @standard_repairs.each do |standard_repair| %>
+      <% @standard_repairs.kept.each do |standard_repair| %>
         <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
           <td>
             <%= highlight(standard_repair.name, params[:query]) %>
