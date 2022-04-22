@@ -17,7 +17,7 @@
           <%= highlight(standard_inventory_item.sku, params.dig(:query)) %>
         </td>
         <td class="text-end">
-          <%= number_to_currency(standard_inventory_item.price/100.0) %>
+          <%= standard_inventory_item.price.format %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', standard_inventory_item, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>

@@ -23,7 +23,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def price_estimate
-    items.reduce(0) { |sum, i| sum + i.price_estimate }
+    items.reduce(Money.new(0)) { |sum, i| sum + i.price_estimate }
   end
 
   private

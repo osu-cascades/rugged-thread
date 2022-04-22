@@ -27,7 +27,7 @@ class RepairsTest < ApplicationSystemTestCase
     assert_text repairs(:one).name
     assert_text repairs(:one).notes
     assert_text repairs(:one).level
-    assert_text number_to_currency(repairs(:one).price/100.0)
+    assert_text repairs(:one).price.format
     assert_text repairs(:one).item.brand.name
     assert_text repairs(:one).item.item_type.name
   end

@@ -14,7 +14,7 @@
         <th scope="row"><%= complication.id %></th>
         <td><%= link_to complication.standard_complication, complication.standard_complication %></td>
         <td><%= link_to_unless(controller.controller_name == 'repairs', complication.repair, complication.repair) %></td>
-        <td class="text-end"><%= number_to_currency(complication.price/100.0) %></td>
+        <td class="text-end"><%= complication.price.format %></td>
         <td class="text-end">
           <%= link_to 'Details', complication_path(complication), data: { "turbo-frame": :"_top" }, class: 'btn btn-outline-secondary btn-sm' %>
         </td>

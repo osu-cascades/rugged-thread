@@ -25,7 +25,7 @@ class InventoryItemsTest < ApplicationSystemTestCase
   test "viewing a inventory item shows the standard inventory_item name and price" do
     visit inventory_item_path(inventory_items(:one))
     assert_text inventory_items(:one).standard_inventory_item.name
-    assert_text number_to_currency(inventory_items(:one).price/100.0)
+    assert_text inventory_items(:one).price.format
   end
 
   test "creating a inventory_item for an repair" do

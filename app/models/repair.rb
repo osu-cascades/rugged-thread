@@ -37,15 +37,15 @@ class Repair < ApplicationRecord
   end
 
   def total_price_of_complications
-    complications.reduce(0) { |sum, c| sum + c.price }
+    complications.reduce(Money.new(0)) { |sum, c| sum + c.price }
   end
 
   def total_price_of_inventory_items
-    inventory_items.reduce(0) { |sum, ii| sum + ii.price }
+    inventory_items.reduce(Money.new(0)) { |sum, ii| sum + ii.price }
   end
 
   def total_price_of_special_order_items
-    special_order_items.reduce(0) { |sum, soi| sum + soi.price }
+    special_order_items.reduce(Money.new(0)) { |sum, soi| sum + soi.price }
   end
 
   def to_s

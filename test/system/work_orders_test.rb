@@ -16,7 +16,7 @@ class WorkOrdersTest < ApplicationSystemTestCase
 
   test "viewing a work order's total estimate" do
     visit work_order_path(work_orders(:shipping))
-    assert_text("#{number_to_currency(work_orders(:shipping).price_estimate/100.0)}")
+    assert_text(work_orders(:shipping).price_estimate.format)
   end
 
   test "new work order default creator is current_user" do

@@ -12,7 +12,7 @@
       <tr>
         <th scope="row"><%= inventory_item.id %></th>
         <td><%= link_to inventory_item.standard_inventory_item, inventory_item.standard_inventory_item %></td>
-        <td class="text-end"><%= number_to_currency(inventory_item.price/100.0) %></td>
+        <td class="text-end"><%= inventory_item.price.format %></td>
         <td class="text-end">
           <%= link_to 'Details', inventory_item_path(inventory_item), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

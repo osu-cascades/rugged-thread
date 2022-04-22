@@ -36,15 +36,15 @@ class Item < ApplicationRecord
   end
 
   def estimated_price_of_labor
-    repairs.reduce(0) { |sum, r| sum + r.price_of_labor }
+    repairs.reduce(Money.new(0)) { |sum, r| sum + r.price_of_labor }
   end
 
   def price_of_fees
-    fees.reduce(0) { |sum, f| sum + f.price}
+    fees.reduce(Money.new(0)) { |sum, f| sum + f.price}
   end
 
   def price_of_discounts
-    discounts.reduce(0) { |sum, d| sum + (d.price ? d.price : 0) }
+    discounts.reduce(Money.new(0)) { |sum, d| sum + (d.price ? d.price : 0) }
   end
 
   def discount_percent_total

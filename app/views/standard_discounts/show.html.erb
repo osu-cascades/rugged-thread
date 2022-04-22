@@ -25,6 +25,6 @@
   </dd>
   <dt class="col-sm-3">Dollar Amount</dt>
   <dd class="col-sm-9">
-    <%= number_to_currency((@standard_discount.price || 0)/100.0) %>
+    <%= @standard_discount.price&.format || Money.new(0).format %>
   </dd>
 </dl>

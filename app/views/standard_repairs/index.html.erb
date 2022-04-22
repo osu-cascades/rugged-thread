@@ -47,7 +47,7 @@
             <%= standard_repair.level %>
           </td>
           <td class="text-end">
-            <%= number_to_currency(standard_repair.price/100.0) %>
+            <%= standard_repair.price.format %>
           </td>
           <td class="text-end">
             <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>

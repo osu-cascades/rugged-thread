@@ -38,7 +38,7 @@
     </p>
   </div>
   <div class="col-3 text-end">
-    <h2 class="display-2"><%= number_to_currency(@work_order.price_estimate/100.0) %></h3>
+    <h2 class="display-2"><%= @work_order.price_estimate.format %></h3>
   </div>
 </div>
 

@@ -27,7 +27,7 @@ class FeesTest < ApplicationSystemTestCase
     assert_text fees(:one).name
     assert_text fees(:one).item.brand.name
     assert_text fees(:one).item.item_type.name
-    assert_text number_to_currency(fees(:one).price/100.0)
+    assert_text fees(:one).price.format
   end
 
   test "creating a fee for an item" do

@@ -25,6 +25,6 @@
   </dd>
   <dt class="col-sm-3">Price</dt>
   <dd class="col-sm-9">
-    <%= number_to_currency(@standard_inventory_item.price/100.0) %>
+    <%= @standard_inventory_item.price.format %>
   </dd>
 </dl>
