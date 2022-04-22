@@ -1,5 +1,5 @@
 class StandardDiscountsController < ApplicationController
-  before_action :set_standard_discount, only: %i[ show edit update destroy ]
+  before_action :set_standard_discount, only: %i[ show edit update destroy archive recover ]
 
   # GET /standard_discounts or /standard_discounts.json
   def index
@@ -42,6 +42,30 @@ class StandardDiscountsController < ApplicationController
         format.json { render :show, status: :ok, location: @standard_discount }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @standard_discount.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @standard_discount.discard
+        format.html { redirect_to standard_discounts_url, notice: "Standard Discount was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_discounts_url, alert: 'Cannot archive this Standard Discount.' }
+        format.json { render json: @standard_discount.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @standard_discount.undiscard
+        format.html { redirect_to standard_discounts_url, notice: "Standard Discount was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_discounts_url, alert: 'Cannot recover this Standard Discount.' }
         format.json { render json: @standard_discount.errors, status: :unprocessable_entity }
       end
     end

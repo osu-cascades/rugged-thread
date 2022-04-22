@@ -1,4 +1,5 @@
 class StandardDiscount < ApplicationRecord
+  include Discard::Model
 
   has_many :discounts, dependent: :restrict_with_error
 

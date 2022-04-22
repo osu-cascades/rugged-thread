@@ -1,4 +1,5 @@
 class StandardFee < ApplicationRecord
+  include Discard::Model
 
   EXPEDITE_FEE_NAME = 'Expedite'
 

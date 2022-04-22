@@ -1,5 +1,5 @@
 class StandardFeesController < ApplicationController
-  before_action :set_standard_fee, only: %i[ show edit update destroy ]
+  before_action :set_standard_fee, only: %i[ show edit update destroy archive recover ]
 
   # GET /standard_fees or /standard_fees.json
   def index
@@ -42,6 +42,30 @@ class StandardFeesController < ApplicationController
         format.json { render :show, status: :ok, location: @standard_fee }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @standard_fee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    respond_to do |format|
+      if @standard_fee.discard
+        format.html { redirect_to standard_fees_url, notice: "Standard Fee was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_fees_url, alert: 'Cannot archive this Standard Fee.' }
+        format.json { render json: @standard_fee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @standard_fee.undiscard
+        format.html { redirect_to standard_fees_url, notice: "Standard Fee was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_fees_url, alert: 'Cannot recover this Standard Fee.' }
         format.json { render json: @standard_fee.errors, status: :unprocessable_entity }
       end
     end
