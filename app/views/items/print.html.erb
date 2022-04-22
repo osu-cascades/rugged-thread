@@ -20,7 +20,7 @@
     <h2>Claim Ticket <%= @item.work_order.number %> - <%= @item.position %></h2>
 
     <h3><%= @item.brand %> <%= @item.item_type %></h3>
-    <p>Estimate: <%= @item.price_estimate.format %></p>
+    <p>Estimate: <%= @item.price.format %></p>
     <p>Expected Completion Date: s<%= @item.due_date.to_formatted_s(:long) %></p>
     <p>Please call or text if you haven't heard from us by the Expected Completion Date. We will always call or text when your repair is complete.
     <br>

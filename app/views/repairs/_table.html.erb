@@ -9,8 +9,8 @@
         <th scope="col">Description</th>
       <% end %>
       <th scope="col">Level</th>
-      <th scope="col" class="text-end">Price</th>
-      <th scope="col" class="text-end">Labor Total</th>
+      <th scope="col" class="text-end">Labor</th>
+      <th scope="col" class="text-end">Total Price</th>
       <th></th>
     </tr>
   </thead>
@@ -26,7 +26,7 @@
         <% end %>
         <td><%= repair.level %></td>
         <td class="text-end"><%= repair.price.format %></td>
-        <td class="text-end"><%= repair.price_of_labor.format %></td>
+        <td class="text-end"><%= repair.total_price.format %></td>
         <td class="text-end">
           <%= link_to 'Details', repair_path(repair), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

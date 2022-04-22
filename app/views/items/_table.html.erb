@@ -25,8 +25,8 @@
         <td><%= item.level %></td>
         <td><%= item.notes %></td>
         <td><%= item.shipping ? '📦' : '' %></td>
-        <td class="text-end"><%= item.price_estimate.format %></td>
-        <td class="text-end"><%= item.estimated_price_of_labor.format %></td>
+        <td class="text-end"><%= item.price.format %></td>
+        <td class="text-end"><%= item.price_of_labor.format %></td>
         <td class="text-end">
           <%= link_to 'Details', item_path(item), class: 'btn btn-outline-secondary btn-sm' %>
         </td>

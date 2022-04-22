@@ -4,10 +4,9 @@ class ItemTest < ActiveSupport::TestCase
 
   test "attributes" do
     assert_respond_to(Item.new, :due_date)
-    assert_respond_to(Item.new, :price_estimate)
-    assert_respond_to(Item.new, :estimated_price_of_labor)
     assert_respond_to(Item.new, :notes)
     assert_respond_to(Item.new, :shipping)
+    assert_respond_to(Item.new, :position)
   end
 
   test "associations" do
@@ -156,24 +155,72 @@ class ItemTest < ActiveSupport::TestCase
     refute_equal item.work_order.due_date, item.due_date
   end
 
-  test "#price_estimate is estimated_price_of_labor plus parts, special order, minus standard discounts" do
+  test "#price is price of repairs minus discounts" do
     item = items(:associationless)
-    assert_equal(Money.from_cents(0), item.price_estimate)
-    item.repairs << Repair.new(price_cents: 300)
-    assert_equal(Money.from_cents(300), item.price_estimate)
+    assert_equal(Money.from_cents(0), item.price)
+    item.repairs << Repair.new(price_cents: 3)
+    assert_equal(Money.from_cents(3), item.price)
+    item.discounts << Discount.new(price_cents: 2)
+    assert_equal(Money.from_cents(1), item.price)
   end
 
-  test "#estimated_price_of_labor is the sum of all repair prices" do
-    item = items(:associationless)
-    assert_equal(Money.from_cents(0), item.estimated_price_of_labor)
-    item.repairs << Repair.new(price_cents: 300)
-    assert_equal(Money.from_cents(300), item.estimated_price_of_labor)
-    item.repairs << Repair.new(price_cents: 700)
-    assert_equal(Money.from_cents(1000), item.estimated_price_of_labor)
-  end
-
-  test "#fees_and_discounts returns 0 for now" do
+  test "#price_total_of_discount" do
     skip
+  end
+
+  test "#price_of_repairs_and_fees is the sum of repair prices and fee prices" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.price_of_repairs)
+    item.repairs << Repair.new(price_cents: 3)
+    item.fees << Fee.new(price_cents: 3)
+    assert_equal(Money.from_cents(6), item.price_of_repairs_and_fees)
+    item.repairs << Repair.new(price_cents: 7)
+    item.fees << Fee.new(price_cents: 1)
+    assert_equal(Money.from_cents(14), item.price_of_repairs_and_fees)
+  end
+
+  test "#price_of_labor is the sum of all repair prices" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.price_of_labor)
+    repair = Repair.new(price_cents: 3)
+    repair.complications << Complication.new(price_cents: 1)
+    item.repairs << repair
+    assert_equal(Money.from_cents(4), item.price_of_labor)
+    item.repairs << Repair.new(price_cents: 7)
+    assert_equal(Money.from_cents(11), item.price_of_labor)
+  end
+
+  test "#price_of_repairs is the sum of all repair prices" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.price_of_repairs)
+    item.repairs << Repair.new(price_cents: 3)
+    assert_equal(Money.from_cents(3), item.price_of_repairs)
+    item.repairs << Repair.new(price_cents: 7)
+    assert_equal(Money.from_cents(10), item.price_of_repairs)
+  end
+
+  test "#percentage_discount is the sum of all percentage discounts" do
+    item = items(:associationless)
+    assert_equal(0, item.percentage_discount)
+    item.discounts << Discount.new(percentage_amount: 1)
+    item.discounts << Discount.new(percentage_amount: 2)
+    assert_equal(3, item.percentage_discount)
+  end
+
+  test "#dollar_discount is the sum of all dollar discounts" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.dollar_discount)
+    item.discounts << Discount.new(price_cents: 3)
+    item.discounts << Discount.new(price_cents: 4)
+    assert_equal(Money.from_cents(7), item.dollar_discount)
+  end
+
+  test "#price_of_fees is the sum of all fees" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.price_of_fees)
+    item.fees << Fee.new(price_cents: 3)
+    item.fees << Fee.new(price_cents: 4)
+    assert_equal(Money.from_cents(7), item.price_of_fees)
   end
 
   test "#level is the maximum level of its repirs" do

@@ -45,7 +45,7 @@ class Repair < ApplicationRecord
   end
 
   def total_price_of_special_order_items
-    special_order_items.reduce(Money.new(0)) { |sum, soi| sum + soi.price }
+    special_order_items.reduce(Money.new(0)) { |sum, soi| sum + soi.total_price }
   end
 
   def to_s

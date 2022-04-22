@@ -108,10 +108,10 @@ class RepairTest < ActiveSupport::TestCase
   test "#total_price_of_special_order_items is the sum of the prices of all special order items" do
     repair = repairs(:complicationless)
     assert_equal(Money.from_cents(0), repair.total_price_of_special_order_items)
-    repair.special_order_items << SpecialOrderItem.new(price_cents: 500)
-    assert_equal(Money.from_cents(500), repair.total_price_of_special_order_items)
+    repair.special_order_items << SpecialOrderItem.new(price_cents: 500, ordering_fee_price_cents: 1, freight_fee_price_cents: 2)
+    assert_equal(Money.from_cents(503), repair.total_price_of_special_order_items)
     repair.special_order_items << SpecialOrderItem.new(price_cents: 1000)
-    assert_equal(Money.from_cents(1500), repair.total_price_of_special_order_items)
+    assert_equal(Money.from_cents(1503), repair.total_price_of_special_order_items)
   end
 
   test '#name is the standard_repair name' do

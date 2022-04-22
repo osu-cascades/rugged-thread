@@ -8,7 +8,7 @@
   <p><%= item.notes %></p>
 
   <h4>Estimated Price</h4>
-  <p>$<%= item.price_estimate %></p>
+  <p>$<%= item.price %></p>
 
   <h4>Fees</h4>
   <% item.fees.each do |fee| %>
@@ -30,7 +30,7 @@
         <tr>
           <td>
             <p>Repair <%= repair.position %></p>
-            <p>Labor $<%= item.estimated_price_of_labor %></p>
+            <p>Labor $<%= item.price_of_labor %></p>
             <p>Level <%= repair.level %></p>
           </td>
           <td width="20">&nbsp;</td>

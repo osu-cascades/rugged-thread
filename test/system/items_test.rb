@@ -18,7 +18,7 @@ class ItemsTest < ApplicationSystemTestCase
 
   test "viewing an item's total estimate" do
     visit item_path(items(:one))
-    assert_text(items(:one).price_estimate.format)
+    assert_text(items(:one).price.format)
   end
 
   test "new item's item status is the default one" do

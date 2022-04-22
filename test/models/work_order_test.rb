@@ -137,15 +137,15 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.number.blank?
   end
 
-  test '#price_estimate is the sum of all item estimates' do
+  test '#price is the sum of all item prices' do
     work_order = work_orders(:itemless)
-    assert_equal(Money.new(0), work_order.price_estimate)
+    assert_equal(Money.new(0), work_order.price)
     item = Item.new
-    def item.price_estimate
+    def item.price
       Money.from_cents(9900)
     end
     work_order.items << item
-    assert_equal(Money.from_cents(9900), work_order.price_estimate)
+    assert_equal(Money.from_cents(9900), work_order.price)
   end
 
 end

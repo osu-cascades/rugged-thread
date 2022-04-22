@@ -26,8 +26,10 @@
   </div>
   <div class="col text-end">
     <h2 class="display-2"><%= @repair.total_price.format %></h2>
-    <p class="my-0">Total labor: <strong><%= @repair.price_of_labor.format %></strong></p>
-    <p class="my-0">Base repair price: <strong><%= @repair.price.format %></strong></p>
+    <p class="my-0 text-muted">Base repair price: <strong><%= @repair.price.format %></strong></p>
+    <p class="my-0">Labor: <strong><%= @repair.price_of_labor.format %></strong></p>
+    <p class="my-0">Inventory Items: <strong><%= @repair.total_price_of_inventory_items.format %></strong></p>
+    <p class="my-0">Special Order Items: <strong><%= @repair.total_price_of_special_order_items.format %></strong></p>
   </div>
 </div>
 

@@ -19,36 +19,40 @@ class Item < ApplicationRecord
 
   default_scope { order('position ASC') }
 
-  def price_estimate
-    price_of_labor_and_fees - price_total_of_discount
+  def price
+    price_of_repairs_and_fees - price_total_of_discount
   end
 
   def price_total_of_discount 
-    price_of_discounts - ((discount_percent_total / 100) * price_of_labor_and_fees)
+    dollar_discount - ((percentage_discount / 100) * price_of_repairs_and_fees)
   end
 
-  def price_of_labor_and_fees
-    estimated_price_of_labor + price_of_fees
+  def price_of_repairs_and_fees
+    price_of_repairs + price_of_fees
   end
 
   def level
     repairs.collect(&:level).max
   end
 
-  def estimated_price_of_labor
+  def price_of_labor
     repairs.reduce(Money.new(0)) { |sum, r| sum + r.price_of_labor }
+  end
+
+  def price_of_repairs
+    repairs.reduce(Money.new(0)) { |sum, r| sum + r.total_price }
   end
 
   def price_of_fees
     fees.reduce(Money.new(0)) { |sum, f| sum + f.price}
   end
 
-  def price_of_discounts
+  def dollar_discount
     discounts.reduce(Money.new(0)) { |sum, d| sum + (d.price ? d.price : 0) }
   end
 
-  def discount_percent_total
-    (discounts.reduce(0) { |sum, d| sum + (d.percentage_amount ? d.percentage_amount : 0) })
+  def percentage_discount
+    discounts.reduce(0) { |sum, d| sum + (d.percentage_amount || 0) }
   end
 
   def expedite?

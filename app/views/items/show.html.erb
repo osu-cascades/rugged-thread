@@ -59,10 +59,10 @@
   </div>
 
   <div class="col text-end">
-    <h2 class="display-2"><%= @item.price_estimate.format %></h2>
+    <h2 class="display-2"><%= @item.price.format %></h2>
     <p class="my-0">
-      <strong>Labor:</strong>
-      <%= @item.estimated_price_of_labor.format %>
+      <strong>Repairs:</strong>
+      <%= @item.price_of_repairs.format %>
     </p>
     <p class="my-0">
       <strong>Fees:</strong>
