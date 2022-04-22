@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @standard_discounts.each do |standard_discount| %>
+    <% @standard_discounts.kept.each do |standard_discount| %>
       <tr class="<%= dom_class(standard_discount) %>" id="<%= dom_id(standard_discount) %>">
         <td>
           <%= standard_discount %>
