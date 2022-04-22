@@ -88,7 +88,12 @@ Rails.application.routes.draw do
       patch :recover
     end
   end
-  resources :standard_inventory_items
+  resources :standard_inventory_items do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
   resources :standard_fees do
     member do
       patch :archive

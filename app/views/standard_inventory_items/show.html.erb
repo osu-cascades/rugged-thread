@@ -5,6 +5,11 @@
   <div class="col-7 text-end">
     <%= link_to '&laquo All Inventory Items'.html_safe, standard_inventory_items_path, class: 'btn btn-outline-primary' %>
     <%= link_to 'Edit', edit_standard_inventory_item_path(@standard_inventory_item), class: 'btn btn-outline-primary me-2' %>
+    <% if @standard_inventory_item.kept? %>
+      <%= button_to 'Archive', archive_standard_inventory_item_path(@standard_inventory_item), method: :patch, class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= button_to 'Recover', recover_standard_inventory_item_path(@standard_inventory_item), method: :patch, class: 'btn btn-outline-success me-2' %>
+    <% end %>
     <%= button_to 'Delete', @standard_inventory_item, method: :delete, class: 'btn btn-outline-danger' %>
   </div>
 </div>

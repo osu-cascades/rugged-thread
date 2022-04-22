@@ -1,4 +1,5 @@
 class StandardInventoryItem < ApplicationRecord
+  include Discard::Model
 
   has_many :inventory_items, dependent: :restrict_with_error
 
