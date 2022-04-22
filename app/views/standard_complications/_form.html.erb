@@ -31,7 +31,7 @@
     </div>
     <div class="col-2">
       <%= form.label :price, class: 'form-label' %>
-      <%= form.number_field :price, class: 'form-control'%>
+      <%= form.number_field :price, step: '0.01', class: 'form-control' %>
     </div>
   </div>
   <div class="actions">

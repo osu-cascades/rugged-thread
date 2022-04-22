@@ -47,7 +47,7 @@
     </div>
   <% end %>
   <div class="row mb-3 align-items-end">
-    <div class="col-8">
+    <div class="col-6">
       <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
       <% if form.object.errors.include?(:standard_discount) %>
         <div class='field_with_errors'>
@@ -59,13 +59,13 @@
       <% end %>
       <!-- /hack -->
     </div>
-    <div class="col-1">
+    <div class="col-2">
       <%= form.label :percentage_amount, class: 'form-label' %>
       <%= form.number_field :percentage_amount, class: 'form-control'%>
     </div>
-    <div class="col-1">
+    <div class="col-2">
       <%= form.label :price, class: 'form-label' %>
-      <%= form.number_field :price, class: 'form-control'%>
+      <%= form.number_field :price, step: '0.01', class: 'form-control'%>
     </div>
     <div class="col text-end">
       <div class="actions">
