@@ -4,9 +4,13 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ update destroy archive recover ]
 
   def index
-    @pagy, @customers = pagy(Customer.where('last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc))
-  rescue Pagy::OverflowError
-    redirect_to customers_url
+    if params[:show_archive] == 'true'
+      @pagy, @customers = pagy(Customer.where('discarded_at IS NOT NULL AND last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc), items: 1)
+    else
+      @pagy, @customers = pagy(Customer.kept.where('last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc), items: 1)
+    end
+    rescue Pagy::OverflowError
+      redirect_to customers_url
   end
 
   def show

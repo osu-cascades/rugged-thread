@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Active Customers</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Customers</h1>
+    <% else %>
+      <h1>Active Customers</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Customer', new_customer_path, class: 'btn btn-outline-primary me-2' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Customers', customers_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Customers', customers_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -16,7 +25,10 @@
 <% end %>
 
 <%= turbo_frame_tag 'customers' do %>
-  <%= render 'table', customers: @customers.kept %>
-
-  <%= pagination_nav(@pagy, customers_path(page: @pagy.prev, query: params[:query]), customers_path(page: @pagy.next, query: params[:query])) %>
+  <%= render 'table', customers: @customers %>
+  <% if params[:show_archive] == 'true' %>
+    <%= pagination_nav(@pagy, customers_path(page: @pagy.prev, query: params[:query], show_archive: 'true'), customers_path(page: @pagy.next, query: params[:query], show_archive: 'true')) %>
+  <% else %>
+    <%= pagination_nav(@pagy, customers_path(page: @pagy.prev, query: params[:query]), customers_path(page: @pagy.next, query: params[:query])) %>
+  <% end %>
 <% end %>
