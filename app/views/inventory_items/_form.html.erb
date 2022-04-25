@@ -8,7 +8,7 @@
     const fetchResponsePromise = fetch(`/standard_inventory_items/${standard_inventory_item_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('inventory_item_price').value = data.price; 
+      document.getElementById('inventory_item_price').value = (parseFloat(data.price.cents) / 100.0).toString();
     });
 
     // Verifying payload recieved
