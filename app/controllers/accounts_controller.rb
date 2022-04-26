@@ -4,7 +4,11 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy archive recover ]
 
   def index
-    @pagy, @accounts = pagy(Account.all)
+    if params[:show_archive] == 'true'
+      @pagy, @accounts = pagy(Account.where('discarded_at IS NOT NULL'))
+    else
+      @pagy, @accounts = pagy(Account.kept)
+    end
   rescue Pagy::OverflowError
     redirect_to accounts_url
   end
