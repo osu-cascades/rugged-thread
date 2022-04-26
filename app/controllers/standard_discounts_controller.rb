@@ -3,7 +3,11 @@ class StandardDiscountsController < ApplicationController
 
   # GET /standard_discounts or /standard_discounts.json
   def index
-    @standard_discounts = StandardDiscount.all
+    if params[:show_archive] == 'true'
+      @standard_discounts = StandardDiscount.where('discarded_at IS NOT NULL')
+    else
+      @standard_discounts = StandardDiscount.kept
+    end
   end
 
   # GET /standard_discounts/1 or /standard_discounts/1.json
