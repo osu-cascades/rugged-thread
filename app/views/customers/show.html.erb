@@ -29,14 +29,14 @@
     <h3>Shipping Address</h3>
     <address>
       <%= @customer.shipping_street_address %><br>
-      <%= @customer.shipping_city %>, <%= @customer.shipping_state %> <%= @customer.shipping_zip_code %>
+      <%= present_address_city_state_zip(@customer.shipping_city, @customer.shipping_state, @customer.shipping_zip_code) %>
     </address>
   </div>
   <div class="col">
     <h3>Billing Address</h3>
     <address>
       <%= @customer.billing_street_address %><br>
-      <%= @customer.billing_city %>, <%= @customer.billing_state %> <%= @customer.billing_zip_code %>
+      <%= present_address_city_state_zip(@customer.billing_city, @customer.billing_state, @customer.billing_zip_code) %>
     </address>
   </div>
 </div>
