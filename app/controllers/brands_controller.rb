@@ -4,7 +4,11 @@ class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ edit update destroy archive recover ]
 
   def index
-    @pagy, @brands = pagy(Brand.all)
+    if params[:show_archive] == 'true'
+      @pagy, @brands = pagy(Brand.where('discarded_at IS NOT NULL'))
+    else
+      @pagy, @brands = pagy(Brand.kept)
+    end
   rescue Pagy::OverflowError
     redirect_to brands_url
   end

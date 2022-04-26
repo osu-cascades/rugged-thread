@@ -56,10 +56,14 @@ class BrandsTest < ApplicationSystemTestCase
     assert_text "Cannot delete this brand"
   end
 
-  test "archiving a brand that has items succeeds" do
+  test "archiving a brand succeeds" do
     visit brand_path(brands(:one))
     click_on 'Archive'
     assert_text "Brand was successfully archived."
+  end
+
+  test "recovering a brand succeeds" do
+    skip
   end
 
 end

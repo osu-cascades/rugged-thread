@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Brands</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Brands</h1>
+    <% else %>
+      <h1>Active Brands</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Brand', new_brand_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Brands', brands_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Brands', brands_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -15,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @brands.kept.each do |brand| %>
+    <% @brands.each do |brand| %>
       <tr class="<%= dom_class(brand) %>" id="<%= dom_id(brand) %>">
         <td>
           <%= brand %>
@@ -28,4 +37,8 @@
   </tbody>
 </table>
 
-<%= pagination_nav(@pagy, brands_path(page: @pagy.prev), brands_path(page: @pagy.next)) %>
+<% if params[:show_archive] == 'true' %>
+  <%= pagination_nav(@pagy, brands_path(page: @pagy.prev, show_archive: 'true'), brands_path(page: @pagy.next, show_archive: 'true')) %>
+<% else %>
+  <%= pagination_nav(@pagy, brands_path(page: @pagy.prev), brands_path(page: @pagy.next)) %>
+<% end %>
