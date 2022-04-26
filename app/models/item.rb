@@ -20,11 +20,11 @@ class Item < ApplicationRecord
   default_scope { order('position ASC') }
 
   def price
-    price_of_repairs_and_fees - price_total_of_discount
+    price_of_repairs_and_fees - price_total_discount
   end
 
-  def price_total_of_discount 
-    dollar_discount - ((percentage_discount / 100) * price_of_repairs_and_fees)
+  def price_total_discount
+    dollar_discount + ((percentage_discount / 100.0) * price_of_repairs_and_fees)
   end
 
   def price_of_repairs_and_fees
@@ -44,11 +44,11 @@ class Item < ApplicationRecord
   end
 
   def price_of_fees
-    fees.reduce(Money.new(0)) { |sum, f| sum + f.price}
+    fees.reduce(Money.new(0)) { |sum, f| sum + f.price }
   end
 
   def dollar_discount
-    discounts.reduce(Money.new(0)) { |sum, d| sum + (d.price ? d.price : 0) }
+    discounts.reduce(Money.new(0)) { |sum, d| sum + (d.price || 0) }
   end
 
   def percentage_discount

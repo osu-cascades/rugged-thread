@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Employees</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Employees</h1>
+    <% else %>
+      <h1>Active Employees</h1>
+    <% end %>
   </div>
   <div class="col text-end">
-    <%= link_to 'Add New Employee', new_user_path, class: 'btn btn-outline-primary' %>
+    <%= link_to 'Add New Employee', new_user_path, class: 'btn btn-outline-primary me-2' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Employees', users_path, class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Employees', users_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 

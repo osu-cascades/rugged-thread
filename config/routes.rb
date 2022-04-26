@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   # Namespacing to the '/admin/users' path, to avoid conflicting with Devise.
   scope 'admin' do
-    resources :users, only: [:index, :new, :create, :destroy]
+    resources :users, only: [:index, :new, :create, :destroy] do
+      patch :archive, on: :member
+      patch :recover, on: :member
+    end
   end
 
   resources :accounts do

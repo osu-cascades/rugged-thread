@@ -1,6 +1,6 @@
 <div class="container-auth text-center">
   <h1 class="h3 font-weight-normal">Please sign in</h1>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-auth form-signin'}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-auth form-signin', data: { turbo: false } }) do |f| %>
     <%= f.label :email, class: 'visually-hidden' %>
     <%= f.email_field :email, autofocus: true, required: true, autocomplete: 'email', placeholder: 'Email address', class: 'form-control' %>
     <%= f.label :password, class: 'visually-hidden' %>

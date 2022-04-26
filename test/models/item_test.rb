@@ -155,17 +155,24 @@ class ItemTest < ActiveSupport::TestCase
     refute_equal item.work_order.due_date, item.due_date
   end
 
-  test "#price is price of repairs minus discounts" do
+  test "#price is price of repairs and fees minus discounts" do
     item = items(:associationless)
-    assert_equal(Money.from_cents(0), item.price)
-    item.repairs << Repair.new(price_cents: 3)
-    assert_equal(Money.from_cents(3), item.price)
-    item.discounts << Discount.new(price_cents: 2)
-    assert_equal(Money.from_cents(1), item.price)
+    item.repairs << Repair.new(price_cents: 50)
+    item.fees << Fee.new(price_cents: 50)
+    assert_equal(Money.from_cents(100), item.price)
+    item.discounts << Discount.new(percentage_amount: 50)
+    item.discounts << Discount.new(price_cents: 1)
+    assert_equal(Money.from_cents(49), item.price)
   end
 
-  test "#price_total_of_discount" do
-    skip
+  test "#price_total_discount" do
+    item = items(:associationless)
+    assert_equal(Money.from_cents(0), item.price_total_discount)
+    item.repairs << Repair.new(price_cents: 50)
+    item.fees << Fee.new(price_cents: 50)
+    item.discounts << Discount.new(percentage_amount: 50)
+    item.discounts << Discount.new(price_cents: 1)
+    assert_equal(Money.from_cents(51), item.price_total_discount)
   end
 
   test "#price_of_repairs_and_fees is the sum of repair prices and fee prices" do
