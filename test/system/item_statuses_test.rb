@@ -53,10 +53,14 @@ class ItemStatusesTest < ApplicationSystemTestCase
     assert_text "Cannot delete this item status"
   end
 
-  test "archiving a item status that has items succeeds" do
+  test "archiving a item status succeeds" do
     visit item_status_path(item_statuses(:one))
     click_on 'Archive'
     assert_text "Item status was successfully archived."
+  end
+
+  test "recovering a item status succeeds" do
+    skip
   end
 
 end

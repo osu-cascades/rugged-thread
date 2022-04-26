@@ -1,9 +1,16 @@
 class ItemStatusesController < ApplicationController
+  include Pagy::Backend
   before_action :set_item_status, only: %i[ edit update destroy archive recover]
 
   # GET /item_statuses or /item_statuses.json
   def index
-    @item_statuses = ItemStatus.all
+    if params[:show_archive] == 'true'
+      @pagy, @item_statuses = pagy(ItemStatus.where('discarded_at IS NOT NULL'))
+    else
+      @pagy, @item_statuses = pagy(ItemStatus.kept)
+    end
+  rescue Pagy::OverflowError
+    redirect_to item_statuses_url
   end
 
   def show
