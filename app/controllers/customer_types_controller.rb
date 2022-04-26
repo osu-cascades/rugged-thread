@@ -1,9 +1,16 @@
 class CustomerTypesController < ApplicationController
+  include Pagy::Backend
 
   before_action :set_customer_type, only: %i[ edit update destroy archive recover]
 
   def index
-    @customer_types = CustomerType.all
+    if params[:show_archive] == 'true'
+      @pagy, @customer_types = pagy(CustomerType.where('discarded_at IS NOT NULL'))
+    else
+      @pagy, @customer_types = pagy(CustomerType.kept)
+    end
+  rescue Pagy::OverflowError
+    redirect_to customer_types_url
   end
 
   def show

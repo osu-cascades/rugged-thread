@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Customer Types</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Customer Types</h1>
+    <% else %>
+      <h1>Active Customer Types</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Customer Type', new_customer_type_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Customer Types', customer_types_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Customer Types', customer_types_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -17,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @customer_types.kept.each do |customer_type| %>
+    <% @customer_types.each do |customer_type| %>
       <tr class="<%= dom_class(customer_type) %>" id="<%= dom_id(customer_type) %>">
         <td><%= customer_type %></td>
         <td><%= customer_type.turn_around %></td>
@@ -29,3 +38,9 @@
     <% end %>
   </tbody>
 </table>
+
+<% if params[:show_archive] == 'true' %>
+  <%= pagination_nav(@pagy, customer_types_path(page: @pagy.prev, show_archive: 'true'), customer_types_path(page: @pagy.next, show_archive: 'true')) %>
+<% else %>
+  <%= pagination_nav(@pagy, customer_types_path(page: @pagy.prev), customer_types_path(page: @pagy.next)) %>
+<% end %>
