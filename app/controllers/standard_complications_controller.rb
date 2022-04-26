@@ -4,9 +4,13 @@ class StandardComplicationsController < ApplicationController
   before_action :set_standard_complication, only: %i[ update destroy archive recover ]
 
   def index
-    @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
-  rescue Pagy::OverflowError
-    redirect_to standard_complications_url
+    if params[:show_archive] == 'true'
+      @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).where('standard_complications.discarded_at IS NOT NULL AND (standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    else
+      @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).kept.where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    end
+    rescue Pagy::OverflowError
+      redirect_to standard_complications_url
   end
 
   def show
