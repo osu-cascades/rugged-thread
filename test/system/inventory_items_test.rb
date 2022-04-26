@@ -30,7 +30,7 @@ class InventoryItemsTest < ApplicationSystemTestCase
 
   test "creating a inventory_item for an repair" do
     visit repair_path(repairs(:one))
-    select standard_inventory_items(:one).name, from: :inventory_item_standard_inventory_item_id
+    select "#{standard_inventory_items(:one).name} + #{standard_inventory_items(:one).sku}", from: :inventory_item_standard_inventory_item_id
     fill_in "inventory_item_price", with: standard_inventory_items(:one).price
     click_on "Add Inventory item"
     assert_text "Inventory Item was successfully created"
