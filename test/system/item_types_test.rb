@@ -53,10 +53,14 @@ class ItemTypesTest < ApplicationSystemTestCase
     assert_text "Cannot delete this item type"
   end
 
-  test "archiving a item ttype that has items succeeds" do
+  test "archiving a item type succeeds" do
     visit item_type_path(item_types(:one))
     click_on 'Archive'
     assert_text "Item type was successfully archived."
+  end
+
+  test "recovering a item type succeeds" do
+    skip
   end
 
 end

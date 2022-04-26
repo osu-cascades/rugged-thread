@@ -1,9 +1,17 @@
 class ItemTypesController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_item_type, only: %i[ edit update destroy archive recover]
 
   # GET /item_types or /item_types.json
   def index
-    @item_types = ItemType.all
+      if params[:show_archive] == 'true'
+      @pagy, @item_types = pagy(ItemType.where('discarded_at IS NOT NULL'))
+    else
+      @pagy, @item_types = pagy(ItemType.kept)
+    end
+  rescue Pagy::OverflowError
+    redirect_to item_types_url
   end
 
   def show

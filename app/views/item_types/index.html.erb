@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Item Types</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Item Types</h1>
+    <% else %>
+      <h1>Active Item Types</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Item Type', new_item_type_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Item Types', item_types_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Item Types', item_types_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -15,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @item_types.kept.each do |item_type| %>
+    <% @item_types.each do |item_type| %>
       <tr class="<%= dom_class(item_type) %>" id="<%= dom_id(item_type) %>">
         <td>
           <%= item_type %>
@@ -27,3 +36,9 @@
     <% end %>
   </tbody>
 </table>
+
+<% if params[:show_archive] == 'true' %>
+  <%= pagination_nav(@pagy, item_types_path(page: @pagy.prev, show_archive: 'true'), item_types_path(page: @pagy.next, show_archive: 'true')) %>
+<% else %>
+  <%= pagination_nav(@pagy, item_types_path(page: @pagy.prev), item_types_path(page: @pagy.next)) %>
+<% end %>
