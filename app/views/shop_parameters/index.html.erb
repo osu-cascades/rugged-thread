@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Shop Parameters</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Shop Parameters</h1>
+    <% else %>
+      <h1>Shop Parameters</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Shop Parameter', new_shop_parameter_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Shop Parameters', shop_parameters_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Shop Parameters', shop_parameters_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -16,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @shop_parameters.kept.each do |shop_parameter| %>
+    <% @shop_parameters.each do |shop_parameter| %>
       <tr class="<%= dom_class(shop_parameter) %>" id="<%= dom_id(shop_parameter) %>">
         <td>
           <%= shop_parameter %>
