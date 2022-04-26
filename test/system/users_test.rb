@@ -49,6 +49,24 @@ class UsersTest < ApplicationSystemTestCase
     assert_text new_name
   end
 
+  test "admin can archive users" do
+    sign_in(users(:admin))
+    visit user_path(users(:staff))
+    click_on 'Archive'
+    assert_text 'User was successfully archived'
+    refute_text users(:staff).name
+  end
+
+  test "admin can recover an archived user" do
+    sign_in(users(:admin))
+    visit users_path
+    refute_text users(:archived).name
+    visit user_path(users(:archived))
+    click_on 'Recover'
+    assert_text 'User was successfully recovered'
+    assert_text users(:archived).name
+  end
+
   test "admin does not see delete button for themselves" do
     sign_in(users(:admin))
     visit user_path(users(:admin))
@@ -87,10 +105,16 @@ class UsersTest < ApplicationSystemTestCase
   test "supervisor does not see edit link when viewing other users" do
     sign_in(users(:supervisor))
     visit user_path(users(:staff))
-    refute_link 'Edit Profile'
+    refute_link 'Edit'
   end
 
-  test "supervisor does not see delete buttons" do
+  test "supervisor does not see archive button" do
+    sign_in(users(:supervisor))
+    visit user_path(users(:staff))
+    refute_link 'Archive'
+  end
+
+  test "supervisor does not see delete button" do
     sign_in(users(:supervisor))
     visit user_path(users(:staff))
     refute_link 'Delete'
@@ -116,9 +140,15 @@ class UsersTest < ApplicationSystemTestCase
     assert_text 'Employee Information'
   end
 
-  test 'staff do not see role and status options' do
+  test "staff does not see archive button" do
     sign_in(users(:staff))
     visit user_path(users(:staff))
+    refute_link 'Archive'
+  end
+
+  test 'staff do not see role and status options' do
+    sign_in(users(:staff))
+    visit edit_user_path(users(:staff))
     refute_text 'Role and Status'
     refute_select 'Role'
   end

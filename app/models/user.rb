@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Discard::Model
 
   devise :database_authenticatable, :trackable,
          :recoverable, :rememberable, :validatable

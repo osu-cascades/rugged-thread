@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    @users = authorize User.all
+    if params[:show_archive] == 'true'
+      @users = authorize User.discarded
+    else
+      @users = authorize User.kept
+    end
   end
 
   def show
@@ -43,6 +47,32 @@ class UsersController < ApplicationController
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def archive
+    @user = authorize User.find(params[:id])
+    respond_to do |format|
+      if @user.discard
+        format.html { redirect_to users_url, notice: "User was successfully archived." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to users_url, alert: 'Cannot archive this user.' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    @user = authorize User.find(params[:id])
+    respond_to do |format|
+      if @user.undiscard
+        format.html { redirect_to users_url, notice: "User was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to users_url, alert: 'Cannot recover this user.' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

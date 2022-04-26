@@ -28,4 +28,12 @@ class UserPolicy < ApplicationPolicy
     user.admin? && (user != record)
   end
 
+  def archive?
+    user.admin?
+  end
+
+  def recover?
+    user.admin?
+  end
+
 end

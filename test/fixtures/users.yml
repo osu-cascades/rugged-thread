@@ -46,3 +46,11 @@ workorderless:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   role: 'staff'
   status: 'active'
+
+archived:
+  name: Archived User
+  email: archived@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  role: 'staff'
+  status: 'active'
+  discarded_at: <%= Date.current %>
