@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Standard Inventory Items</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Standard Inventory Items</h1>
+    <% else %>
+      <h1>Active Standard Inventory Items</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Standard Inventory Item', new_standard_inventory_item_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Standard Inventory Items', standard_inventory_items_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Standard Inventory Items', standard_inventory_items_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -18,5 +27,9 @@
 <%= turbo_frame_tag 'standard_inventory_items' do %>
   <%= render 'table', standard_inventory_items: @standard_inventory_items %>
 
-  <%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev, query: params[:query]), standard_inventory_items_path(page: @pagy.next, query: params[:query])) %>
+  <% if params[:show_archive] == 'true' %>
+    <%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev, query: params[:query], show_archive: 'true'), standard_inventory_items_path(page: @pagy.next, query: params[:query], show_archive: 'true')) %>
+  <% else %>
+    <%= pagination_nav(@pagy, standard_inventory_items_path(page: @pagy.prev, query: params[:query]), standard_inventory_items_path(page: @pagy.next, query: params[:query])) %>
+  <% end %>
 <% end %>

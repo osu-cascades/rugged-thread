@@ -4,7 +4,11 @@ class StandardInventoryItemsController < ApplicationController
   before_action :set_standard_inventory_item, only: %i[ show edit update destroy archive recover ]
 
   def index
-    @pagy, @standard_inventory_items = pagy(StandardInventoryItem.where('name ILIKE ? OR sku ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    if params[:show_archive] == 'true'
+      @pagy, @standard_inventory_items = pagy(StandardInventoryItem.where('discarded_at IS NOT NULL AND (name ILIKE ? OR sku ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    else
+      @pagy, @standard_inventory_items = pagy(StandardInventoryItem.kept.where('name ILIKE ? OR sku ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    end
   rescue Pagy::OverflowError
     redirect_to standard_inventory_items_url
   end
