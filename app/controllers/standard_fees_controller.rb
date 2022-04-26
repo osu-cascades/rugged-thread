@@ -3,7 +3,11 @@ class StandardFeesController < ApplicationController
 
   # GET /standard_fees or /standard_fees.json
   def index
-    @standard_fees = StandardFee.all
+    if params[:show_archive] == 'true'
+      @standard_fees = StandardFee.where('discarded_at IS NOT NULL')
+    else
+      @standard_fees = StandardFee.kept
+    end
   end
 
   # GET /standard_fees/1 or /standard_fees/1.json

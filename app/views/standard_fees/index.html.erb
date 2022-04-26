@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Standard Fees</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Archived Standard Fees</h1>
+    <% else %>
+      <h1>Active Standard Fees</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Add New Standard Fee', new_standard_fee_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Standard Fees', standard_fees_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Standard Fees', standard_fees_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -16,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @standard_fees.kept.each do |standard_fee| %>
+    <% @standard_fees.each do |standard_fee| %>
       <tr class="<%= dom_class(standard_fee) %>" id="<%= dom_id(standard_fee) %>">
         <td>
           <%= standard_fee %>
