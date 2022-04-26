@@ -4,7 +4,11 @@ class StandardRepairsController < ApplicationController
   before_action :set_standard_repair, only: %i[ edit update destroy archive recover ]
 
   def index
-    @pagy, @standard_repairs = pagy(StandardRepair.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    if params[:show_archive] == 'true'
+      @pagy, @standard_repairs = pagy(StandardRepair.where('discarded_at IS NOT NULL AND (name ILIKE ? OR method ILIKE ? OR description ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    else
+      @pagy, @standard_repairs = pagy(StandardRepair.kept.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+    end
   rescue Pagy::OverflowError
     redirect_to standard_repairs_url
   end
