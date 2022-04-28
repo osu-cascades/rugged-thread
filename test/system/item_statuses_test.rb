@@ -60,7 +60,11 @@ class ItemStatusesTest < ApplicationSystemTestCase
   end
 
   test "recovering a item status succeeds" do
-    skip
+    visit item_statuses_path
+    refute_text item_statuses(:archived).name
+    visit item_status_path(item_statuses(:archived))
+    click_on 'Recover'
+    assert_text 'Item status was successfully recoverd.'
   end
 
 end

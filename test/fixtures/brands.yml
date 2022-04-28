@@ -6,3 +6,7 @@ two:
 
 itemless:
   name: Fake Itemless Brand
+
+archived:
+  name: Fake Brand 3
+  discarded_at: <%= Date.current %>
