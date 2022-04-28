@@ -1,9 +1,18 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>Work Orders</h1>
+    <% if params[:show_archive] == 'true' %>
+      <h1>Active Work Orders</h1>
+    <% else %>
+      <h1>Archived Work Orders</h1>
+    <% end %>
   </div>
   <div class="col text-end">
     <%= link_to 'Create New Work Order', new_work_order_path, class: 'btn btn-outline-primary' %>
+    <% if params[:show_archive] == 'true' %>
+      <%= link_to 'Active Work Orders', work_orders_path(), class: 'btn btn-outline-success me-2' %>
+    <% else %>
+      <%= link_to 'Archived Work Orders', work_orders_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+    <% end %>
   </div>
 </div>
 
@@ -25,5 +34,9 @@
 <%= turbo_frame_tag 'work_orders' do %>
   <%= render 'table', work_orders: @work_orders %>
 
-  <%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev, query: params[:query]), work_orders_path(page: @pagy.next, query: params[:query])) %>
+  <% if params[:show_archive] == 'true' %>
+    <%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev, query: params[:query], show_archive: 'true'), work_orders_path(page: @pagy.next, query: params[:query], show_archive: 'true')) %>
+  <% else %>
+    <%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev, query: params[:query]), work_orders_path(page: @pagy.next, query: params[:query])) %>
+  <% end %>
 <% end %>
