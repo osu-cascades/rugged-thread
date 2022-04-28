@@ -1,3 +1,11 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#standard_complication_standard_repair_id').select2();
+  });
+</script>
 <%= form_with(model: standard_complication) do |form| %>
   <% if standard_complication.errors.any? %>
     <div id="error_explanation">
@@ -10,6 +18,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <!--- Super fucking hack alert. https://stackoverflow.com/questions/70937918/proper-generation-of-rails-field-with-errors-for-select-list-of-belongs-to-duri -->
   <% if form.object.errors.include?(:standard_repair) %>
