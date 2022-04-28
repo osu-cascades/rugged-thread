@@ -12,6 +12,13 @@
     <div class="col-8">
       <%= f.search_field :query, value: params[:query], class: 'form-control', autofocus: true, placeholder: 'Search. Type a work order number or last name and hit [enter]' %>
     </div>
+    <div class="col-4 d-flex align-items-center align-content-end text-right">
+      <strong>Filter:</strong>&nbsp;
+      <%= link_to 'prod', work_orders_path(status: 'prod') %>&nbsp;|&nbsp;
+      <%= link_to 'priced', work_orders_path(status: 'priced') %>&nbsp;|&nbsp;
+      <%= link_to 'on hold', work_orders_path(status: 'on hold') %>&nbsp;|&nbsp;
+      <%= link_to 'invoiced', work_orders_path(status: 'invoiced') %>
+    </div>
   </div>
 <% end %>
 
