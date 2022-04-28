@@ -13,3 +13,8 @@ itemless:
 default:
   name: Fake Default Item Status
   default: true
+
+archived:
+  name: Fake Item Status 3
+  default: false
+  discarded_at: <%= Date.current %>

@@ -7,3 +7,9 @@ two:
   name: Fake Account 2
   turn_around: 2
   cost_share: 2
+
+archived:
+  name: Fake Account 3
+  turn_around: 3
+  cost_share: 3
+  discarded_at: <%= Date.current %>

@@ -63,7 +63,11 @@ class BrandsTest < ApplicationSystemTestCase
   end
 
   test "recovering a brand succeeds" do
-    skip
+    visit brands_path
+    refute_text brands(:archived).name
+    visit brand_path(brands(:archived))
+    click_on 'Recover'
+    assert_text 'Brand was successfully recoverd.'
   end
 
 end

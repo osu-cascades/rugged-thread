@@ -12,3 +12,9 @@ customerless:
   name: Fake Customerless Customer Type
   turn_around: 21
   customers_count: 0
+
+archived:
+  name: Fake Customer Type 3
+  turn_around: 21
+  customers_count: 0
+  discarded_at: <%= Date.current %>

@@ -60,7 +60,11 @@ class ItemTypesTest < ApplicationSystemTestCase
   end
 
   test "recovering a item type succeeds" do
-    skip
+    visit item_types_path
+    refute_text item_types(:archived).name
+    visit item_type_path(item_types(:archived))
+    click_on 'Recover'
+    assert_text 'Item type was successfully recoverd.'
   end
 
 end

@@ -63,7 +63,11 @@ class CustomerTypesTest < ApplicationSystemTestCase
   end
 
   test "recovering a customer type succeeds" do
-    skip
+    visit customer_types_path
+    refute_text customer_types(:archived).name
+    visit customer_type_path(customer_types(:archived))
+    click_on 'Recover'
+    assert_text 'Customer type was successfully recoverd.'
   end
 
 end

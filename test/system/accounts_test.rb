@@ -62,6 +62,10 @@ class AccountsTest < ApplicationSystemTestCase
   end
 
   test "recovering a account succeeds" do
-    skip
+    visit accounts_path
+    refute_text accounts(:archived).name
+    visit account_path(accounts(:archived))
+    click_on 'Recover'
+    assert_text 'Account was successfully recoverd.'
   end
 end
