@@ -87,7 +87,7 @@ class CustomersController < ApplicationController
         format.html { redirect_to customers_url, notice: "Customer was successfully deleted." }
         format.json { head :no_content }
       else
-        format.html { redirect_to customers_url, alert: 'Cannot delete this customer.' }
+        format.html { redirect_to customers_url, alert: 'This customer cannot be deleted because there are work orders associated with them in the system.' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end

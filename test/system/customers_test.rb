@@ -58,7 +58,7 @@ class CustomersTest < ApplicationSystemTestCase
   test "failing to destroy a customer that has work orders" do
     visit customer_path(work_orders.first.customer)
     click_on 'Delete'
-    assert_text "Cannot delete this customer."
+    assert_text "This customer cannot be deleted because there are work orders associated with them in the system."
   end
 
   test "archiving a customer that has work orders succeeds" do
