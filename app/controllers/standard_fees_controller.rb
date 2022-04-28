@@ -82,7 +82,7 @@ class StandardFeesController < ApplicationController
         format.html { redirect_to standard_fees_url, notice: "Standard fee was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @standard_fee, alert: 'Cannot delete this standard fee.' }
+        format.html { redirect_to @standard_fee, alert: 'This standard fee cannot be deleted, it has fees associated with it.' }
         format.json { render json: @standard_fee.errors, status: :unprocessable_entity }
       end
     end

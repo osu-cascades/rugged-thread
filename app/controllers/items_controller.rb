@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to work_order_path(@item.work_order), notice: 'Item was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @item, alert: 'Cannot delete this item.' }
+        format.html { redirect_to @item, alert: 'This item cannot be deleted, it has repairs, discounts or fees associated with it.' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end

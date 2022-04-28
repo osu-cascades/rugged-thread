@@ -71,7 +71,7 @@ class RepairsTest < ApplicationSystemTestCase
   test "destroying a repair with complications fails" do
     visit repair_path(repairs(:one))
     click_on "Delete"
-    assert_text "Cannot delete this repair"
+    assert_text "This repair cannot be deleted, it has complications associated with it in the system."
   end
 
 end

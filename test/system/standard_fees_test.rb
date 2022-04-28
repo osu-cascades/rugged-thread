@@ -53,7 +53,7 @@ class StandardFeesTest < ApplicationSystemTestCase
   test "destroying a Standard Fee that has fees" do
     visit standard_fee_path(standard_fees(:one))
     click_on 'Delete'
-    assert_text "Cannot delete this standard fee"
+    assert_text "This standard fee cannot be deleted, it has fees associated with it."
   end
 
 end

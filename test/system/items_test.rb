@@ -118,19 +118,19 @@ class ItemsTest < ApplicationSystemTestCase
   test "destroying an item with repairs fails" do
     visit item_path(items(:with_only_repair))
     click_on 'Delete'
-    assert_text "Cannot delete this item"
+    assert_text "This item cannot be deleted, it has repairs, discounts or fees associated with it."
   end
 
   test "destroying an item with discounts fails" do
     visit item_path(items(:with_only_discount))
     click_on 'Delete'
-    assert_text "Cannot delete this item"
+    assert_text "This item cannot be deleted, it has repairs, discounts or fees associated with it."
   end
 
   test "destroying an item with fees fails" do
     visit item_path(items(:with_only_fee))
     click_on 'Delete'
-    assert_text "Cannot delete this item"
+    assert_text "This item cannot be deleted, it has repairs, discounts or fees associated with it."
   end
 
   # Due date

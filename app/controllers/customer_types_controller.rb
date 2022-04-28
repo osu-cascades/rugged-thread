@@ -61,7 +61,7 @@ class CustomerTypesController < ApplicationController
         format.html { redirect_to customer_types_url, notice: "Customer type was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to customer_types_url, alert: 'Cannot delete this customer type.' }
+        format.html { redirect_to customer_types_url, alert: 'This customer type cannot be deleted, there are customers associated with it.' }
         format.json { render json: @customer_type.errors, status: :unprocessable_entity }
       end
     end

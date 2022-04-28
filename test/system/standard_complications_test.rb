@@ -64,7 +64,6 @@ class StandardComplicationsTest < ApplicationSystemTestCase
     assert_not_empty standard_complication.complications
     visit standard_complication_path(standard_complication)
     click_on 'Delete'
-    assert_text "Cannot delete this standard complication"
+    assert_text "This standard complication cannot be deleted, it has complications associated with it."
   end
-
 end

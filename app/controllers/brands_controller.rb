@@ -62,7 +62,7 @@ class BrandsController < ApplicationController
         format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to brands_url, alert: 'Cannot delete this brand.' }
+        format.html { redirect_to brands_url, alert: 'This brand cannot be deleted, there are items associated with it.' }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end

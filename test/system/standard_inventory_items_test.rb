@@ -60,7 +60,7 @@ class StandardInventoryItemsTest < ApplicationSystemTestCase
     assert_not_empty standard_inventory_item.inventory_items
     visit standard_inventory_item_path(standard_inventory_item)
     click_on 'Delete'
-    assert_text "Cannot delete this standard inventory item"
+    assert_text "This standard inventory item cannot be deleted, it has inventory items associated with it."
   end
 
 end

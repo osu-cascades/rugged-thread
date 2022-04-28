@@ -84,7 +84,7 @@ class StandardRepairsTest < ApplicationSystemTestCase
   test "failing to destroy a standard repair that has repairs" do
     visit standard_repair_path(standard_repairs(:one))
     click_on 'Delete'
-    assert_text "Cannot delete this standard repair"
+    assert_text "This standard repair cannot be deleted, it hass repairs associated with it."
   end
 
 end

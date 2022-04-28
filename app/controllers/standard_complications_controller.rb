@@ -86,7 +86,7 @@ class StandardComplicationsController < ApplicationController
         format.html { redirect_to standard_complications_url, notice: "Standard complication was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @standard_complication, alert: 'Cannot delete this standard complication.' }
+        format.html { redirect_to @standard_complication, alert: 'This standard complication cannot be deleted, it has complications associated with it.' }
         format.json { render json: @standard_complication.errors, status: :unprocessable_entity }
       end
     end

@@ -83,7 +83,7 @@
         format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to work_orders_url, alert: 'Cannot delete this work order.' }
+        format.html { redirect_to work_orders_url, alert: 'This work order cannot be deleted, it still has items associated with it.' }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
       end
     end

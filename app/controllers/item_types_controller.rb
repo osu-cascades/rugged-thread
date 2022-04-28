@@ -62,7 +62,7 @@ class ItemTypesController < ApplicationController
         format.html { redirect_to item_types_url, notice: "Item type was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to item_types_url, alert: 'Cannot delete this item type.' }
+        format.html { redirect_to item_types_url, alert: 'This item type cannot be deleted, it has items associated with it.' }
         format.json { render json: @item_type.errors, status: :unprocessable_entity }
       end
     end

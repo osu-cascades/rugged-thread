@@ -50,7 +50,7 @@ class ItemTypesTest < ApplicationSystemTestCase
   test "failing to destroy a item type that has items" do
     visit item_type_path(item_types(:one))
     click_on 'Delete'
-    assert_text "Cannot delete this item type"
+    assert_text "This item type cannot be deleted, it has items associated with it."
   end
 
   test "archiving a item type succeeds" do

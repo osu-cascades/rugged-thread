@@ -74,7 +74,7 @@ class RepairsController < ApplicationController
         format.html { redirect_to item_path(@repair.item), notice: 'Repair was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @repair, alert: 'Cannot delete this repair.' }
+        format.html { redirect_to @repair, alert: 'This repair cannot be deleted, it has complications associated with it in the system.' }
         format.json { render json: @repair.errors, status: :unprocessable_entity }
       end
     end

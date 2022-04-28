@@ -47,9 +47,15 @@ class StandardDiscountsTest < ApplicationSystemTestCase
     assert_text "Name has already been taken"
   end
 
-  test "destroying a standard_discount" do
-    visit standard_discount_path(standard_discounts(:one))
+  test "destroying a standard_discount without discounts" do
+    visit standard_discount_path(standard_discounts(:discountless))
     click_on 'Delete'
     assert_text "Standard Discount was successfully destroyed"
+  end
+
+  test "attempting to destroy a standard_discount with discounts" do
+    visit standard_discount_path(standard_discounts(:one))
+    click_on 'Delete'
+    assert_text "This standard discount cannot be deleted, it has discounts associated with it."
   end
 end

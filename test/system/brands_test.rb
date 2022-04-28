@@ -53,7 +53,7 @@ class BrandsTest < ApplicationSystemTestCase
   test "failing to destroy a Brand that has items" do
     visit brand_path(brands(:one))
     click_on 'Delete'
-    assert_text "Cannot delete this brand"
+    assert_text "This brand cannot be deleted, there are items associated with it."
   end
 
   test "archiving a brand succeeds" do

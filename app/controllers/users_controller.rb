@@ -85,7 +85,7 @@ class UsersController < ApplicationController
         format.html { redirect_to users_url, notice: "User was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to users_url, alert: 'Cannot delete this user.' }
+        format.html { redirect_to users_url, alert: 'This user cannot be deleted, they have work orders associated with them.' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

@@ -85,7 +85,7 @@ class StandardRepairsController < ApplicationController
         format.html { redirect_to standard_repairs_url, notice: "Standard repair was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @standard_repair, alert: 'Cannot delete this standard repair.' }
+        format.html { redirect_to @standard_repair, alert: 'This standard repair cannot be deleted, it hass repairs associated with it.' }
         format.json { render json: @standard_repair.errors, status: :unprocessable_entity }
       end
     end

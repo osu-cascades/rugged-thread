@@ -14,3 +14,7 @@ percentage:
   name: Fake Discount 4
   percentage_amount: 2
   price_cents: nil
+discountless:
+  name: Fake Discount 5
+  percentage_amount: 2
+  price_cents: nil

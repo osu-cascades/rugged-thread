@@ -85,7 +85,7 @@ class UsersTest < ApplicationSystemTestCase
     sign_in(users(:admin))
     visit user_path(work_orders.first.creator)
     click_on 'Delete'
-    assert_text 'Cannot delete this user'
+    assert_text 'This user cannot be deleted, they have work orders associated with them.'
   end
 
   # Supervisors

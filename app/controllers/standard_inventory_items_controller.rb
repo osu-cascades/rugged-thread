@@ -78,7 +78,7 @@ class StandardInventoryItemsController < ApplicationController
         format.html { redirect_to standard_inventory_items_url, notice: "Standard inventory item was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @standard_inventory_item, alert: 'Cannot delete this standard inventory item.' }
+        format.html { redirect_to @standard_inventory_item, alert: 'This standard inventory item cannot be deleted, it has inventory items associated with it.' }
         format.json { render json: @standard_inventory_item.errors, status: :unprocessable_entity }
       end
     end

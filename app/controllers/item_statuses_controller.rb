@@ -71,7 +71,7 @@ class ItemStatusesController < ApplicationController
         format.html { redirect_to item_statuses_url, notice: "Item status was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to item_statuses_url, alert: 'Cannot delete this item status.' }
+        format.html { redirect_to item_statuses_url, alert: 'This item status cannot be deleted, it has items associated with it.' }
         format.json { render json: @item_status.errors, status: :unprocessable_entity }
       end
     end

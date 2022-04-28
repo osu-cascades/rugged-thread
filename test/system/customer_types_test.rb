@@ -53,7 +53,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
   test "failing to destroy a customer type that has customers" do
     visit customer_type_path(customers.first.customer_type)
     click_on 'Delete'
-    assert_text "Cannot delete this customer type"
+    assert_text "This customer type cannot be deleted, there are customers associated with it."
   end
 
   test "archiving a customer type succeeds" do

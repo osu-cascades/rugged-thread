@@ -50,7 +50,7 @@ class ItemStatusesTest < ApplicationSystemTestCase
   test "failing to destroy an item status that has items" do
     visit item_status_path(item_statuses(:one))
     click_on 'Delete'
-    assert_text "Cannot delete this item status"
+    assert_text "This item status cannot be deleted, it has items associated with it."
   end
 
   test "archiving a item status succeeds" do

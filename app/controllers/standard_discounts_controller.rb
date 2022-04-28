@@ -77,10 +77,14 @@ class StandardDiscountsController < ApplicationController
 
   # DELETE /standard_discounts/1 or /standard_discounts/1.json
   def destroy
-    @standard_discount.destroy
     respond_to do |format|
-      format.html { redirect_to standard_discounts_url, notice: "Standard Discount was successfully destroyed." }
-      format.json { head :no_content }
+      if @standard_discount.destroy
+        format.html { redirect_to standard_discounts_url, notice: "Standard Discount was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to standard_discounts_url, alert: 'This standard discount cannot be deleted, it has discounts associated with it.' }
+        format.json { render json: @standard_discount.errors, status: :unprocessable_entity }
+      end
     end
   end
 
