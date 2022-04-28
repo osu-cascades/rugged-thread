@@ -5,11 +5,7 @@
   <div class="col-7 text-end">
     <%= link_to '&laquo Back to List'.html_safe, shop_parameters_path, class: 'btn btn-outline-primary me-5' %>
     <%= link_to 'Edit', edit_shop_parameter_path(@shop_parameter), class: 'btn btn-outline-primary me-2' %>
-    <% if @shop_parameter.kept? %>
-      <%= button_to 'Archive', archive_shop_parameter_path(@shop_parameter), method: :patch, class: 'btn btn-outline-success me-2' %>
-    <% else %>
-      <%= button_to 'Recover', recover_shop_parameter_path(@shop_parameter), method: :patch, class: 'btn btn-outline-success me-2' %>
-    <% end %>
+    <%= link_to_archive_or_recover(@shop_parameter) %>
     <%= button_to 'Delete', @shop_parameter, method: :delete, class: 'btn btn-outline-danger' %>
   </div>
 </div>

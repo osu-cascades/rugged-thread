@@ -3,11 +3,7 @@
     <%= link_to '&laquo All Complications'.html_safe, standard_complications_path, class: 'btn btn-outline-primary' %>
     <%= link_to '&laquo Standard Repair'.html_safe, standard_repair_path(@standard_complication.standard_repair), class: 'btn btn-outline-primary me-5' %>
     <%= link_to 'Edit', edit_standard_complication_path(@standard_complication), class: 'btn btn-outline-primary me-2' %>
-    <% if @standard_complication.kept? %>
-      <%= button_to 'Archive', archive_standard_complication_path(@standard_complication), method: :patch, class: 'btn btn-outline-success me-2' %>
-    <% else %>
-      <%= button_to 'Recover', recover_standard_complication_path(@standard_complication), method: :patch, class: 'btn btn-outline-success me-2' %>
-    <% end %>
+    <%= link_to_archive_or_recover(@standard_complication) %>
     <%= button_to 'Delete', @standard_complication, method: :delete, class: 'btn btn-outline-danger' %>
   </div>
 </div>
