@@ -1,6 +1,6 @@
  class WorkOrdersController < ApplicationController
   include Pagy::Backend
-  before_action :set_work_order, only: %i[ update destroy archive ]
+  before_action :set_work_order, only: %i[ update destroy archive recover ]
 
   def index
     if params[:show_archive] == 'true'
@@ -101,6 +101,18 @@
         format.json { head :no_content }
       else
         format.html { redirect_to work_orders_url, alert: 'Cannot archive this work order.' }
+        format.json { render json: @work_order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      if @work_order.undiscard
+        format.html { redirect_to work_orders_url, notice: "Work Order was successfully recovered." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to work_orders_url, alert: 'Cannot recover this work_order.' }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
       end
     end

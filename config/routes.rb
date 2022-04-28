@@ -118,6 +118,7 @@ Rails.application.routes.draw do
     get 'print', on: :member
     member do
       patch :archive
+      patch :recover
     end
     resources :items, only: :create
   end
