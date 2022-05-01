@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'pages#show', page: 'home'
+  root 'pages#home'
+
   get '/pages/:page' => 'pages#show'
+  get '/dashboard' => 'dashboard#show'
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.

@@ -22,7 +22,7 @@
           <ul class="navbar-nav ms-auto mb-2 mb-md-0">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <a class="nav-link" href="/">Dashboard</a>
+                <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Customers', customers_path, class: 'nav-link' %>
