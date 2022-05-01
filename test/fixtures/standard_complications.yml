@@ -12,3 +12,9 @@ complicationless:
   name: Fake Complicationless Standard Complication
   price_cents: 300
   standard_repair: one
+
+archived:
+  name: Fake Archived Standard Complication
+  price_cents: 400
+  standard_repair: one
+  discarded_at: <%= Date.current %>

@@ -2,19 +2,29 @@ one:
   name: Fake Discount 1
   percentage_amount: 10
   price_cents: nil
+
 two:
   name: Fake Discount 2
   percentage_amount: nil
   price_cents: 1000
+
 price:
   name: Fake Discount 3
   percentage_amount: nil
   price_cents: 200
+
 percentage:
   name: Fake Discount 4
   percentage_amount: 2
   price_cents: nil
+
 discountless:
   name: Fake Discount 5
   percentage_amount: 2
   price_cents: nil
+
+archived:
+  name: Fake Discount 6
+  percentage_amount: 2
+  price_cents: nil
+  discarded_at: <%= Date.current %>

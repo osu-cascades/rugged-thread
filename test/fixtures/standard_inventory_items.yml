@@ -12,3 +12,9 @@ inventory_itemless:
   name: Fake Name 3
   sku: Fake Sku 3
   price_cents: 100
+
+archived:
+  name: Fake Name 4
+  sku: Fake Sku 4
+  price_cents: 100
+  discarded_at: <%= Date.current %>

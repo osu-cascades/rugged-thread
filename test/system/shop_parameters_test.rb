@@ -49,4 +49,18 @@ class ShopParametersTest < ApplicationSystemTestCase
     click_on 'Delete'
     assert_text "Shop parameter was successfully destroyed"
   end
+
+  test "archiving a shop parameter succeeds" do
+    visit shop_parameter_path(shop_parameters(:one))
+    click_on 'Archive'
+    assert_text "Shop Parameter was successfully archived."
+  end
+
+  test "recovering a shop parameter succeeds" do
+    visit shop_parameters_path
+    refute_text shop_parameters(:archived).name
+    visit shop_parameter_path(shop_parameters(:archived))
+    click_on 'Recover'
+    assert_text 'Shop Parameter was successfully recovered.'
+  end
 end

@@ -137,4 +137,12 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert_text "Work order was successfully archived."
   end
 
+  test "recovering a work order succeeds" do
+    visit work_orders_path
+    refute_text work_orders(:archived).number
+    visit work_order_path(work_orders(:archived))
+    click_on 'Recover'
+    assert_text "Work Order was successfully recovered."
+  end
+
 end

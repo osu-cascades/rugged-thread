@@ -87,4 +87,17 @@ class StandardRepairsTest < ApplicationSystemTestCase
     assert_text "This standard repair cannot be deleted, it hass repairs associated with it."
   end
 
+  test "archiving a standard repair succeeds" do
+    visit standard_repair_path(standard_repairs(:one))
+    click_on 'Archive'
+    assert_text "Standard Repair was successfully archived."
+  end
+
+  test "recovering a standard repair succeeds" do
+    visit standard_repairs_path
+    refute_text standard_repairs(:archived).name
+    visit standard_repair_path(standard_repairs(:archived))
+    click_on 'Recover'
+    assert_text 'Standard Repair was successfully recovered.'
+  end
 end

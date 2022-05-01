@@ -48,3 +48,21 @@ without_work_order:
   billing_state: OR
   billing_zip_code: 12345
   customer_type: one
+
+archived:
+  first_name: Fourth Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
+  email_address: fake02@example.com
+  shipping_street_address: 908 Fake Street
+  shipping_city: Fakeville
+  shipping_state: OR
+  shipping_zip_code: 12345
+  billing_street_address: 123 Fake Street
+  billing_city: Fakeville
+  billing_state: OR
+  billing_zip_code: 12345
+  customer_type: one
+  discarded_at: <%= Date.current %>

@@ -66,4 +66,18 @@ class StandardComplicationsTest < ApplicationSystemTestCase
     click_on 'Delete'
     assert_text "This standard complication cannot be deleted, it has complications associated with it."
   end
+
+  test "archiving a standard complication succeeds" do
+    visit standard_complication_path(standard_complications(:one))
+    click_on 'Archive'
+    assert_text "Standard Complication was successfully archived."
+  end
+
+  test "recovering a standard complication succeeds" do
+    visit standard_complications_path
+    refute_text standard_complications(:archived).name
+    visit standard_complication_path(standard_complications(:archived))
+    click_on 'Recover'
+    assert_text 'Standard Complication was successfully recovered.'
+  end
 end

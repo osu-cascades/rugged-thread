@@ -9,3 +9,8 @@ feeless:
 expedite:
   name: Expedite
   price_cents: 2500
+
+archived:
+  name: Fake Special Handling
+  price_cents: 400
+  discarded_at: <%= Date.current %>

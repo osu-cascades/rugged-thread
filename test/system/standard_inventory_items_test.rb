@@ -63,4 +63,17 @@ class StandardInventoryItemsTest < ApplicationSystemTestCase
     assert_text "This standard inventory item cannot be deleted, it has inventory items associated with it."
   end
 
+  test "archiving a standard inventory item succeeds" do
+    visit standard_inventory_item_path(standard_inventory_items(:one))
+    click_on 'Archive'
+    assert_text "Standard Inventory Item was successfully archived."
+  end
+
+  test "recovering a standard inventory item succeeds" do
+    visit standard_inventory_items_path
+    refute_text standard_inventory_items(:archived).name
+    visit standard_inventory_item_path(standard_inventory_items(:archived))
+    click_on 'Recover'
+    assert_text 'Standard Inventory Item was successfully recovered.'
+  end
 end

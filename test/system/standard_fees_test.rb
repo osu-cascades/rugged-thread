@@ -56,4 +56,17 @@ class StandardFeesTest < ApplicationSystemTestCase
     assert_text "This standard fee cannot be deleted, it has fees associated with it."
   end
 
+  test "archiving a standard fee succeeds" do
+    visit standard_fee_path(standard_fees(:one))
+    click_on 'Archive'
+    assert_text "Standard Fee was successfully archived."
+  end
+
+  test "recovering a standard fee succeeds" do
+    visit standard_fees_path
+    refute_text standard_fees(:archived).name
+    visit standard_fee_path(standard_fees(:archived))
+    click_on 'Recover'
+    assert_text 'Standard Fee was successfully recovered.'
+  end
 end

@@ -67,4 +67,11 @@ class CustomersTest < ApplicationSystemTestCase
     assert_text "Customer was successfully archived."
   end
 
+  test "recovering a customer succeeds" do
+    visit customers_path
+    refute_text customers(:archived).first_name
+    visit customer_path(customers(:archived))
+    click_on 'Recover'
+    assert_text 'Customer was successfully recovered.'
+  end
 end

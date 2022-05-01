@@ -58,4 +58,18 @@ class StandardDiscountsTest < ApplicationSystemTestCase
     click_on 'Delete'
     assert_text "This standard discount cannot be deleted, it has discounts associated with it."
   end
+
+  test "archiving a standard discount succeeds" do
+    visit standard_discount_path(standard_discounts(:one))
+    click_on 'Archive'
+    assert_text "Standard Discount was successfully archived."
+  end
+
+  test "recovering a standard discount succeeds" do
+    visit standard_discounts_path
+    refute_text standard_discounts(:archived).name
+    visit standard_discount_path(standard_discounts(:archived))
+    click_on 'Recover'
+    assert_text 'Standard Discount was successfully recovered.'
+  end
 end

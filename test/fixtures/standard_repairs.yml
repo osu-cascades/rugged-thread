@@ -25,3 +25,11 @@ standard_complicationess:
   description: Fake standard complicationless standard repair description
   level: 4
   price_cents: 400
+
+archived:
+  name: Fake Standard Repair 5
+  method: Fake Method 5
+  description: Fake Description 5
+  level: 5
+  price_cents: 500
+  discarded_at: <%= Date.current %>
