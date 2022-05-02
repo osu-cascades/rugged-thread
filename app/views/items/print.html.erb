@@ -14,7 +14,7 @@
 
 <%= render 'ticket_item', item: @item %>
 
-<% if @item.work_order.customer.customer_type == 'B2C'%>
+<% if @item.work_order.customer.customer_type == 'B2C Local' %>
   <div class="claim_ticket">
     <h1>Rugged Thread Outerwear Repair</h1>
     <h2>Claim Ticket <%= @item.work_order.number %> - <%= @item.position %></h2>
@@ -28,7 +28,6 @@
     <h4>2525 NE Twin Knolls Dr. Suite 9 &nbsp;&nbsp;&nbsp;&nbsp; 541-306-8727</h4>
   </div>
 <% end %>
-
 
 
 <script>
