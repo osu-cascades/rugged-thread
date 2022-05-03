@@ -1,12 +1,9 @@
 <h1>Dashboard</h1>
 
-<dl class="row py-2 rounded my-4 bg-secondary bg-gradient text-light">
-  <dt class="col-3 display-5 text-end"><strong>$19,8612</strong></dt>
-  <dd class="col-9 d-flex align-items-end">estimated work orders</dd>
-  <dt class="col-3 display-6 text-end mt-2"><strong>156</strong></dt>
-  <dd class="col-9 d-flex align-items-end mt-2">open work orders</dd>
-</dl>
-
+<div class="col-5 p-3 rounded my-4 bg-secondary bg-gradient text-light">
+  <h2 class="display-5"><%= @total_price_of_open_work_orders.format %></h2>
+  <p>estimated from&nbsp;<strong><%= @number_of_open_work_orders %></strong>&nbsp;open work orders</p>
+</div>
 
 <p>This main screen will eventually show the most important information.</p>
 <p>It is intentionally minimal for now.</p>
