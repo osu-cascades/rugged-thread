@@ -5,6 +5,8 @@
   def index
     if params[:show_archive] == 'true'
       @pagy, @work_orders = pagy(WorkOrder.joins(:customer).where('work_orders.discarded_at IS NOT NULL AND (work_orders.number ILIKE ? OR customers.last_name ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
+    elsif params[:status] == 'invoiced'
+      @pagy, @work_orders = pagy(WorkOrder.invoiced.joins(:customer).kept.where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
     else
       @pagy, @work_orders = pagy(WorkOrder.joins(:customer).kept.where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(number: :asc))
     end
