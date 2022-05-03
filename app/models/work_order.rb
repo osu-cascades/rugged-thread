@@ -29,6 +29,14 @@ class WorkOrder < ApplicationRecord
     items.reduce(Money.new(0)) { |sum, i| sum + i.price }
   end
 
+  def due_soon?
+    due_date < 7.days.from_now && due_date >= Date.current
+  end
+
+  def overdue?
+    due_date < Date.current
+  end
+
   private
 
 

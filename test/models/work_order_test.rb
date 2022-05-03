@@ -164,4 +164,12 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert_equal(Money.from_cents(9900), work_order.price)
   end
 
+  test '#overdue' do
+
+  end
+
+  test '#due_soon' do
+
+  end
+
 end

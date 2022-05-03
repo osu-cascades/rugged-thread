@@ -19,7 +19,17 @@
         <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer, data: { "turbo-frame": :"_top" }) %></td>
         <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type, data: { "turbo-frame": :"_top" } %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
-        <td><%= work_order.due_date.to_formatted_s(:long) %></td>
+        <td>
+          <% if work_order.overdue? %>
+            <div class="text-danger">
+          <% elsif work_order.due_soon? %>
+            <div class="text-success">
+          <% end %>
+            <%= work_order.due_date.to_formatted_s(:long) %>
+          <% if work_order.overdue? || work_order.due_soon? %>
+            </div>
+          <% end %>
+        </td>
         <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator, data: { "turbo-frame": :"_top" }) %></td>
         <td><%= work_order.shipping ? '📦' : '' %></td>
         <td class="text-end"><%= work_order.price.format %></td>

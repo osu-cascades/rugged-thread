@@ -42,7 +42,23 @@ invoiced:
 open:
   in_date: <%= Date.current %>
   due_date: <%= Date.current + 1.day %>
-  number: 2201-0005
+  number: 2201-0006
+  shipping: false
+  creator: staff
+  customer: one
+
+due_soon:
+  in_date: <%= Date.current %>
+  due_date: <%= Date.current %>
+  number: 2201-0007
+  shipping: false
+  creator: staff
+  customer: one
+
+overdue:
+  in_date: <%= Date.current - 7.days %>
+  due_date: <%= Date.current - 2.days %>
+  number: 2201-0008
   shipping: false
   creator: staff
   customer: one
