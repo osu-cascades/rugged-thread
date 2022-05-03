@@ -14,7 +14,7 @@
 
 <%= render 'ticket_item', item: @item %>
 
-<% if @item.work_order.customer.customer_type == 'B2C Local' %>
+<% if @item.work_order.customer.customer_type.name == 'B2C Local' %>
   <div class="claim_ticket">
     <h1>Rugged Thread Outerwear Repair</h1>
     <h2>Claim Ticket <%= @item.work_order.number %> - <%= @item.position %></h2>
