@@ -18,6 +18,9 @@ class WorkOrder < ApplicationRecord
 
   default_scope { order('created_at ASC') }
 
+  scope :open, -> { kept.joins(items: :item_status).where("item_statuses.name != 'INVOICED'") }
+
+
   def to_s
     "Work Order #{number}"
   end
@@ -27,6 +30,7 @@ class WorkOrder < ApplicationRecord
   end
 
   private
+
 
   def set_due_date
     self.due_date = default_due_date

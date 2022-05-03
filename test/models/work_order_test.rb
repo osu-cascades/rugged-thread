@@ -83,6 +83,15 @@ class WorkOrderTest < ActiveSupport::TestCase
     refute work_order.valid?
   end
 
+  # Scopes
+
+  test 'open' do
+    open_work_orders = WorkOrder.open
+    refute open_work_orders.include? work_orders(:invoiced)
+    refute open_work_orders.include? work_orders(:archived)
+    assert open_work_orders.include? work_orders(:open)
+  end
+
   # Default initialization of in date and due date
 
   test 'in date is initialized to current date by default' do

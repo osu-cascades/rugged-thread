@@ -42,3 +42,30 @@ with_only_repair:
   brand: one
   item_type: one
   item_status: one
+
+for_archived_work_oder:
+  due_date: <%= 1.year.from_now %>
+  notes: Item with only a repair and nothing else
+  shipping: true
+  work_order: archived
+  brand: one
+  item_type: one
+  item_status: one
+
+invoiced:
+  due_date: <%= 1.year.from_now %>
+  notes: Item with an invoiced status
+  shipping: true
+  work_order: invoiced
+  brand: one
+  item_type: one
+  item_status: invoiced
+
+open:
+  due_date: <%= 1.year.from_now %>
+  notes: Item with an invoiced status
+  shipping: true
+  work_order: open
+  brand: one
+  item_type: one
+  item_status: one

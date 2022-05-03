@@ -14,6 +14,10 @@ default:
   name: Fake Default Item Status
   default: true
 
+invoiced:
+  name: INVOICED
+  default: false
+
 archived:
   name: Fake Item Status 3
   default: false
