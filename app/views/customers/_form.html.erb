@@ -1,3 +1,35 @@
+<script type="text/javascript">
+  function UpdateBilling() {
+    check_box_checked = document.getElementById('customer_check_address').checked;
+
+    shipping_address = document.getElementById("customer_shipping_street_address");
+    shipping_city = document.getElementById("customer_shipping_city");
+    shipping_state = document.getElementById("customer_shipping_state");
+    shipping_zip_code = document.getElementById("customer_shipping_zip_code");
+
+    billing_address = document.getElementById("customer_billing_street_address");
+    billing_city = document.getElementById("customer_billing_city");
+    billing_state = document.getElementById("customer_billing_state");
+    billing_zip_code = document.getElementById("customer_billing_zip_code");
+
+    if (check_box_checked == true) {
+      billing_address.value = shipping_address.value;
+      billing_city.value = shipping_city.value;
+      billing_state.value = shipping_state.value;
+      billing_zip_code.value = shipping_zip_code.value;
+    } else if (check_box_checked == false) {
+      billing_address.value = "";
+      billing_address.disabled = false;
+      billing_city.value = "";
+      billing_city.disabled = false;
+      billing_state.value = "";
+      billing_state.disabled = false;
+      billing_zip_code.value = "";
+      billing_zip_code.disabled = false;
+    }
+  }
+</script>
+
 <%= form_with(model: customer) do |form| %>
   <% if customer.errors.any? %>
     <div id="error_explanation">
@@ -77,7 +109,9 @@
         <div class="col-5">
           <h6>Same as shipping address?</h6>
         </div>
-        <input class="col-1 form-check-input" type="checkbox" value="" id="address-check">
+        <div class="col-1">
+          <%= form.check_box :check_address, onclick: 'UpdateBilling();' %>
+        </div>
       </div>
       <div class="mb-3">
         <%= form.label :billing_street_address, class: 'form-label' %>
