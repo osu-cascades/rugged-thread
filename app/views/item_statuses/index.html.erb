@@ -20,7 +20,9 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Default?</th>
+      <% if params[:show_archive] != 'true' %>
+        <th scope="col">Default?</th>
+      <% end %>
       <th></th>
     </tr>
   </thead>
@@ -31,14 +33,16 @@
           <%= item_status %>
         </td>
         <td>
-          <% if item_status.default? %>
-            ✅
-          <% else %>
-            <%= form_with url: set_default_item_status_url(item_status), method: :patch do |form| %>
-              <%= form.submit 'make default', class: 'btn btn-sm btn-outline-secondary' do %>
+          <% if params[:show_archive] != 'true' %>
+              <% if item_status.default? %>
+                ✅
+              <% else %>
+                <%= form_with url: set_default_item_status_url(item_status), method: :patch do |form| %>
+                  <%= form.submit 'make default', class: 'btn btn-sm btn-outline-secondary' do %>
+                  <% end %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
         </td>
         <td class="text-end">
           <%= link_to 'Details', item_status, class: 'btn btn-outline-secondary btn-sm' %>
