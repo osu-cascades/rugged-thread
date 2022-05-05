@@ -64,7 +64,7 @@ See _test/application_system_test_case.rb_.
 
 ### Data Model Nuances
 
-* Standardization
+#### Standardization
 
 Many models (Repairs, Complications, InventoryItems, Items, etc.) have a 'Standard' 
 parent - the purpose of this is to retain the details associated with the child model 
@@ -73,8 +73,8 @@ adjusted as needed over time. For example, this season the FullZipperReplacement
 'Standard' Repair may be priced at $25, but if it goes up $5 dollars next year we'd 
 like existing repair records to retain the original price to ensure data integrity.
 
-* Archiving
-* 
+#### Archiving
+
 Many of the same models, in addition to WorkOrders and a few others, can be archived. 
 This is most significant in cases where a 'standard' models record needs to be phased 
 out but it has many chlid records associated with it. For example, if Rugged Tread has 
