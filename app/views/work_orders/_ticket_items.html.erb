@@ -47,6 +47,10 @@
                     <% repair.complications.each do |complication| %>
                       <p><%= complication %> ($<%= complication.price %>)</p>
                     <% end %>
+                    <h4>Inventory Items</h4>
+                    <% repair.inventory_items.each do |inventory_item| %>
+                      <p><%= inventory_item %> ($<%= inventory_item.price %>)</p>
+                    <% end %>
                   </td>
                 </tr>
               </table>
