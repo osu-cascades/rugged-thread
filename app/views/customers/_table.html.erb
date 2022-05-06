@@ -24,7 +24,7 @@
         <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), customer.phone_number.empty? ? "" :  "tel:#{customer.phone_number}" %></td>
         <td>
           <%= customer.shipping_street_address %><br>
-          <%= customer.shipping_city %>, <%= customer.shipping_state %> <%= customer.shipping_zip_code %>
+          <%= present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code) %>
         </td>
         <td><%= link_to_unless(controller.controller_name == 'customer_types', customer.customer_type, customer.customer_type, data: { "turbo-frame": :"_top" }) %></td>
         <td class="text-end">
