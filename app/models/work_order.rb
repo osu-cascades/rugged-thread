@@ -16,7 +16,7 @@ class WorkOrder < ApplicationRecord
   after_initialize :set_due_date, if: -> { new_record? && due_date.blank? }
   before_validation :set_number, on: :create
 
-  default_scope { order('created_at ASC') }
+  default_scope { order('due_date ASC') }
 
   scope :open, -> { kept.joins(items: :item_status).where("item_statuses.name != 'INVOICED'") }
   scope :invoiced, -> { kept.joins(items: :item_status).where("item_statuses.name = 'INVOICED'") }
