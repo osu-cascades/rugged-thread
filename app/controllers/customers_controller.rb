@@ -5,9 +5,9 @@ class CustomersController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @customers = pagy(Customer.where('discarded_at IS NOT NULL AND last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc))
+      @pagy, @customers = pagy(Customer.where('discarded_at IS NOT NULL AND last_name ILIKE ? OR first_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(last_name: :asc))
     else
-      @pagy, @customers = pagy(Customer.kept.where('last_name ILIKE ?', "%#{params[:query]}%").order(last_name: :asc))
+      @pagy, @customers = pagy(Customer.kept.where('last_name ILIKE ? OR first_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(last_name: :asc))
     end
     rescue Pagy::OverflowError
       redirect_to customers_url
