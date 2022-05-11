@@ -49,8 +49,17 @@ without_work_order:
   billing_zip_code: 12345
   customer_type: one
 
-archived:
+without_an_address:
   first_name: Fourth Fake
+  last_name: Customer
+  business_name: Fake Business
+  phone_number: "555-555-5555"
+  alternative_phone_number: "555-555-5556"
+  email_address: fake03@example.com
+  customer_type: one
+
+archived:
+  first_name: Fifth Fake
   last_name: Customer
   business_name: Fake Business
   phone_number: "555-555-5555"

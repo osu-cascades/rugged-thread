@@ -74,4 +74,16 @@ class CustomersTest < ApplicationSystemTestCase
     click_on 'Recover'
     assert_text 'Customer was successfully recovered.'
   end
+
+  test "customer without a city, state or zip code doesn't appear with only a comma in index" do
+    skip
+    visit customers_path 
+    assert_selector :field, 'Shipping Address', ','
+
+  end
+
+  test "customer without a city, state or zip code doesn't appear with only a comma in show" do
+    skip
+    visit customers_path 
+  end
 end
