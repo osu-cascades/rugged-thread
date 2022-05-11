@@ -76,14 +76,12 @@ class CustomersTest < ApplicationSystemTestCase
   end
 
   test "customer without a city, state or zip code doesn't appear with only a comma in index" do
-    skip
     visit customers_path 
-    assert_selector :field, 'Shipping Address', ','
-
+    within('#customers_table') { refute_text ',' }
   end
 
   test "customer without a city, state or zip code doesn't appear with only a comma in show" do
-    skip
-    visit customers_path 
+    visit customer_path(customers(:without_an_address))
+    within('.customers') { refute_text ',' }
   end
 end
