@@ -75,6 +75,12 @@ class CustomersTest < ApplicationSystemTestCase
     assert_text 'Customer was successfully recovered.'
   end
 
+  test "Searching for a customer by first name succeeds." do
+    visit customers_path(query: customers(:one).first_name)
+    assert_text "First Fake"
+    refute_text "Second Fake"
+  end
+
   test "customer without a city, state or zip code doesn't appear with only a comma in index" do
     visit customers_path 
     within('#customers_table') { refute_text ',' }
