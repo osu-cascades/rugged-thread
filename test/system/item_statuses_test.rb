@@ -67,4 +67,16 @@ class ItemStatusesTest < ApplicationSystemTestCase
     assert_text 'Item status was successfully recoverd.'
   end
 
+  test "Trying to make a archived item status default fails" do
+    visit item_statuses_path
+    refute_text item_statuses(:archived).name
+    visit item_status_path(item_statuses(:archived))
+    refute_text 'Default'
+  end
+
+  test "archiving a defualt item status fails" do
+    visit item_status_path(item_statuses(:default))
+    refute_text "Archive"
+  end
+
 end
