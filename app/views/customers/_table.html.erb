@@ -17,7 +17,7 @@
     <% customers.each do |customer| %>
       <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
         <th scope="row"><%= customer.id %></th>
-        <td><%= link_to_unless(controller.controller_name == 'customers', customer.first_name, customer) %>
+        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.first_name, params[:query]), customer) %>
         <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.last_name, params[:query]), customer) %>
         <td><%= customer.business_name %></td>
         <td><%= mail_to customer.email_address %></td>
