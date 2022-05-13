@@ -17,6 +17,9 @@ module ApplicationHelper
       "#{state} #{zip}"
     elsif city.present? && state.blank?
       "#{city} #{zip}"
+    else
+      "#{city}, #{state} #{zip}"
     end
   end
+
 end

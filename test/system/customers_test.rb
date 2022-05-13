@@ -3,7 +3,8 @@ require "application_system_test_case"
 class CustomersTest < ApplicationSystemTestCase
 
   include Devise::Test::IntegrationHelpers
-  
+  include ActionView::RecordIdentifier
+
   setup do
     sign_in users(:staff)
   end
@@ -93,13 +94,42 @@ class CustomersTest < ApplicationSystemTestCase
     refute_text "Second Fake"
   end
 
+  # https://github.com/osu-cascades/rugged-thread/issues/245
+  test "customer address appears in list" do
+    customer = customers(:one)
+    city_state_zip = "#{customer.shipping_city}, #{customer.shipping_state} #{customer.shipping_zip_code}"
+    visit customers_path
+    within "##{dom_id(customer)}" do
+      within 'td.customer_shipping_address' do
+        assert_text customer.shipping_street_address
+        assert_text city_state_zip
+      end
+    end
+  end
+
+  # https://github.com/osu-cascades/rugged-thread/issues/245
+  test "customer address appears in show view" do
+    customer = customers(:one)
+    city_state_zip = "#{customer.shipping_city}, #{customer.shipping_state} #{customer.shipping_zip_code}"
+    visit customer_path(customer)
+    assert_text customer.shipping_street_address
+    assert_text city_state_zip
+  end
+
   test "customer without a city, state or zip code doesn't appear with only a comma in index" do
-    visit customers_path 
-    within('#customers_table') { refute_text ',' }
+    visit customers_path
+    within "##{dom_id(customers(:without_an_address))}" do
+      within 'td.customer_shipping_address' do
+        refute_text ','
+      end
+    end
   end
 
   test "customer without a city, state or zip code doesn't appear with only a comma in show" do
     visit customer_path(customers(:without_an_address))
-    within('.customers') { refute_text ',' }
+    all('address').each do
+      refute_text ','
+    end
   end
+
 end
