@@ -69,4 +69,10 @@ class ItemStatusTest < ActiveSupport::TestCase
     assert_equal true, item_status.default
   end
 
+  test "cannot be archived if it is the default" do
+    default_item_status = item_statuses(:default)
+    default_item_status.discard
+    refute default_item_status.discarded?
+  end
+
 end

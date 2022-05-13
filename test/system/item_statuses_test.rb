@@ -67,16 +67,21 @@ class ItemStatusesTest < ApplicationSystemTestCase
     assert_text 'Item status was successfully recoverd.'
   end
 
-  test "Trying to make a archived item status default fails" do
-    visit item_statuses_path
-    refute_text item_statuses(:archived).name
-    visit item_status_path(item_statuses(:archived))
-    refute_text 'Default'
+  test "archived list does not display make default links" do
+    visit item_statuses_path(show_archive: true)
+    assert_text item_statuses(:archived).name
+    refute_link 'make default'
   end
 
-  test "archiving a defualt item status fails" do
+  test "does not show archive link when viewing the default item status " do
     visit item_status_path(item_statuses(:default))
-    refute_text "Archive"
+    refute_link 'Archive'
   end
+
+  test "does not show a Delete link when viewing the default item status " do
+    visit item_status_path(item_statuses(:default))
+    refute_link 'Delete'
+  end
+
 
 end
