@@ -13,6 +13,18 @@ class CustomersTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Customers"
   end
 
+  test "only non-archived customers appear in the main list" do
+    visit customers_path
+    assert_text customers(:one).full_name
+    refute_text customers(:archived).full_name
+  end
+
+  test "only archived customers appear in the archived list" do
+    visit customers_path(show_archive: true)
+    refute_text customers(:one).full_name
+    assert_text customers(:archived).full_name
+  end
+
   test "creating a Customer" do
     visit new_customer_path
     select customer_types(:one).name, from: 'Customer type'
