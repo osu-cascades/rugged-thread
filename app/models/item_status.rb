@@ -7,6 +7,8 @@ class ItemStatus < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :default, uniqueness: { conditions: -> { where(default: true) } }
 
+  before_destroy :prevent_destruction_of_default
+
   default_scope { order('name ASC') }
 
   def self.default
@@ -22,6 +24,15 @@ class ItemStatus < ApplicationRecord
 
   def to_s
     name
+  end
+
+  private
+
+  def prevent_destruction_of_default
+    if default?
+      self.errors.add "Cannot delete default status. Choose another default, then try the deletion."
+      throw :abort
+    end
   end
 
 end

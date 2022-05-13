@@ -10,8 +10,8 @@
     <%= link_to 'Edit', edit_item_status_path(@item_status), class: 'btn btn-outline-primary me-2' %>
     <% if !@item_status.default? %>
       <%= link_to_archive_or_recover(@item_status) %>
+      <%= button_to 'Delete', @item_status, method: :delete, class: 'btn btn-outline-danger' %>
     <% end %>
-    <%= button_to 'Delete', @item_status, method: :delete, class: 'btn btn-outline-danger' %>
   </div>
 </div>
 

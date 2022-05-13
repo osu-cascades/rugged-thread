@@ -22,6 +22,12 @@ class ItemStatusTest < ActiveSupport::TestCase
     refute item_status.destroyed?
   end
 
+  test 'cannot be deleted if it is the default' do
+    default_item_status = item_statuses(:default)
+    default_item_status.destroy
+    refute default_item_status.destroyed?
+  end
+
   test 'Item Status without a name is invalid' do
     item_status = item_statuses(:one)
     assert item_status.valid?
