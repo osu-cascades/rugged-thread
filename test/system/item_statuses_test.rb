@@ -83,5 +83,4 @@ class ItemStatusesTest < ApplicationSystemTestCase
     refute_link 'Delete'
   end
 
-
 end
