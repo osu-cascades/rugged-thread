@@ -92,11 +92,21 @@ class WorkOrderTest < ActiveSupport::TestCase
     assert open_work_orders.include? work_orders(:open)
   end
 
+  test 'open includes a work order that has no items' do
+    open_work_orders = WorkOrder.open
+    assert open_work_orders.include? work_orders(:itemless)
+  end
+
   test 'invoiced' do
     open_work_orders = WorkOrder.invoiced
     assert open_work_orders.include? work_orders(:invoiced)
     refute open_work_orders.include? work_orders(:archived)
     refute open_work_orders.include? work_orders(:open)
+  end
+
+  test 'invoiced does not include work orders that have no items' do
+    invoiced_work_orders = WorkOrder.invoiced
+    refute invoiced_work_orders.include? work_orders(:itemless)
   end
 
   # Default initialization of in date and due date
