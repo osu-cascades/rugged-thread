@@ -18,6 +18,9 @@ class Item < ApplicationRecord
   after_initialize :set_shipping, if: -> { new_record? && work_order.present? }
 
   default_scope { order('position ASC') }
+  scope :kept, -> { joins(:work_order).merge(WorkOrder.kept) }
+  scope :not_invoiced, -> { joins(:item_status).where("item_statuses.name != 'INVOICED'") }
+  scope :invoiced, -> { joins(:item_status).where("item_statuses.name = 'INVOICED'") }
 
   def price
     price_of_repairs_and_fees - price_total_discount

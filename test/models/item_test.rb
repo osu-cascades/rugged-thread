@@ -155,6 +155,18 @@ class ItemTest < ActiveSupport::TestCase
     refute_equal item.work_order.due_date, item.due_date
   end
 
+  test "#not_invoiced scope does not retrieve invoiced items" do
+    not_invoiced_items = Item.not_invoiced
+    assert_includes not_invoiced_items, items(:open)
+    refute_includes not_invoiced_items, items(:invoiced)
+  end
+
+  test "#invoiced scope retrieves only invoiced items" do
+    invoiced_items = Item.invoiced
+    assert_includes invoiced_items, items(:invoiced)
+    refute_includes invoiced_items, items(:open)
+  end
+
   test "#price is price of repairs and fees minus discounts" do
     item = items(:associationless)
     item.repairs << Repair.new(price_cents: 50)
