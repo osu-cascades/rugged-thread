@@ -22,7 +22,7 @@ class RepairsController < ApplicationController
 
   def edit
     @repair = Repair.includes(:item).find(params[:id])
-    @standard_repairs = StandardRepair.all
+    @standard_repairs = StandardRepair.kept
   end
 
   def create
@@ -44,7 +44,7 @@ class RepairsController < ApplicationController
           ).find(params[:item_id])
         @discount = Discount.new
         @fee = Fee.new
-        @standard_repairs = StandardRepair.all
+        @standard_repairs = StandardRepair.kept
         @standard_discounts = StandardDiscount.kept
         @standard_fees = StandardFee.kept
         format.html { render 'items/show', status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class RepairsController < ApplicationController
         format.html { redirect_to @repair, notice: "Repair was successfully updated." }
         format.json { render :show, status: :ok, location: @repair }
       else
-        @standard_repairs = StandardRepair.all
+        @standard_repairs = StandardRepair.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @repair.errors, status: :unprocessable_entity }
       end

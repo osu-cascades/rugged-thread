@@ -5,7 +5,7 @@ class StandardRepairsController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @standard_repairs = pagy(StandardRepair.where('discarded_at IS NOT NULL AND (name ILIKE ? OR method ILIKE ? OR description ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+      @pagy, @standard_repairs = pagy(StandardRepair.discarded.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     else
       @pagy, @standard_repairs = pagy(StandardRepair.kept.where('name ILIKE ? OR method ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     end

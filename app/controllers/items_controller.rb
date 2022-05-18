@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     @repair = Repair.new
     @discount = Discount.new
     @fee = Fee.new
-    @standard_repairs = StandardRepair.all
+    @standard_repairs = StandardRepair.kept
     @standard_discounts = StandardDiscount.kept
     @standard_fees = StandardFee.kept
   end

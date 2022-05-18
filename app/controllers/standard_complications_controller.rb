@@ -19,12 +19,12 @@ class StandardComplicationsController < ApplicationController
 
   def new
     @standard_complication = StandardComplication.new(standard_repair_id: params[:standard_repair_id])
-    @standard_repairs = StandardRepair.all
+    @standard_repairs = StandardRepair.kept
   end
 
   def edit
     @standard_complication = StandardComplication.find(params[:id])
-    @standard_repairs = StandardRepair.all
+    @standard_repairs = StandardRepair.kept
   end
 
   def create
@@ -34,7 +34,7 @@ class StandardComplicationsController < ApplicationController
         format.html { redirect_to @standard_complication.standard_repair, notice: "Standard complication was successfully created." }
         format.json { render :show, status: :created, location: @standard_complication }
       else
-        @standard_repairs = StandardRepair.all
+        @standard_repairs = StandardRepair.kept
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @standard_complication.errors, status: :unprocessable_entity }
       end
@@ -48,7 +48,7 @@ class StandardComplicationsController < ApplicationController
         format.html { redirect_to @standard_complication, notice: "Standard complication was successfully updated." }
         format.json { render :show, status: :ok, location: @standard_complication }
       else
-        @standard_repairs = StandardRepair.all
+        @standard_repairs = StandardRepair.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @standard_complication.errors, status: :unprocessable_entity }
       end
