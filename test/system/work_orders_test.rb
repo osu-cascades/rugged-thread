@@ -61,18 +61,6 @@ class WorkOrdersTest < ApplicationSystemTestCase
     assert_text "Work order was successfully updated"
   end
 
-  test "destroying a work order that has no items" do
-    visit work_order_path(work_orders(:itemless))
-    click_on 'Delete'
-    assert_text "Work order was successfully destroyed"
-  end
-
-  test "failing to destroy a work order that has items" do
-    visit work_order_path(work_orders(:shipping))
-    click_on 'Delete'
-    assert_text "This work order cannot be deleted, it still has items associated with it."
-  end
-
   # In date
 
   test "new work order's in date is filled in by default" do
