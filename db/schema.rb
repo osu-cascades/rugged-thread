@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_075504) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_18_080139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -279,17 +279,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_075504) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.integer "time"
-    t.integer "number"
-    t.bigint "task_type_id", null: false
-    t.bigint "technician_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_type_id"], name: "index_tasks_on_task_type_id"
-    t.index ["technician_id"], name: "index_tasks_on_technician_id"
-  end
-
   create_table "technicians", force: :cascade do |t|
     t.string "name"
     t.string "skill_level"
@@ -357,8 +346,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_075504) do
   add_foreign_key "repairs", "standard_repairs"
   add_foreign_key "special_order_items", "repairs"
   add_foreign_key "standard_complications", "standard_repairs"
-  add_foreign_key "tasks", "task_types"
-  add_foreign_key "tasks", "technicians"
   add_foreign_key "work_orders", "customers"
   add_foreign_key "work_orders", "users", column: "creator_id"
 end
