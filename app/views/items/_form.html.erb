@@ -29,7 +29,7 @@ $(document).ready(function() {
       <% end %>
         <div class="mb-3">
           <%= form.label :brand_id, class: 'form-label' %>
-          <%= form.select :brand_id, brands.all.map { |b| [b.name, b.id] }, {include_blank: ''}, class: 'form-select' %>
+          <%= form.select :brand_id, brands.map { |b| [b.name, b.id] }, {include_blank: ''}, class: 'form-select' %>
         </div>
       <% if form.object.errors.include?(:brand) %>
         </div>
@@ -41,7 +41,7 @@ $(document).ready(function() {
       <% end %>
         <div class="mb-3">
           <%= form.label :item_type_id, class: 'form-label' %>
-          <%= form.select :item_type_id, item_types.all.map { |it| [it.name, it.id] }, {include_blank: ''}, class: 'form-select' %>
+          <%= form.select :item_type_id, item_types.map { |it| [it.name, it.id] }, {include_blank: ''}, class: 'form-select' %>
         </div>
       <% if form.object.errors.include?(:item_type) %>
         </div>
