@@ -32,12 +32,6 @@ class ItemsController < ApplicationController
       {fees: [:standard_fee]},
       {work_order: [:creator, {customer: [:customer_type]}]},
       ).find(params[:id])
-    @repair = Repair.new
-    @discount = Discount.new
-    @fee = Fee.new
-    @standard_repairs = StandardRepair.all
-    @standard_discounts = StandardDiscount.all
-    @standard_fees = StandardFee.all
     render 'print', layout: false
   end
 

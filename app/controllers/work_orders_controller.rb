@@ -29,13 +29,6 @@
       :customer,
       {items: [{repairs: [:standard_repair]}, {discounts: [:standard_discount]}, {fees: [:standard_fee]}]},
       ).find(params[:id])
-    @repair = Repair.new
-    @discount = Discount.new
-    @fee = Fee.new
-    @item = Item.new
-    @standard_repairs = StandardRepair.all
-    @standard_discounts = StandardDiscount.all
-    @standard_fees = StandardFee.all
     render 'print', layout: false
   end
 
