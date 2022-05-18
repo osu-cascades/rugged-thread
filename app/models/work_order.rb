@@ -19,7 +19,7 @@ class WorkOrder < ApplicationRecord
   default_scope { order('due_date ASC') }
 
   scope :open, -> { kept.joins(items: :item_status).where("item_statuses.name != 'INVOICED'") }
-  scope :invoiced, -> { kept.joins(items: :item_status).where("item_statuses.name = 'INVOICED'") }
+  scope :invoiced, -> { kept.joins(items: :item_status).where("item_statuses.name = 'INVOICED'").distinct }
 
   def to_s
     "Work Order #{number}"
