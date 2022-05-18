@@ -1,8 +1,6 @@
 class Customer < ApplicationRecord
   include Discard::Model
 
-  attr_accessor :check_address
-
   belongs_to :customer_type, counter_cache: true
   has_many :work_orders, dependent: :restrict_with_error
 

@@ -1,7 +1,7 @@
 
 <script type="text/javascript">
   function updateBilling() {
-    check_box_checked = document.getElementById('customer_check_address').checked;
+    check_box_checked = document.getElementById('match_shipping_address').checked;
 
     shipping_address = document.getElementById("customer_shipping_street_address");
     shipping_city = document.getElementById("customer_shipping_city");
@@ -107,7 +107,7 @@
           <h6>Same as shipping address?</h6>
         </div>
         <div class="col-1">
-          <%= form.check_box :check_address, onclick: 'updateBilling();' %>
+          <%= check_box_tag :match_shipping_address, 1, false, onclick: 'updateBilling();' %>
         </div>
       </div>
       <div class="mb-3">
