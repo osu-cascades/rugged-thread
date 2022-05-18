@@ -1,10 +1,9 @@
 class StandardFeesController < ApplicationController
   before_action :set_standard_fee, only: %i[ show edit update destroy archive recover ]
 
-  # GET /standard_fees or /standard_fees.json
   def index
     if params[:show_archive] == 'true'
-      @standard_fees = StandardFee.where('discarded_at IS NOT NULL')
+      @standard_fees = StandardFee.discarded
     else
       @standard_fees = StandardFee.kept
     end

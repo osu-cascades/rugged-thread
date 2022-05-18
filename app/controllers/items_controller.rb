@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @fee = Fee.new
     @standard_repairs = StandardRepair.all
     @standard_discounts = StandardDiscount.kept
-    @standard_fees = StandardFee.all
+    @standard_fees = StandardFee.kept
   end
 
   def print
