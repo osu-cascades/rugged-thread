@@ -19,7 +19,7 @@
     @item = Item.new(work_order: @work_order)
     @items = @work_order.items
     @brands = Brand.kept
-    @item_statuses = ItemStatus.all
+    @item_statuses = ItemStatus.kept
     @item_types = ItemType.all
   end
 
