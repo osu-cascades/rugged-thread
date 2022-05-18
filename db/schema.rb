@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_073736) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_18_074619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -326,19 +326,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_073736) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tickets", force: :cascade do |t|
-    t.text "repair_description"
-    t.float "add_fee"
-    t.string "technician_notes"
-    t.string "work_status"
-    t.bigint "technician_id", null: false
-    t.bigint "invoice_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["invoice_id"], name: "index_tickets_on_invoice_id"
-    t.index ["technician_id"], name: "index_tickets_on_technician_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -403,8 +390,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_073736) do
   add_foreign_key "standard_complications", "standard_repairs"
   add_foreign_key "tasks", "task_types"
   add_foreign_key "tasks", "technicians"
-  add_foreign_key "tickets", "invoices"
-  add_foreign_key "tickets", "technicians"
   add_foreign_key "work_orders", "customers"
   add_foreign_key "work_orders", "users", column: "creator_id"
 end
