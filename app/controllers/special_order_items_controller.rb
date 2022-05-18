@@ -29,7 +29,7 @@ class SpecialOrderItemsController < ApplicationController
         ).find(params[:repair_id])
         @complication = Complication.new(repair: @repair)
         @repairs = Repair.includes(:standard_repair).all
-        @standard_complications = @repair.standard_repair.standard_complications
+        @standard_complications = @repair.standard_repair.standard_complications.kept
         @inventory_item = InventoryItem.new
         @standard_inventory_items = StandardInventoryItem.all
         format.html { render 'repairs/show', status: :unprocessable_entity }

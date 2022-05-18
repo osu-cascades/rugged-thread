@@ -5,9 +5,9 @@ class StandardComplicationsController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).where('standard_complications.discarded_at IS NOT NULL AND (standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+      @pagy, @standard_complications = pagy(StandardComplication.discarded.joins(:standard_repair).where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     else
-      @pagy, @standard_complications = pagy(StandardComplication.joins(:standard_repair).kept.where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+      @pagy, @standard_complications = pagy(StandardComplication.kept.joins(:standard_repair).where('standard_complications.name ILIKE ? OR standard_repairs.name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     end
     rescue Pagy::OverflowError
       redirect_to standard_complications_url

@@ -15,7 +15,7 @@ class StandardRepairsController < ApplicationController
 
   def show
     @standard_repair = StandardRepair.find(params[:id])
-    @standard_complications = @standard_repair.standard_complications
+    @standard_complications = @standard_repair.standard_complications.kept
   end
 
   # GET /standard_repairs/new

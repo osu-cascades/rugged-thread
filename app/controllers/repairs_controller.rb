@@ -13,7 +13,7 @@ class RepairsController < ApplicationController
       {item: [:work_order, :brand, :item_type]}
     ).find(params[:id])
     @complication = Complication.new(repair: @repair)
-    @standard_complications = @repair.standard_repair.standard_complications
+    @standard_complications = @repair.standard_repair.standard_complications.kept
     @inventory_item = InventoryItem.new
     @special_order_item = SpecialOrderItem.new
     @standard_inventory_items =  StandardInventoryItem.all

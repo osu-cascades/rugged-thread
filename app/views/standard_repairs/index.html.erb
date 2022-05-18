@@ -50,7 +50,7 @@
             <%= highlight(standard_repair.description, params[:query]) %>
           </td>
           <td>
-            <%= link_to standard_repair.standard_complications.count, standard_repair, data: { "turbo-frame": :"_top" } %>
+            <%= link_to standard_repair.standard_complications.kept.count, standard_repair, data: { "turbo-frame": :"_top" } %>
           </td>
           <td>
             <%= standard_repair.level %>

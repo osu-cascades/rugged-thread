@@ -33,7 +33,7 @@
 
 <div class="row mt-5">
   <div class="col">
-    <h2><%= pluralize(@standard_repair.standard_complications.count, 'Standard Complication') %></h2>
+    <h2><%= pluralize(@standard_repair.standard_complications.kept.count, 'Standard Complication') %></h2>
   </div>
   <div class="col text-end">
     <%= link_to 'Add Standard Complication', new_standard_repair_standard_complication_path(@standard_repair), class: 'btn btn-outline-primary' %>

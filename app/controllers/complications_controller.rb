@@ -23,7 +23,7 @@ class ComplicationsController < ApplicationController
           {inventory_items: [:standard_inventory_item]},
           {item: [:work_order, :brand, :item_type]}
         ).find(params[:repair_id])
-        @standard_complications = @repair.standard_repair.standard_complications
+        @standard_complications = @repair.standard_repair.standard_complications.kept
         @repairs = Repair.includes(:standard_repair).all
         @inventory_item = InventoryItem.new
         @special_order_item = SpecialOrderItem.new
@@ -36,7 +36,7 @@ class ComplicationsController < ApplicationController
 
   def edit
     @complication = Complication.includes(:standard_complication, :repair).find(params[:id])
-    @standard_complications = @complication.repair.standard_repair.standard_complications
+    @standard_complications = @complication.repair.standard_repair.standard_complications.kept
     @repairs = Repair.includes(:standard_repair).all
   end
 
@@ -47,7 +47,7 @@ class ComplicationsController < ApplicationController
         format.html { redirect_to @complication, notice: "Complication was successfully updated." }
         format.json { render :show, status: :ok, location: @complication }
       else
-        @standard_complications = @complication.repair.standard_repair.standard_complications
+        @standard_complications = @complication.repair.standard_repair.standard_complications.kept
         @repairs = Repair.includes(:standard_repair).all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @complication.errors, status: :unprocessable_entity }
