@@ -1,5 +1,6 @@
+
 <script type="text/javascript">
-  function UpdateBilling() {
+  function updateBilling() {
     check_box_checked = document.getElementById('customer_check_address').checked;
 
     shipping_address = document.getElementById("customer_shipping_street_address");
@@ -12,20 +13,16 @@
     billing_state = document.getElementById("customer_billing_state");
     billing_zip_code = document.getElementById("customer_billing_zip_code");
 
-    if (check_box_checked == true) {
+    if (check_box_checked) {
       billing_address.value = shipping_address.value;
       billing_city.value = shipping_city.value;
       billing_state.value = shipping_state.value;
       billing_zip_code.value = shipping_zip_code.value;
-    } else if (check_box_checked == false) {
+    } else {
       billing_address.value = "";
-      billing_address.disabled = false;
       billing_city.value = "";
-      billing_city.disabled = false;
       billing_state.value = "";
-      billing_state.disabled = false;
       billing_zip_code.value = "";
-      billing_zip_code.disabled = false;
     }
   }
 </script>
@@ -110,7 +107,7 @@
           <h6>Same as shipping address?</h6>
         </div>
         <div class="col-1">
-          <%= form.check_box :check_address, onclick: 'UpdateBilling();' %>
+          <%= form.check_box :check_address, onclick: 'updateBilling();' %>
         </div>
       </div>
       <div class="mb-3">
