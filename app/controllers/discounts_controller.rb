@@ -12,7 +12,7 @@ class DiscountsController < ApplicationController
   end
 
   def edit
-    @discount = Discount.includes(:item).find(params[:id])
+    @discount = Discount.find(params[:id])
     @standard_discounts = StandardDiscount.all
   end
 
