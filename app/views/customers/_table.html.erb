@@ -21,7 +21,7 @@
         <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.last_name, params[:query]), customer) %>
         <td><%= customer.business_name %></td>
         <td><%= mail_to customer.email_address %></td>
-        <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'), customer.phone_number.empty? ? "" :  "tel:#{customer.phone_number}" %></td>
+        <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national), customer.phone_number.empty? ? "" :  "tel:#{customer.phone_number}" %></td>
         <td class="customer_shipping_address">
           <%= customer.shipping_street_address %><br>
           <%= present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code) %>

@@ -20,7 +20,7 @@
       </span>
     </h2>
     <h3 class="fw-normal"><%= @work_order.customer.business_name %></h3>
-    <h3 class="fw-normal fs-6"><%= link_to @work_order.customer.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),  @work_order.customer.phone_number.empty? ? "" :  "tel:#{@work_order.customer.phone_number}" %></h4>
+    <h3 class="fw-normal fs-6"><%= link_to @work_order.customer.phone_number.phony_formatted(normalize: :US, format: :national),  @work_order.customer.phone_number.empty? ? "" :  "tel:#{@work_order.customer.phone_number}" %></h4>
   </div>
   <div class="col-3">
     <p>
