@@ -36,7 +36,7 @@ class FeesController < ApplicationController
         @repair = Repair.new
         @discount = Discount.new
         @standard_fees = StandardFee.all
-        @standard_discounts = StandardDiscount.all
+        @standard_discounts = StandardDiscount.kept
         @standard_repairs = StandardRepair.all
         format.html { render 'items/show', status: :unprocessable_entity }
         format.json { render json: @fee.errors, status: :unprocessable_entity }

@@ -1,10 +1,9 @@
 class StandardDiscountsController < ApplicationController
   before_action :set_standard_discount, only: %i[ show edit update destroy archive recover ]
 
-  # GET /standard_discounts or /standard_discounts.json
   def index
     if params[:show_archive] == 'true'
-      @standard_discounts = StandardDiscount.where('discarded_at IS NOT NULL')
+      @standard_discounts = StandardDiscount.discarded
     else
       @standard_discounts = StandardDiscount.kept
     end

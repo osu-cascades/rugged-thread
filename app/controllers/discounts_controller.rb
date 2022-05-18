@@ -13,7 +13,7 @@ class DiscountsController < ApplicationController
 
   def edit
     @discount = Discount.find(params[:id])
-    @standard_discounts = StandardDiscount.all
+    @standard_discounts = StandardDiscount.kept
   end
 
   def create
@@ -35,7 +35,7 @@ class DiscountsController < ApplicationController
           ).find(params[:item_id])
         @repair = Repair.new
         @fee = Fee.new
-        @standard_discounts = StandardDiscount.all
+        @standard_discounts = StandardDiscount.kept
         @standard_repairs = StandardRepair.all
         @standard_fees = StandardFee.all
         format.html { render 'items/show', status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class DiscountsController < ApplicationController
         format.html { redirect_to @discount, notice: "Discount was successfully updated." }
         format.json { render :show, status: :ok, location: @discount }
       else
-        @standard_discounts = StandardDiscount.all
+        @standard_discounts = StandardDiscount.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @discount.errors, status: :unprocessable_entity }
       end
