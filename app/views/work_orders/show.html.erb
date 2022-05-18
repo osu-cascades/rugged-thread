@@ -8,7 +8,6 @@
     <%= link_to 'Edit', edit_work_order_path(@work_order), class: 'btn btn-outline-primary me-2' %>
     <%= link_to 'Print', print_work_order_path(@work_order), class: 'btn btn-outline-primary me-2', target: '_new' %>
     <%= link_to_archive_or_recover(@work_order) %>
-    <%= button_to 'Delete', @work_order, method: :delete, class: 'btn btn-outline-danger' %>
   </div>
 </div>
 
