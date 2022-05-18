@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = authorize User.find(params[:id])
-    @created_work_orders = @user.created_work_orders
+    @created_work_orders = @user.created_work_orders.kept
   end
 
   def new

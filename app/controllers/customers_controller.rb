@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @work_orders = @customer.work_orders
+    @work_orders = @customer.work_orders.kept
   end
 
   def new
