@@ -5,7 +5,7 @@ class CustomerTypesController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @customer_types = pagy(CustomerType.where('discarded_at IS NOT NULL'))
+      @pagy, @customer_types = pagy(CustomerType.discarded)
     else
       @pagy, @customer_types = pagy(CustomerType.kept)
     end

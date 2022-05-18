@@ -20,12 +20,12 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
-    @customer_types = CustomerType.all
+    @customer_types = CustomerType.kept
   end
 
   def edit
     @customer = Customer.find(params[:id])
-    @customer_types = CustomerType.all
+    @customer_types = CustomerType.kept
   end
 
   def create
@@ -36,7 +36,7 @@ class CustomersController < ApplicationController
         format.html { redirect_to @customer, notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
-        @customer_types = CustomerType.all
+        @customer_types = CustomerType.kept
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class CustomersController < ApplicationController
         format.html { redirect_to @customer, notice: "Customer was successfully updated." }
         format.json { render :show, status: :ok, location: @customer }
       else
-        @customer_types = CustomerType.all
+        @customer_types = CustomerType.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
