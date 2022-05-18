@@ -5,7 +5,7 @@ class StandardInventoryItemsController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @standard_inventory_items = pagy(StandardInventoryItem.where('discarded_at IS NOT NULL AND (name ILIKE ? OR sku ILIKE ?)', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
+      @pagy, @standard_inventory_items = pagy(StandardInventoryItem.discarded.where('name ILIKE ? OR sku ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     else
       @pagy, @standard_inventory_items = pagy(StandardInventoryItem.kept.where('name ILIKE ? OR sku ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(name: :asc))
     end
@@ -84,9 +84,8 @@ class StandardInventoryItemsController < ApplicationController
     end
   end
 
-
-
   private
+
     def set_standard_inventory_item
       @standard_inventory_item = StandardInventoryItem.find(params[:id])
     end
@@ -94,4 +93,5 @@ class StandardInventoryItemsController < ApplicationController
     def standard_inventory_item_params
       params.require(:standard_inventory_item).permit(:name, :sku, :price)
     end
+
 end

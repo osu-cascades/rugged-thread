@@ -10,7 +10,7 @@ class InventoryItemsController < ApplicationController
 
   def edit
     @inventory_item = InventoryItem.includes(:repair).find(params[:id])
-    @standard_inventory_items = StandardInventoryItem.all
+    @standard_inventory_items = StandardInventoryItem.kept
   end
 
   def create
@@ -30,7 +30,7 @@ class InventoryItemsController < ApplicationController
         ).find(params[:repair_id])
         @complication = Complication.new(repair: @repair)
         @repairs = Repair.includes(:standard_repair).all
-        @standard_inventory_items = StandardInventoryItem.all
+        @standard_inventory_items = StandardInventoryItem.kept
         @standard_complications = @repair.standard_repair.standard_complications.kept
         @special_order_item = SpecialOrderItem.new
         format.html { render 'repairs/show', status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class InventoryItemsController < ApplicationController
         format.html { redirect_to @inventory_item, notice: "Inventory Item was successfully updated." }
         format.json { render :show, status: :ok, location: @inventory_item }
       else
-        @standard_inventory_items = StandardInventoryItem.all
+        @standard_inventory_items = StandardInventoryItem.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @inventory_item.errors, status: :unprocessable_entity }
       end

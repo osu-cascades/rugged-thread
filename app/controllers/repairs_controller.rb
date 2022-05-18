@@ -16,7 +16,7 @@ class RepairsController < ApplicationController
     @standard_complications = @repair.standard_repair.standard_complications.kept
     @inventory_item = InventoryItem.new
     @special_order_item = SpecialOrderItem.new
-    @standard_inventory_items =  StandardInventoryItem.all
+    @standard_inventory_items =  StandardInventoryItem.kept
     @repairs = Repair.includes(:standard_repair).all
   end
 
