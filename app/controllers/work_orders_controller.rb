@@ -20,7 +20,7 @@
     @items = @work_order.items
     @brands = Brand.kept
     @item_statuses = ItemStatus.kept
-    @item_types = ItemType.all
+    @item_types = ItemType.kept
   end
 
   def print

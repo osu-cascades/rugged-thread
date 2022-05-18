@@ -6,7 +6,7 @@ class ItemTypesController < ApplicationController
   # GET /item_types or /item_types.json
   def index
       if params[:show_archive] == 'true'
-      @pagy, @item_types = pagy(ItemType.where('discarded_at IS NOT NULL'))
+      @pagy, @item_types = pagy(ItemType.discarded)
     else
       @pagy, @item_types = pagy(ItemType.kept)
     end

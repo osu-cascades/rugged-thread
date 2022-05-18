@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @brands = Brand.kept
     @item_statuses = ItemStatus.kept
-    @item_types = ItemType.all
+    @item_types = ItemType.kept
   end
 
   def create
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
         @items = @work_order.items
         @brands = Brand.kept
         @item_statuses = ItemStatus.kept
-        @item_types = ItemType.all
+        @item_types = ItemType.kept
         format.html { render 'work_orders/show', status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
       else
         @brands = Brand.kept
         @item_statuses = ItemStatus.kept
-        @item_types = ItemType.all
+        @item_types = ItemType.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end

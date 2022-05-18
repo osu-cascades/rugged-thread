@@ -15,7 +15,7 @@ class QuoteRequestsController < ApplicationController
 
   def new
     @quote_request = QuoteRequest.new
-    @item_types = ItemType.all
+    @item_types = ItemType.kept
     @brands = Brand.kept
   end
 
@@ -33,7 +33,7 @@ class QuoteRequestsController < ApplicationController
         end
         format.json { render :show, status: :created, location: @quote_request }
       else
-        @item_types = ItemType.all
+        @item_types = ItemType.kept
         @brands = Brand.kept
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @quote_request.errors, status: :unprocessable_entity }
