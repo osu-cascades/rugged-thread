@@ -4,7 +4,7 @@ class ShopParametersController < ApplicationController
   # GET /shop_parameters or /shop_parameters.json
   def index
     if params[:show_archive] == 'true'
-      @shop_parameters = ShopParameter.where('discarded_at IS NOT NULL')
+      @shop_parameters = ShopParameter.discarded
     else
       @shop_parameters = ShopParameter.kept
     end
