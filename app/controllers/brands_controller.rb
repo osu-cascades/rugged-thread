@@ -5,7 +5,7 @@ class BrandsController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @brands = pagy(Brand.where('discarded_at IS NOT NULL'))
+      @pagy, @brands = pagy(Brand.discarded)
     else
       @pagy, @brands = pagy(Brand.kept)
     end

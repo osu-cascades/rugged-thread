@@ -18,7 +18,7 @@
     @work_order = WorkOrder.find(params[:id])
     @item = Item.new(work_order: @work_order)
     @items = @work_order.items
-    @brands = Brand.all
+    @brands = Brand.kept
     @item_statuses = ItemStatus.all
     @item_types = ItemType.all
   end
