@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @accounts = pagy(Account.where('discarded_at IS NOT NULL'))
+      @pagy, @accounts = pagy(Account.discarded)
     else
       @pagy, @accounts = pagy(Account.kept)
     end
