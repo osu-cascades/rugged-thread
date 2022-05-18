@@ -41,7 +41,7 @@ To view and modify the production credentials, you must have a
 _config/credentials/production.key_ file containing the appropriate key. Consult
 the project documentation or development team members for this key.
 
-### Database (TODO)
+### Database
 
 The migrations should run cleanly, and there is seed data in _db/seeds.rb_.
 But, get up and running with `rails db:setup`.
@@ -54,11 +54,15 @@ application doesn't use any client-side JavaScript, so the system tests use the
 `:rack_test` driver to speed up the system tests.
 See _test/application_system_test_case.rb_.
 
+## Deployment
+
+The production application is deployed to Heroku, be sure to add the remote to 
+your local repo. Update Main before deployment. Push changes from Main using
+`git push heroku main`. 
+
 ### TODO
 
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions - forthcoming (heroku)
 
 * ...
 
