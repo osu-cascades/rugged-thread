@@ -15,7 +15,7 @@ class CustomerTypesController < ApplicationController
 
   def show
     @customer_type = CustomerType.find(params[:id])
-    @customers = @customer_type.customers
+    @customers = @customer_type.customers.kept
   end
 
   # GET /customer_types/new

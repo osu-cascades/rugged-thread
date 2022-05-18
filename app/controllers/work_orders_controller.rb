@@ -36,13 +36,13 @@
     @work_order = current_user.created_work_orders.build(
       customer_id: params[:customer_id])
     @creators = User.all
-    @customers = Customer.all
+    @customers = Customer.kept
   end
 
   def edit
     @work_order = WorkOrder.find(params[:id])
     @creators = User.all
-    @customers = Customer.all
+    @customers = Customer.kept
   end
 
   def create
@@ -53,7 +53,7 @@
         format.json { render :show, status: :created, location: @work_order }
       else
         @creators = User.all
-        @customers = Customer.all
+        @customers = Customer.kept
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
       end
@@ -68,7 +68,7 @@
         format.json { render :show, status: :ok, location: @work_order }
       else
         @creators = User.all
-        @customers = Customer.all
+        @customers = Customer.kept
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
       end
