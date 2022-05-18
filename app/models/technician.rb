@@ -1,2 +1,0 @@
-class Technician < ApplicationRecord
-end

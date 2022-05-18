@@ -47,8 +47,6 @@ Rails.application.routes.draw do
   resources :discounts, except: [:new, :create]
   resources :fees, except: [:new, :create]
   resources :inventory_items, except: [:new, :create]
-  resources :invoice_items
-  resources :invoices
   resources :item_statuses do
     patch 'set_default', on: :member
     member do
@@ -112,10 +110,6 @@ Rails.application.routes.draw do
       patch :recover
     end
   end
-  resources :task_types
-  resources :tasks
-  resources :technicians
-  resources :tickets
   resources :work_orders do
     get 'print', on: :member
     member do
