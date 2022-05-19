@@ -20,10 +20,18 @@
   </div>
 </div>
 
-<table class="table table-hover" id="users_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="users_table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">Name</th>
       <th scope="col">Email Address</th>
       <th scope="col">Role</th>
@@ -31,15 +39,11 @@
       <th scope="col">Last Seen</th>
       <th scope="col">End Date</th>
       <th scope="col">Efficiency</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr class="<%= dom_class(user) %>" id="<%= dom_id(user) %>">
-        <th scope="row">
-          <%= user.id %>
-        </th>
+      <tr class="<%= dom_class(user) %> clickable-row" id="<%= dom_id(user) %>" data-href="<%= user_path(user) %>">
         <td>
           <%= user %>
         </td>
@@ -57,9 +61,6 @@
         </td>
         <td><%= user.end_date %></td>
         <td><%= user.efficiency %></td>
-        <td class="text-end">
-          <%= link_to 'Details', user, class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
