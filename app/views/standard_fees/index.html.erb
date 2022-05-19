@@ -1,17 +1,21 @@
-<div class="row mb-5">
+<div class="row mb-4">
   <div class="col">
-    <% if params[:show_archive] == 'true' %>
-      <h1>Archived Standard Fees</h1>
-    <% else %>
-      <h1>Standard Fees</h1>
-    <% end %>
+    <h1 class="display-6"><%= filterable_model_list_title 'Standard Fees' %></h1>
   </div>
-  <div class="col text-end">
-    <%= link_to 'Add New Standard Fee', new_standard_fee_path, class: 'btn btn-outline-primary' %>
-    <% if params[:show_archive] == 'true' %>
-      <%= link_to 'Active Standard Fees', standard_fees_path(), class: 'btn btn-outline-success me-2' %>
+  <div class="col-4 text-end align-self-center">
+    <%= link_to 'Add New Standard Fee', new_standard_fee_path, class: 'btn btn-sm btn-outline-primary' %>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-8">
+  </div>
+  <div class="filter col-4 d-flex align-items-center justify-content-end">
+    <strong class="text-muted">Filter:</strong>
+    <% if params[:show_archive] %>
+      <%= link_to 'archived', standard_fees_path, class: "badge rounded-pill bg-secondary" %>
     <% else %>
-      <%= link_to 'Archived Standard Fees', standard_fees_path(show_archive: 'true'), class: 'btn btn-outline-success me-2' %>
+      <%= link_to 'archived', standard_fees_path(show_archive: 'true'), class: "badge rounded-pill bg-light text-muted" %>
     <% end %>
   </div>
 </div>
