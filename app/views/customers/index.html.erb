@@ -7,22 +7,20 @@
   </div>
 </div>
 
-<div class="mb-4">
-  <%= form_with url: customers_path, method: :get, data: { turbo_frame: 'customers' } do |f| %>
-    <div class="row">
-      <div class="col-8">
-        <%= f.search_field :query, value: params[:query], class: 'form-control form-control-sm', autofocus: true, placeholder: 'Search. Type a first name or last name and hit [enter]' %>
-      </div>
-      <div class="filter col-4 d-flex align-items-center justify-content-end">
-        <strong class="text-muted">Filter:</strong>
-        <% if params[:show_archive] %>
-          <%= link_to 'archived', customers_path, class: "badge rounded-pill bg-secondary" %>
-        <% else %>
-          <%= link_to 'archived', customers_path(show_archive: 'true'), class: "badge rounded-pill bg-light text-muted" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mb-4">
+  <div class="col-8">
+    <%= form_with url: customers_path, method: :get, data: { turbo_frame: 'customers' } do |f| %>
+      <%= f.search_field :query, value: params[:query], class: 'form-control form-control-sm', autofocus: true, placeholder: 'Search. Type a first name or last name and hit [enter]' %>
+    <% end %>
+  </div>
+  <div class="filter col-4 d-flex align-items-center justify-content-end">
+    <strong class="text-muted">Filter:</strong>
+    <% if params[:show_archive] %>
+      <%= link_to 'archived', customers_path, class: "badge rounded-pill bg-secondary" %>
+    <% else %>
+      <%= link_to 'archived', customers_path(show_archive: 'true'), class: "badge rounded-pill bg-light text-muted" %>
+    <% end %>
+  </div>
 </div>
 
 <%= turbo_frame_tag 'customers' do %>
