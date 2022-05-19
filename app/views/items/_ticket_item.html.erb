@@ -37,10 +37,13 @@
         <p class="marginless">$<%= complication.price %> <%= complication %></p>
       <% end %>
       <h4><strong>Inventory Items</strong></h4>
-      <% repair.inventory_items.each do |inventory_item| %>
-        <p class="marginless">$<%= inventory_item.price %> <%= inventory_item %> (<%= inventory_item.standard_inventory_item.sku %>)</p>
+      <% repair.inventory_items.each do |ii| %>
+        <p class="marginless">$<%= ii.price %> <%= ii %> (<%= ii.standard_inventory_item.sku %>)</p>
       <% end %>
-
+      <h4><strong>Special Order Items</strong></h4>
+      <% repair.special_order_items.each do |soi| %>
+        <p class="marginless">$<%= soi.total_price %> <%= soi %></p>
+      <% end %>
 
       <h4>Production Data</h4>
       <table width="100%">
