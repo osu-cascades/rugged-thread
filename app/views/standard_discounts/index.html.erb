@@ -20,18 +20,26 @@
   </div>
 </div>
 
-<table class="table table-hover" id="standard_discounts_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="standard_discounts_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col" class="text-end">Percentage Amount</th>
       <th scope="col" class="text-end">Dollar Amount</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @standard_discounts.each do |standard_discount| %>
-      <tr class="<%= dom_class(standard_discount) %>" id="<%= dom_id(standard_discount) %>">
+      <tr class="<%= dom_class(standard_discount) %> clickable-row" id="<%= dom_id(standard_discount) %>" data-href="<%= standard_discount_path(standard_discount) %>">
         <td>
           <%= standard_discount %>
         </td>
@@ -40,9 +48,6 @@
         </td>
         <td class="text-end">
           <%= standard_discount.price&.format %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', standard_discount, class: 'btn btn-outline-secondary btn-sm' %>
         </td>
       </tr>
     <% end %>
