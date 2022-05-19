@@ -24,7 +24,16 @@
 </div>
 
 <%= turbo_frame_tag 'standard_repairs' do %>
-  <table class="table table-hover" id="standard_repairs_table">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function($) {
+      $(".clickable-row").click(function() {
+          window.document.location = $(this).data("href");
+      });
+  });
+  </script>
+
+  <table class="table table-hover table-borderless" id="standard_repairs_table">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -33,12 +42,11 @@
         <th scope="col"># of Complications</th>
         <th scope="col">Level</th>
         <th scope="col" class="text-end">Price</th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% @standard_repairs.each do |standard_repair| %>
-        <tr class="<%= dom_class(standard_repair) %>" id="<%= dom_id(standard_repair) %>">
+        <tr class="<%= dom_class(standard_repair) %> clickable-row" id="<%= dom_id(standard_repair) %>" data-href="<%= standard_repair_path(standard_repair) %>">
           <td>
             <%= highlight(standard_repair.name, params[:query]) %>
           </td>
@@ -49,16 +57,13 @@
             <%= highlight(standard_repair.description, params[:query]) %>
           </td>
           <td>
-            <%= link_to standard_repair.standard_complications.kept.count, standard_repair, data: { "turbo-frame": :"_top" } %>
+            <%= standard_repair.standard_complications.kept.count %>
           </td>
           <td>
             <%= standard_repair.level %>
           </td>
           <td class="text-end">
             <%= standard_repair.price.format %>
-          </td>
-          <td class="text-end">
-            <%= link_to 'Details', standard_repair, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
           </td>
         </tr>
       <% end %>
