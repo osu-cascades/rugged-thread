@@ -22,8 +22,14 @@ module ApplicationHelper
     end
   end
 
-  def discardable_model_list_title(title)
-    params[:show_archive] ? "Archived #{title}" : title
+  def filterable_model_list_title(title)
+    if params[:status] == 'invoiced'
+      "Invoiced #{title}"
+    elsif params[:show_archive] == 'true'
+      "Archived #{title}"
+    else
+      title
+    end
   end
 
 end
