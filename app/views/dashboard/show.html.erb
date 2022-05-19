@@ -1,12 +1,9 @@
-<h1>Dashboard</h1>
+<h1 class="display-6">Dashboard</h1>
 
 <div class="col-5 p-3 rounded my-4 bg-secondary bg-gradient text-light">
   <h2 class="display-5"><%= @total_price_of_non_invoiced_items.format %></h2>
-  <p>from <strong><%= @number_of_non_invoiced_items %></strong> items not yet invoiced</p>
+  <p>from <strong><%= pluralize(@number_of_non_invoiced_items, 'item') %></strong> not yet invoiced</p>
 </div>
-
-<p>This main screen will eventually show the most important information.</p>
-<p>It is intentionally minimal for now.</p>
 
 <h2>Sample Reports</h2>
 <ul>
