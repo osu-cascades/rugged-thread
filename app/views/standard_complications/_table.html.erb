@@ -1,26 +1,31 @@
-<table class="table table-hover" id="standard_complications_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="standard_complications_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Standard Repair</th>
       <th scope="col" class="text-end">Price</th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <% standard_complications.each do |standard_complication| %>
-      <tr class="<%= dom_class(standard_complication) %>" id="<%= dom_id(standard_complication) %>">
+      <tr class="<%= dom_class(standard_complication) %> clickable-row" id="<%= dom_id(standard_complication) %>" data-href="<%= standard_complication_path(standard_complication) %>">
         <td>
           <%= highlight(standard_complication.name, params[:query]) %>
         </td>
         <td>
-          <%= link_to_unless(controller.controller_name == 'standard_repairs', highlight(standard_complication.standard_repair.name, params[:query]), standard_complication.standard_repair, data: { "turbo-frame": :"_top" }) %>
+          <%= highlight(standard_complication.standard_repair.name, params[:query]) %>
         </td>
         <td class="text-end">
           <%= standard_complication.price.format %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', standard_complication, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
         </td>
       </tr>
     <% end %>
