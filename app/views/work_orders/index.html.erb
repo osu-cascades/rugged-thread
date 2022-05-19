@@ -7,27 +7,25 @@
   </div>
 </div>
 
-<div class="mb-4">
-  <%= form_with url: work_orders_path, method: :get, data: { turbo_frame: 'work_orders' } do |f| %>
-    <div class="row">
-      <div class="col-8">
-        <%= f.search_field :query, value: params[:query], class: 'form-control form-control-sm', autofocus: true, placeholder: 'Search. Type a work order number or last name and hit [enter]' %>
-      </div>
-      <div class="filter col-4 d-flex align-items-center justify-content-end">
-        <strong class="text-muted">Filter:</strong>
-        <% if params[:status] == 'invoiced' %>
-          <%= link_to 'invoiced', work_orders_path, class: "badge rounded-pill bg-secondary" %>
-        <% else %>
-          <%= link_to 'invoiced', work_orders_path(status: 'invoiced'), class: "badge rounded-pill bg-light text-muted" %>
-        <% end %>
-        <% if params[:show_archive] %>
-          <%= link_to 'archived', work_orders_path, class: "badge rounded-pill bg-secondary" %>
-        <% else %>
-          <%= link_to 'archived', work_orders_path(show_archive: 'true'), class: "badge rounded-pill bg-light text-muted" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<div class="row mb-4">
+  <div class="col-8">
+    <%= form_with url: work_orders_path, method: :get, data: { turbo_frame: 'work_orders' } do |f| %>
+      <%= f.search_field :query, value: params[:query], class: 'form-control form-control-sm', autofocus: true, placeholder: 'Search. Type a work order number or last name and hit [enter]' %>
+    <% end %>
+  </div>
+  <div class="filter col-4 d-flex align-items-center justify-content-end">
+    <strong class="text-muted">Filter:</strong>
+    <% if params[:status] == 'invoiced' %>
+      <%= link_to 'invoiced', work_orders_path, class: "badge rounded-pill bg-secondary" %>
+    <% else %>
+      <%= link_to 'invoiced', work_orders_path(status: 'invoiced'), class: "badge rounded-pill bg-light text-muted" %>
+    <% end %>
+    <% if params[:show_archive] %>
+      <%= link_to 'archived', work_orders_path, class: "badge rounded-pill bg-secondary" %>
+    <% else %>
+      <%= link_to 'archived', work_orders_path(show_archive: 'true'), class: "badge rounded-pill bg-light text-muted" %>
+    <% end %>
+  </div>
 </div>
 
 <%= turbo_frame_tag 'work_orders' do %>
