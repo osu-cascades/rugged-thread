@@ -20,36 +20,41 @@
   </div>
 </div>
 
-<table class="table table-hover" id="item_statuses_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="item_statuses_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <% if params[:show_archive] != 'true' %>
         <th scope="col">Default?</th>
       <% end %>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @item_statuses.each do |item_status| %>
-      <tr class="<%= dom_class(item_status) %>" id="<%= dom_id(item_status) %>">
+      <tr class="<%= dom_class(item_status) %> clickable-row" id="<%= dom_id(item_status) %>" data-href="<%= item_status_path(item_status) %>">
         <td>
           <%= item_status %>
         </td>
         <td>
           <% if params[:show_archive] != 'true' %>
-              <% if item_status.default? %>
-                ✅
-              <% else %>
-                <%= form_with url: set_default_item_status_url(item_status), method: :patch do |form| %>
-                  <%= form.submit 'make default', class: 'btn btn-sm btn-outline-secondary' do %>
-                  <% end %>
+            <% if item_status.default? %>
+              ✅
+            <% else %>
+              <%= form_with url: set_default_item_status_url(item_status), method: :patch do |form| %>
+                <%= form.submit 'make default', class: 'btn btn-sm btn-outline-secondary' do %>
                 <% end %>
               <% end %>
             <% end %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', item_status, class: 'btn btn-outline-secondary btn-sm' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
