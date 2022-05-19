@@ -20,25 +20,30 @@
   </div>
 </div>
 
-<table class="table table-hover" id="standard_fees_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="standard_fees_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col" class="text-end">Price</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @standard_fees.each do |standard_fee| %>
-      <tr class="<%= dom_class(standard_fee) %>" id="<%= dom_id(standard_fee) %>">
+      <tr class="<%= dom_class(standard_fee) %> clickable-row" id="<%= dom_id(standard_fee) %>" data-href="<%= standard_fee_path(standard_fee) %>">
         <td>
           <%= standard_fee %>
         </td>
         <td class="text-end">
           <%= standard_fee.price.format %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', standard_fee, class: 'btn btn-outline-secondary btn-sm' %>
         </td>
       </tr>
     <% end %>
