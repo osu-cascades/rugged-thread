@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 body {
-  padding-top: 4.5rem;
+  padding-top: 5rem;
   background-color: #f5f5f5;
 }
 
@@ -49,8 +49,27 @@ a.btn:hover, nav a:hover {
 }
 
 .navbar-brand img {
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+.navbar-brand h1.app-name {
+  font-size: 42px;
+  margin: 0px;
+  margin-top: -8px;
+  padding: 0px;
+  vertical-align: top;
+  font-family: 'Ms Madi', cursive;
+  color: #BF40BF;
+}
+
+.navbar-brand h2.app-subtitle {
+  font-size: 8px;
+  margin: 0px;
+  margin-top: -12px;
+  padding: 0px;
+  color: #999;
 }
 
 footer {
