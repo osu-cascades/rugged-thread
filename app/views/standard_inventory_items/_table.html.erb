@@ -1,15 +1,23 @@
-<table class="table table-hover" id="standard_inventory_items_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="standard_inventory_items_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">SKU</th>
       <th scope="col" class="text-end">Price</th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <% standard_inventory_items.each do |standard_inventory_item| %>
-      <tr class="<%= dom_class(standard_inventory_item) %>" id="<%= dom_id(standard_inventory_item) %>">
+      <tr class="<%= dom_class(standard_inventory_item) %> clickable-row" id="<%= dom_id(standard_inventory_item) %>" data-href="<%= standard_inventory_item_path(standard_inventory_item) %>">
         <td>
           <%= highlight(standard_inventory_item.name, params.dig(:query)) %>
         </td>
@@ -18,9 +26,6 @@
         </td>
         <td class="text-end">
           <%= standard_inventory_item.price.format %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', standard_inventory_item, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
         </td>
       </tr>
     <% end %>
