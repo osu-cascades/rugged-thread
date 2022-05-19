@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include Pagy::Backend
 
   before_action :ignore_password_and_password_confirmation, only: :update
 
@@ -6,9 +7,9 @@ class UsersController < ApplicationController
 
   def index
     if params[:show_archive] == 'true'
-      @users = authorize User.discarded
+      @pagy, @users = pagy(authorize User.discarded)
     else
-      @users = authorize User.kept
+      @pagy, @users = pagy (authorize User.kept)
     end
   end
 
