@@ -1,7 +1,15 @@
-<table class="table table-hover" id="customers_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="customers_table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
       <th scope="col">Business name</th>
@@ -9,27 +17,21 @@
       <th scope="col">Phone number</th>
       <th scope="col">Shipping Address</th>
       <th scope="col">Type</th>
-      
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% customers.each do |customer| %>
-      <tr class="<%= dom_class(customer) %>" id="<%= dom_id(customer) %>">
-        <th scope="row"><%= customer.id %></th>
-        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.first_name, params[:query]), customer) %>
-        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(customer.last_name, params[:query]), customer) %>
+      <tr class="<%= dom_class(customer) %> clickable-row" id="<%= dom_id(customer) %>" data-href="<%= customer_path(customer) %>">
+        <td><%= highlight(customer.first_name, params[:query]) %></td>
+        <td><%= highlight(customer.last_name, params[:query]) %></td>
         <td><%= customer.business_name %></td>
-        <td><%= mail_to customer.email_address %></td>
-        <td><%= link_to customer.phone_number.phony_formatted(normalize: :US, format: :national), customer.phone_number.empty? ? "" :  "tel:#{customer.phone_number}" %></td>
+        <td><%= customer.email_address %></td>
+        <td><%= customer.phone_number.phony_formatted(normalize: :US, format: :national) %></td>
         <td class="customer_shipping_address">
           <%= customer.shipping_street_address %><br>
           <%= present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code) %>
         </td>
-        <td><%= link_to_unless(controller.controller_name == 'customer_types', customer.customer_type, customer.customer_type, data: { "turbo-frame": :"_top" }) %></td>
-        <td class="text-end">
-          <%= link_to 'Details', customer, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
-        </td>
+        <td><%= customer.customer_type %></td>
       </tr>
     <% end %>
   </tbody>

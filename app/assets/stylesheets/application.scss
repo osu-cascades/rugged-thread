@@ -14,6 +14,33 @@ table {
   font-size: 0.8rem;
 }
 
+table th {
+  color: #BBB;
+}
+
+table td {
+  padding-top: 2rem !important;
+}
+
+table tbody tr {
+  cursor: pointer;
+}
+
+.filter {
+  font-size: 0.8rem;
+  a {
+    margin-left: 10px;
+  }
+  a:hover {
+    @extend .bg-secondary;
+    color: #FFF !important;
+  }
+}
+
+input#query {
+  background-color: #F0F0F0;
+}
+
 a:hover {
  text-decoration: underline;
 }

@@ -22,4 +22,8 @@ module ApplicationHelper
     end
   end
 
+  def discardable_model_list_title(title)
+    params[:show_archive] ? "Archived #{title}" : title
+  end
+
 end

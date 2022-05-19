@@ -32,4 +32,17 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal(present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code), "#{customer.shipping_city} #{customer.shipping_zip_code}")
   end
 
+  # discardable_model_list_title
+
+  test 'returns the provided title when expected request param is not present' do
+    original_title = 'Fake'
+    assert_equal original_title, discardable_model_list_title(original_title)
+  end
+
+  test 'returns the archived-prefixed title when expected request param is present' do
+    params[:show_archive] = 'true'
+    original_title = 'Fake'
+    assert_equal "Archived #{original_title}", discardable_model_list_title(original_title)
+  end
+
 end
