@@ -20,24 +20,29 @@
   </div>
 </div>
 
-<table class="table table-hover" id="customer_types_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="customer_types_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Turn around (days)</th>
       <th scope="col">Number of Customers</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @customer_types.each do |customer_type| %>
-      <tr class="<%= dom_class(customer_type) %>" id="<%= dom_id(customer_type) %>">
+      <tr class="<%= dom_class(customer_type) %> clickable-row" id="<%= dom_id(customer_type) %>" data-href="<%= customer_type_path(customer_type) %>">
         <td><%= customer_type %></td>
         <td><%= customer_type.turn_around %></td>
         <td><%= customer_type.customers_count %></td>
-        <td class="text-end">
-          <%= link_to 'Details', customer_type, class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
