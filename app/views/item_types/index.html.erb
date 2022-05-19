@@ -20,21 +20,26 @@
   </div>
 </div>
 
-<table class="table table-hover" id="item_types_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="item_types_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @item_types.each do |item_type| %>
-      <tr class="<%= dom_class(item_type) %>" id="<%= dom_id(item_type) %>">
+      <tr class="<%= dom_class(item_type) %> clickable-row" id="<%= dom_id(item_type) %>" data-href="<%= item_type_path(item_type) %>">
         <td>
           <%= item_type %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', item_type, class: 'btn btn-outline-secondary btn-sm' %>
         </td>
       </tr>
     <% end %>
