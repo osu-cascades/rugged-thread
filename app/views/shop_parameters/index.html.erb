@@ -20,25 +20,30 @@
   </div>
 </div>
 
-<table class="table table-hover" id="shop_parameters_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="shop_parameters_table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Amount</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @shop_parameters.each do |shop_parameter| %>
-      <tr class="<%= dom_class(shop_parameter) %>" id="<%= dom_id(shop_parameter) %>">
+      <tr class="<%= dom_class(shop_parameter) %> clickable-row" id="<%= dom_id(shop_parameter) %>" data-href="<%= shop_parameter_path(shop_parameter) %>">
         <td>
           <%= shop_parameter %>
         </td>
         <td>
           <%= shop_parameter.amount %>
-        </td>
-        <td class="text-end">
-          <%= link_to 'Details', shop_parameter, class: 'btn btn-outline-secondary btn-sm' %>
         </td>
       </tr>
     <% end %>
