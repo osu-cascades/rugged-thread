@@ -1,4 +1,13 @@
-<table class="table table-hover" id="work_orders_table">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+
+<table class="table table-hover table-borderless" id="work_orders_table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -9,15 +18,14 @@
       <th scope="col">Created by</th>
       <th scope="col">Ship?</th>
       <th scope="col" class="text-end">Estimate</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% work_orders.each do |work_order| %>
-      <tr class="<%= dom_class(work_order) %>" id="<%= dom_id(work_order) %>">
-        <th scope="row"><%= highlight(work_order.number, params[:query]) %></th>
-        <td><%= link_to_unless(controller.controller_name == 'customers', highlight(work_order.customer.full_name, params[:query]), work_order.customer, data: { "turbo-frame": :"_top" }) %></td>
-        <td><%= link_to work_order.customer.customer_type, work_order.customer.customer_type, data: { "turbo-frame": :"_top" } %></td>
+      <tr class="<%= dom_class(work_order) %> clickable-row" id="<%= dom_id(work_order) %>" data-href="<%= work_order_path(work_order) %>">
+        <td scope="row"><%= highlight(work_order.number, params[:query]) %></td>
+        <td><%= highlight(work_order.customer.full_name, params[:query]) %></td>
+        <td><%= work_order.customer.customer_type %></td>
         <td><%= work_order.in_date.to_formatted_s(:long) %></td>
         <td>
           <% if work_order.overdue? %>
@@ -30,12 +38,9 @@
             </div>
           <% end %>
         </td>
-        <td><%= link_to_unless(controller.controller_name == 'users', work_order.creator, work_order.creator, data: { "turbo-frame": :"_top" }) %></td>
+        <td><%= work_order.creator %></td>
         <td><%= work_order.shipping ? '📦' : '' %></td>
         <td class="text-end"><%= work_order.price.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', work_order, class: 'btn btn-outline-secondary btn-sm', data: { "turbo-frame": :"_top" } %>
-        </td>
       </tr>
     <% end %>
   </tbody>
