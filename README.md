@@ -59,7 +59,7 @@ See _test/application_system_test_case.rb_.
 * [Heroku-CLI](https://devcenter.heroku.com/articles/heroku-cli) - Have the Heroku CLI installed
 * Add a remote in your local repo to the production application
   with `heroku git:remote -a https://git.heroku.com/rugged-thread.git`
-* Push changes from main to Heroku using `git push heroku main`
+* Push changes from the main branch to Heroku using `git push heroku main`
 * If you've made changes to the database, run migration using `heroku run rails db:migrate`
 
 
