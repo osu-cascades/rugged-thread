@@ -56,9 +56,11 @@ See _test/application_system_test_case.rb_.
 
 ## Deployment
 
-The production application is deployed to Heroku, be sure to add the remote to 
-your local repo. Update Main before deployment. Push changes from Main using
-`git push heroku main`. 
+* Download Heroku CLI if you haven't already [Heroku](https://devcenter.heroku.com/articles/heroku-cli)
+* Add a remote in your local repo to the production application
+  with `heroku git:remote -a https://git.heroku.com/rugged-thread.git`
+* Push changes from main to Heroku using `git push heroku main`
+* If you've made changes to the database, run migration using `heroku run rails db:migrate`
 
 ### TODO
 
