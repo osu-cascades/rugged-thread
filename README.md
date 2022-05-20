@@ -56,7 +56,7 @@ See _test/application_system_test_case.rb_.
 
 ## Deployment
 
-* Download Heroku CLI if you haven't already [Heroku](https://devcenter.heroku.com/articles/heroku-cli)
+* [Heroku-CLI](https://devcenter.heroku.com/articles/heroku-cli) - Have the Heroku CLI installed
 * Add a remote in your local repo to the production application
   with `heroku git:remote -a https://git.heroku.com/rugged-thread.git`
 * Push changes from main to Heroku using `git push heroku main`
