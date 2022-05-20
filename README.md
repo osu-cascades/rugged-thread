@@ -62,10 +62,5 @@ See _test/application_system_test_case.rb_.
 * Push changes from main to Heroku using `git push heroku main`
 * If you've made changes to the database, run migration using `heroku run rails db:migrate`
 
-### TODO
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* ...
 
 &copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly and Yong Bakos. All rights reserved.
