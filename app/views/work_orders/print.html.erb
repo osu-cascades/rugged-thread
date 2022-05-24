@@ -13,7 +13,7 @@
 
   <h1 class="marginless"><%= item.work_order.customer %></h1>
   <p class="marginless"><%= item.work_order.customer.customer_type %> <%= "#{item.work_order.customer.phone_number}".phony_formatted(normalize: :US, format: :national) %></p>
-  <h2 class="marginless">W.O. <%= item.work_order.number %></h2>
+  <h2 class="marginless">W.O. <%= item.work_order.number %> <small class="creator">by <%= item.work_order.creator %></small></h2>
 
   <%= render 'items/ticket_item', item: item %>
 
