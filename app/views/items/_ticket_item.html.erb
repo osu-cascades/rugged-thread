@@ -8,6 +8,8 @@
   <p><%= item.notes %></p>
 
   <h4>Estimated Price</h4>
+  <p class="repair_total">Final Total<br> Labor Price ________</h3>
+
   <p>$<%= item.price %> ($<%= item.price_of_labor %> labor)</p>
 
   <h4>Fees</h4>
@@ -25,6 +27,7 @@
   <h2>Repairs</h2>
   <% item.repairs.each do |repair| %>
     <div class="repair">
+      <h3 class="marginless repair_total">Final Labor Price ________</h3>
       <h3 class="marginless"><strong>Repair <%= repair.position %></strong></h3>
       <h3 class="marginless"><%= repair %></h3>
       <h4 class="marginless">$<%= repair.total_price %> total repair price. $<%= repair.price_of_labor %> total repair labor.</h4>
