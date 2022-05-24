@@ -20,9 +20,11 @@
 
   <% if item.work_order.customer.customer_type.name == 'B2C Local' %>
     <div class="claim_ticket">
-      <h1>Rugged Thread Outerwear Repair</h1>
-      <h2>Claim Ticket <%= item.work_order.number %> - <%= item.position %></h2>
-
+      <h2>
+        <%= image_tag 'logo_bw.png', class: 'logo' %>
+        Claim Ticket<br>
+       <%= item.work_order.number %> - <%= item.position %>
+     </h2>
       <h3><%= item.brand %> <%= item.item_type %></h3>
       <p>Estimate: <%= item.price.format %></p>
       <p>Expected Completion Date: <%= item.due_date.to_formatted_s(:long) %></p>
