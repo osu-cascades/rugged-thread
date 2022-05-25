@@ -1,24 +1,28 @@
-<table class="table table-hover" id="discounts_table">
+<table class="table table-hover table-borderless" id="discounts_table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Percentage Amount</th>
-      <th scope="col">Price</th>
-      <th></th>
+      <th scope="col" class="text-end">Percentage Amount</th>
+      <th scope="col" class="text-end">Price</th>
     </tr>
   </thead>
   <tbody>
     <% discounts.each do |discount| %>
-      <tr>
-        <th scope="row"><%= discount.position %></th>
-        <td><%= link_to discount.standard_discount, discount.standard_discount %></td>
-        <td><%= number_to_percentage(discount.percentage_amount, strip_insignificant_zeros: true) %></td>
-        <td><%= discount.price&.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', discount_path(discount), data: { "turbo-frame": :"_top" }, class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
+      <tr class="<%= dom_class(discount) %> clickable-row" id="<%= dom_id(discount) %>" data-href="<%= discount_path(discount) %>">
+        <td scope="row"><%= discount.position %></th>
+        <td><%= discount.standard_discount %></td>
+        <td class="text-end"><%= number_to_percentage(discount.percentage_amount, strip_insignificant_zeros: true) %></td>
+        <td class="text-end"><%= discount.price&.format %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>
