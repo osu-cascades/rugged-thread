@@ -8,11 +8,10 @@ class DiscountsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all discounts, each with a Details link" do
+  test "visiting the index shows a table of all discounts" do
     visit discounts_path
     assert_selector "h1", text: "Discounts"
     assert_selector "#discounts_table"
-    assert_link 'Details'
   end
 
   test "viewing a list of discounts for an item" do

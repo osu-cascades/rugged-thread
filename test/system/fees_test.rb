@@ -9,11 +9,10 @@ class FeesTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all fees, each with a Details link" do
+  test "visiting the index shows a table of all fees" do
     visit fees_path
     assert_selector "h1", text: "Fees"
     assert_selector "#fees_table"
-    assert_link 'Details'
   end
 
   test "viewing a list of fees for an item" do

@@ -9,11 +9,10 @@ class InventoryItemsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all inventory items, each with a Details link" do
+  test "visiting the index shows a table of all inventory items" do
     visit inventory_items_path
     assert_selector "h1", text: "Inventory Items"
     assert_selector "#inventory_items_table"
-    assert_link 'Details'
   end
 
   test "viewing a list of inventory items for a repair" do

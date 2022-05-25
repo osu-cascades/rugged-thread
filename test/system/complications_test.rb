@@ -9,11 +9,10 @@ class ComplicationsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all complications, each with a Details link" do
+  test "visiting the index shows a table of all complications" do
     visit complications_path
     assert_selector "h1", text: "Complications"
     assert_selector "#complications_table"
-    assert_link 'Details'
   end
 
   test "viewing a list of complications for a repair" do

@@ -8,11 +8,10 @@ class SpecialOrderItemsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all special order items, each with a Details link" do
+  test "visiting the index shows a table of all special order items" do
     visit special_order_items_path
     assert_selector "h1", text: "Special Order Items"
     assert_selector "#special_order_items_table"
-    assert_link 'Details'
   end
 
   test "viewing a list of special order items for a repair" do
