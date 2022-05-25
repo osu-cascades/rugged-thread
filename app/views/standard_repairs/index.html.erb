@@ -24,15 +24,6 @@
 </div>
 
 <%= turbo_frame_tag 'standard_repairs' do %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(function($) {
-      $(".clickable-row").click(function() {
-          window.document.location = $(this).data("href");
-      });
-  });
-  </script>
-
   <table class="table table-hover table-borderless" id="standard_repairs_table">
     <thead>
       <tr>
@@ -70,9 +61,19 @@
     </tbody>
   </table>
 
+  <script>
+  var clickable_rows = document.getElementsByClassName('clickable-row')
+  Array.prototype.forEach.call(clickable_rows, (row) => {
+      row.addEventListener('click', () => {
+        window.location = row.dataset.href
+      })
+  })
+  </script>
+
   <% if params[:show_archive] == 'true' %>
     <%= pagination_nav(@pagy, standard_repairs_path(page: @pagy.prev, query: params[:query], show_archive: 'true'), standard_repairs_path(page: @pagy.next, query: params[:query], show_archive: 'true')) %>
   <% else %>
     <%= pagination_nav(@pagy, standard_repairs_path(page: @pagy.prev, query: params[:query]), standard_repairs_path(page: @pagy.next, query: params[:query])) %>
   <% end %>
+
 <% end %>
