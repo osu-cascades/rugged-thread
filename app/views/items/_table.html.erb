@@ -1,4 +1,4 @@
-<table class="table table-hover" id="items_table">
+<table class="table table-hover table-borderless" id="items_table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,27 +11,30 @@
       <th scope="col">Ship?</th>
       <th scope="col" class="text-end">Labor</th>
       <th scope="col" class="text-end">Total</th>
-
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% items.each do |item| %>
-      <tr>
-        <th scope="row"><%= item.position %></th>
-        <td><%= link_to item.brand, item.brand %></td>
-        <td><%= link_to item.item_type, item.item_type %></td>
-        <td><%= link_to item.item_status, item.item_status %></td>
+      <tr class="<%= dom_class(item) %> clickable-row" id="<%= dom_id(item) %>" data-href="<%= item_path(item) %>">
+        <td scope="row"><%= item.position %></th>
+        <td><%= item.brand %></td>
+        <td><%= item.item_type %></td>
+        <td><%= item.item_status %></td>
         <td><%= item.due_date&.to_formatted_s(:long) %></td>
         <td><%= item.level %></td>
         <td><%= item.notes %></td>
         <td><%= item.shipping ? '📦' : '' %></td>
         <td class="text-end"><%= item.price_of_labor.format %></td>
         <td class="text-end"><%= item.price.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', item_path(item), class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>
