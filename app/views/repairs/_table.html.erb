@@ -1,4 +1,4 @@
-<table class="table table-hover" id="repairs_table">
+<table class="table table-hover table-borderless" id="repairs_table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,14 +11,13 @@
       <th scope="col">Level</th>
       <th scope="col" class="text-end">Labor</th>
       <th scope="col" class="text-end">Total Price</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% repairs.each do |repair| %>
-      <tr>
-        <th scope="row"><%= repair.position %></th>
-        <td><%= link_to repair.standard_repair, repair.standard_repair %></td>
+      <tr class="<%= dom_class(repair) %> clickable-row" id="<%= dom_id(repair) %>" data-href="<%= repair_path(repair) %>">
+        <td scope="row"><%= repair.position %></th>
+        <td><%= repair.standard_repair %></td>
         <td><%= repair.notes %></td>
         <td><%= repair.method %></td>
         <% unless controller.controller_name == 'items' %>
@@ -27,22 +26,24 @@
         <td><%= repair.level %></td>
         <td class="text-end"><%= repair.price.format %></td>
         <td class="text-end"><%= repair.total_price.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', repair_path(repair), class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
       <% if render_complications %>
         <% repair.complications.each do |complication| %>
-        <tr>
+        <tr class="<%= dom_class(complication) %> clickable-row" id="<%= dom_id(complication) %>" data-href="<%= complication_path(complication) %>">
           <td></td>
-          <td colspan="4" class="ps-5"><%= link_to complication.standard_complication, complication.standard_complication %></td>
-          <td class="text-end"><%= complication.price.format %></td>
-          <td colspan="2" class="text-end">
-            <%= link_to 'Details', complication_path(complication), class: 'btn btn-outline-secondary btn-sm' %>
-          </td>
+          <td colspan="4" class="ps-5"><%= complication.standard_complication %></td>
+          <td colspan="2" class="text-end"><%= complication.price.format %></td>
         </tr>
         <% end %>
       <% end %>
     <% end %>
   </tbody>
 </table>
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>
