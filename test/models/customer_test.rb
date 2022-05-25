@@ -13,10 +13,12 @@ class CustomerTest < ActiveSupport::TestCase
     assert_respond_to(Customer.new, :shipping_city)
     assert_respond_to(Customer.new, :shipping_state)
     assert_respond_to(Customer.new, :shipping_zip_code)
+    assert_respond_to(Customer.new, :shipping_country)
     assert_respond_to(Customer.new, :billing_street_address)
     assert_respond_to(Customer.new, :billing_city)
     assert_respond_to(Customer.new, :billing_state)
     assert_respond_to(Customer.new, :billing_zip_code)
+    assert_respond_to(Customer.new, :billing_country)
   end
 
   test 'assocations' do

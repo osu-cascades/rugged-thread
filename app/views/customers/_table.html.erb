@@ -30,6 +30,7 @@
         <td class="customer_shipping_address">
           <%= customer.shipping_street_address %><br>
           <%= present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code) %>
+          <%= customer.shipping_country %>
         </td>
         <td><%= customer.customer_type %></td>
       </tr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_080533) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_042813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_080533) do
     t.string "billing_state"
     t.string "billing_zip_code"
     t.datetime "discarded_at"
+    t.string "shipping_country"
+    t.string "billing_country"
     t.index ["customer_type_id"], name: "index_customers_on_customer_type_id"
     t.index ["discarded_at"], name: "index_customers_on_discarded_at"
   end

@@ -103,7 +103,9 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:customer_type_id, :first_name, :last_name,
        :business_name, :phone_number, :alternative_phone_number, :email_address,
        :shipping_street_address, :shipping_city, :shipping_state, :shipping_zip_code,
-       :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :check_address)
+       :shipping_country,
+       :billing_street_address, :billing_city, :billing_state, :billing_zip_code,
+       :billing_country)
     end
 
 end
