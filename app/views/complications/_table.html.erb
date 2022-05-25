@@ -1,24 +1,26 @@
-<table class="table table-hover" id="complications_table">
+<table class="table table-hover table-borderless" id="complications_table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">Name</th>
       <th scope="col">Repair</th>
       <th scope="col" class="text-end">Price</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% complications.each do |complication| %>
-      <tr>
-        <th scope="row"><%= complication.id %></th>
-        <td><%= link_to complication.standard_complication, complication.standard_complication %></td>
-        <td><%= link_to_unless(controller.controller_name == 'repairs', complication.repair, complication.repair) %></td>
+      <tr class="<%= dom_class(complication) %> clickable-row" id="<%= dom_id(complication) %>" data-href="<%= complication_path(complication) %>">
+        <td><%= complication.standard_complication %></td>
+        <td><%= complication.repair %></td>
         <td class="text-end"><%= complication.price.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', complication_path(complication), data: { "turbo-frame": :"_top" }, class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>
