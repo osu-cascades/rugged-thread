@@ -19,10 +19,10 @@ class Item < ApplicationRecord
 
   default_scope { order('position ASC') }
   scope :kept, -> { joins(:work_order).merge(WorkOrder.kept) }
+  scope :discarded, -> { joins(:work_order).merge(WorkOrder.discarded) }
   scope :not_invoiced, -> { joins(:item_status).where("item_statuses.name != 'INVOICED'") }
   scope :invoiced, -> { joins(:item_status).where("item_statuses.name = 'INVOICED'") }
   scope :with_associated_priced_models, -> { includes(:fees, :discounts, repairs: [:complications, :inventory_items, :special_order_items] ) }
-
 
   def price
     price_of_repairs_and_fees - price_total_discount

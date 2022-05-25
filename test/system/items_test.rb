@@ -9,11 +9,25 @@ class ItemsTest < ApplicationSystemTestCase
     sign_in users(:staff)
   end
 
-  test "visiting the index shows a table of all items, each with a Details link" do
+  test "visiting the index shows a table of non-discarded, non-invoiced items" do
     visit items_path
     assert_selector "h1", text: "Items"
     assert_selector "#items_table"
-    assert_link 'Details'
+    assert_text items(:one).notes
+    refute_text items(:for_archived_work_order).notes
+    refute_text items(:invoiced).notes
+  end
+
+  test "viewing the invoiced list only shows invoiced items" do
+    visit items_path(status: 'invoiced')
+    assert_text items(:invoiced).notes
+    refute_text items(:one).notes
+  end
+
+  test "viewing the archived list only shows archived items" do
+    visit items_path(show_archive: 'true')
+    assert_text items(:for_archived_work_order).notes
+    refute_text items(:one).notes
   end
 
   test "viewing an item's total estimate" do

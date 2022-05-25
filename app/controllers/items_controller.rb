@@ -1,7 +1,16 @@
 class ItemsController < ApplicationController
+  include Pagy::Backend
 
   def index
-    @items = Item.all
+    if params[:show_archive] == 'true'
+      @pagy, @items = pagy(Item.discarded.order(due_date: :asc))
+    elsif params[:status] == 'invoiced'
+      @pagy, @items = pagy(Item.kept.invoiced.order(due_date: :asc))
+    else
+      @pagy, @items = pagy(Item.kept.not_invoiced.order(due_date: :asc))
+    end
+  rescue Pagy::OverflowError
+    redirect_to work_orders_url
   end
 
   def show
