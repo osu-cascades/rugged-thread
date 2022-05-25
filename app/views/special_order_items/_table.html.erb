@@ -1,28 +1,30 @@
-<table class="table table-hover" id="special_order_items_table">
+<table class="table table-hover table-borderless" id="special_order_items_table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">Name</th>
       <th scope="col" class="text-end">Price</th>
       <th scope="col" class="text-end">Ordering fee</th>
       <th scope="col" class="text-end">Freight fee</th>
       <th scope="col" class="text-end">Total price</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% special_order_items.each do |special_order_item| %>
-      <tr>
-        <th scope="row"><%= special_order_item.id %></th>
+      <tr class="<%= dom_class(special_order_item) %> clickable-row" id="<%= dom_id(special_order_item) %>" data-href="<%= special_order_item_path(special_order_item) %>">
         <td><%= special_order_item %></td>
         <td class="text-end"><%= special_order_item.price.format %></td>
         <td class="text-end"><%= special_order_item.ordering_fee_price.format %></td>
         <td class="text-end"><%= special_order_item.freight_fee_price.format %></td>
         <td class="text-end"><%= special_order_item.total_price.format %></td>
-        <td class="text-end">
-          <%= link_to 'Details', special_order_item_path(special_order_item), class: 'btn btn-outline-secondary btn-sm' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>
