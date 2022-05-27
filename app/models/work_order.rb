@@ -18,7 +18,7 @@ class WorkOrder < ApplicationRecord
 
   default_scope { order('due_date ASC') }
 
-  scope :open, -> { kept.left_joins(items: :item_status).where("item_statuses.name IS NULL OR item_statuses.name != 'INVOICED'") }
+  scope :open, -> { kept.left_joins(items: :item_status).where("item_statuses.name IS NULL OR item_statuses.name != 'INVOICED'").distinct }
   scope :invoiced, -> { kept.joins(items: :item_status).where("item_statuses.name = 'INVOICED'").distinct }
 
   def to_s
