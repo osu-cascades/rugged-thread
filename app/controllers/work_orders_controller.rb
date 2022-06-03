@@ -4,11 +4,11 @@
 
   def index
     if params[:show_archive] == 'true'
-      @pagy, @work_orders = pagy(WorkOrder.discarded.joins(:customer).where('work_orders.number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
+      @pagy, @work_orders = pagy(WorkOrder.discarded.joins(:customer).where('work_orders.number ILIKE ? OR customers.last_name ILIKE ? OR customers.first_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
     elsif params[:status] == 'invoiced'
-      @pagy, @work_orders = pagy(WorkOrder.kept.invoiced.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
+      @pagy, @work_orders = pagy(WorkOrder.kept.invoiced.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ? OR customers.first_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
     else
-      @pagy, @work_orders = pagy(WorkOrder.kept.open.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
+      @pagy, @work_orders = pagy(WorkOrder.kept.open.joins(:customer).where('number ILIKE ? OR customers.last_name ILIKE ? OR customers.first_name ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(due_date: :asc))
     end
   rescue Pagy::OverflowError
     redirect_to work_orders_url
