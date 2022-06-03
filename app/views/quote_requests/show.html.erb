@@ -47,8 +47,8 @@
 
 <p>
   <strong>Images:</strong>
-  <% @quote_request.images.each do |image| %>
-    <div><%= link_to image.filename, image %></div>
+  <% @quote_request.photos.each do |photo| %>
+    <div><%= link_to photo.filename, photo %></div>
   <% end %>
 </p>
 
