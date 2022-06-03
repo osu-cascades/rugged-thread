@@ -67,9 +67,11 @@ small.creator {
 }
 
 .repair_total {
-  font-size: 12px;
+  font-size: 16px !important;
   float: right;
   font-weight: normal;
+  margin-right: 100px;
+  margin-top: 0px;
 }
 
 .claim_ticket {
