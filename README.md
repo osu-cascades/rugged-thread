@@ -2,6 +2,9 @@
 
 ## Setup
 
+Once you install Ruby and Postgres, clone the repo, `cd` into it, and run
+`bundle install` to install the library dependencies.
+
 ### Version Information
 
 * Ruby version 3.x
