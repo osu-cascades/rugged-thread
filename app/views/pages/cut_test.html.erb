@@ -1,0 +1,24 @@
+<h1>Ticket cutter test 1</h1>
+
+<p>Test 1. There should be a full cut after this line.</p>
+<%= "\ed0" %>
+<p>Test 1. There should be a full cut before this line.</p>
+
+<h1>Ticket cutter test 2</h1>
+
+<p>Test 2. There should be a partial cut after this line.</p>
+<%= "\ed1" %>
+<p>Test 2. There should be a partial cut before this line.</p>
+
+<h1>Ticket cutter test 3</h1>
+
+<p>Test 3. There should be a partial cut after this line.</p>
+<%= "\x1b d1" %>
+<p>Test 3. There should be a partial cut before this line.</p>
+
+<h1>Ticket cutter test 4</h1>
+
+<p>Test 4. There should be a partial cut after this line.</p>
+<%= "\ed1" %>
+<p>Test 4. There should be a partial cut before this line.</p>
+
