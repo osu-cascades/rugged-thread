@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'quickbooks_customers/:id' => 'quickbooks_customers#show'
 
   root 'pages#home'
 
