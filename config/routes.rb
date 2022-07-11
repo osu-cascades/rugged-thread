@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'quickbooks_customers/oauth' => 'quickbooks_customers#oauth'
+  get 'quickbooks_customers/oauth_verify' => 'quickbooks_customers#oauth_verify'
   get 'quickbooks_customers/:id' => 'quickbooks_customers#show'
 
   root 'pages#home'

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  access_token: MyText
+  realm_id: MyText
+  refresh_token: MyText
+  access_token_expires: 2022-07-11 13:03:39
+  refresh_token_expires: 2022-07-11 13:03:39
+
+two:
+  access_token: MyText
+  realm_id: MyText
+  refresh_token: MyText
+  access_token_expires: 2022-07-11 13:03:39
+  refresh_token_expires: 2022-07-11 13:03:39

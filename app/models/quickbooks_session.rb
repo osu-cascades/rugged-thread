@@ -1,0 +1,2 @@
+class QuickbooksSession < ApplicationRecord
+end

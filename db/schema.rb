@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_042813) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_200339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,6 +128,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_042813) do
     t.index ["standard_fee_id"], name: "index_fees_on_standard_fee_id"
   end
 
+  create_table "intuit_accounts", force: :cascade do |t|
+    t.string "access_token"
+    t.datetime "access_token_expires", precision: nil
+    t.string "refresh_token"
+    t.datetime "refresh_token_expires", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inventory_items", force: :cascade do |t|
     t.integer "price_cents", default: 0, null: false
     t.bigint "repair_id", null: false
@@ -171,6 +180,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_042813) do
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
     t.index ["work_order_id"], name: "index_items_on_work_order_id"
+  end
+
+  create_table "quickbooks_sessions", force: :cascade do |t|
+    t.text "access_token"
+    t.text "realm_id"
+    t.text "refresh_token"
+    t.datetime "access_token_expires", precision: nil
+    t.datetime "refresh_token_expires", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quote_requests", force: :cascade do |t|
