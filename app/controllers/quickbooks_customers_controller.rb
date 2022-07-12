@@ -60,6 +60,15 @@ class QuickbooksCustomersController < ApplicationController
   def show
     if !qbo_authenticated
       return redirect_to quickbooks_customers_oauth_path
+    else
+      qbo_data = QuickbooksSession.first
+      qbo_api = QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
+      begin
+        @customer = qbo_api.get(:customer, params["id"])
+        logger.info @customer.to_s
+      rescue
+        return redirect_to quickbooks_customers_oauth_path
+      end
     end
   end
 
