@@ -3,29 +3,21 @@ class QuickbooksCustomersController < ApplicationController
   def qbo_authenticated
     qbo_data = QuickbooksSession.first
     if qbo_data
-      now = Time.now.to_i
-      access_token_expires = qbo_data["access_token_expires"].to_i
-      refresh_token_expires = qbo_data["refresh_token_expires"].to_i
-      if now >= refresh_token_expires
-        return false
-      end
-      # TODO: if possible, refresh access token
-      if now >= access_token_expires
-      end
+      return true
     else
       return false
     end
   end
 
   def oauth
-    client_id = ENV["QB_CLIENT_ID"]
-    client_secret = ENV["QB_CLIENT_SECRET"]
     redirect_url = "#{request.protocol}#{request.host_with_port}/quickbooks_customers/oauth_verify"
-    client = _oauth_client(client_id, client_secret, redirect_url)
+    client = _oauth_client(redirect_url)
     @oauth_authorization_url = _oauth_authorization_url(client)
   end
 
-  def _oauth_client(id, secret, redirect)
+  def _oauth_client(redirect = "#{request.protocol}#{request.host_with_port}/quickbooks_customers/oauth_verify")
+    id = ENV["QB_CLIENT_ID"]
+    secret = ENV["QB_CLIENT_SECRET"]
     Rack::OAuth2::Client.new(
       identifier: id,
       secret: secret,
@@ -46,6 +38,23 @@ class QuickbooksCustomersController < ApplicationController
   def oauth_verify
     code = params["code"]
     realm = params["realmId"]
+    client = _oauth_client
+    client.authorization_code = code
+    if res = client.access_token!
+      refresh_token = res.refresh_token
+      access_token = res.access_token
+      # Update / create database
+      account = QuickbooksSession.first
+      if !account
+        account = QuickbooksSession.new
+      end
+      account.realm_id = realm
+      account.refresh_token = refresh_token
+      account.access_token = access_token
+      account.save
+    else
+      "something went wrong, try again!"
+    end
   end
 
   def show

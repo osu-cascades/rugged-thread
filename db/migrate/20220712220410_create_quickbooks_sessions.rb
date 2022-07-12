@@ -4,8 +4,6 @@ class CreateQuickbooksSessions < ActiveRecord::Migration[7.0]
       t.text :access_token
       t.text :realm_id
       t.text :refresh_token
-      t.timestamp :access_token_expires
-      t.timestamp :refresh_token_expires
 
       t.timestamps
     end
