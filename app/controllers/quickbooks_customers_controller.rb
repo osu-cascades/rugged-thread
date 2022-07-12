@@ -1,8 +1,10 @@
+require "quickbooks_customer"
+
 class QuickbooksCustomersController < ApplicationController
 
   def qbo_authenticated
     qbo_data = QuickbooksSession.first
-    if qbo_data
+    if !qbo_data.nil?
       return true
     else
       return false
@@ -64,8 +66,7 @@ class QuickbooksCustomersController < ApplicationController
       qbo_data = QuickbooksSession.first
       qbo_api = QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
       begin
-        @customer = qbo_api.get(:customer, params["id"])
-        logger.info @customer.to_s
+        @customer = QuickbooksCustomer.new(qbo_api.get(:customer, params["id"]))
       rescue
         return redirect_to quickbooks_customers_oauth_path
       end
