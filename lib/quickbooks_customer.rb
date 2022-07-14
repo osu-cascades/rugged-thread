@@ -7,6 +7,10 @@ class QuickbooksCustomer
     @data = customer
   end
 
+  def id
+    @data["Id"]
+  end
+
   def name
     @data["DisplayName"]
   end

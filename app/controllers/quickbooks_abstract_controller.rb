@@ -1,12 +1,7 @@
 class QuickbooksAbstractController < ApplicationController
 
-  def qbo_authenticated
-    qbo_data = QuickbooksSession.first
-    if !qbo_data.nil?
-      return true
-    else
-      return false
-    end
+  def qbo_authenticated?
+    !QuickbooksSession.first.nil?
   end
 
   def qb_api
@@ -24,17 +19,17 @@ class QuickbooksAbstractController < ApplicationController
   end
 
   def qb_request(func, options = {})
-    if !qbo_authenticated
+    if !qbo_authenticated?
       qb_redirect qb_oauth_path, options
     else
       begin
         func.call
-      rescue
+      rescue QboApi::Unauthorized
         # Refresh token and try again
         refresh_token
         begin
           func.call
-        rescue
+        rescue QboApi::Unauthorized
           qb_redirect qb_oauth_path, options
         end
       end
@@ -65,13 +60,17 @@ class QuickbooksAbstractController < ApplicationController
     account = QuickbooksSession.first
     client = oauth_client
     client.refresh_token = account.refresh_token
-    if res = client.access_token!
-      access_token = res.access_token
-      # Update database
-      account.access_token = access_token
-      account.save
-    else
-      "something went wrong, try again!"
+    begin
+      if res = client.access_token!
+        access_token = res.access_token
+        # Update database
+        account.access_token = access_token
+        account.save
+      else
+        "something went wrong, try again!"
+      end
+    rescue
+      # Invalid refresh token, caller should redirect to oauth page
     end
   end
 

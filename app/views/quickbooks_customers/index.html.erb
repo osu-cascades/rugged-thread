@@ -1,0 +1,21 @@
+<h1>List of Customers</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><%= link_to c.name, quickbooks_customers_path + "/" + c.id %></td>
+        <td><%= c.phone_number %></td>
+        <td><%= c.email_address %></td>
+        <td><%= c.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
