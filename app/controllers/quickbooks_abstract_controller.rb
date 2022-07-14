@@ -9,9 +9,19 @@ class QuickbooksAbstractController < ApplicationController
     end
   end
 
-  def qb_request(func)
+  def qb_redirect(path, options = {})
+    logger.info options.to_s
+    if options[:auth_redirect_path]
+      cookies[:auth_redirect_path] = options[:auth_redirect_path]
+    else
+      cookies.delete :auth_redirect_path
+    end
+    redirect_to path
+  end
+
+  def qb_request(func, options = {})
     if !qbo_authenticated
-      redirect_to qb_oauth_path
+      qb_redirect qb_oauth_path, options
     else
       begin
         func.call
@@ -21,7 +31,7 @@ class QuickbooksAbstractController < ApplicationController
         begin
           func.call
         rescue
-          redirect_to qb_oauth_path
+          qb_redirect qb_oauth_path, options
         end
       end
     end

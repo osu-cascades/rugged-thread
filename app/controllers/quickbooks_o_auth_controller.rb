@@ -23,6 +23,14 @@ class QuickbooksOAuthController < QuickbooksAbstractController
       account.refresh_token = refresh_token
       account.access_token = access_token
       account.save
+
+      # Check if a redirect exists
+      if cookies[:auth_redirect_path]
+        path = cookies[:auth_redirect_path]
+        cookies.delete :auth_redirect_path
+        redirect_to path
+      end
+
     else
       "something went wrong, try again!"
     end
