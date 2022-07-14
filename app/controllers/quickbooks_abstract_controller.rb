@@ -5,14 +5,14 @@ class QuickbooksAbstractController < ApplicationController
   end
 
   def qb_api
-    qbo_data = QuickbooksSession.first
-    if Rails.env.production?
-      QboApi.production = true
-    end
-    QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
+    Quickbooks.qbo_api
   end
 
   def qb_redirect_path
+    "#{request.protocol}#{request.host_with_port}/qb_oauth"
+  end
+
+  def qb_redirect_verify_path
     "#{request.protocol}#{request.host_with_port}/qb_oauth_verify"
   end
 
@@ -26,46 +26,31 @@ class QuickbooksAbstractController < ApplicationController
   end
 
   def qb_request(func, options = {})
-    if !qbo_authenticated?
-      qb_redirect qb_oauth_path, options
-    else
+    begin
+      Quickbooks.request(func, options)
+    rescue Quickbooks::DataUninitializedError
+      qb_redirect qb_redirect_path, options
+    rescue Quickbooks::UnauthorizedError
+      refresh_token!
       begin
-        return func.call
-      rescue QboApi::Unauthorized
-        # Refresh token and try again
-        refresh_token
-        begin
-          return func.call
-        rescue QboApi::Unauthorized
-          qb_redirect qb_oauth_path, options
-        end
+        Quickbooks.request(func, options)
+      rescue Quickbooks::UnauthorizedError
+        qb_redirect qb_redirect_path, options
       end
     end
   end
 
   def oauth_client(redirect = nil)
-    id = ENV["QB_CLIENT_ID"]
-    secret = ENV["QB_CLIENT_SECRET"]
-    Rack::OAuth2::Client.new(
-      identifier: id,
-      secret: secret,
-      redirect_uri: redirect,
-      authorization_endpoint: "https://appcenter.intuit.com/connect/oauth2",
-      token_endpoint: "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
-    )
+    Quickbooks.oauth_client(redirect)
   end
 
   def oauth_authorization_url(client)
-    client.authorization_uri(
-      scope: "com.intuit.quickbooks.accounting",
-      response_type: "code",
-      state: "Stitch"
-    )
+    Quickbooks.oauth_authorization_url(client)
   end
 
-  def refresh_token
+  def refresh_token!
     account = QuickbooksSession.first
-    client = oauth_client("#{request.protocol}#{request.host_with_port}/qb_oauth_verify")
+    client = oauth_client(qb_redirect_verify_path)
     client.refresh_token = account.refresh_token
     begin
       if res = client.access_token!

@@ -1,14 +1,14 @@
 class QuickbooksOAuthController < QuickbooksAbstractController
 
   def index
-    client = oauth_client(qb_redirect_path)
+    client = oauth_client(qb_redirect_verify_path)
     @oauth_authorization_url = oauth_authorization_url(client)
   end
 
   def verify
     code = params["code"]
     realm = params["realmId"]
-    client = oauth_client(qb_redirect_path)
+    client = oauth_client(qb_redirect_verify_path)
     client.authorization_code = code
     if res = client.access_token!
       refresh_token = res.refresh_token

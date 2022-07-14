@@ -4,15 +4,14 @@ module Quickbooks
 
     attr_reader :customer_type
 
-    def initialize(customer, controller = nil)
+    def initialize(customer)
 
       @data = customer
-      @controller = controller
 
       type_ref = @data.dig("CustomerTypeRef", "value") || nil
-      if !type_ref.nil? && !@controller.nil? then
-        @controller.qb_request(lambda {
-          data = @controller.qb_api.get(:customertype, type_ref)
+      if !type_ref.nil? then
+        Quickbooks.request(lambda {
+          data = Quickbooks.qbo_api.get(:customertype, type_ref)
           @customer_type = data.dig("CustomerType", "Name")
         })
       end
@@ -104,6 +103,60 @@ module Quickbooks
       @data.dig("PrimaryEmailAddr", "Address") || default
     end
 
+  end
+
+  class << self
+
+    def qbo_authenticated?
+      !QuickbooksSession.first.nil?
+    end
+
+    def qbo_api
+      qbo_data = QuickbooksSession.first
+      if Rails.env.production?
+        QboApi.production = true
+      end
+      QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
+    end
+
+    def request(func, options = {})
+      if !qbo_authenticated?
+        raise Quickbooks::DataUninitializedError, "QuickBooks session data is missing"
+      else
+        begin
+          return func.call
+        rescue QboApi::Unauthorized
+          raise Quickbooks::UnauthorizedError, "QuickBooks session is outdated or invalid"
+        end
+      end
+    end
+
+    def oauth_client(redirect = nil)
+      id = ENV["QB_CLIENT_ID"]
+      secret = ENV["QB_CLIENT_SECRET"]
+      Rack::OAuth2::Client.new(
+        identifier: id,
+        secret: secret,
+        redirect_uri: redirect,
+        authorization_endpoint: "https://appcenter.intuit.com/connect/oauth2",
+        token_endpoint: "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
+      )
+    end
+
+    def oauth_authorization_url(client)
+      client.authorization_uri(
+        scope: "com.intuit.quickbooks.accounting",
+        response_type: "code",
+        state: "Stitch"
+      )
+    end
+
+  end
+
+  class UnauthorizedError < StandardError
+  end
+
+  class DataUninitializedError < StandardError
   end
 
 end

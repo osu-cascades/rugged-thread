@@ -15,7 +15,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   # Single customer
   def show
     qb_request(lambda {
-      @customer = Quickbooks::Customer.new(qb_api.get(:customer, params["id"]), self)
+      @customer = Quickbooks::Customer.new(qb_api.get(:customer, params["id"]))
     }, auth_redirect_path: request.original_fullpath)
   end
 
