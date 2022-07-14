@@ -1,0 +1,2 @@
+module QuickbooksOAuthHelper
+end
