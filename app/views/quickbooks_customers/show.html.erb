@@ -1,5 +1,42 @@
-<h1>Quickbooks Customer #<%= params["id"] %></h1>
-<h2><%= @customer.name %></h2>
-<p>Phone Number: <%= @customer.phone_number %></p>
-<p>Email Address: <%= @customer.email_address %></p>
-<p>Address: <%= @customer.address %></p>
+<div class="row mb-5">
+  <div class="col">
+    <h1>
+      <%= @customer.first_name %> <%= @customer.last_name %>
+      <span class="fs-6 badge fw-normal align-top">
+        <%= link_to @customer.customer_type, @customer.customer_type, class: 'text-decoration-none' %>
+      </span>
+    </h1>
+    <h3><%= @customer.business_name %></h3>
+  </div>
+  <div class="col-7 text-end">
+    <%= link_to '&laquo Back to List'.html_safe, quickbooks_customers_path, class: 'btn btn-outline-primary me-5' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h3>Email &amp; Phone</h3>
+    <address>
+      <%= mail_to @customer.email_address %><br>
+      <%= link_to @customer.phone_number.phony_formatted(normalize: :US, format: :national), @customer.phone_number.empty? ? "" :  "tel:#{@customer.phone_number}" %><br>
+      <%= link_to @customer.alternative_phone_number.phony_formatted(normalize: :US, format: :national), @customer.alternative_phone_number.empty? ? "" :  "tel:#{@customer.alternative_phone_number}" %>
+    </address>
+  </div>
+  <div class="col">
+    <h3>Shipping Address</h3>
+    <address>
+      <%= @customer.shipping_street_address %><br>
+      <%= present_address_city_state_zip(@customer.shipping_city, @customer.shipping_state, @customer.shipping_zip_code) %>
+      <%= @customer.shipping_country %>
+    </address>
+  </div>
+  <div class="col">
+    <h3>Billing Address</h3>
+    <address>
+      <%= @customer.billing_street_address %><br>
+      <%= present_address_city_state_zip(@customer.billing_city, @customer.billing_state, @customer.billing_zip_code) %>
+      <%= @customer.billing_country %>
+    </address>
+  </div>
+</div>
+

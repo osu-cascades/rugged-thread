@@ -1,4 +1,4 @@
-require "quickbooks_customer"
+require "quickbooks"
 
 class QuickbooksCustomersController < QuickbooksAbstractController
 
@@ -7,7 +7,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
     qb_request(lambda {
       @customers = []
       customers_data = qb_api.all(:customers).each do |customer|
-        @customers.push QuickbooksCustomer.new(customer)
+        @customers.push Quickbooks::Customer.new(customer)
       end
     }, auth_redirect_path: request.original_fullpath)
   end
@@ -15,7 +15,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   # Single customer
   def show
     qb_request(lambda {
-      @customer = QuickbooksCustomer.new(qb_api.get(:customer, params["id"]))
+      @customer = Quickbooks::Customer.new(qb_api.get(:customer, params["id"]), self)
     }, auth_redirect_path: request.original_fullpath)
   end
 

@@ -6,7 +6,14 @@ class QuickbooksAbstractController < ApplicationController
 
   def qb_api
     qbo_data = QuickbooksSession.first
+    if Rails.env.production?
+      QboApi.production = true
+    end
     QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
+  end
+
+  def qb_redirect_path
+    "#{request.protocol}#{request.host_with_port}/qb_oauth_verify"
   end
 
   def qb_redirect(path, options = {})
@@ -23,12 +30,12 @@ class QuickbooksAbstractController < ApplicationController
       qb_redirect qb_oauth_path, options
     else
       begin
-        func.call
+        return func.call
       rescue QboApi::Unauthorized
         # Refresh token and try again
         refresh_token
         begin
-          func.call
+          return func.call
         rescue QboApi::Unauthorized
           qb_redirect qb_oauth_path, options
         end
@@ -36,7 +43,7 @@ class QuickbooksAbstractController < ApplicationController
     end
   end
 
-  def oauth_client(redirect = "#{request.protocol}#{request.host_with_port}/qb_oauth_verify")
+  def oauth_client(redirect = nil)
     id = ENV["QB_CLIENT_ID"]
     secret = ENV["QB_CLIENT_SECRET"]
     Rack::OAuth2::Client.new(
@@ -58,7 +65,7 @@ class QuickbooksAbstractController < ApplicationController
 
   def refresh_token
     account = QuickbooksSession.first
-    client = oauth_client
+    client = oauth_client("#{request.protocol}#{request.host_with_port}/qb_oauth_verify")
     client.refresh_token = account.refresh_token
     begin
       if res = client.access_token!
