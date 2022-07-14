@@ -9,8 +9,12 @@ class QuickbooksAbstractController < ApplicationController
     end
   end
 
+  def qb_api
+    qbo_data = QuickbooksSession.first
+    QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
+  end
+
   def qb_redirect(path, options = {})
-    logger.info options.to_s
     if options[:auth_redirect_path]
       cookies[:auth_redirect_path] = options[:auth_redirect_path]
     else
@@ -58,13 +62,12 @@ class QuickbooksAbstractController < ApplicationController
   end
 
   def refresh_token
+    account = QuickbooksSession.first
     client = oauth_client
+    client.refresh_token = account.refresh_token
     if res = client.access_token!
-      refresh_token = res.refresh_token
       access_token = res.access_token
       # Update database
-      account = QuickbooksSession.first
-      account.refresh_token = refresh_token
       account.access_token = access_token
       account.save
     else
