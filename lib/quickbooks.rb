@@ -2,20 +2,8 @@ module Quickbooks
 
   class Customer
 
-    attr_reader :customer_type
-
     def initialize(customer)
-
       @data = customer
-
-      type_ref = @data.dig("CustomerTypeRef", "value") || nil
-      if !type_ref.nil? then
-        Quickbooks.request(lambda {
-          data = Quickbooks.qbo_api.get(:customertype, type_ref)
-          @customer_type = data.dig("CustomerType", "Name")
-        })
-      end
-
     end
 
     def id
@@ -47,11 +35,11 @@ module Quickbooks
     end
 
     def billing_state(default = "")
-      @data.dig("BillAddr", "City") || default
+      @data.dig("BillAddr", "CountrySubDivisionCode") || default
     end
 
     def billing_country(default = "")
-      @data.dig("BillAddr", "CountrySubDivisionCode") || default
+      @data.dig("BillAddr", "Country") || default
     end
 
     def billing_zip_code(default = "")
@@ -59,7 +47,7 @@ module Quickbooks
     end
 
     def billing_full_address(default = "")
-      "#{billing_street_address}, #{billing_city} #{billing_country} #{billing_zip_code}"
+      "#{billing_street_address}, #{billing_city} #{billing_state} #{billing_zip_code}"
     end
 
     def shipping_street_address(default = "")
@@ -71,11 +59,11 @@ module Quickbooks
     end
 
     def shipping_state(default = "")
-      @data.dig("ShipAddr", "City") || default
+      @data.dig("ShipAddr", "CountrySubDivisionCode") || default
     end
 
     def shipping_country(default = "")
-      @data.dig("ShipAddr", "CountrySubDivisionCode") || default
+      @data.dig("ShipAddr", "Country") || default
     end
 
     def shipping_zip_code(default = "")
@@ -83,7 +71,7 @@ module Quickbooks
     end
 
     def shipping_full_address(default = "")
-      out = "#{shipping_street_address}, #{shipping_city} #{shipping_country} #{shipping_zip_code}"
+      out = "#{shipping_street_address}, #{shipping_city} #{shipping_state} #{shipping_zip_code}"
       if out != ", "
         out
       else
@@ -103,6 +91,22 @@ module Quickbooks
       @data.dig("PrimaryEmailAddr", "Address") || default
     end
 
+    def customer_type(default = "None")
+      if !@customer_type.nil?
+        return @customer_type
+      end
+      type_ref = @data.dig("CustomerTypeRef", "value") || nil
+      if !type_ref.nil? then
+        Quickbooks.request(lambda {
+          data = Quickbooks.qbo_api.get(:customertype, type_ref)
+          @customer_type = data.dig("CustomerType", "Name")
+        })
+        @customer_type
+      else
+        default
+      end
+    end
+
   end
 
   class << self
@@ -113,7 +117,7 @@ module Quickbooks
 
     def qbo_api
       qbo_data = QuickbooksSession.first
-      if Rails.env.production?
+      if !Rails.env.development?
         QboApi.production = true
       end
       QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
