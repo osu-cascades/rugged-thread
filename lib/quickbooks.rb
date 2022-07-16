@@ -135,8 +135,8 @@ module Quickbooks
     #
     def self.from_id(id)
       Quickbooks.request(lambda {
-        data = Quickbooks.qbo_api.get(:customertype, id)
-        CustomerType.new data["CustomerType"]
+        data = Quickbooks.qbo_api.get(:customer_type, id)
+        CustomerType.new data
       })
     end
 
@@ -188,18 +188,6 @@ module Quickbooks
           raise Quickbooks::UnauthorizedError, "QuickBooks session is outdated or invalid"
         end
       end
-    end
-
-    ##
-    # Fixes the response for some qbo_api queries where the result is not the actual list of items.
-    # Instead, the resulting data is the raw JSON result turned into a weird array.
-    #
-    # @param data The raw data returned by the api request
-    # @return [Array<Hash>] The list of objects
-    #
-    def fix_response(data)
-      object = data.first[1]
-      object[object.keys.first]
     end
 
     ##

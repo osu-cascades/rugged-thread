@@ -30,7 +30,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   def new
     @customer = Quickbooks::Customer.new({})
     @customer_types = qb_request(lambda {
-      Quickbooks.fix_response(qb_api.all(:customertype)).map do |type|
+      qb_api.all(:customer_type).map do |type|
         Quickbooks::CustomerType.new(type)
       end
     }, auth_redirect_path: request.original_fullpath)
