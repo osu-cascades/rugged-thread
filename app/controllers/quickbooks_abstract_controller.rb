@@ -1,3 +1,5 @@
+require "quickbooks"
+
 class QuickbooksAbstractController < ApplicationController
 
   def qbo_authenticated?

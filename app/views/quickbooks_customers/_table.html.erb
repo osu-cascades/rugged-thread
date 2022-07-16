@@ -1,0 +1,39 @@
+<table class="table table-hover table-borderless" id="customers_table">
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Business name</th>
+      <th scope="col">Email address</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Shipping Address</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr class="customer clickable-row" id="<%= "customer_#{customer.id}" %>" data-href="<%= quickbooks_customers_path + "/#{customer.id}" %>">
+        <td><%= highlight(customer.first_name, params[:query]&.split(" ")&.first) %></td>
+        <td><%= highlight(customer.last_name, params[:query]&.split(" ")&.last) %></td>
+        <td><%= customer.business_name %></td>
+        <td><%= customer.email_address %></td>
+        <td><%= customer.phone_number.phony_formatted(normalize: :US, format: :national) %></td>
+        <td class="customer_shipping_address">
+          <%= customer.shipping_street_address %><br>
+          <%= present_address_city_state_zip(customer.shipping_city, customer.shipping_state, customer.shipping_zip_code) %>
+          <%= customer.shipping_country %>
+        </td>
+        <td><%= customer.customer_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+var clickable_rows = document.getElementsByClassName('clickable-row')
+Array.prototype.forEach.call(clickable_rows, (row) => {
+    row.addEventListener('click', () => {
+      window.location = row.dataset.href
+    })
+})
+</script>

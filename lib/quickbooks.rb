@@ -10,8 +10,12 @@ module Quickbooks
       @data["Id"]
     end
 
-    def name
+    def display_name
       @data["DisplayName"]
+    end
+
+    def full_name
+      "#{first_name} #{last_name}"
     end
 
     def first_name
