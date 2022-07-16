@@ -1,0 +1,135 @@
+<script type="text/javascript">
+  function updateBilling() {
+    const check_box_checked = document.getElementById("match_shipping_address").checked,
+
+      shipping_address = document.getElementById("quickbooks_customers_shipping_street_address"),
+      shipping_city = document.getElementById("quickbooks_customers_shipping_city"),
+      shipping_state = document.getElementById("quickbooks_customers_shipping_state"),
+      shipping_zip_code = document.getElementById("quickbooks_customers_shipping_zip_code"),
+      shipping_country = document.getElementById("quickbooks_customers_shipping_country"),
+
+      billing_address = document.getElementById("quickbooks_customers_billing_street_address"),
+      billing_city = document.getElementById("quickbooks_customers_billing_city"),
+      billing_state = document.getElementById("quickbooks_customers_billing_state"),
+      billing_zip_code = document.getElementById("quickbooks_customers_billing_zip_code"),
+      billing_country = document.getElementById("quickbooks_customers_billing_country");
+
+    if (check_box_checked) {
+      billing_address.value = shipping_address.value;
+      billing_city.value = shipping_city.value;
+      billing_state.value = shipping_state.value;
+      billing_zip_code.value = shipping_zip_code.value;
+      billing_country.value = shipping_country.value;
+    } else {
+      billing_address.value = "";
+      billing_city.value = "";
+      billing_state.value = "";
+      billing_zip_code.value = "";
+      billing_country.value = "";
+    }
+  }
+</script>
+
+<%= form_with(scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <%= form.label :customer_type_id, class: 'form-label' %>
+      <%= form.collection_select :customer_type_id, @customer_types, :id, :name, {include_blank: ''}, {class: 'form-select'} %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <%= form.label :first_name, class: 'form-label' %>
+      <%= form.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <%= form.label :last_name, class: 'form-label' %>
+      <%= form.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <%= form.label :phone_number, class: 'form-label' %>
+      <%= form.text_field :phone_number, class: 'form-control' %>
+    </div>
+    <div class="col-3">
+      <%= form.label :alternative_phone_number, class: 'form-label' %>
+      <%= form.text_field :alternative_phone_number, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col">
+      <%= form.label :business_name, class: 'form-label' %>
+      <%= form.text_field :business_name, class: 'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.label :email_address, class: 'form-label' %>
+      <%= form.text_field :email_address, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <h2>Shipping Address</h2>
+      <div>
+        <%= form.label :shipping_street_address, class: 'form-label' %>
+        <%= form.text_field :shipping_street_address, class: 'form-control' %>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6">
+          <%= form.label :shipping_city, 'City', class: 'form-label' %>
+          <%= form.text_field :shipping_city, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :shipping_state, 'State', class: 'form-label' %>
+          <%= form.text_field :shipping_state, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :shipping_zip_code, 'Zip code', class: 'form-label' %>
+          <%= form.text_field :shipping_zip_code, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="mt-3">
+        <%= form.label :shipping_country, 'Country', class: 'form-label' %>
+        <%= form.text_field :shipping_country, class: 'form-control', placeholder: 'USA' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col-6">
+          <h2>Billing Address</h2>
+        </div>
+        <div class="col text-end pt-2">
+          <%= check_box_tag :match_shipping_address, 1, false, onclick: 'updateBilling();', class: 'form-check-input' %>
+          <%= label_tag 'match_shipping_address', 'Same as shipping', class: 'form-check-label' %>
+        </div>
+      </div>
+      <div class="mb-3">
+        <%= form.label :billing_street_address, class: 'form-label' %>
+        <%= form.text_field :billing_street_address, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <%= form.label :billing_city, 'City', class: 'form-label' %>
+          <%= form.text_field :billing_city, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :billing_state, 'State', class: 'form-label' %>
+          <%= form.text_field :billing_state, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :billing_zip_code, 'Zip code', class: 'form-label' %>
+          <%= form.text_field :billing_zip_code, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="mt-3">
+        <%= form.label :billing_country, 'Country', class: 'form-label' %>
+        <%= form.text_field :billing_country, class: 'form-control', placeholder: 'USA' %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Save', class: 'form-control btn btn-success' %>
+  </div>
+<% end %>

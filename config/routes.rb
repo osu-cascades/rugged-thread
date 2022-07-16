@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   get '/qb_oauth' => 'quickbooks_o_auth#index'
   get '/qb_oauth_verify' => 'quickbooks_o_auth#verify'
-  get '/quickbooks_customers' => 'quickbooks_customers#index'
-  get '/quickbooks_customers/:id' => 'quickbooks_customers#show'
+
+  resources :quickbooks_customers, only: [:index, :show, :new, :create]
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.

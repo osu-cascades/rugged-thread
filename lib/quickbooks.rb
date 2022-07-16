@@ -101,14 +101,41 @@ module Quickbooks
       end
       type_ref = @data.dig("CustomerTypeRef", "value") || nil
       if !type_ref.nil? then
-        Quickbooks.request(lambda {
-          data = Quickbooks.qbo_api.get(:customertype, type_ref)
-          @customer_type = data.dig("CustomerType", "Name")
-        })
-        @customer_type
+        @customer_type = CustomerType.from_id(type_ref)
       else
         default
       end
+    end
+
+  end
+
+  class CustomerType
+
+    def initialize(data)
+      @data = data
+    end
+
+    def id
+      @data["Id"]
+    end
+
+    def name
+      @data["Name"]
+    end
+
+    def active?
+      @data["Active"]
+    end
+
+    def self.from_id(id)
+      Quickbooks.request(lambda {
+        data = Quickbooks.qbo_api.get(:customertype, id)
+        CustomerType.new data["CustomerType"]
+      })
+    end
+
+    def to_s
+      name
     end
 
   end
@@ -137,6 +164,11 @@ module Quickbooks
           raise Quickbooks::UnauthorizedError, "QuickBooks session is outdated or invalid"
         end
       end
+    end
+
+    def fix_response(data)
+      object = data.first[1]
+      object[object.keys.first]
     end
 
     def oauth_client(redirect = nil)
