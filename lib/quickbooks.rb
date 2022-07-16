@@ -127,6 +127,12 @@ module Quickbooks
       @data["Active"]
     end
 
+    ##
+    # Creates a CustomerType from a customer type id.
+    #
+    # @param [Integer] id The id of the customer type
+    # @return [Quickbooks::CustomerType]
+    #
     def self.from_id(id)
       Quickbooks.request(lambda {
         data = Quickbooks.qbo_api.get(:customertype, id)
@@ -142,10 +148,18 @@ module Quickbooks
 
   class << self
 
+    ##
+    # Checks whether Quickbooks integration has been set up on the server.
+    #
     def qbo_authenticated?
       !QuickbooksSession.first.nil?
     end
 
+    ##
+    # Creates a QboApi instance which can be used to query quickbooks.
+    #
+    # @return [QboApi]
+    #
     def qbo_api
       qbo_data = QuickbooksSession.first
       if !Rails.env.development?
@@ -154,6 +168,16 @@ module Quickbooks
       QboApi.new(access_token: qbo_data["access_token"], realm_id: qbo_data["realm_id"])
     end
 
+    ##
+    # Wrapper used when using the quickbooks api.
+    # Checks for problems with quickbooks authentication and raises errors.
+    #
+    # @param [Method] func
+    # @param [Hash] options unused
+    #
+    # @raise [Quickbooks::DataUnitializedError] if the session data has not been created yet
+    # @raise [Quickbooks::UnauthorizedError] if the session data is invalid or outdated
+    #
     def request(func, options = {})
       if !qbo_authenticated?
         raise Quickbooks::DataUninitializedError, "QuickBooks session data is missing"
@@ -166,11 +190,24 @@ module Quickbooks
       end
     end
 
+    ##
+    # Fixes the response for some qbo_api queries where the result is not the actual list of items.
+    # Instead, the resulting data is the raw JSON result turned into a weird array.
+    #
+    # @param data The raw data returned by the api request
+    # @return [Array<Hash>] The list of objects
+    #
     def fix_response(data)
       object = data.first[1]
       object[object.keys.first]
     end
 
+    ##
+    # Creates an OAuth client for authenticating QuickBooks accounts.
+    #
+    # @param [String] redirect The redirect url to be sent back to after authentication
+    # @return [Rack::OAuth2::Client]
+    #
     def oauth_client(redirect = nil)
       id = ENV["QB_CLIENT_ID"]
       secret = ENV["QB_CLIENT_SECRET"]
