@@ -32,6 +32,15 @@
 
 <%= form_with(scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
 
+  <% unless @error.nil? %>
+    <div id="error_explanation">
+      <h2>An error prohibited this customer from being saved:</h2>
+      <ul>
+        <li><%= @error %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="row mb-3">
     <div class="col-6">
       <%= form.label :customer_type_id, class: 'form-label' %>

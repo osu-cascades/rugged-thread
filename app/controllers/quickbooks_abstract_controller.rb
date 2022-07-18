@@ -27,7 +27,7 @@ class QuickbooksAbstractController < ApplicationController
     redirect_to path
   end
 
-  def qb_request(func, options = {})
+  def qb_request(func, options = {auth_redirect_path: request.original_fullpath})
     begin
       Quickbooks.request(func, options)
     rescue Quickbooks::DataUninitializedError

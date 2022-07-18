@@ -220,6 +220,16 @@ module Quickbooks
       )
     end
 
+    ##
+    # Counts the total number of an item
+    #
+    # @param [String] type The table to query
+    # @return [Integer]
+    #
+    def count_all(type)
+      qbo_api.query("SELECT COUNT(*) FROM #{type}")["QueryResponse"]["totalCount"]
+    end
+
   end
 
   class UnauthorizedError < StandardError
