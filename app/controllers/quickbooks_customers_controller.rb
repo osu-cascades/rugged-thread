@@ -77,10 +77,10 @@ class QuickbooksCustomersController < QuickbooksAbstractController
       if form_data["customer_type_id"].nil? || form_data["customer_type_id"] === ""
         @errors.push "Customer type must exist"
       end
-      if form_data["phone_number"].nil? | !form_data["phone_number"].match?(phone_regex)
+      if @form_data["phone_number"].nil? && !form_data["phone_number"].match?(phone_regex)
         @errors.push "Phone number is an invalid number"
       end
-      if form_data["phone_number"].nil? | !form_data["phone_number"].match?(phone_regex)
+      if @form_data["phone_number"].nil? && !form_data["phone_number"].match?(phone_regex)
         @errors.push "Alternate phone number is an invalid number"
       end
       if @errors.length > 0
