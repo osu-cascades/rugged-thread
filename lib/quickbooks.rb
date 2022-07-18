@@ -100,10 +100,14 @@ module Quickbooks
         return @customer_type
       end
       type_ref = @data.dig("CustomerTypeRef", "value") || nil
-      if !type_ref.nil? then
-        @customer_type = CustomerType.from_id(type_ref)
+      @customer_type = if !type_ref.nil? then
+        CustomerType.from_id(type_ref)
       else
-        default
+        CustomerType.new({
+          "Id" => "",
+          "Name" => default,
+          "Active" => false
+        })
       end
     end
 

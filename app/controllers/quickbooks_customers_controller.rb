@@ -34,7 +34,6 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         Quickbooks::CustomerType.new(type)
       end
     }, auth_redirect_path: request.original_fullpath)
-    puts
   end
 
 end

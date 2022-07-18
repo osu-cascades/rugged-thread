@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% customers.each do |customer| %>
-      <tr class="customer clickable-row" id="<%= "customer_#{customer.id}" %>" data-href="<%= quickbooks_customers_path + "/#{customer.id}" %>">
+      <tr class="customer clickable-row" id="<%= "customer_#{customer.id}" %>" data-href="<%= quickbooks_customer_path(customer.id) %>">
         <td><%= highlight(customer.first_name, params[:query]&.split(" ")&.first) %></td>
         <td><%= highlight(customer.last_name, params[:query]&.split(" ")&.last) %></td>
         <td><%= customer.business_name %></td>
