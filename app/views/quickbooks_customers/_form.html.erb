@@ -32,11 +32,13 @@
 
 <%= form_with(scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
 
-  <% unless @error.nil? %>
+  <% if @errors&.any? %>
     <div id="error_explanation">
-      <h2>An error prohibited this customer from being saved:</h2>
+      <h2><%= pluralize(@errors.length, "error") %> prohibited this customer from being saved:</h2>
       <ul>
-        <li><%= @error %></li>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

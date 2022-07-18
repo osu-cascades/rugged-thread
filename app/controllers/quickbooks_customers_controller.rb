@@ -37,6 +37,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   end
 
   def create
+    @errors = []
     form_data = params["quickbooks_customers"]
     data = {
       "GivenName" => form_data["first_name"],
@@ -55,37 +56,59 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         "City" => form_data["shipping_city"],
         "Line1" => form_data["shipping_street_address"],
         "CountrySubDivisionCode" => form_data["shipping_state"],
-        "Country" => form_data["shipping_country"]
+        "Country" => form_data["shipping_country"] || "USA"
       },
       "BillAddr" => {
         "PostalCode" => form_data["billing_zip_code"],
         "City" => form_data["billing_city"],
         "Line1" => form_data["billing_street_address"],
         "CountrySubDivisionCode" => form_data["billing_state"],
-        "Country" => form_data["billing_country"]
+        "Country" => form_data["billing_country"] || "USA"
       },
       "CompanyName" => form_data["business_name"],
       "CustomerTypeRef" => {
         "value": form_data["customer_type_id"]
       }
     }
+    @customer = Quickbooks::Customer.new(data)
     respond_to do |format|
-      begin
-        qb_request(lambda {
-          response = qb_api.create(:customer, payload: data)
-          format.html { redirect_to quickbooks_customer_path(response["Id"]), notice: "Customer was successfully created." }
-          format.json { render :show, status: :created, location: quickbooks_customer_path(response["Id"]) }
-        })
-      rescue QboApi::BadRequest => e
-        @customer = Quickbooks::Customer.new({})
+      # Manual data validation
+      phone_regex = /^(\+\d+\s?)?\(?\d{3}\)?\s?-?\s?\d{3}\s?-?\s?\d{4}$/
+      if form_data["customer_type_id"].nil? || form_data["customer_type_id"] === ""
+        @errors.push "Customer type must exist"
+      end
+      if form_data["phone_number"].nil? | !form_data["phone_number"].match?(phone_regex)
+        @errors.push "Phone number is an invalid number"
+      end
+      if form_data["phone_number"].nil? | !form_data["phone_number"].match?(phone_regex)
+        @errors.push "Alternate phone number is an invalid number"
+      end
+      if @errors.length > 0
         @customer_types = qb_request(lambda {
           qb_api.all(:customer_type).map do |type|
             Quickbooks::CustomerType.new(type)
           end
         })
-        @error = "Duplicate Name Exists Error: The name supplied already exists."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: e.message, status: :unprocessable_entity }
+      else
+        # Save to quickbooks
+        begin
+          qb_request(lambda {
+            response = qb_api.create(:customer, payload: data)
+            format.html { redirect_to quickbooks_customer_path(response["Id"]), notice: "Customer was successfully created." }
+            format.json { render :show, status: :created, location: quickbooks_customer_path(response["Id"]) }
+          })
+        rescue QboApi::BadRequest => e
+          @customer_types = qb_request(lambda {
+            qb_api.all(:customer_type).map do |type|
+              Quickbooks::CustomerType.new(type)
+            end
+          })
+          @errors.push e.message.match(/:error_detail=>"(.*?)"/)[1]
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: e.message, status: :unprocessable_entity }
+        end
       end
     end
   end
