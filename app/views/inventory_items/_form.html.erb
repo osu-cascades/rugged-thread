@@ -1,14 +1,16 @@
 <script type="text/javascript">
   function updateInventoryItemPrice() {
     // Capture id of selected item
-    var e = document.getElementById("inventory_item_standard_inventory_item_id");
-    var standard_inventory_item_id = e.value;
+    const e = document.getElementById("inventory_item_standard_inventory_item_id"),
+      standard_inventory_item_id = e.value;
 
     // Call to retrive standard inventory_item JSON
     const fetchResponsePromise = fetch(`/standard_inventory_items/${standard_inventory_item_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('inventory_item_price').value = (parseFloat(data.price.cents) / 100.0).toString();
+      document.getElementById("inventory_item_price").value = (parseFloat(data.price.cents) / 100.0).toString();
+    }).catch(() => {
+      document.getElementById("inventory_item_price").value = "0.00";
     });
 
     // Verifying payload recieved

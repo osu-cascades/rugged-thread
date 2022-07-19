@@ -1,14 +1,16 @@
 <script type="text/javascript">
   function updateComplicationPrice() {
     // Capture id of selected item
-    var e = document.getElementById("complication_standard_complication_id");
-    var standard_complication_id = e.value;
+    const e = document.getElementById("complication_standard_complication_id"),
+      standard_complication_id = e.value;
 
     // Call to retrive standard complication JSON
     const fetchResponsePromise = fetch(`/standard_complications/${standard_complication_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('complication_price').value = (parseFloat(data.price.cents) / 100.0).toString();
+      document.getElementById("complication_price").value = (parseFloat(data.price.cents) / 100.0).toString();
+    }).catch(() => {
+      document.getElementById("complication_price").value = "0.00";
     });
 
     // Verifying payload recieved
