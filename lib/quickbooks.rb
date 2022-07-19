@@ -142,10 +142,10 @@ module Quickbooks
     # @return [Quickbooks::CustomerType]
     #
     def self.from_id(id)
-      Quickbooks.request(lambda {
+      Quickbooks.request do
         data = Quickbooks.qbo_api.get(:customer_type, id)
         CustomerType.new data
-      })
+      end
     end
 
     def to_s
@@ -180,18 +180,17 @@ module Quickbooks
     # Wrapper used when using the quickbooks api.
     # Checks for problems with quickbooks authentication and raises errors.
     #
-    # @param [Method] func
     # @param [Hash] options unused
     #
     # @raise [Quickbooks::DataUnitializedError] if the session data has not been created yet
     # @raise [Quickbooks::UnauthorizedError] if the session data is invalid or outdated
     #
-    def request(func, options = {})
+    def request(options = {})
       if !qbo_authenticated?
         raise Quickbooks::DataUninitializedError, "QuickBooks session data is missing"
       else
         begin
-          return func.call
+          yield
         rescue QboApi::Unauthorized
           raise Quickbooks::UnauthorizedError, "QuickBooks session is outdated or invalid"
         end

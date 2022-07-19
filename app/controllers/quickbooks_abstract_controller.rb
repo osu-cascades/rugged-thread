@@ -27,9 +27,11 @@ class QuickbooksAbstractController < ApplicationController
     redirect_to path
   end
 
-  def qb_request(func, options = {auth_redirect_path: request.original_fullpath})
+  def qb_request(options = {auth_redirect_path: request.original_fullpath})
     begin
-      Quickbooks.request(func, options)
+      Quickbooks.request(options) do
+        yield
+      end
     rescue Quickbooks::DataUninitializedError
       qb_redirect qb_redirect_path, options
     rescue Quickbooks::UnauthorizedError
@@ -37,7 +39,9 @@ class QuickbooksAbstractController < ApplicationController
       while tries < 3
         refresh_token!
         begin
-          return Quickbooks.request(func, options)
+          return Quickbooks.request(options) do
+            yield
+          end
         rescue Quickbooks::UnauthorizedError
           tries += 1
         end
