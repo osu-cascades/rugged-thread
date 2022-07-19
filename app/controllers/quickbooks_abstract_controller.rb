@@ -27,7 +27,10 @@ class QuickbooksAbstractController < ApplicationController
     redirect_to path
   end
 
-  def qb_request(options = {auth_redirect_path: request.original_fullpath})
+  def qb_request(options = {
+      auth_redirect_path: request.original_fullpath,
+      clear_cache: true
+    })
     begin
       Quickbooks.request(options) do
         yield

@@ -101,7 +101,11 @@ module Quickbooks
       end
       type_ref = @data.dig("CustomerTypeRef", "value") || ""
       @customer_type = if type_ref != "" then
-        CustomerType.from_id(type_ref)
+        if Quickbooks.cache[["CustomerType", type_ref]]
+          Quickbooks.cache[["CustomerType", type_ref]]
+        else
+          CustomerType.from_id(type_ref)
+        end
       else
         CustomerType.new({
           "Id" => "",
@@ -109,6 +113,8 @@ module Quickbooks
           "Active" => false
         })
       end
+      Quickbooks.cache[["CustomerType", type_ref]] = @customer_type
+      return @customer_type
     end
 
     def customer_type_id
@@ -156,6 +162,8 @@ module Quickbooks
 
   class << self
 
+    @@cache = {}
+
     ##
     # Checks whether Quickbooks integration has been set up on the server.
     #
@@ -186,6 +194,9 @@ module Quickbooks
     # @raise [Quickbooks::UnauthorizedError] if the session data is invalid or outdated
     #
     def request(options = {})
+      if options[:clear_cache]
+        @@cache = {}
+      end
       if !qbo_authenticated?
         raise Quickbooks::DataUninitializedError, "QuickBooks session data is missing"
       else
@@ -231,6 +242,10 @@ module Quickbooks
     #
     def count_all(type)
       qbo_api.query("SELECT COUNT(*) FROM #{type}")["QueryResponse"]["totalCount"]
+    end
+
+    def cache
+      return @@cache
     end
 
   end

@@ -12,7 +12,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         # Because Quickbook's SQL is so limited, we have to filter the results manually
         # See: https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api/data-queries
         customer = Quickbooks::Customer.new(customer)
-        if customer.full_name.downcase.include? params[:query] || "" then
+        if customer.full_name.downcase.include? (params[:query] || "").downcase then
           customer_data.push customer
         end
       end
