@@ -1,14 +1,16 @@
-<script type="text/javascript"> 
+<script type="text/javascript">
   function updateFeePrice() {
     // Capture id of selected item
-    var e = document.getElementById("fee_standard_fee_id");
-    var standard_fee_id = e.value;
+    const e = document.getElementById("fee_standard_fee_id"),
+      standard_fee_id = e.value;
 
     // Call to retrive standard fee JSON
     const fetchResponsePromise = fetch(`/standard_fees/${standard_fee_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('fee_price').value = (parseFloat(data.price.cents) / 100.0).toString();
+      document.getElementById("fee_price").value = (parseFloat(data.price.cents) / 100.0).toString();
+    }).catch(() => {
+      document.getElementById("fee_price").value = "0.00";
     });
 
     // Verifying payload recieved

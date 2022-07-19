@@ -1,13 +1,16 @@
 <script type="text/javascript">
   function updateRepairFields() {
-    const e = document.getElementById("repair_standard_repair_id");
-    const standard_repair_id = e.value;
+    const e = document.getElementById("repair_standard_repair_id"),
+      standard_repair_id = e.value;
 
-    const fetchResponsePromise = fetch(`/standard_repairs/${standard_repair_id}.json`).then((response) => {
+    fetch(`/standard_repairs/${standard_repair_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
-      document.getElementById('repair_price').value = (parseFloat(data.price.cents) / 100.0).toString();
-      document.getElementById('repair_level').value = data.level;
+      document.getElementById("repair_price").value = (parseFloat(data.price.cents) / 100.0).toString();
+      document.getElementById("repair_level").value = data.level;
+    }).catch(() => {
+      document.getElementById("repair_price").value = "0.00";
+      document.getElementById("repair_level").value = "1";
     });
   };
 </script>
@@ -18,7 +21,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('#repair_standard_repair_id').select2({theme: 'bootstrap-5'});
+  $("#repair_standard_repair_id").select2({theme: "bootstrap-5"});
 });
 </script>
 

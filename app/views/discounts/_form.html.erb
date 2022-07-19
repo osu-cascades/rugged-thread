@@ -1,35 +1,42 @@
 <script type="text/javascript">
   function updateDiscountPrice() {
     // Autopopulation
-    var e = document.getElementById("discount_standard_discount_id");
-    var standard_discount_id = e.value;
+    const e = document.getElementById("discount_standard_discount_id"),
+      standard_discount_id = e.value;
 
     // Call to retrive standard discount JSON
-    const fetchResponsePromise = fetch(`/standard_discounts/${standard_discount_id}.json`).then((response) => {
+    fetch(`/standard_discounts/${standard_discount_id}.json`).then((response) => {
       return response.json();
     }).then((data) => {
       if (data.price) {
-        const dollar_field = document.getElementById('discount_price');
+        const dollar_field = document.getElementById("discount_price");
         // Set the value
         dollar_field.value = (parseFloat(data.price.cents) / 100.0).toString();
         // Enable if disabled
         dollar_field.disabled = false;
-        const percent = document.getElementById('discount_percentage_amount');
+        const percent = document.getElementById("discount_percentage_amount");
         // Disable unused field & clear it
         percent.disabled = true;
         percent.value = "";
       }
       else if (data.percentage_amount) {
-        const percent = document.getElementById('discount_percentage_amount');
+        const percent = document.getElementById("discount_percentage_amount");
         // Set the value
-        percent.value = data.percentage_amount; 
+        percent.value = data.percentage_amount;
         // Enable if disabled
         percent.disabled = false;
-        const price = document.getElementById('discount_price');
+        const price = document.getElementById("discount_price");
         // Disable unused field & clear it
         price.disabled = true;
         price.value = "";
       }
+    }).catch(() => {
+        const dollar_field = document.getElementById("discount_price");
+        dollar_field.value = "";
+        dollar_field.disabled = false;
+        const percent = document.getElementById("discount_percentage_amount");
+        percent.disabled = false;
+        percent.value = "";
     });
 
   };
