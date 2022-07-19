@@ -46,7 +46,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         "FreeFormNumber" => form_data["phone_number"]
       },
       "AlternatePhone" => {
-        "FreeFormNumber" => form_data["alternate_phone_number"]
+        "FreeFormNumber" => form_data["alternative_phone_number"]
       },
       "PrimaryEmailAddr" => {
         "Address" => form_data["email_address"]
@@ -67,7 +67,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
       },
       "CompanyName" => form_data["business_name"],
       "CustomerTypeRef" => {
-        "value": form_data["customer_type_id"]
+        "value" => form_data["customer_type_id"]
       }
     }
     @customer = Quickbooks::Customer.new(data)
@@ -77,10 +77,10 @@ class QuickbooksCustomersController < QuickbooksAbstractController
       if form_data["customer_type_id"].nil? || form_data["customer_type_id"] === ""
         @errors.push "Customer type must exist"
       end
-      if @form_data["phone_number"].nil? && !form_data["phone_number"].match?(phone_regex)
+      if !form_data["phone_number"].nil? && !form_data["phone_number"].match?(phone_regex)
         @errors.push "Phone number is an invalid number"
       end
-      if @form_data["phone_number"].nil? && !form_data["phone_number"].match?(phone_regex)
+      if !form_data["alternative_phone_number"].nil? && !form_data["alternative_phone_number"].match?(phone_regex)
         @errors.push "Alternate phone number is an invalid number"
       end
       if @errors.length > 0

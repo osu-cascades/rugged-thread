@@ -30,7 +30,7 @@
   }
 </script>
 
-<%= form_with(scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
+<%= form_with(model: @customer, scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
 
   <% if @errors&.any? %>
     <div id="error_explanation">

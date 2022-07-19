@@ -33,12 +33,16 @@ class QuickbooksAbstractController < ApplicationController
     rescue Quickbooks::DataUninitializedError
       qb_redirect qb_redirect_path, options
     rescue Quickbooks::UnauthorizedError
-      refresh_token!
-      begin
-        Quickbooks.request(func, options)
-      rescue Quickbooks::UnauthorizedError
-        qb_redirect qb_redirect_path, options
+      tries = 0
+      while tries < 3
+        refresh_token!
+        begin
+          return Quickbooks.request(func, options)
+        rescue Quickbooks::UnauthorizedError
+          tries += 1
+        end
       end
+      qb_redirect qb_redirect_path, options
     end
   end
 

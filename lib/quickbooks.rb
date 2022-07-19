@@ -111,6 +111,10 @@ module Quickbooks
       end
     end
 
+    def customer_type_id
+      customer_type.id
+    end
+
   end
 
   class CustomerType
