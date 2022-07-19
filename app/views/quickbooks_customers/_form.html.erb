@@ -30,7 +30,7 @@
   }
 </script>
 
-<%= form_with(model: @customer, scope: :quickbooks_customers, url: quickbooks_customers_path(@customer.id), method: :post) do |form| %>
+<%= form_with(model: customer, scope: :quickbooks_customers, url: url, method: method) do |form| %>
 
   <% if @errors&.any? %>
     <div id="error_explanation">
@@ -46,7 +46,7 @@
   <div class="row mb-3">
     <div class="col-6">
       <%= form.label :customer_type_id, class: 'form-label' %>
-      <%= form.collection_select :customer_type_id, @customer_types, :id, :name, {include_blank: ''}, {class: 'form-select'} %>
+      <%= form.collection_select :customer_type_id, customer_types, :id, :name, {include_blank: ''}, {class: 'form-select'} %>
     </div>
   </div>
 

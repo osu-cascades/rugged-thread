@@ -99,8 +99,8 @@ module Quickbooks
       if !@customer_type.nil?
         return @customer_type
       end
-      type_ref = @data.dig("CustomerTypeRef", "value") || nil
-      @customer_type = if !type_ref.nil? then
+      type_ref = @data.dig("CustomerTypeRef", "value") || ""
+      @customer_type = if type_ref != "" then
         CustomerType.from_id(type_ref)
       else
         CustomerType.new({
@@ -112,7 +112,7 @@ module Quickbooks
     end
 
     def customer_type_id
-      customer_type.id
+      customer_type.id || ""
     end
 
   end

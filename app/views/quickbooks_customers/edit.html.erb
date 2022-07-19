@@ -1,6 +1,6 @@
 <div class="row mb-5">
   <div class="col">
-    <h1>New Customer</h1>
+    <h1>Editing Customer</h1>
   </div>
   <div class="col text-end">
     <%= link_to '&laquo Cancel'.html_safe, :back, class: 'btn btn-outline-primary' %>
@@ -8,5 +8,5 @@
 </div>
 
 <div class="form-container-wide">
-  <%= render 'form', customer: @customer, customer_types: @customer_types, method: :post, url: quickbooks_customers_path %>
+  <%= render 'form', customer: @customer, customer_types: @customer_types, method: :patch, url: quickbooks_customer_path(@customer.id) %>
 </div>

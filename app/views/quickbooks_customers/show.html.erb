@@ -11,6 +11,7 @@
   </div>
   <div class="col-7 text-end">
     <%= link_to '&laquo Back to List'.html_safe, quickbooks_customers_path, class: 'btn btn-outline-primary me-5' %>
+    <%= link_to 'Edit', edit_quickbooks_customer_path(@customer.id), class: 'btn btn-outline-primary me-2' %>
   </div>
 </div>
 
