@@ -139,4 +139,20 @@ class QuickbooksCustomersController < QuickbooksAbstractController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      qb_request do
+        begin
+          qb_api.deactivate(:customer, id: params["id"])
+          format.html { redirect_to quickbooks_customers_path, notice: "Customer was successfully deleted." }
+          format.json { head :no_content }
+        rescue QboApi::BadRequest => e
+          logger.info e
+          format.html { redirect_to quickbooks_customers_path, alert: "This customer could not be deleted due to an error." }
+          format.json { render json: e.message, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
 end
