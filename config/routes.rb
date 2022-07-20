@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get '/qb_oauth' => 'quickbooks_o_auth#index'
   get '/qb_oauth_verify' => 'quickbooks_o_auth#verify'
 
-  resources :quickbooks_customers
+  resources :quickbooks_customers, except: [:destroy] do
+    member do
+      patch :archive
+      patch :recover
+    end
+  end
 
   # Users
   # Using Devise RegistrationsController for public user creation/registration.

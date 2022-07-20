@@ -10,6 +10,10 @@ module Quickbooks
       @data["Id"]
     end
 
+    def active?
+      @data["Active"]
+    end
+
     def display_name
       @data["DisplayName"]
     end

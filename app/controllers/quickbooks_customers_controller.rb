@@ -139,16 +139,35 @@ class QuickbooksCustomersController < QuickbooksAbstractController
     end
   end
 
-  def destroy
+  def archive
     respond_to do |format|
       qb_request do
         begin
           qb_api.deactivate(:customer, id: params["id"])
-          format.html { redirect_to quickbooks_customers_path, notice: "Customer was successfully deleted." }
+          format.html { redirect_to quickbooks_customers_path, notice: "Customer was successfully archived." }
           format.json { head :no_content }
         rescue QboApi::BadRequest => e
           logger.info e
-          format.html { redirect_to quickbooks_customers_path, alert: "This customer could not be deleted due to an error." }
+          format.html { redirect_to quickbooks_customers_path, alert: "This customer could not be archived due to an error. Please try again later." }
+          format.json { render json: e.message, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
+  def recover
+    respond_to do |format|
+      qb_request do
+        data = qb_api.get(:customer, params["id"])
+        data["sparse"] = true
+        data["Active"] = true
+        begin
+          qb_api.update(:customer, id: params["id"], payload: data)
+          format.html { redirect_to quickbooks_customers_path, notice: "Customer was successfully recovered." }
+          format.json { head :no_content }
+        rescue QboApi::BadRequest => e
+          logger.info e
+          format.html { redirect_to quickbooks_customers_path, alert: "This customer could not be recovered due to an error. Please try again later." }
           format.json { render json: e.message, status: :unprocessable_entity }
         end
       end
