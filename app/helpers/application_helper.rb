@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def qb_link_to_archive_or_recover(object)
     action_name = object.active? ? "Archive" : "Recover"
-    button_to action_name, send("#{action_name.downcase}_quickbooks_customer_path", object.id), method: :patch, class: "btn btn-outline-success me-2"
+    button_to action_name, send("#{action_name.downcase}_quickbooks_#{object.class.name.demodulize.underscore}_path", object.id), method: :patch, class: "btn btn-outline-success me-2"
   end
 
   def present_address_city_state_zip(city, state, zip)

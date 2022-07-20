@@ -162,9 +162,11 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   def recover
     respond_to do |format|
       qb_request do
-        data = qb_api.get(:customer, params["id"])
-        data["sparse"] = true
-        data["Active"] = true
+        data = {
+          "Id" => params["id"],
+          "sparse" => true,
+          "Active" => true
+        }
         begin
           qb_api.update(:customer, id: params["id"], payload: data)
           format.html { redirect_to quickbooks_customers_path, notice: "Customer was successfully recovered." }
