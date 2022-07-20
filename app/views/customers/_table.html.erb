@@ -30,10 +30,13 @@
 </table>
 
 <script>
-var clickable_rows = document.getElementsByClassName('clickable-row')
+var clickable_rows = document.getElementsByClassName("clickable-row")
 Array.prototype.forEach.call(clickable_rows, (row) => {
-    row.addEventListener('click', () => {
-      window.location = row.dataset.href
+    row.addEventListener("click", () => {
+      const fakeLink = document.createElement("a");
+      fakeLink.href = row.dataset.href
+      fakeLink.click();
+      // window.location = row.dataset.href
     })
 })
 </script>

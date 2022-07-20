@@ -68,8 +68,10 @@ class QuickbooksAbstractController < ApplicationController
     begin
       if res = client.access_token!
         access_token = res.access_token
+        refresh_token = res.refresh_token
         # Update database
         account.access_token = access_token
+        account.refresh_token = refresh_token
         account.save
       else
         "something went wrong, try again!"
