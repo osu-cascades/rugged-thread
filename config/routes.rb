@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/qb_oauth' => 'quickbooks_o_auth#index'
   get '/qb_oauth_verify' => 'quickbooks_o_auth#verify'
 
+  resources :quickbooks_customer_types
+
   resources :quickbooks_customers, except: [:destroy] do
     member do
       patch :archive

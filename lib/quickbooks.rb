@@ -122,7 +122,7 @@ module Quickbooks
     end
 
     def customer_type_id
-      customer_type.id || ""
+      @data.dig("CustomerTypeRef", "value")
     end
 
   end
@@ -143,6 +143,17 @@ module Quickbooks
 
     def active?
       @data["Active"]
+    end
+
+    def customers_with_type
+      Quickbooks.request do
+        # Quickbooks querying doesn't allow you query the CustomerTypeRef value, so you have to do it manually...
+        Quickbooks.qbo_api.all(:customer).map do |c|
+          Quickbooks::Customer.new(c)
+        end.filter do |customer|
+          customer.customer_type_id === id
+        end
+      end
     end
 
     ##
