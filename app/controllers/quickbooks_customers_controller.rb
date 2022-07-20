@@ -8,7 +8,11 @@ class QuickbooksCustomersController < QuickbooksAbstractController
   def index
     qb_request do
       customer_data = []
-      qb_api.all(:customers).each do |customer|
+      query = "SELECT * FROM Customer"
+      if params["show_archive"]
+        query += " WHERE Active = false"
+      end
+      qb_api.all(:customers, select: query).each do |customer|
         # Because Quickbook's SQL is so limited, we have to filter the results manually
         # See: https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api/data-queries
         customer = Quickbooks::Customer.new(customer)
