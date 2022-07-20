@@ -34,9 +34,10 @@ var clickable_rows = document.getElementsByClassName("clickable-row")
 Array.prototype.forEach.call(clickable_rows, (row) => {
     row.addEventListener("click", () => {
       const fakeLink = document.createElement("a");
+      document.body.append(fakeLink);
       fakeLink.href = row.dataset.href
       fakeLink.click();
-      // window.location = row.dataset.href
+      fakeLink.remove();
     })
 })
 </script>
