@@ -42,3 +42,14 @@
   </div>
 </div>
 
+<div class="row mt-5">
+  <div class="col">
+    <h2>Work Orders</h2>
+  </div>
+  <div class="col text-end">
+    <%= link_to 'New Work Order', new_customer_work_order_path(@customer.id), class: 'btn btn-outline-primary' %>
+  </div>
+</div>
+
+<%= render 'work_orders/table', work_orders: @work_orders %>
+

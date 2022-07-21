@@ -26,6 +26,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
 
   # Single customer
   def show
+    @work_orders = WorkOrder.kept.where(customer: params["id"])
     qb_request do
       @customer = Quickbooks::Customer.new(qb_api.get(:customer, params["id"]))
     end
