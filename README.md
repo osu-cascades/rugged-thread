@@ -26,6 +26,8 @@ Beyond the Rails defaults, the application uses the following gems.
 * [pg](https://rubygems.org/gems/pg) - Postgres database driver
 * [Phony](https://rubygems.org/gems/phony_rails) - Phone number validation and formatting
 * [Pundit](https://rubygems.org/gems/pundit) - Authorization
+* [QboApi](https://rubygems.org/gems/qbo_api) - Interacting with the QuickBooks API
+* [Rack-OAuth2](https://rubygems.org/gems/rack-oauth2) - OAuth to connect QuickBooks with the application
 
 ### Configuration
 
