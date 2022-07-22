@@ -128,15 +128,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_220410) do
     t.index ["standard_fee_id"], name: "index_fees_on_standard_fee_id"
   end
 
-  create_table "intuit_accounts", force: :cascade do |t|
-    t.string "access_token"
-    t.datetime "access_token_expires", precision: nil
-    t.string "refresh_token"
-    t.datetime "refresh_token_expires", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "inventory_items", force: :cascade do |t|
     t.integer "price_cents", default: 0, null: false
     t.bigint "repair_id", null: false
