@@ -230,8 +230,8 @@ module Quickbooks
     # @return [Rack::OAuth2::Client]
     #
     def oauth_client(redirect = nil)
-      id = ENV["QB_CLIENT_ID"]
-      secret = ENV["QB_CLIENT_SECRET"]
+      id = Rails.application.credentials.qbo.client_id!
+      secret = Rails.application.credentials.qbo.client_secret!
       Rack::OAuth2::Client.new(
         identifier: id,
         secret: secret,
