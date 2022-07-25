@@ -1,0 +1,10 @@
+<div class="row mb-5">
+  <div class="col">
+    <h1>Invoice for <%= @work_order %></h1>
+  </div>
+  <div class="col-7 text-end">
+    <%= link_to 'Send to Quickbooks', submit_invoice_path(@work_order), class: 'btn btn-outline-danger me-2' %>
+  </div>
+</div>
+
+<p>Total Price: <%= @work_order.price.format %></p>
