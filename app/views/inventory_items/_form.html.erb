@@ -24,6 +24,10 @@
 <script>
 $(document).ready(function() {
   $('#inventory_item_standard_inventory_item_id').select2({theme: 'bootstrap-5'});
+  // Hacky solution: https://github.com/select2/select2/issues/5993#issuecomment-1115893633
+  $(document).on('select2:open', () => {
+    setTimeout(() => document.querySelector('.select2-container--open .select2-search__field').focus(), 0);
+  });
 });
 </script>
 
