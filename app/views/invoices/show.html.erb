@@ -3,7 +3,7 @@
     <h1>Invoice for <%= @work_order %></h1>
   </div>
   <div class="col-7 text-end">
-    <%= link_to 'Send to Quickbooks', submit_invoice_path(@work_order), class: 'btn btn-outline-danger me-2' %>
+    <%= button_to 'Send to Quickbooks', submit_invoice_path(@work_order), class: 'btn btn-outline-danger me-2', method: :post, form: { target: '_blank', "data-turbo": false } %>
   </div>
 </div>
 
