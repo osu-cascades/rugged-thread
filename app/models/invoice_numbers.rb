@@ -1,0 +1,2 @@
+class InvoiceNumbers < ApplicationRecord
+end
