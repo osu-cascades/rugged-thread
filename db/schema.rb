@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_12_220410) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_25_211026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_220410) do
     t.integer "customers_count", default: 0, null: false
     t.integer "turn_around", null: false
     t.datetime "discarded_at"
+    t.string "q_customer_type_id"
     t.index ["discarded_at"], name: "index_customer_types_on_discarded_at"
   end
 
