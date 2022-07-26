@@ -9,6 +9,25 @@ $(document).ready(function() {
   $(document).on('select2:open', () => {
     setTimeout(() => document.querySelector('.select2-container--open .select2-search__field').focus(), 0);
   });
+
+  // Due date auto update
+  const inDateInput = document.querySelector("#work_order_in_date"),
+    dueDateInput = document.querySelector("#work_order_due_date"),
+    originalDateDifference = new Date(dueDateInput.value) - new Date(inDateInput.value);
+
+  let dueDateModifiedManually = false;
+
+  inDateInput.addEventListener("change", () => {
+    if (!dueDateModifiedManually) {
+      dueDate = new Date(+new Date(inDateInput.value) + originalDateDifference);
+      dueDateInput.value = dueDate.toISOString().substr(0,10);
+    }
+  });
+
+  dueDateInput.addEventListener("change", () => {
+    dueDateModifiedManually = true;
+  });
+
 });
 </script>
 
