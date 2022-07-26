@@ -1,4 +1,4 @@
-class CustomerTypesController < ApplicationController
+class CustomerTypesController < QuickbooksAbstractController
   include Pagy::Backend
 
   before_action :set_customer_type, only: %i[ edit update destroy archive recover]
@@ -21,10 +21,20 @@ class CustomerTypesController < ApplicationController
   # GET /customer_types/new
   def new
     @customer_type = CustomerType.new
+    @qb_customer_types = qb_request do
+      qb_api.all(:customer_type).map do |ct|
+        Quickbooks::QuickbooksCustomerType.new(ct)
+      end
+    end
   end
 
   # GET /customer_types/1/edit
   def edit
+    @qb_customer_types = qb_request do
+      qb_api.all(:customer_type).map do |ct|
+        Quickbooks::QuickbooksCustomerType.new(ct)
+      end
+    end
   end
 
   # POST /customer_types or /customer_types.json
@@ -99,7 +109,7 @@ class CustomerTypesController < ApplicationController
     end
 
     def customer_type_params
-      params.require(:customer_type).permit(:name, :turn_around)
+      params.require(:customer_type).permit(:name, :turn_around, :q_customer_type_id)
     end
 
 end
