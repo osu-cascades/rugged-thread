@@ -12,15 +12,28 @@ class QuickbooksCustomersController < QuickbooksAbstractController
       if params["show_archive"]
         query += " WHERE Active = false"
       end
-      qb_api.all(:customers, select: query).each do |customer|
-        # Because Quickbook's SQL is so limited, we have to filter the results manually
-        # See: https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api/data-queries
-        customer = Quickbooks::Customer.new(customer)
-        if customer.full_name.downcase.include? (params[:query] || "").downcase then
-          customer_data.push customer
+      if params["query"]
+        qb_api.all(:customers, select: query).each do |customer|
+          # Because Quickbook's SQL is so limited, we have to filter the results manually
+          # See: https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api/data-queries
+          customer = Quickbooks::Customer.new(customer)
+          if customer.full_name.downcase.include? params[:query].downcase then
+            customer_data.push customer
+          end
         end
+        @pagy, @customers = pagy_array(customer_data)
+      else
+        @pagy, @customers = pagy(query, count: Quickbooks.count_all("Customer"))
       end
-      @pagy, @customers = pagy_array(customer_data)
+
+    end
+  end
+
+  def pagy_get_items(query, pagy)
+    qb_request do
+      qb_api.query("#{query} STARTPOSITION #{pagy.offset + 1} MAXRESULTS #{pagy.items}").map do |data|
+        Quickbooks::Customer.new(data)
+      end
     end
   end
 
