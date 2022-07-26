@@ -46,7 +46,7 @@
   <div class="row mb-3">
     <div class="col-6">
       <%= form.label :customer_type_id, class: 'form-label' %>
-      <%= form.collection_select :customer_type_id, customer_types, :id, :name, {include_blank: ''}, {class: 'form-select'} %>
+      <%= form.collection_select :customer_type_id, customer_types, :q_customer_type_id, :name, {include_blank: ''}, {class: 'form-select'} %>
     </div>
   </div>
 
