@@ -100,25 +100,12 @@ module Quickbooks
     end
 
     def customer_type(default = "None")
-      if !@customer_type.nil?
-        return @customer_type
-      end
-      type_ref = @data.dig("CustomerTypeRef", "value") || ""
-      @customer_type = if type_ref != "" then
-        if Quickbooks.cache[["CustomerType", type_ref]]
-          Quickbooks.cache[["CustomerType", type_ref]]
-        else
-          CustomerType.from_id(type_ref)
-        end
+      type_ref = @data.dig("CustomerTypeRef", "value")
+      if type_ref.nil?
+        CustomerType.new(name: default)
       else
-        CustomerType.new({
-          "Id" => "",
-          "Name" => default,
-          "Active" => false
-        })
+        CustomerType.find_by(q_customer_type_id: type_ref) || CustomerType.new(name: default)
       end
-      Quickbooks.cache[["CustomerType", type_ref]] = @customer_type
-      return @customer_type
     end
 
     def customer_type_id
@@ -127,7 +114,7 @@ module Quickbooks
 
   end
 
-  class CustomerType
+  class QuickbooksCustomerType
 
     def initialize(data)
       @data = data
@@ -165,7 +152,7 @@ module Quickbooks
     def self.from_id(id)
       Quickbooks.request do
         data = Quickbooks.qbo_api.get(:customer_type, id)
-        CustomerType.new data
+        QuickbooksCustomerType.new data
       end
     end
 

@@ -34,11 +34,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
 
   def new
     @customer = Quickbooks::Customer.new({})
-    @customer_types = qb_request do
-      qb_api.all(:customer_type).map do |type|
-        Quickbooks::CustomerType.new(type)
-      end
-    end
+    @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
   end
 
   def create
@@ -54,9 +50,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
       @customer = Quickbooks::Customer.new(qb_api.get(:customer, params["id"]))
     end
     @customer_types = qb_request do
-      qb_api.all(:customer_type).map do |type|
-        Quickbooks::CustomerType.new(type)
-      end
+      @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
     end
   end
 
@@ -117,11 +111,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         @errors.push "Alternate phone number is an invalid number"
       end
       if @errors.length > 0
-        @customer_types = qb_request do
-          qb_api.all(:customer_type).map do |type|
-            Quickbooks::CustomerType.new(type)
-          end
-        end
+        @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
         format.html { render render_location, status: :unprocessable_entity }
         format.json { render json: e.message, status: :unprocessable_entity }
       else
@@ -131,11 +121,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
             yield format, data
           end
         rescue QboApi::BadRequest => e
-          @customer_types = qb_request do
-            qb_api.all(:customer_type).map do |type|
-              Quickbooks::CustomerType.new(type)
-            end
-          end
+          @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
           @errors.push e.message.match(/:error_detail=>"(.*?)"/)[1]
           format.html { render :edit, status: :unprocessable_entity }
           format.json { render json: e.message, status: :unprocessable_entity }
