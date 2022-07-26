@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :quickbooks_customer_types, only: [:index, :show]
-
   resources :quickbooks_customers, except: [:destroy] do
     member do
       patch :archive
