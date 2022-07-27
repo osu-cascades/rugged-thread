@@ -2,6 +2,7 @@
   <div class="col">
     <h1>Invoice for <%= @work_order %></h1>
   </div>
+  <p>This feature is still in development.</p>
   <div class="col-3 text-end">
     <%= button_to 'Send to Quickbooks', submit_invoice_path(@work_order), class: 'btn btn-outline-primary me-2', method: :post, form: { target: '_blank', "data-turbo": false } %>
   </div>
