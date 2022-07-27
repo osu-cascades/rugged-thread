@@ -15,7 +15,7 @@
 <div class="row">
   <div class="col-6">
     <h2 class="fw-normal">
-      <%= link_to @customer %>
+      <%= link_to @customer.full_name, quickbooks_customer_path(@customer.id) %>
       <span class="fs-6 badge fw-normal align-top">
         <%= link_to @customer.customer_type, @customer.customer_type, class: 'text-decoration-none' %>
       </span>

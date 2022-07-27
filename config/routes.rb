@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # Same as normal work_orders, just uses quickbooks customer ids instead
+  # Temporary until quickbooks version is merged
+  resources :qb_work_orders, only: [:show]
+
   # Users
   # Using Devise RegistrationsController for public user creation/registration.
   devise_for :users, controllers: { registrations: 'registrations' }

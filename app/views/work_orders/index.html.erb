@@ -29,7 +29,7 @@
 </div>
 
 <%= turbo_frame_tag 'work_orders' do %>
-  <%= render 'table', work_orders: @work_orders %>
+  <%= render 'table', work_orders: @work_orders, customer: nil %>
 
   <% if params[:show_archive] == 'true' %>
     <%= pagination_nav(@pagy, work_orders_path(page: @pagy.prev, query: params[:query], show_archive: 'true'), work_orders_path(page: @pagy.next, query: params[:query], show_archive: 'true')) %>

@@ -16,6 +16,7 @@
 
   def show
     @work_order = WorkOrder.find(params[:id])
+    @customer = @work_order.customer
     @item = Item.new(work_order: @work_order)
     @items = @work_order.items
     @brands = Brand.kept
