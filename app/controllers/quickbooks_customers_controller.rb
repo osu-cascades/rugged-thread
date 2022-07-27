@@ -113,15 +113,23 @@ class QuickbooksCustomersController < QuickbooksAbstractController
     @customer = Quickbooks::Customer.new(data)
     respond_to do |format|
       # Manual data validation
-      phone_regex = /^(\+\d+\s?)?\(?\d{3}\)?\s?-?\s?\d{3}\s?-?\s?\d{4}$/
-      if @customer.customer_type_id === ""
+      if @customer.customer_type_id.blank?
+        @customer.errors.add(:customer_type_id, :blank, message: "Customer type must exist")
         @errors.push "Customer type must exist"
       end
-      if @customer.phone_number != "" && !@customer.phone_number.match?(phone_regex)
+      normalized_phone_number = PhonyRails.normalize_number(@customer.phone_number, default_country_code: "US")
+      if !@customer.phone_number.blank? && !PhonyRails.plausible_number?(normalized_phone_number)
+        @customer.errors.add(:phone_number, :invalid, message: "Phone number is an invalid number")
         @errors.push "Phone number is an invalid number"
+      else
+        @customer.phone_number = normalized_phone_number
       end
-      if @customer.alternative_phone_number != "" && !@customer.alternative_phone_number.match?(phone_regex)
+      normalized_alternate_phone_number = PhonyRails.normalize_number(@customer.alternative_phone_number, default_country_code: "US")
+      if !@customer.alternative_phone_number.blank? && !PhonyRails.plausible_number?(normalized_alternate_phone_number)
+        @customer.errors.add(:alternative_phone_number, :invalid, message: "Alternate phone number is an invalid number")
         @errors.push "Alternate phone number is an invalid number"
+      else
+        @customer.alternative_phone_number = normalized_alternate_phone_number
       end
       if @errors.length > 0
         @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
@@ -135,8 +143,17 @@ class QuickbooksCustomersController < QuickbooksAbstractController
           end
         rescue QboApi::BadRequest => e
           @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
-          @errors.push e.message.match(/:error_detail=>"(.*?)"/)[1]
-          format.html { render :edit, status: :unprocessable_entity }
+          e.message.scan(/:error_detail=>"(.*?)"/).each do |message|
+            @errors.push message[0]
+            if message[0].match(/Title, GivenName/)
+              @customer.errors.add(:first_name, :blank)
+              @customer.errors.add(:last_name, :blank)
+            end
+            if message[0].match(/Email Address/)
+              @customer.errors.add(:email_address, :invalid)
+            end
+          end
+          format.html { render render_location, status: :unprocessable_entity }
           format.json { render json: e.message, status: :unprocessable_entity }
         end
       end

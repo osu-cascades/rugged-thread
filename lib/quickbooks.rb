@@ -1,9 +1,25 @@
 module Quickbooks
 
   class Customer
+    extend ActiveModel::Naming
+
+    attr_reader :errors
 
     def initialize(customer)
       @data = customer
+      @errors = ActiveModel::Errors.new(self)
+    end
+
+    def read_attribute_for_validation(attr)
+      send(attr)
+    end
+
+    def self.human_attribute_name(attr, options = {})
+      attr
+    end
+
+    def self.lookup_ancestors
+      [self]
     end
 
     def id
@@ -91,8 +107,24 @@ module Quickbooks
       @data.dig("PrimaryPhone", "FreeFormNumber") || default
     end
 
+    def phone_number=(value)
+      @data.merge!({
+        "PrimaryPhone" => {
+          "FreeFormNumber" => value
+        }
+      })
+    end
+
     def alternative_phone_number(default = "")
       @data.dig("AlternatePhone", "FreeFormNumber") || default
+    end
+
+    def alternative_phone_number=(value)
+      @data.merge!({
+        "AlternatePhone" => {
+          "FreeFormNumber" => value
+        }
+      })
     end
 
     def email_address(default = "")
