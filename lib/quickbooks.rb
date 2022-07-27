@@ -194,6 +194,57 @@ module Quickbooks
 
   end
 
+  class Invoice
+
+    def initialize
+      @now = DateTime.now
+      @data = {
+        "Line" => []
+      }
+    end
+
+    def set_customer(customer_id)
+      @data["CustomerRef"] = {
+        "value" => customer_id
+      }
+    end
+
+    def assign_doc_number
+      invoice_number = InvoiceNumbers.first || InvoiceNumbers.create(year: @now.year, month: @now.month, number: 0)
+      invoice_number.number += 1
+      # Reset number to 1 on a new month
+      if invoice_number.year != @now.year || invoice_number.month != @now.month
+        invoice_number.number = 1
+        invoice_number.year = @now.year
+        invoice_number.month = @now.month
+      end
+      invoice_number.save
+
+      @data["DocNumber"] = "#{@now.year % 100}#{@now.month.to_s.rjust(2, "0")}#{invoice_number.number.to_s.rjust(4, "0")}"
+    end
+
+    def add_line(item: nil, item_name: nil, amount: 0, description: nil, service_date: nil)
+      line = {
+        "DetailType" => "SalesItemLineDetail",
+        "Description" => description,
+        "Amount" => amount,
+        "SalesItemLineDetail" => {
+          "ServiceDate" => service_date || "#{@now.year}-#{@now.month.to_s.rjust(2, "0")}-#{@now.day.to_s.rjust(2, "0")}",
+          "ItemRef" => {
+            "value" => item,
+            "name" => item_name
+          }
+        }
+      }
+      @data["Line"].push line
+    end
+
+    def payload
+      @data
+    end
+
+  end
+
   class << self
 
     @@cache = {}
