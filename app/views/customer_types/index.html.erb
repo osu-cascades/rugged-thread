@@ -31,7 +31,7 @@
   </thead>
   <tbody>
     <% @customer_types.each do |customer_type| %>
-      <tr class="<%= dom_class(customer_type) %> clickable-row" id="<%= dom_id(customer_type) %>" data-href="<%= customer_type_path(customer_type) %>">
+      <tr class="<%= dom_class(customer_type) %> clickable-row" id="<%= dom_id(customer_type) %>" data-href="<%= customer_type_path(customer_type) %>" tabindex="0">
         <td><%= customer_type %></td>
         <td><%= customer_type.turn_around %></td>
         <td><%= customer_type.customers_count %></td>
@@ -42,14 +42,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

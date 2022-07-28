@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <% work_orders.each do |work_order| %>
-      <tr class="<%= dom_class(work_order) %> clickable-row" id="<%= dom_id(work_order) %>" data-href="<%= work_order_path(work_order) %>">
+      <tr class="<%= dom_class(work_order) %> clickable-row" id="<%= dom_id(work_order) %>" data-href="<%= work_order_path(work_order) %>" tabindex="0">
         <td scope="row"><%= highlight(work_order.number, params[:query]) %></td>
         <td><%= highlight((customer || work_order.customer).full_name, params[:query]) %></td>
         <td><%= (customer || work_order.customer).customer_type %></td>
@@ -39,14 +39,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

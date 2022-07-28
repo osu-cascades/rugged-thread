@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% repairs.each do |repair| %>
-      <tr class="<%= dom_class(repair) %> clickable-row" id="<%= dom_id(repair) %>" data-href="<%= repair_path(repair) %>">
+      <tr class="<%= dom_class(repair) %> clickable-row" id="<%= dom_id(repair) %>" data-href="<%= repair_path(repair) %>" tabindex="0">
         <td scope="row"><%= repair.position %></th>
         <td><%= repair.standard_repair %></td>
         <td><%= repair.notes %></td>
@@ -29,7 +29,7 @@
       </tr>
       <% if render_complications %>
         <% repair.complications.each do |complication| %>
-        <tr class="<%= dom_class(complication) %> clickable-row" id="<%= dom_id(complication) %>" data-href="<%= complication_path(complication) %>">
+        <tr class="<%= dom_class(complication) %> clickable-row" id="<%= dom_id(complication) %>" data-href="<%= complication_path(complication) %>" tabindex="0">
           <td></td>
           <td colspan="4" class="ps-5"><%= complication.standard_complication %></td>
           <td colspan="2" class="text-end"><%= complication.price.format %></td>
@@ -42,14 +42,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

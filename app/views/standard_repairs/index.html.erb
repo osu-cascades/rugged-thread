@@ -37,7 +37,7 @@
     </thead>
     <tbody>
       <% @standard_repairs.each do |standard_repair| %>
-        <tr class="<%= dom_class(standard_repair) %> clickable-row" id="<%= dom_id(standard_repair) %>" data-href="<%= standard_repair_path(standard_repair) %>">
+        <tr class="<%= dom_class(standard_repair) %> clickable-row" id="<%= dom_id(standard_repair) %>" data-href="<%= standard_repair_path(standard_repair) %>" tabindex="0">
           <td>
             <%= highlight(standard_repair.name, params[:query]) %>
           </td>
@@ -63,14 +63,18 @@
 
   <script>
   {
+    function navigate(row) {
+      const fakeLink = document.createElement("a");
+      document.body.append(fakeLink);
+      fakeLink.href = row.dataset.href
+      fakeLink.click();
+      fakeLink.remove();
+    }
     const clickable_rows = document.getElementsByClassName("clickable-row");
     Array.prototype.forEach.call(clickable_rows, (row) => {
-        row.addEventListener("click", () => {
-          const fakeLink = document.createElement("a");
-          document.body.append(fakeLink);
-          fakeLink.href = row.dataset.href
-          fakeLink.click();
-          fakeLink.remove();
+        row.addEventListener("click", () => {navigate(row);});
+        row.addEventListener("keydown", (e) => {
+          if (e.code === "Enter") {navigate(row);}
         });
     });
   }

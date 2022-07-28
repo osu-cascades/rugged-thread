@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% special_order_items.each do |special_order_item| %>
-      <tr class="<%= dom_class(special_order_item) %> clickable-row" id="<%= dom_id(special_order_item) %>" data-href="<%= special_order_item_path(special_order_item) %>">
+      <tr class="<%= dom_class(special_order_item) %> clickable-row" id="<%= dom_id(special_order_item) %>" data-href="<%= special_order_item_path(special_order_item) %>" tabindex="0">
         <td><%= special_order_item %></td>
         <td class="text-end"><%= special_order_item.price.format %></td>
         <td class="text-end"><%= special_order_item.ordering_fee_price.format %></td>
@@ -23,14 +23,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

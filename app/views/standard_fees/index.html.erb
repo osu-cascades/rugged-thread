@@ -29,7 +29,7 @@
   </thead>
   <tbody>
     <% @standard_fees.each do |standard_fee| %>
-      <tr class="<%= dom_class(standard_fee) %> clickable-row" id="<%= dom_id(standard_fee) %>" data-href="<%= standard_fee_path(standard_fee) %>">
+      <tr class="<%= dom_class(standard_fee) %> clickable-row" id="<%= dom_id(standard_fee) %>" data-href="<%= standard_fee_path(standard_fee) %>" tabindex="0">
         <td>
           <%= standard_fee %>
         </td>
@@ -43,14 +43,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

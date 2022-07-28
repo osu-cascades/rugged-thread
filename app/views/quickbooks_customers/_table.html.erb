@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% customers.each do |customer| %>
-      <tr class="customer clickable-row" id="<%= "customer_#{customer.id}" %>" data-href="<%= quickbooks_customer_path(customer.id) %>">
+      <tr class="customer clickable-row" id="<%= "customer_#{customer.id}" %>" data-href="<%= quickbooks_customer_path(customer.id) %>" tabindex="0">
         <td><%= highlight(customer.first_name, params[:query]&.split(" ")&.first) %></td>
         <td><%= highlight(customer.last_name, params[:query]&.split(" ")&.last) %></td>
         <td><%= customer.business_name %></td>
@@ -31,14 +31,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

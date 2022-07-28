@@ -68,4 +68,4 @@ See _test/application_system_test_case.rb_.
 * If you've made changes to the database, run migration using `heroku run rails db:migrate`
 
 
-&copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly and Yong Bakos. All rights reserved.
+&copy; 2022 Rugged Thread, Brayden Brown, Andras Mihaly, Daniel Lau and Yong Bakos. All rights reserved.

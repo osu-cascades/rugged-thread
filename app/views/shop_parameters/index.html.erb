@@ -29,7 +29,7 @@
   </thead>
   <tbody>
     <% @shop_parameters.each do |shop_parameter| %>
-      <tr class="<%= dom_class(shop_parameter) %> clickable-row" id="<%= dom_id(shop_parameter) %>" data-href="<%= shop_parameter_path(shop_parameter) %>">
+      <tr class="<%= dom_class(shop_parameter) %> clickable-row" id="<%= dom_id(shop_parameter) %>" data-href="<%= shop_parameter_path(shop_parameter) %>" tabindex="0">
         <td>
           <%= shop_parameter %>
         </td>
@@ -43,14 +43,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <% discounts.each do |discount| %>
-      <tr class="<%= dom_class(discount) %> clickable-row" id="<%= dom_id(discount) %>" data-href="<%= discount_path(discount) %>">
+      <tr class="<%= dom_class(discount) %> clickable-row" id="<%= dom_id(discount) %>" data-href="<%= discount_path(discount) %>" tabindex="0">
         <td scope="row"><%= discount.position %></th>
         <td><%= discount.standard_discount %></td>
         <td class="text-end"><%= number_to_percentage(discount.percentage_amount, strip_insignificant_zeros: true) %></td>
@@ -21,14 +21,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }

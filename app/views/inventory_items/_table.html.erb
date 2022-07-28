@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <% inventory_items.each do |inventory_item| %>
-      <tr class="<%= dom_class(inventory_item) %> clickable-row" id="<%= dom_id(inventory_item) %>" data-href="<%= inventory_item_path(inventory_item) %>">
+      <tr class="<%= dom_class(inventory_item) %> clickable-row" id="<%= dom_id(inventory_item) %>" data-href="<%= inventory_item_path(inventory_item) %>" tabindex="0">
         <td><%= inventory_item.standard_inventory_item %></td>
         <td class="text-end"><%= inventory_item.price.format %></td>
       </tr>
@@ -17,14 +17,18 @@
 
 <script>
 {
+  function navigate(row) {
+    const fakeLink = document.createElement("a");
+    document.body.append(fakeLink);
+    fakeLink.href = row.dataset.href
+    fakeLink.click();
+    fakeLink.remove();
+  }
   const clickable_rows = document.getElementsByClassName("clickable-row");
   Array.prototype.forEach.call(clickable_rows, (row) => {
-      row.addEventListener("click", () => {
-        const fakeLink = document.createElement("a");
-        document.body.append(fakeLink);
-        fakeLink.href = row.dataset.href
-        fakeLink.click();
-        fakeLink.remove();
+      row.addEventListener("click", () => {navigate(row);});
+      row.addEventListener("keydown", (e) => {
+        if (e.code === "Enter") {navigate(row);}
       });
   });
 }
