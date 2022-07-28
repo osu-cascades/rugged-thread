@@ -3,13 +3,13 @@ class QuickbooksOAuthController < QuickbooksAbstractController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    authorize QuickbooksSession.new
+    # authorize QuickbooksSession.new
     client = oauth_client(qb_redirect_verify_path)
     @oauth_authorization_url = oauth_authorization_url(client)
   end
 
   def verify
-    authorize QuickbooksSession.new
+    # authorize QuickbooksSession.new
     code = params["code"]
     realm = params["realmId"]
     client = oauth_client(qb_redirect_verify_path)

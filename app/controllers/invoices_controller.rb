@@ -1,18 +1,19 @@
 class InvoicesController < QuickbooksAbstractController
 
+  # An invoice created from a single work order
   def show
     @work_order = WorkOrder.find(params[:id])
   end
 
   def submit
     work_order = WorkOrder.find(params[:id])
-    item = work_order.items.first
 
     invoice = Quickbooks::Invoice.new
     invoice.set_customer(work_order.customer_id)
 
     work_order.items.each do |item|
-      invoice.add_line(item: item.id, amount: item.price.to_i, description: item.item_type.name)
+      # TODO: Figure out how the invoice should be formatted
+      invoice.add_line(item: 1, amount: item.price.to_i, description: "#{item.brand.name} #{item.item_type.name}")
     end
 
     invoice.assign_doc_number
