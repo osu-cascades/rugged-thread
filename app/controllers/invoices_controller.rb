@@ -1,5 +1,14 @@
 class InvoicesController < QuickbooksAbstractController
 
+  # Create invoices from multiple items
+  def index
+    @customers = qb_request do
+      qb_api.all(:customer).map do |c|
+        Quickbooks::Customer.new(c)
+      end
+    end
+  end
+
   # An invoice created from a single work order
   def show
     @work_order = WorkOrder.find(params[:id])

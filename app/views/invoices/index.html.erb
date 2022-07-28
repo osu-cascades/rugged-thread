@@ -1,0 +1,24 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function() {
+  $("#customer_id").select2({theme: "bootstrap-5"});
+  // Hacky solution: https://github.com/select2/select2/issues/5993#issuecomment-1115893633
+  $(document).on("select2:open", () => {
+    setTimeout(() => document.querySelector(".select2-container--open .select2-search__field").focus(), 0);
+  });
+});
+</script>
+
+<h1>Create Custom Invoice</h1>
+<div class="form-container">
+  <%= form_with do |form| %>
+    <div class="mb-3">
+      <%= form.label :customer_id, class: 'form-label' %>
+      <%= form.collection_select :customer_id, @customers, :id, :full_name, {include_blank: ''}, class: 'form-select' %>
+    </div>
+    <p>Select items or work orders to add below:</p>
+  <% end %>
+</div>
