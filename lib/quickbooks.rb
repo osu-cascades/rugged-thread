@@ -144,6 +144,14 @@ module Quickbooks
       @data.dig("CustomerTypeRef", "value")
     end
 
+    def created_at
+      @data.dig("MetaData", "CreateTime")
+    end
+
+    def updated_at
+      @data.dig("MetaData", "LastUpdatedTime")
+    end
+
   end
 
   class QuickbooksCustomerType
