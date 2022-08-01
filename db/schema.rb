@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_25_224027) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_211250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -176,6 +176,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_224027) do
     t.bigint "item_status_id", null: false
     t.boolean "shipping"
     t.integer "position"
+    t.string "qb_invoice_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["item_status_id"], name: "index_items_on_item_status_id"
     t.index ["item_type_id"], name: "index_items_on_item_type_id"

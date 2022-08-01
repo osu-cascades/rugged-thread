@@ -28,8 +28,11 @@ class InvoicesController < QuickbooksAbstractController
     invoice.assign_doc_number
 
     qb_request do
-      logger.info "\n\n\n#{invoice.payload.to_s}\n\n\n"
       response = qb_api.create(:invoice, payload: invoice.payload)
+      work_order.items.each do |item|
+        item.qb_invoice_id = response["Id"]
+        item.save
+      end
       redirect_to "https://app.qbo.intuit.com/app/invoice?txnId=#{response["Id"]}", allow_other_host: true
     end
   end
