@@ -1,7 +1,7 @@
-class CustomerTypesController < QuickbooksAbstractController
+class CustomerTypesController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_customer_type, only: %i[ edit update destroy archive recover]
+  before_action :set_customer_type, only: %i[update destroy archive recover]
 
   def index
     if params[:show_archive] == 'true'
@@ -18,23 +18,12 @@ class CustomerTypesController < QuickbooksAbstractController
     @customers = @customer_type.customers.kept
   end
 
-  # GET /customer_types/new
   def new
     @customer_type = CustomerType.new
-    @qb_customer_types = qb_request do
-      qb_api.all(:customer_type).map do |ct|
-        Quickbooks::QuickbooksCustomerType.new(ct)
-      end
-    end
   end
 
-  # GET /customer_types/1/edit
   def edit
-    @qb_customer_types = qb_request do
-      qb_api.all(:customer_type).map do |ct|
-        Quickbooks::QuickbooksCustomerType.new(ct)
-      end
-    end
+    @customer_type = CustomerType.find(params[:id])
   end
 
   # POST /customer_types or /customer_types.json
