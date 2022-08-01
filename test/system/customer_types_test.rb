@@ -17,6 +17,7 @@ class CustomerTypesTest < ApplicationSystemTestCase
     visit new_customer_type_path
     fill_in "Name", with: "Fake Customer"
     fill_in "Turn around", with: "21"
+    fill_in "QuickBooks Customer Type Id", with: "Fake QBO Id"
     click_on "Save"
     assert_text "Customer type was successfully created"
   end
