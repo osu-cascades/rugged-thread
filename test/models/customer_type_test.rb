@@ -6,6 +6,7 @@ class CustomerTypeTest < ActiveSupport::TestCase
     assert_respond_to(CustomerType.new, :name)
     assert_respond_to(CustomerType.new, :customers_count)
     assert_respond_to(CustomerType.new, :turn_around)
+    assert_respond_to(CustomerType.new, :q_customer_type_id)
   end
 
   test 'associations' do
@@ -34,7 +35,7 @@ class CustomerTypeTest < ActiveSupport::TestCase
     refute customer_type.valid?
   end
 
-  test 'must have a numeric price greater than 0' do
+  test 'must have a numeric turn_around greater than 0' do
     customer_type = customer_types(:one)
     assert customer_type.valid?
     customer_type.turn_around = -1

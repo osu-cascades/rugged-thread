@@ -2,6 +2,7 @@ one:
   name: Fake Customer Type 1
   turn_around: 14
   customers_count: 3
+  q_customer_type_id: Fake QBO Id 1
 
 two:
   name: Fake Customer Type 2

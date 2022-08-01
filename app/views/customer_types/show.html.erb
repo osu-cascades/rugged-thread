@@ -12,6 +12,8 @@
 
 <p>Turn around (days): <%= @customer_type.turn_around %></p>
 
+<p>Quickbooks Online Customer Type Id: <%= @customer_type.q_customer_type_id %></p>
+
 <h2 class="mt-5"><%= pluralize(@customer_type.customers_count, 'Customer') %></h2>
 
 <%= render 'customers/table', customers: @customers %>
