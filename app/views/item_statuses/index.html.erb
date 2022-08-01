@@ -68,6 +68,17 @@
         if (e.code === "Enter") {navigate(row);}
       });
   });
+  const itemStatusDefaultButtons = document.querySelectorAll('.item_status form input[type="submit"]');
+  Array.prototype.forEach.call(itemStatusDefaultButtons, (button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+    button.addEventListener("keydown", (e) => {
+      if (e.code === "Enter") {
+        e.stopPropagation();
+      }
+    })
+  });
 }
 </script>
 
