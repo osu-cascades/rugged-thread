@@ -19,15 +19,11 @@ class InvoicesController < QuickbooksAbstractController
 
     invoice = Quickbooks::Invoice.new
     invoice.set_customer(work_order.customer_id)
-
-    work_order.items.each do |item|
-      # TODO: Figure out how the invoice should be formatted
-      invoice.add_line(item: 1, amount: item.price.to_i, description: "#{item.brand.name} #{item.item_type.name}")
-    end
-
+    invoice.add_work_order(work_order)
     invoice.assign_doc_number
 
     qb_request do
+      logger.info invoice.payload.to_s
       response = qb_api.create(:invoice, payload: invoice.payload)
       work_order.items.each do |item|
         item.qb_invoice_id = response["Id"]

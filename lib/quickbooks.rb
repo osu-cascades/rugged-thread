@@ -204,11 +204,15 @@ module Quickbooks
 
   class Invoice
 
+    attr_reader :items, :work_orders
+
     def initialize
       @now = DateTime.now
       @data = {
         "Line" => []
       }
+      @items = []
+      @work_orders = []
     end
 
     def set_customer(customer_id)
@@ -231,17 +235,83 @@ module Quickbooks
       @data["DocNumber"] = "#{@now.year % 100}#{@now.month.to_s.rjust(2, "0")}#{invoice_number.number.to_s.rjust(4, "0")}"
     end
 
+    ##
+    # Adds a work order and all of it's items, generating all necessary lines
+    #
+    # @param [WorkOrder] work_order
+    #
+    def add_work_order(work_order)
+      @work_orders.push work_order
+      work_order.items.each do |item|
+        add_item(item)
+      end
+    end
+
+    ##
+    # Adds an item to the invoice, generating all necessary lines
+    #
+    # @param [Item] item The item to add to the invoice
+    #
+    def add_item(item)
+      @items.push item
+      item_description = "#{item.brand.name} #{item.item_type.name}"
+      item_labor_amount = 0
+      inventory_items = []
+      special_order_items = []
+      item.repairs.each do |repair|
+        item_description += "\n- #{repair.name.match(/^(.*?)?\s*?[^\w\s]|$/)[1]}"
+        item_labor_amount += repair.price_of_labor.to_f
+        repair.inventory_items.each do |inventory|
+          inventory_items.push inventory
+        end
+        repair.special_order_items.each do |special_item|
+          special_order_items.push special_item
+        end
+      end
+      add_line(item_name: "Repair", amount: item_labor_amount, description: item_description)
+      inventory_items.each do |inv_item|
+        add_line(item_name: "Inventory Item", amount: inv_item.price.to_f, description: inv_item.name)
+      end
+      special_order_items.each do |soi|
+        add_line(item_name: "Special Order Item", amount: soi.price.to_f, description: soi.name)
+      end
+      item.fees.each do |fee|
+        add_line(item_name: "Fee", amount: fee.price.to_f, description: fee.name)
+      end
+      subtotal_before_discount = item.price_of_repairs_and_fees.to_f
+      item.discounts.each do |discount|
+        discount_amount = 0
+        if discount.price.present?
+          discount_amount = discount.price.to_f
+        else
+          # percentage discount
+          converted_percent = discount.percentage_amount / 100.to_f
+          discount_amount = subtotal_before_discount * converted_percent
+        end
+        add_line(item_name: "Discount", amount: -discount_amount, description: discount.name)
+      end
+    end
+
     def add_line(item: nil, item_name: nil, amount: 0, description: nil, service_date: nil)
+      item_ref = {"name" => item_name}
+      if item.present?
+        item_ref["value"] = item
+      else
+        # only name present, must fetch actual id
+        begin
+          r = Quickbooks.qbo_api.get(:item, ["Name", item_name])
+          item_ref["value"] = r["Id"]
+        rescue
+          item_ref["value"] = 1
+        end
+      end
       line = {
         "DetailType" => "SalesItemLineDetail",
         "Description" => description,
         "Amount" => amount,
         "SalesItemLineDetail" => {
           "ServiceDate" => service_date || "#{@now.year}-#{@now.month.to_s.rjust(2, "0")}-#{@now.day.to_s.rjust(2, "0")}",
-          "ItemRef" => {
-            "value" => item,
-            "name" => item_name
-          }
+          "ItemRef" => item_ref
         }
       }
       @data["Line"].push line
