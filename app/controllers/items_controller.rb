@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
         format.json { render :show, status: :created, location: @item }
       else
         @work_order.items.reset
+        @customer = @work_order.customer
         @items = @work_order.items
         @brands = Brand.kept
         @item_statuses = ItemStatus.kept
