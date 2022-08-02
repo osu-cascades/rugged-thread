@@ -132,7 +132,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
         @customer.alternative_phone_number = normalized_alternate_phone_number
       end
       if @errors.length > 0
-        @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
+        @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
         format.html { render render_location, status: :unprocessable_entity }
         format.json { render json: e.message, status: :unprocessable_entity }
       else
@@ -142,7 +142,7 @@ class QuickbooksCustomersController < QuickbooksAbstractController
             yield format, data
           end
         rescue QboApi::BadRequest => e
-          @customer_types = @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
+          @customer_types = CustomerType.where.not("q_customer_type_id" => nil)
           e.message.scan(/:error_detail=>"(.*?)"/).each do |message|
             @errors.push message[0]
             if message[0].match(/Title, GivenName/)

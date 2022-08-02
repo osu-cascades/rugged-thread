@@ -13,19 +13,68 @@ $(document).ready(function() {
   // Due date auto update
   const inDateInput = document.querySelector("#work_order_in_date"),
     dueDateInput = document.querySelector("#work_order_due_date"),
+    mainElement = document.querySelector("main"),
     originalDateDifference = new Date(dueDateInput.value) - new Date(inDateInput.value);
 
   let dueDateModifiedManually = false;
 
   inDateInput.addEventListener("change", () => {
     if (!dueDateModifiedManually) {
-      dueDate = new Date(+new Date(inDateInput.value) + originalDateDifference);
+      const dueDate = new Date(+new Date(inDateInput.value) + originalDateDifference);
       dueDateInput.value = dueDate.toISOString().substr(0,10);
     }
   });
 
   dueDateInput.addEventListener("change", () => {
     dueDateModifiedManually = true;
+  });
+
+  $("#work_order_customer_id").on("select2:selecting", (e) => {
+    if (e.params.args?.data?.id === "__add_new_customer__") {
+      e.preventDefault();
+      $("#work_order_customer_id").select2("close");
+      // TODO: Open up the customer creation page
+      const creationForm = document.createElement("template");
+      creationForm.innerHTML = `
+        <div class="position-fixed fixed-top w-100 h-100 zindex-modal" style="background: rgba(0,0,0,0.3)" id="newcustomer-background">
+          <div class="w-75 h-75 bg-light m-auto rounded" style="margin-top: 15vh !important">
+            <iframe class="w-100 h-100 m-0 rounded" src="/customers/new" id="newcustomer"></iframe>
+          </div>
+        </div>
+      `;
+      mainElement.append(creationForm.content.cloneNode(true));
+      const iframeForm = mainElement.querySelector("#newcustomer"),
+        formContainer = mainElement.querySelector("#newcustomer-background");
+      iframeForm.onload = () => {
+        iframeForm.contentDocument.documentElement.addEventListener("turbo:load", (e) => {
+          const {location} = iframeForm.contentWindow,
+            {pathname} = location;
+          if (!/customers\/\d+\/?$/.test(pathname)) {
+            // Cancelled
+            formContainer.remove();
+          } else {
+            // Saved!
+            const [,customerId] = pathname.match(/customers\/(\d+)\/?/);
+            formContainer.innerHTML = "";
+            // Fetch json!
+            fetch(`/customers/${customerId}.json`).then((response) => {
+              return response.json();
+            }).then((data) => {
+              const option = new Option(`${data.first_name} ${data.last_name}`, customerId, false, true);
+              $("#work_order_customer_id").append(option).trigger("change");
+              formContainer.remove();
+            }).catch(() => {
+              const option = new Option("(Newly created customer)", customerId, false, true);
+              $("#work_order_customer_id").append(option).trigger("change");
+              formContainer.remove();
+            });
+          }
+        });
+      }
+      formContainer.addEventListener("click", () => {
+        formContainer.remove();
+      });
+    }
   });
 
 });
@@ -55,7 +104,16 @@ $(document).ready(function() {
   <% end %>
     <div class="mb-3">
       <%= form.label :customer_id, class: 'form-label' %>
-      <%= form.collection_select :customer_id, customers.kept, :id, :full_name, {include_blank: ''}, class: 'form-select', data: { controller: 'work-order-form', action: 'change->work-order-form#setDueDate'} %>
+      <%
+        add_customer = Object.new
+        def add_customer.id
+          "__add_new_customer__"
+        end
+        def add_customer.full_name
+          "+ Add New Customer"
+        end
+      %>
+      <%= form.collection_select :customer_id, [add_customer] + customers.kept, :id, :full_name, {include_blank: ''}, class: 'form-select', data: { controller: 'work-order-form', action: 'change->work-order-form#setDueDate'} %>
     </div>
   <% if form.object.errors.include?(:customer) %>
     </div>
