@@ -273,7 +273,7 @@ module Quickbooks
         add_line(item_name: "Inventory Item", amount: inv_item.price.to_f, description: inv_item.name)
       end
       special_order_items.each do |soi|
-        add_line(item_name: "Special Order Item", amount: soi.price.to_f, description: soi.name)
+        add_line(item_name: "Special Order Item", amount: soi.total_price.to_f, description: soi.name)
       end
       item.fees.each do |fee|
         add_line(item_name: "Fee", amount: fee.price.to_f, description: fee.name)
