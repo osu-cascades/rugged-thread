@@ -3,7 +3,7 @@
     <h1>Invoice preview</h1>
   </div>
   <div class="col-3 text-end">
-    <%= form_with url: invoices_submit_path, html: {target: "_blank", "data-turbo": false, id: "invoiceSubmitForm"} do %>
+    <%= form_with url: invoices_submit_path, html: {target: "_blank", "data-turbo": false} do %>
       <input type="hidden" name="customer_id" value="<%= @customer.id %>">
       <% @items.each do |item| %>
         <input type="hidden" name="items[]" value="<%= item.id %>">

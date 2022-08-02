@@ -5,22 +5,25 @@ import "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
 import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js";
 $(document).ready(function() {
   $("#customer_id").select2({theme: "bootstrap-5"});
+  $("#items").select2({theme: "bootstrap-5"});
   // Hacky solution: https://github.com/select2/select2/issues/5993#issuecomment-1115893633
   $(document).on("select2:open", () => {
     setTimeout(() => document.querySelector(".select2-container--open .select2-search__field").focus(), 0);
   });
-
-  document.querySelector("#invoiceForm")
 });
 </script>
 
 <h1>Create Custom Invoice</h1>
 <div class="form-container">
-  <%= form_with(html: { id: "invoiceForm" }) do |form| %>
+  <%= form_with(html: { "data-turbo": false }, url: invoices_preview_path, method: :post) do |form| %>
     <div class="mb-3">
       <%= form.label :customer_id, class: 'form-label' %>
-      <%= form.collection_select :customer_id, @customers, :id, :full_name, {include_blank: ''}, class: 'form-select' %>
+      <%= form.collection_select :customer_id, @customers, :id, :full_name, {include_blank: ''}, {class: 'form-select', required: ''} %>
     </div>
     <p>Select items or work orders to add below:</p>
+    <%= form.collection_select :items, Item.all, :id, lambda {|item|
+      "#{item.brand.name} #{item.item_type.name} (WO##{item.work_order.number})"
+    }, {}, { multiple: true, class: 'form-select', name: 'items[]', required: '' } %>
+    <%= form.submit "Submit" %>
   <% end %>
 </div>

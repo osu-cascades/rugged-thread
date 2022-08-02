@@ -21,6 +21,15 @@ class InvoicesController < QuickbooksAbstractController
       @customer = qb_request do
         Quickbooks::Customer.new(qb_api.get(:customer, work_order.customer_id))
       end
+    else
+      # Custom item and customer provided
+      @items = []
+      params[:items].each do |item_id|
+        @items.push Item.find(item_id) if item_id != ""
+      end
+      @customer = qb_request do
+        Quickbooks::Customer.new(qb_api.get(:customer, params[:customer_id]))
+      end
     end
   end
 
