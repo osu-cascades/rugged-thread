@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col">
+    <h1>Invoice preview</h1>
+  </div>
+  <div class="col-3 text-end">
+    <%= form_with url: invoices_submit_path, html: {target: "_blank", "data-turbo": false, id: "invoiceSubmitForm"} do %>
+      <input type="hidden" name="customer_id" value="<%= @customer.id %>">
+      <% @items.each do |item| %>
+        <input type="hidden" name="items[]" value="<%= item.id %>">
+      <% end %>
+      <button type="submit" class="btn btn-outline-primary me-2">Send to Quickbooks</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Customer</h3>
+  <%= link_to(@customer.full_name, quickbooks_customer_path(@customer.id)) %>
+  <h3>Item Summary</h3>
+  <div class="col-2">
+    <p>Number of items</p>
+    <p>Total labor cost</p>
+    <p>Total fees</p>
+    <p>Total discount</p>
+    <p>Total cost</p>
+  </div>
+  <div class="col">
+    <p><%= @items.length %></p>
+    <p><%= @items.reduce(0) {|sum, item| sum + item.price_of_repairs} %></p>
+    <p><%= @items.reduce(0) {|sum, item| sum + item.price_of_fees} %></p>
+    <p><%= @items.reduce(0) {|sum, item| sum + item.price_total_discount} %></p>
+    <p><%= @items.reduce(0) {|sum, item| sum + item.price} %></p>
+  </div>
+</div>

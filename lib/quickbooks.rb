@@ -419,11 +419,4 @@ module Quickbooks
   class DataUninitializedError < StandardError
   end
 
-  class ValidationError
-
-    def initialize(options = {})
-    end
-
-  end
-
 end

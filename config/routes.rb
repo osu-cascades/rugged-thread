@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   get '/qb_oauth' => 'quickbooks_o_auth#index'
   get '/qb_oauth_verify' => 'quickbooks_o_auth#verify'
 
+  get '/invoices/preview' => 'invoices#preview'
+  post '/invoices/preview' => 'invoices#preview'
+  post '/invoices/submit' => 'invoices#submit'
   resources :invoices, only: [:show,:index] do
-    member do
-      post :submit
-    end
   end
 
   resources :quickbooks_customers, except: [:destroy] do

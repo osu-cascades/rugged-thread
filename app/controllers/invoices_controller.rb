@@ -11,21 +11,35 @@ class InvoicesController < QuickbooksAbstractController
 
   # An invoice created from a single work order
   def show
-    @work_order = WorkOrder.find(params[:id])
+    redirect_to invoices_preview_path(from_work_order: params[:id])
+  end
+
+  def preview
+    if params[:from_work_order].present?
+      work_order = WorkOrder.find(params[:from_work_order])
+      @items = work_order.items
+      @customer = qb_request do
+        Quickbooks::Customer.new(qb_api.get(:customer, work_order.customer_id))
+      end
+    end
   end
 
   def submit
-    work_order = WorkOrder.find(params[:id])
-
     invoice = Quickbooks::Invoice.new
-    invoice.set_customer(work_order.customer_id)
-    invoice.add_work_order(work_order)
+    items = (params[:items] || []).map! do |item_id|
+      Item.find(item_id)
+    end
+
+    invoice.set_customer(params[:customer_id])
+    items.each do |item|
+      invoice.add_item(item)
+    end
     invoice.assign_doc_number
 
     qb_request do
       logger.info invoice.payload.to_s
       response = qb_api.create(:invoice, payload: invoice.payload)
-      work_order.items.each do |item|
+      items.each do |item|
         item.qb_invoice_id = response["Id"]
         item.save
       end
